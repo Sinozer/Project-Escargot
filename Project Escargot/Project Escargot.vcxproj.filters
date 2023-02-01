@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Fichiers sources">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Fichiers de ressources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Fichiers sources\Game">
+      <UniqueIdentifier>{fca8e597-5cb3-478d-b27b-3eacf53012fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game">
+      <UniqueIdentifier>{c64c64db-e7b7-44c1-a3f1-a5e1836c23b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\State">
+      <UniqueIdentifier>{9e86ec09-7791-4070-9020-14e6499d6fde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\State">
+      <UniqueIdentifier>{59e0ae53-ec88-462f-890c-2410c3eca7f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\State\List">
+      <UniqueIdentifier>{3996c525-9d22-4803-b86a-e4738e2fb245}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\State\List">
+      <UniqueIdentifier>{7a44437d-1bd1-4e11-a7be-aee77f10b9ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Asset">
+      <UniqueIdentifier>{2d7aa085-89a2-439f-8569-ad9f6c2c44c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Asset">
+      <UniqueIdentifier>{75078105-0aa8-40de-a2b2-7dafeec60da1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Input">
+      <UniqueIdentifier>{c6f0c633-fa84-42c9-a511-4bbbba617c2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Input">
+      <UniqueIdentifier>{dc0c2cbd-bbfb-4ada-bd59-2399fc556c7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\View">
+      <UniqueIdentifier>{c3c262cf-8db5-4c9e-b17e-5a50f95b46fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\View">
+      <UniqueIdentifier>{a8a6f5f7-2b4d-4b13-9e3d-48fbeaeee9d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Physic">
+      <UniqueIdentifier>{8569c043-5e6f-4081-a943-37235f321ed4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Physic">
+      <UniqueIdentifier>{374f4acf-bc06-4a43-9750-6c423b1174cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Math">
+      <UniqueIdentifier>{117117c3-394c-4057-9f9b-5961d41f3228}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Game.cpp">
+      <Filter>Fichiers sources\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\State\StateManager.cpp">
+      <Filter>Fichiers sources\Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Asset\AssetManager.cpp">
+      <Filter>Fichiers sources\Game\Asset</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Input\InputManager.cpp">
+      <Filter>Fichiers sources\Game\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\State\List\JoinState.cpp">
+      <Filter>Fichiers sources\Game\State\List</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\State\List\MainState.cpp">
+      <Filter>Fichiers sources\Game\State\List</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\View\View.cpp">
+      <Filter>Fichiers sources\Game\View</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\View\ViewManager.cpp">
+      <Filter>Fichiers sources\Game\View</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Physic\PhysicBody.cpp">
+      <Filter>Fichiers sources\Game\Physic</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Physic\PhysicBodyManager.cpp">
+      <Filter>Fichiers sources\Game\Physic</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\Player\Player.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\State.h">
+      <Filter>Fichiers d%27en-tête\Game\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Game.h">
+      <Filter>Fichiers d%27en-tête\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\StateManager.h">
+      <Filter>Fichiers d%27en-tête\Game\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Asset\AssetManager.h">
+      <Filter>Fichiers d%27en-tête\Game\Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Input\InputManager.h">
+      <Filter>Fichiers d%27en-tête\Game\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\List\JoinState.h">
+      <Filter>Fichiers d%27en-tête\Game\State\List</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\List\MainState.h">
+      <Filter>Fichiers d%27en-tête\Game\State\List</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\View\View.h">
+      <Filter>Fichiers d%27en-tête\Game\View</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\View\ViewManager.h">
+      <Filter>Fichiers d%27en-tête\Game\View</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Physic\PhysicBody.h">
+      <Filter>Fichiers d%27en-tête\Game\Physic</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Math\Math.h">
+      <Filter>Fichiers d%27en-tête\Game\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Physic\PhysicBodyManager.h">
+      <Filter>Fichiers d%27en-tête\Game\Physic</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Entity.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Player\Player.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
