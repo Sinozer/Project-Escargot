@@ -34,6 +34,7 @@
 #include "Game/Physic/PhysicBody.h"
 #include "Game/Entity/Entity.h"
 #include "Game/Entity/Player/Player.h"
+#include "Game/Entity/Ennemy/Ennemy.h"
 /* #################  SNAIL   ################# */
 
 /* ###############################  INCLUDES   ############################### */
