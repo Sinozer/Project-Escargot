@@ -7,7 +7,8 @@ namespace Snail
 	BulletManager::BulletManager(GameDataRef data, sf::Vector2f shooterCoord, int dir)
 	{
 		this->m_data = data;
-		this->m_speed = 1000.f;
+		this->m_speed = 10.f * PHYSIC_SCALE;
+		m_clamp = { m_speed, m_jumpHeight };
 		this->m_shooterCoord = shooterCoord;
 		this->m_playerDir = dir;
 		Init();
@@ -42,9 +43,9 @@ namespace Snail
 	void BulletManager::fireAmmo()
 	{
 		if (m_playerDir == LEFT)
-			m_physicBodyRef->AddVelocity({ -m_speed, 0 });
+			m_physicBodyRef->AddVelocity({ -m_speed, 0 }, m_clamp);
 		else if (m_playerDir == RIGHT)
-			m_physicBodyRef->AddVelocity({ m_speed, 0 });
+			m_physicBodyRef->AddVelocity({ m_speed, 0 }, m_clamp);
 	}
 
 	void BulletManager::Update(float dt)

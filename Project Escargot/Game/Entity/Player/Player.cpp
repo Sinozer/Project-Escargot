@@ -33,12 +33,12 @@ namespace Snail
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) 
 		{
 			m_physicBodyRef->AddVelocity({-m_speed, 0}, m_clamp);
-			m_playerDir = RIGHT;
+			m_playerDir = LEFT;
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 		{
 			m_physicBodyRef->AddVelocity({ m_speed, 0}, m_clamp);
-			m_playerDir = LEFT;
+			m_playerDir = RIGHT;
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && m_physicBodyRef->m_IsOnGround)
 		{
