@@ -31,7 +31,7 @@ namespace Snail
 
 		for (auto& physicBody : m_physicBodies)
 		{
-			if (!physicBody.second->m_IsStatic)
+			if (physicBody.second && !physicBody.second->m_IsStatic)
 			{
 				/**
 				 * \brief The physic body check for collision.
@@ -40,16 +40,14 @@ namespace Snail
 				 * ***** If true, the physic body is affected by gravity.
 				 *
 				 */
+				physicBody.second->Update(dt);
 
 				for (auto& otherPhysicBody : m_physicBodies)
 				{
 					if (otherPhysicBody == physicBody) continue;
-
-					physicBody.second->Update(dt);
-
 					sf::Vector2f direction;
 
-					if (physicBody.second->CheckCollision(otherPhysicBody.second, direction))
+					if (physicBody.second && otherPhysicBody.second && physicBody.second->CheckCollision(otherPhysicBody.second, direction))
 						physicBody.second->OnCollision(direction);
 				}
 			}
@@ -64,7 +62,8 @@ namespace Snail
 
 		for (auto& physicBody : m_physicBodies)
 		{
-			physicBody.second->Draw(m_data->window);
+			if (physicBody.second)
+				physicBody.second->Draw(m_data->window);
 		}
 	}
 }

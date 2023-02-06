@@ -2,7 +2,7 @@
 
 namespace Snail
 {
-	MainState::MainState(GameDataRef data) : m_data(data)
+	MainState::MainState(GameDataRef data) : m_data(data), m_player(m_data), m_ennemy(data, m_player)
 	{
 		m_physicBodyManager = PhysicBodyManager(data);
 	}
@@ -11,9 +11,9 @@ namespace Snail
 	{
 		m_data->assetManager.LoadTexture("STATE_JOIN_BACKGROUND", STATE_JOIN_BACKGROUND_FILEPATH);
 		m_background.setTexture(m_data->assetManager.GetTexture("STATE_JOIN_BACKGROUND"));
-
-		m_player = Player(m_data);
+		
 		m_player.Init();
+		m_ennemy.Init();
 
 		m_physicBodyManager.AddPhysicBody("PLAYER", m_player.m_physicBodyRef);
 
@@ -24,8 +24,19 @@ namespace Snail
 
 		// dummy box
 		m_physicBodyManager.AddPhysicBody("BOX", PhysicBodyRef(PhysicBody::CreateBoxBody(
-			sf::Vector2f(100.f, 100.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, WINDOW_SCREEN_HEIGHT / 4.f), 0.f, false
+			sf::Vector2f(100.f, 100.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, WINDOW_SCREEN_HEIGHT / 4.f), 0.5f, false
 		)));
+		
+		m_physicBodyManager.AddPhysicBody("BOX2", PhysicBodyRef(PhysicBody::CreateBoxBody(
+			sf::Vector2f(100.f, 100.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, WINDOW_SCREEN_HEIGHT / 8.f), 0.5f, false
+		)));
+
+		m_physicBodyManager.AddPhysicBody("BOX3", PhysicBodyRef(PhysicBody::CreateBoxBody(
+			sf::Vector2f(100.f, 100.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, WINDOW_SCREEN_HEIGHT / 16.f), 0.5f, false
+		)));
+		
+		// ennemy
+		m_physicBodyManager.AddPhysicBody("ENNEMY", m_ennemy.m_physicBodyRef);
 	}
 
 	void MainState::HandleInput()
@@ -50,6 +61,7 @@ namespace Snail
 	{
 		m_physicBodyManager.Update(dt);
 		m_player.Update(dt);
+		m_ennemy.Update(dt);
 	}
 
 	void MainState::Draw(float dt)

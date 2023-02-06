@@ -75,9 +75,11 @@ namespace Snail
 		m_body.move(step);
 	}
 
-	void PhysicBody::AddVelocity(sf::Vector2f step)
+	void PhysicBody::AddVelocity(sf::Vector2f step, sf::Vector2f clamp)
 	{
-		m_velocity += step; // Maybe clamp this step instead of make it = 0
+		if (m_IsStatic) return;
+		m_velocity += step;
+		m_velocity.x = Math::Clamp(m_velocity.x, -clamp.x, clamp.x);
 	}
 
 	sf::Vector2f PhysicBody::GetHalfSize()
