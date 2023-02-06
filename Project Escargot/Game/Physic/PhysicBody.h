@@ -9,6 +9,9 @@ namespace Snail
 		PhysicBody(sf::Vector2f position, float restitution,
 			bool isStatic, sf::Vector2f size);
 
+		PhysicBody(sf::Vector2f position, float restitution,
+			bool isStatic, sf::Vector2f size, sf::Texture texture);
+
 		void m_Move(float dt);
 	public:
 		typedef std::shared_ptr<PhysicBody> PhysicBodyRef;
@@ -25,6 +28,8 @@ namespace Snail
 		bool m_IsStatic;
 
 		static PhysicBody* CreateBoxBody(sf::Vector2f size, sf::Vector2f position, float restitution, bool isStatic);
+
+		static PhysicBody* CreateBoxBody(sf::Vector2f size, sf::Vector2f position, float restitution, bool isStatic, sf::Texture texture);
 	
 		sf::Vector2f GetPosition();
 
