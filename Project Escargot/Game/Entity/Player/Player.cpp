@@ -9,6 +9,7 @@ namespace Snail
 		m_speed = 100.f;
 		m_jumpHeight = 150.f;
 		bulletCount = 0;
+		m_playerDir = RIGHT;
 	}
 
 	void Player::Init()
