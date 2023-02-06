@@ -1,5 +1,5 @@
 #include "stdafx.h"
-
+//#include<windows.h>
 namespace Snail
 {
 	Player::Player(GameDataRef data)
@@ -8,10 +8,12 @@ namespace Snail
 
 		m_speed = 100.f;
 		m_jumpHeight = 150.f;
+		bulletCount = 0;
 	}
 
 	void Player::Init()
 	{
+
 		m_InitPhysicBody();
 	}
 
@@ -26,15 +28,28 @@ namespace Snail
 	{
 		m_physicBodyRef->m_velocity.x = 0.f;
 		
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) 
+		{
 			m_physicBodyRef->AddVelocity({-m_speed, 0});
+			m_playerDir = RIGHT;
+		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+		{
 			m_physicBodyRef->AddVelocity({ m_speed, 0});
+			m_playerDir = LEFT;
+		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && m_physicBodyRef->m_IsOnGround)
 		{
 			m_physicBodyRef->m_IsOnGround = false;
 			m_physicBodyRef->m_velocity.y = -sqrtf(2.0f * GAME_GRAVITY * m_jumpHeight);
 		}
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) 
+		{
+			//Sleep(1000);
+			bulletCount ++;
+		}
+		//	m_bullet = BulletManager(m_data);
+			//this->m_bullet->fireAmmo(m_physicBodyRef->GetPosition(), 'D');
 		
 	}
 

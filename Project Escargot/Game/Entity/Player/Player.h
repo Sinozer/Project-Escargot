@@ -6,13 +6,20 @@ namespace Snail
 	{
 	private:
 		GameDataRef m_data;
-
 		float m_speed;
 
+		enum m_dir
+		{
+			RIGHT,
+			LEFT,
+			TOP,
+			DOWN
+		};
 		void m_InitPhysicBody();
 	public:
 		PhysicBodyRef m_physicBodyRef;
-		
+		int bulletCount;
+		int m_playerDir;
 		/**
 		 * \brief Constructor to not use.
 		 * 
