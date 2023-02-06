@@ -141,6 +141,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Game\Entity\Bullet\BulletManager.cpp" />
     <ClCompile Include="Game\Asset\AssetManager.cpp" />
     <ClCompile Include="Game\Game.cpp" />
     <ClCompile Include="Game\Input\InputManager.cpp" />
@@ -159,6 +160,7 @@
     <ClCompile Include="Game\View\ViewManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game\Entity\Bullet\BulletManager.h" />
     <ClInclude Include="Game\Entity\Entity.h" />
     <ClInclude Include="Game\Asset\AssetManager.h" />
     <ClInclude Include="Game\Game.h" />
