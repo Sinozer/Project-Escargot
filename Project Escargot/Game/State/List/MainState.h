@@ -1,6 +1,7 @@
 #pragma once
 #include "../../Physic/PhysicBodyManager.h"
 #include "../../Entity/Player/Player.h"
+#include "../../Entity/Ennemy/Ennemy.h"
 #include "../../Entity/Bullet/BulletManager.h"
 namespace Snail
 {
@@ -12,6 +13,8 @@ namespace Snail
 	private:
 		PhysicBodyManager m_physicBodyManager;
 		Player m_player;
+
+		Ennemy m_ennemy;
 
 		GameDataRef m_data;
 

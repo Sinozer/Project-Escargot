@@ -10,6 +10,8 @@ namespace Snail
 	protected:
 		std::string m_name;
 		
+		sf::Vector2f m_clamp;
+
 		float m_jumpHeight;
 
 	public:

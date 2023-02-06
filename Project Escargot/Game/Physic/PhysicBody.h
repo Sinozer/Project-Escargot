@@ -35,7 +35,7 @@ namespace Snail
 
 		void Move(sf::Vector2f step);
 
-		void AddVelocity(sf::Vector2f step);
+		void AddVelocity(sf::Vector2f step, sf::Vector2f clamp);
 
 		sf::Vector2f GetHalfSize();
 

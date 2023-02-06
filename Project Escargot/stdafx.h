@@ -47,7 +47,7 @@
 
 /* ################## PHYSIC ################## */
 #define GRAVITY 9.81f
-#define PHYSIC_SCALE 10.0f
+#define PHYSIC_SCALE 100.0f
 #define GAME_GRAVITY GRAVITY * PHYSIC_SCALE
 /* ################## PHYSIC ################## */
 

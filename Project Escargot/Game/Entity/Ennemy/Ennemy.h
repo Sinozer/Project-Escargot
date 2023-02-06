@@ -10,21 +10,17 @@ namespace Snail
 		float m_speed;
 
 		void m_InitPhysicBody();
+
+		Player& m_target;
 	public:
 		PhysicBodyRef m_physicBodyRef;
-
-		/**
-		 * \brief Constructor to not use.
-		 *
-		 */
-		Ennemy() {}
 
 		/**
 		 * \brief Constructor.
 		 *
 		 * \param data
 		 */
-		Ennemy(GameDataRef data);
+		Ennemy(GameDataRef data, Player& target);
 
 		void Init();
 
