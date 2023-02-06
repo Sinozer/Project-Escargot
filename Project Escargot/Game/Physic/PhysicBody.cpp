@@ -21,6 +21,27 @@ namespace Snail
 		}
 	}
 
+	PhysicBody::PhysicBody(sf::Vector2f position, float restitution,
+		bool isStatic, sf::Vector2f size, sf::Texture texture)
+	{
+		m_body.setPosition(position);
+		m_body.setTexture(&texture);
+		m_body.setSize(size);
+		m_body.setTextureRect(sf::IntRect(0, 0, size.x, size.y));
+		m_body.setOrigin(size / 2.f);
+		m_body.setFillColor(sf::Color::Transparent);
+		m_velocity = sf::Vector2f(0, 0);
+		m_IsOnGround = false;
+		m_Restitution = restitution;
+		m_IsStatic = isStatic;
+
+		if (DEBUG)
+		{
+			m_body.setOutlineThickness(1.f);
+			m_body.setOutlineColor(sf::Color::Green);
+		}
+	}
+
 	void PhysicBody::m_Move(float dt)
 	{
 		if (m_IsStatic) return;
@@ -34,6 +55,13 @@ namespace Snail
 		restitution = Math::Clamp(restitution, 0.f, 1.f);
 
 		return new PhysicBody(position, restitution, isStatic, size);
+	}
+
+	PhysicBody* PhysicBody::CreateBoxBody(sf::Vector2f size, sf::Vector2f position, float restitution, bool isStatic, sf::Texture texture)
+	{
+		restitution = Math::Clamp(restitution, 0.f, 1.f);
+
+		return new PhysicBody(position, restitution, isStatic, size, texture);
 	}
 
 	sf::Vector2f PhysicBody::GetPosition()

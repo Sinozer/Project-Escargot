@@ -58,6 +58,30 @@
     <Filter Include="Fichiers d%27en-tête\Game\Math">
       <UniqueIdentifier>{117117c3-394c-4057-9f9b-5961d41f3228}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Entity">
+      <UniqueIdentifier>{1741d904-875b-4d28-af80-0a80b1a82dde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Entity">
+      <UniqueIdentifier>{7b1c993f-2330-4950-885c-ecdd064ff63c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Entity\Player">
+      <UniqueIdentifier>{f6a0237e-b058-4334-95fc-d9fac724c7fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Entity\Player">
+      <UniqueIdentifier>{0a926f73-6cac-4334-81ad-4cf819d4782b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Entity\Ennemy">
+      <UniqueIdentifier>{85197066-7a49-44d5-80b2-e3f37bacedbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Entity\Ennemy">
+      <UniqueIdentifier>{7bdd059f-bfd9-42d5-accb-cf39bf83b650}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Entity\Ennemy\List">
+      <UniqueIdentifier>{7502bab6-bc57-42a9-adf4-dafee816760d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Entity\Ennemy\List">
+      <UniqueIdentifier>{1c6fe4b4-c0cd-4213-b8d8-806242fe20d9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -97,7 +121,10 @@
       <Filter>Fichiers sources\Game\Physic</Filter>
     </ClCompile>
     <ClCompile Include="Game\Entity\Player\Player.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\Game\Entity\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\Ennemy\Ennemy.cpp">
+      <Filter>Fichiers sources\Game\Entity\Ennemy</Filter>
     </ClCompile>
     <ClCompile Include="Game\Entity\Bullet\BulletManager.cpp">
       <Filter>Fichiers sources</Filter>
@@ -147,7 +174,10 @@
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="Game\Entity\Player\Player.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Game\Entity\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Ennemy\Ennemy.h">
+      <Filter>Fichiers d%27en-tête\Game\Entity\Ennemy</Filter>
     </ClInclude>
     <ClInclude Include="Game\Entity\Bullet\BulletManager.h">
       <Filter>Fichiers d%27en-tête</Filter>

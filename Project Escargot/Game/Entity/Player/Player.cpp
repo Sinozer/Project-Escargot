@@ -18,7 +18,7 @@ namespace Snail
 	void Player::m_InitPhysicBody()
 	{
 		m_physicBodyRef = PhysicBodyRef(PhysicBody::CreateBoxBody(
-			sf::Vector2f(100.f, 100.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, WINDOW_SCREEN_HEIGHT / 2.f), 1.f, false
+			sf::Vector2f(100.f, 100.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, WINDOW_SCREEN_HEIGHT / 2.f), 1.f, false, m_data->assetManager.GetTexture("STATE_JOIN_BACKGROUND")
 		));
 	}
 
