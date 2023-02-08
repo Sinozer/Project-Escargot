@@ -18,8 +18,10 @@ namespace Snail
 
 	void Ennemy::m_InitPhysicBody()
 	{
+		m_data->assetManager.LoadTexture("TEST_ENTITY", STATE_MAIN_ENTITY_TEST_FILEPATH);
+
 		m_physicBodyRef = PhysicBodyRef(PhysicBody::CreateBoxBody(
-			sf::Vector2f(100.f, 100.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 3.f, WINDOW_SCREEN_HEIGHT / 3.f), 1.f, false, m_data->assetManager.GetTexture("STATE_JOIN_BACKGROUND")
+			sf::Vector2f(115.f, 161.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 3.f, WINDOW_SCREEN_HEIGHT / 3.f), 1.f, false, m_data->assetManager.GetTexture("TEST_ENTITY")
 		));
 	}
 

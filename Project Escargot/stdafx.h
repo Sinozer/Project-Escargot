@@ -69,6 +69,10 @@
 #define STATE_JOIN_BACKGROUND_FILEPATH "Resources/Textures/Backgrounds/Join.jpg"
 /* ########## JOIN ########## */
 
+/* ########## MAIN ########## */
+#define STATE_MAIN_ENTITY_TEST_FILEPATH "Resources/Textures/Entities/Test.png"
+/* ########## MAIN ########## */
+
 /* ################## STATES ################## */
 
 /* ############################### DEFINITIONS ############################### */
