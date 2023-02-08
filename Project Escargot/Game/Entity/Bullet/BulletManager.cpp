@@ -29,7 +29,7 @@ namespace Snail
 	BulletManager::BulletManager(GameDataRef data, sf::Vector2f shooterCoord, int dir, sf::Vector2f mousePositon)
 	{
 		this->m_data = data;
-		this->m_speed = 10.f * PHYSIC_SCALE;
+		this->m_speed = 5.f * PHYSIC_SCALE;
 		m_clampVelocity = { m_speed, m_jumpHeight };
 		this->m_shooterCoord = shooterCoord;
 		m_offset = 75; // 50 for recoil
@@ -56,7 +56,7 @@ namespace Snail
 
 		m_physicBodyRef = PhysicBodyRef(PhysicBody::CreateBoxBody(
 			sf::Vector2f(20.f, 10.f), sf::Vector2f(m_shooterCoord.x, m_shooterCoord.y), 1.f, false,
-			m_data->assetManager.GetTexture("STATE_JOIN_BACKGROUND"), false
+			m_data->assetManager.GetTexture("STATE_JOIN_BACKGROUND"), false, false
 		));
 		fireAmmo();
 	}
