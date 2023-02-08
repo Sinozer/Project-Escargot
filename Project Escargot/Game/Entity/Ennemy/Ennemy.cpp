@@ -8,7 +8,7 @@ namespace Snail
 
 		m_speed = 3.5f * PHYSIC_SCALE;
 		m_jumpHeight = 1.2f * PHYSIC_SCALE;
-		m_clamp = { m_speed, m_jumpHeight };
+		m_clampVelocity = { m_speed, m_jumpHeight };
 	}
 
 	void Ennemy::Init()
@@ -31,9 +31,9 @@ namespace Snail
 	{
 		m_physicBodyRef->m_velocity.x = 0.f;
 		if (m_target.m_physicBodyRef->GetPosition().x < m_physicBodyRef->GetPosition().x - 200)
-			m_physicBodyRef->AddVelocity({ -m_speed, 0 }, m_clamp);
+			m_physicBodyRef->AddVelocity({ -m_speed, 0 }, m_clampVelocity);
 		else if (m_target.m_physicBodyRef->GetPosition().x > m_physicBodyRef->GetPosition().x + 200)
-			m_physicBodyRef->AddVelocity({ m_speed, 0 }, m_clamp);
+			m_physicBodyRef->AddVelocity({ m_speed, 0 }, m_clampVelocity);
 	}
 
 	void Ennemy::Draw()
