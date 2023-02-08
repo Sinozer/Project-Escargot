@@ -7,8 +7,6 @@ namespace Snail
 	private:
 		GameDataRef m_data;
 
-		float m_speed;
-
 		void m_InitPhysicBody();
 
 		Player& m_target;

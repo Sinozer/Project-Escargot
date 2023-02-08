@@ -6,7 +6,6 @@ namespace Snail
 	{
 	private:
 		GameDataRef m_data;
-		float m_speed;
 
 		enum m_dir
 		{
