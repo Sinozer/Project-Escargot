@@ -5,6 +5,7 @@ namespace Snail
 	{
 	private:
 		sf::RectangleShape m_body;
+		sf::Sprite m_sprite;
 
 		PhysicBody(sf::Vector2f position, float restitution,
 			bool isStatic, sf::Vector2f size);

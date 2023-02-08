@@ -8,7 +8,7 @@ namespace Snail
 		m_body.setPosition(position);
 		m_body.setSize(size);
 		m_body.setOrigin(size / 2.f);
-		m_body.setFillColor(sf::Color::Transparent);
+		m_body.setFillColor(sf::Color::Green);
 		m_velocity = sf::Vector2f(0, 0);
 		m_IsOnGround = false;
 		m_Restitution = restitution;
@@ -17,19 +17,23 @@ namespace Snail
 		if (DEBUG)
 		{
 			m_body.setOutlineThickness(1.f);
-			m_body.setOutlineColor(sf::Color::Green);
+			m_body.setOutlineColor(sf::Color::Black);
 		}
 	}
 
 	PhysicBody::PhysicBody(sf::Vector2f position, float restitution,
 		bool isStatic, sf::Vector2f size, sf::Texture texture)
 	{
+		/*m_sprite.setPosition(position);
+		m_sprite.setTexture(texture);
+		m_sprite.setTextureRect(sf::IntRect(0, 0, size.x, size.y));*/
+		
 		m_body.setPosition(position);
 		m_body.setTexture(&texture);
 		m_body.setSize(size);
 		m_body.setTextureRect(sf::IntRect(0, 0, size.x, size.y));
 		m_body.setOrigin(size / 2.f);
-		m_body.setFillColor(sf::Color::Transparent);
+		m_body.setFillColor(sf::Color::Red);
 		m_velocity = sf::Vector2f(0, 0);
 		m_IsOnGround = false;
 		m_Restitution = restitution;
@@ -38,7 +42,7 @@ namespace Snail
 		if (DEBUG)
 		{
 			m_body.setOutlineThickness(1.f);
-			m_body.setOutlineColor(sf::Color::Green);
+			m_body.setOutlineColor(sf::Color::Black);
 		}
 	}
 
@@ -166,5 +170,7 @@ namespace Snail
 	void PhysicBody::Draw(sf::RenderWindow& window)
 	{
 		window.draw(m_body);
+		if (m_sprite.getTexture() != nullptr)
+			window.draw(m_sprite);
 	}
 }

@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "BulletManager.h"
 
-
 namespace Snail
 {
 	BulletManager::BulletManager(GameDataRef data, sf::Vector2f shooterCoord, int dir)

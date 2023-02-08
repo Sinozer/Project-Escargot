@@ -13,7 +13,7 @@ namespace Snail
 		m_numberBullet = 0;
 		m_data->assetManager.LoadTexture("STATE_JOIN_BACKGROUND", STATE_JOIN_BACKGROUND_FILEPATH);
 		m_background.setTexture(m_data->assetManager.GetTexture("STATE_JOIN_BACKGROUND"));
-		
+
 		m_player.Init();
 		m_ennemy.Init();
 
@@ -28,7 +28,7 @@ namespace Snail
 		m_physicBodyManager.AddPhysicBody("BOX", PhysicBodyRef(PhysicBody::CreateBoxBody(
 			sf::Vector2f(100.f, 100.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, WINDOW_SCREEN_HEIGHT / 4.f), 0.5f, false
 		)));
-		
+
 		m_physicBodyManager.AddPhysicBody("BOX2", PhysicBodyRef(PhysicBody::CreateBoxBody(
 			sf::Vector2f(100.f, 100.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, WINDOW_SCREEN_HEIGHT / 8.f), 0.5f, false
 		)));
@@ -36,15 +36,15 @@ namespace Snail
 		m_physicBodyManager.AddPhysicBody("BOX3", PhysicBodyRef(PhysicBody::CreateBoxBody(
 			sf::Vector2f(100.f, 100.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, WINDOW_SCREEN_HEIGHT / 16.f), 0.5f, false
 		)));
-		
+
 		// ennemy
 		m_physicBodyManager.AddPhysicBody("ENNEMY", m_ennemy.m_physicBodyRef);
 	}
 
 	void MainState::AddBullet()
 	{
-		this->m_bullet = new BulletManager(m_data, m_player.m_physicBodyRef->GetPosition(), m_player.m_playerDir);
-		m_physicBodyManager.AddPhysicBody("Bullet"+ m_numberBullet, m_bullet->m_physicBodyRef);
+		m_bullet = new BulletManager(m_data, m_player.m_physicBodyRef->GetPosition(), m_player.m_playerDir);
+		m_physicBodyManager.AddPhysicBody("Bullet" + m_numberBullet, m_bullet->m_physicBodyRef);
 		m_timerBulletFire = 0;
 		m_numberBullet++;
 	}
@@ -64,7 +64,7 @@ namespace Snail
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 			m_data->stateManager.RemoveState();
 
-		this->m_tempBulletCount = m_player.bulletCount;
+		m_tempBulletCount = m_player.bulletCount;
 		m_player.HandleInput();
 	}
 
@@ -73,15 +73,17 @@ namespace Snail
 		m_physicBodyManager.Update(dt);
 		m_player.Update(dt);
 		m_timerBulletFire++;
-		if (m_numberBullet > 5)
-		{
-			for (int i = 0; i < m_numberBullet; i++)
-				m_physicBodyManager.RemovePhysicBody("Bullet" + i);
-			m_numberBullet = 0;
-		}
 		if (m_player.bulletCount > this->m_tempBulletCount && m_timerBulletFire > 10)
+		{
+			if (m_numberBullet > 5)
+			{
+				for (int i = 0; i < m_numberBullet; i++)
+					m_physicBodyManager.RemovePhysicBody("Bullet" + i);
+				m_numberBullet = 0;
+			}
 			AddBullet();
-		
+		}
+
 		m_ennemy.Update(dt);
 	}
 
