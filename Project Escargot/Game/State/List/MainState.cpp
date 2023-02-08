@@ -43,7 +43,9 @@ namespace Snail
 
 	void MainState::AddBullet()
 	{
-		this->m_bullet = new BulletManager(m_data, m_player.m_physicBodyRef->GetPosition(), m_player.m_playerDir);
+		sf::Vector2f mousePosition = (sf::Vector2f)sf::Mouse::getPosition(m_data->window);
+		
+		this->m_bullet = new BulletManager(m_data, m_player.m_physicBodyRef->GetPosition(), m_player.m_playerDir, mousePosition);
 		m_physicBodyManager.AddPhysicBody("Bullet"+ m_numberBullet, m_bullet->m_physicBodyRef);
 		m_timerBulletFire = 0;
 		m_numberBullet++;
@@ -73,14 +75,17 @@ namespace Snail
 		m_physicBodyManager.Update(dt);
 		m_player.Update(dt);
 		m_timerBulletFire++;
-		if (m_numberBullet > 5)
+		if (m_player.bulletCount > this->m_tempBulletCount && m_timerBulletFire > 10) 
 		{
-			for (int i = 0; i < m_numberBullet; i++)
-				m_physicBodyManager.RemovePhysicBody("Bullet" + i);
-			m_numberBullet = 0;
-		}
-		if (m_player.bulletCount > this->m_tempBulletCount && m_timerBulletFire > 10)
+
+			if (m_numberBullet > 5)
+			{
+				for (int i = 0; i < m_numberBullet; i++)
+					m_physicBodyManager.RemovePhysicBody("Bullet" + i);
+				m_numberBullet = 0;
+			}
 			AddBullet();
+		}
 		
 		m_ennemy.Update(dt);
 	}

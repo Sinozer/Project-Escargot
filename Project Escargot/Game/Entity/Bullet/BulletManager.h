@@ -7,19 +7,43 @@ namespace Snail
 	private:
 		GameDataRef m_data;
 
+		// Bullet
+		// Entity who's shooting
 		sf::Vector2f m_shooterCoord;
-		float m_speed;
-		enum m_dir
+
+
+		/*enum m_dir
 		{
 			RIGHT,
 			LEFT,
 			TOP,
 			DOWN
-		};
+		};*/
+		//int m_playerDir;
 
-		int m_playerDir;
+		// Bullet
+		// Offset the position to avoid collision bugs
+		float m_offset;
+
+		// Entity
+		// - Player
+		//		(sf::vector2f)m_mousePosition
+		// - Ennemy
+		//		m_tagetPosition
+
+		// Weapon	[Convert wantedWosition and weaponPosition into wantedAngle into deltaTargetPosition]
+		// sf::Vector2f m_deltaTargetPosition	[Where to shoot]
+
+		// Bullet
+		// Get the mouse position to know where to shoot
+		sf::Vector2f m_targetPosition;
+		
+
 		void m_InitPhysicBody();
 	public:
+
+		// Bullet
+		// Contains his physic object and properties
 		PhysicBodyRef m_physicBodyRef;
 
 		/**
@@ -28,7 +52,7 @@ namespace Snail
 		*/
 		BulletManager() {}
 
-		BulletManager(GameDataRef data, sf::Vector2f shooterCoord, int dir);
+		BulletManager(GameDataRef data, sf::Vector2f shooterCoord, int dir, sf::Vector2f mousePositon);
 		~BulletManager();
 
 		void Init();
