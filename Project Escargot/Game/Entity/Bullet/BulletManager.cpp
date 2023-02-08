@@ -55,8 +55,8 @@ namespace Snail
 	{
 
 		m_physicBodyRef = PhysicBodyRef(PhysicBody::CreateBoxBody(
-			sf::Vector2f(20.f, 10.f), sf::Vector2f(m_shooterCoord.x , m_shooterCoord.y), 1.f, false,
-			m_data->assetManager.GetTexture("STATE_JOIN_BACKGROUND")
+			sf::Vector2f(20.f, 10.f), sf::Vector2f(m_shooterCoord.x, m_shooterCoord.y), 1.f, false,
+			m_data->assetManager.GetTexture("STATE_JOIN_BACKGROUND"), false
 		));
 		fireAmmo();
 	}
