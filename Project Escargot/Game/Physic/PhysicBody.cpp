@@ -15,6 +15,7 @@ namespace Snail
 		m_IsStatic = isStatic;
 
 		m_canCollide = true;
+		m_canGravitate = true;
 
 		if (DEBUG)
 		{
