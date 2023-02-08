@@ -14,6 +14,8 @@ namespace Snail
 		m_Restitution = restitution;
 		m_IsStatic = isStatic;
 
+		m_canCollide = true;
+
 		if (DEBUG)
 		{
 			m_body.setOutlineThickness(1.f);
@@ -22,7 +24,7 @@ namespace Snail
 	}
 
 	PhysicBody::PhysicBody(sf::Vector2f position, float restitution,
-		bool isStatic, sf::Vector2f size, sf::Texture texture)
+		bool isStatic, sf::Vector2f size, sf::Texture texture, bool canCollide)
 	{
 		/*m_sprite.setPosition(position);
 		m_sprite.setTexture(texture);
@@ -38,6 +40,8 @@ namespace Snail
 		m_IsOnGround = false;
 		m_Restitution = restitution;
 		m_IsStatic = isStatic;
+
+		m_canCollide = canCollide;
 
 		if (DEBUG)
 		{
@@ -61,11 +65,11 @@ namespace Snail
 		return new PhysicBody(position, restitution, isStatic, size);
 	}
 
-	PhysicBody* PhysicBody::CreateBoxBody(sf::Vector2f size, sf::Vector2f position, float restitution, bool isStatic, sf::Texture texture)
+	PhysicBody* PhysicBody::CreateBoxBody(sf::Vector2f size, sf::Vector2f position, float restitution, bool isStatic, sf::Texture texture, bool canCollide)
 	{
 		restitution = Math::Clamp(restitution, 0.f, 1.f);
 
-		return new PhysicBody(position, restitution, isStatic, size, texture);
+		return new PhysicBody(position, restitution, isStatic, size, texture, canCollide);
 	}
 
 	sf::Vector2f PhysicBody::GetPosition()
@@ -93,6 +97,8 @@ namespace Snail
 
 	bool PhysicBody::CheckCollision(PhysicBodyRef other, sf::Vector2f& direction)
 	{
+		if (!m_canCollide || !other->m_canCollide) return false;
+
 		sf::Vector2f otherPosition = other->GetPosition();
 		sf::Vector2f otherHalfSize = other->GetHalfSize();
 
