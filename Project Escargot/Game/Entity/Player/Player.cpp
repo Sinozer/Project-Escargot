@@ -30,22 +30,22 @@ namespace Snail
 	{
 		m_physicBodyRef->m_velocity.x = 0.f;
 		
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) 
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) || sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::X) < -90)
 		{
 			m_physicBodyRef->AddVelocity({-m_speed, 0}, m_clamp);
 			m_playerDir = LEFT;
 		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::X) > 90)
 		{
 			m_physicBodyRef->AddVelocity({ m_speed, 0}, m_clamp);
 			m_playerDir = RIGHT;
 		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && m_physicBodyRef->m_IsOnGround)
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && m_physicBodyRef->m_IsOnGround || sf::Joystick::isButtonPressed(0, 1) && m_physicBodyRef->m_IsOnGround)
 		{
 			m_physicBodyRef->m_IsOnGround = false;
 			m_physicBodyRef->m_velocity.y = -sqrtf(2.0f * GAME_GRAVITY * m_jumpHeight);
 		}
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) 
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left) || sf::Joystick::isButtonPressed(0, 0))
 		{
 			bulletCount ++;
 		}
