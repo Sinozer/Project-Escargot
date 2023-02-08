@@ -25,6 +25,7 @@
 #include "Game/State/StateManager.h"
 #include "Game/View/ViewManager.h"
 #include "Game/Input/InputManager.h"
+#include "Game/Event/Event.h"
 #include "Game/Asset/AssetManager.h"
 #include "Game/State/State.h"
 #include "Game/State/List/JoinState.h"

@@ -2,6 +2,7 @@
 #include "State/StateManager.h"
 #include "Input/InputManager.h"
 #include "Asset/AssetManager.h"
+
 namespace Snail
 {
 	struct GameData

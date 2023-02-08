@@ -48,6 +48,9 @@ namespace Snail
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) 
 		{
 			bulletCount ++;
+
+			//===================== ACTUAL CALLBACK TEST =====================
+			Callback(TestCallBack);
 		}
 		
 	}

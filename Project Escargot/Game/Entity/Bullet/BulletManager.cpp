@@ -50,7 +50,6 @@ namespace Snail
 
 	void BulletManager::Update(float dt)
 	{
-
 	}
 
 	void BulletManager::Draw()
