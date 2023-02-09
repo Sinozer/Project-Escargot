@@ -9,10 +9,11 @@ namespace Snail
 
 	void MainState::Init()
 	{
+		m_InitBackground();
+		m_InitView();
+
 		m_timerBulletFire = 0;
 		m_numberBullet = 0;
-		m_data->assetManager.LoadTexture("STATE_JOIN_BACKGROUND", STATE_JOIN_BACKGROUND_FILEPATH);
-		m_background.setTexture(m_data->assetManager.GetTexture("STATE_JOIN_BACKGROUND"));
 
 		m_player.Init();
 		m_enemy.Init();
@@ -41,12 +42,26 @@ namespace Snail
 		m_physicBodyManager.AddPhysicBody("ENNEMY", m_enemy.GetPhysicBodyRef());
 	}
 
+	void MainState::m_InitBackground()
+	{
+		m_data->assetManager.LoadTexture("STATE_JOIN_BACKGROUND", STATE_JOIN_BACKGROUND_FILEPATH);
+		m_background.setTexture(m_data->assetManager.GetTexture("STATE_JOIN_BACKGROUND"));
+	}
+
+	void MainState::m_InitView()
+	{
+		m_view.setSize(sf::Vector2f(m_data->window.getSize().x, m_data->window.getSize().y));
+		m_view.setCenter(sf::Vector2f(m_data->window.getSize().x / 2, m_data->window.getSize().y / 2));
+		m_view.zoom(2.5f);
+		m_data->window.setView(m_view);
+	}
+
 	void MainState::AddBullet()
 	{
 		sf::Vector2f mousePosition = (sf::Vector2f)sf::Mouse::getPosition(m_data->window);
-		
+
 		this->m_bullet = new BulletManager(m_data, m_player.GetPhysicBodyRef()->GetPosition(), mousePosition);
-		m_physicBodyManager.AddPhysicBody("Bullet"+ m_numberBullet, m_bullet->m_physicBodyRef);
+		m_physicBodyManager.AddPhysicBody("Bullet" + m_numberBullet, m_bullet->m_physicBodyRef);
 		m_timerBulletFire = 0;
 		m_numberBullet++;
 	}
@@ -75,7 +90,7 @@ namespace Snail
 		m_physicBodyManager.Update(dt);
 		m_player.Update(dt);
 		m_timerBulletFire++;
-		if (m_player.bulletCount > this->m_tempBulletCount && m_timerBulletFire > 10) 
+		if (m_player.bulletCount > this->m_tempBulletCount && m_timerBulletFire > 10)
 		{
 
 			if (m_numberBullet > 5)
@@ -86,8 +101,27 @@ namespace Snail
 			}
 			AddBullet();
 		}
-		
+
 		m_enemy.Update(dt);
+
+		m_UpdateView();
+	}
+
+	void MainState::m_UpdateView()
+	{
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
+		{
+			sf::Vector2f mousePosition = (sf::Vector2f)sf::Mouse::getPosition(m_data->window);
+			mousePosition = Math::Clamp(mousePosition, sf::Vector2f(0.f, 0.f), (sf::Vector2f)m_data->window.getSize());
+			m_background.setOrigin(mousePosition / /*value*/8.f); // Value = map size / background size
+			m_view.setCenter(mousePosition);
+		}
+		else
+		{
+			m_background.setOrigin(m_player.GetPhysicBodyRef()->GetPosition() / /*value*/8.f); // Value = map size / background size
+			m_view.setCenter(m_player.GetPhysicBodyRef()->GetPosition());
+		}
+		m_data->window.setView(m_view);
 	}
 
 	void MainState::Draw(float dt)

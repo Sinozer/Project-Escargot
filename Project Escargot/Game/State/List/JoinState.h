@@ -11,17 +11,17 @@ namespace Snail
 		
 		sf::Clock m_clock;
 
-		sf::Sprite m_background;
 		sf::Uint8 m_opacity;
 
 		bool m_isLoaded;
 		
-		void InitBackground();
-		void InitView();
+		void m_InitBackground();
+		void m_InitView();
 
-		void UpdateBackground();
+		void m_UpdateBackground();
+		void m_UpdateView();
 
-		void AddMainState();
+		void m_AddMainState();
 	public:
 		JoinState(GameDataRef data);
 		~JoinState() {}
