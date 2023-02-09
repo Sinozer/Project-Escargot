@@ -2,7 +2,7 @@
 #include "../../Physic/PhysicBodyManager.h"
 #include "../../Entity/LivingEntity/LivingEntity.h"
 #include "../../Entity/LivingEntity/Player/Player.h"
-#include "../../Entity/LivingEntity/Ennemy/Ennemy.h"
+#include "../../Entity/LivingEntity/Enemy/Enemy.h"
 #include "../../Entity/Bullet/BulletManager.h"
 namespace Snail
 {
@@ -15,7 +15,7 @@ namespace Snail
 		PhysicBodyManager m_physicBodyManager;
 		Player m_player;
 
-		Ennemy m_ennemy;
+		Enemy m_enemy;
 
 		GameDataRef m_data;
 

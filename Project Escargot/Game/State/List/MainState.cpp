@@ -2,7 +2,7 @@
 
 namespace Snail
 {
-	MainState::MainState(GameDataRef data) : m_data(data), m_player(m_data), m_ennemy(data, m_player)
+	MainState::MainState(GameDataRef data) : m_data(data), m_player(m_data), m_enemy(data, m_player)
 	{
 		m_physicBodyManager = PhysicBodyManager(data);
 	}
@@ -15,7 +15,7 @@ namespace Snail
 		m_background.setTexture(m_data->assetManager.GetTexture("STATE_JOIN_BACKGROUND"));
 
 		m_player.Init();
-		m_ennemy.Init();
+		m_enemy.Init();
 
 		m_physicBodyManager.AddPhysicBody("PLAYER", m_player.GetPhysicBodyRef());
 
@@ -38,7 +38,7 @@ namespace Snail
 		)));
 
 		// ennemy
-		m_physicBodyManager.AddPhysicBody("ENNEMY", m_ennemy.GetPhysicBodyRef());
+		m_physicBodyManager.AddPhysicBody("ENNEMY", m_enemy.GetPhysicBodyRef());
 	}
 
 	void MainState::AddBullet()
@@ -87,7 +87,7 @@ namespace Snail
 			AddBullet();
 		}
 		
-		m_ennemy.Update(dt);
+		m_enemy.Update(dt);
 	}
 
 	void MainState::Draw(float dt)

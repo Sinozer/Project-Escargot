@@ -2,7 +2,7 @@
 
 namespace Snail
 {
-	Ennemy::Ennemy(GameDataRef data, Player& target) : m_target(target)
+	Enemy::Enemy(GameDataRef data, Player& target) : m_target(target)
 	{
 		m_data = data;
 
@@ -11,12 +11,12 @@ namespace Snail
 		m_clampVelocity = { m_speed, m_jumpHeight };
 	}
 
-	void Ennemy::Init()
+	void Enemy::Init()
 	{
 		m_InitPhysicBody();
 	}
 
-	void Ennemy::m_InitPhysicBody()
+	void Enemy::m_InitPhysicBody()
 	{
 		m_data->assetManager.LoadTexture("TEST_ENTITY", STATE_MAIN_ENTITY_TEST_FILEPATH);
 
@@ -25,11 +25,11 @@ namespace Snail
 		));
 	}
 
-	void Ennemy::HandleInput()
+	void Enemy::HandleInput()
 	{
 	}
 
-	void Ennemy::Update(float dt)
+	void Enemy::Update(float dt)
 	{
 		m_physicBodyRef->m_velocity.x = 0.f;
 		m_UpdateDirection();
@@ -37,7 +37,7 @@ namespace Snail
 		m_UpdatePosition();
 	}
 
-	void Ennemy::m_UpdateDirection(Direction direction)
+	void Enemy::m_UpdateDirection(Direction direction)
 	{
 		if (direction != NONE)
 		{
@@ -51,7 +51,7 @@ namespace Snail
 			m_direction = RIGHT;
 	}
 
-	void Ennemy::m_UpdatePosition()
+	void Enemy::m_UpdatePosition()
 	{
 		switch (m_direction)
 		{
@@ -68,11 +68,11 @@ namespace Snail
 		}
 	}
 
-	void Ennemy::Draw()
+	void Enemy::Draw()
 	{
 	}
 
-	PhysicBodyRef Ennemy::GetPhysicBodyRef()
+	PhysicBodyRef Enemy::GetPhysicBodyRef()
 	{
 		return m_physicBodyRef;
 	}

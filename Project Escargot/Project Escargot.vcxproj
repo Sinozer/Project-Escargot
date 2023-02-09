@@ -142,7 +142,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Game\Entity\Bullet\BulletManager.cpp" />
-    <ClCompile Include="Game\Entity\LivingEntity\Ennemy\Ennemy.cpp" />
+    <ClCompile Include="Game\Entity\LivingEntity\Enemy\Enemy.cpp" />
     <ClCompile Include="Game\Asset\AssetManager.cpp" />
     <ClCompile Include="Game\Game.cpp" />
     <ClCompile Include="Game\Input\InputManager.cpp" />
@@ -162,7 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\Entity\Bullet\BulletManager.h" />
-    <ClInclude Include="Game\Entity\LivingEntity\Ennemy\Ennemy.h" />
+    <ClInclude Include="Game\Entity\LivingEntity\Enemy\Enemy.h" />
     <ClInclude Include="Game\Entity\Entity.h" />
     <ClInclude Include="Game\Asset\AssetManager.h" />
     <ClInclude Include="Game\Game.h" />

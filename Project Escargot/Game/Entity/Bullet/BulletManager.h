@@ -28,7 +28,7 @@ namespace Snail
 		// Entity
 		// - Player
 		//		(sf::vector2f)m_mousePosition
-		// - Ennemy
+		// - Enemy
 		//		m_tagetPosition
 
 		// Weapon	[Convert wantedWosition and weaponPosition into wantedAngle into deltaTargetPosition]

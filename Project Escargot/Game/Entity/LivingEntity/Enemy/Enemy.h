@@ -3,7 +3,7 @@
 #include "../Player/Player.h"
 namespace Snail
 {
-	class Ennemy : LivingEntity
+	class Enemy : LivingEntity
 	{
 	private:
 		GameDataRef m_data;
@@ -21,7 +21,7 @@ namespace Snail
 		 *
 		 * \param data
 		 */
-		Ennemy(GameDataRef data, Player& target);
+		Enemy(GameDataRef data, Player& target);
 
 		void Init();
 
