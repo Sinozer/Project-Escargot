@@ -7,6 +7,11 @@ namespace Snail
 		m_physicBodyManager = PhysicBodyManager(data);
 	}
 
+	MainState::~MainState() 
+	{
+		QuitEventListener();
+	}
+
 	void MainState::Init()
 	{
 		m_timerBulletFire = 0;
@@ -88,6 +93,22 @@ namespace Snail
 		}
 		
 		m_enemy.Update(dt);
+
+		// Listener update for Events
+		if (!m_inputListener.Resting())
+		{
+			// Update and handle your events
+			EventSystem::Instance()->ProcessEvents();
+		}
+	}
+
+	void MainState::QuitEventListener() {
+
+		// Unsubscribe from events
+		EventSystem::Instance()->UnregisterAll(&m_inputListener);
+
+		// Shutdown the event system
+		EventSystem::Instance()->Shutdown();
 	}
 
 	void MainState::Draw(float dt)

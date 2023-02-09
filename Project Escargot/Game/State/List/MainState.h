@@ -15,6 +15,8 @@ namespace Snail
 		PhysicBodyManager m_physicBodyManager;
 		Player m_player;
 
+		InputListener m_inputListener;
+
 		Enemy m_enemy;
 
 		GameDataRef m_data;
@@ -30,12 +32,13 @@ namespace Snail
 		int m_numberBullet;
 	public:
 		MainState(GameDataRef data);
-		~MainState() {}
+		~MainState();
 
 		void Init();
 		void AddBullet();
 		void HandleInput();
 		void Update(float dt);
 		void Draw(float dt);
+		void QuitEventListener();
 	};
 }

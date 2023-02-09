@@ -41,11 +41,15 @@ namespace Snail
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && m_physicBodyRef->m_IsOnGround)
 		{
+			EventSystem::Instance()->SendEvent("PLAYER_JUMP", (void*)1);
+
 			m_physicBodyRef->m_IsOnGround = false;
 			m_physicBodyRef->m_velocity.y = -sqrtf(2.0f * GAME_GRAVITY * m_jumpHeight);
 		}
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) 
 		{
+			EventSystem::Instance()->SendEvent("PLAYER_SHOOT", (void*)1);
+
 			bulletCount ++;
 		}
 		
