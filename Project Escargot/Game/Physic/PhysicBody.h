@@ -34,6 +34,10 @@ namespace Snail
 
 		static PhysicBody* CreateBoxBody(sf::Vector2f size, sf::Vector2f position, float restitution, bool isStatic, sf::Texture& texture, bool canCollide = true, bool canGravitate = true);
 	
+		void Rotate(float angle);
+
+		void Scale(sf::Vector2f scale);
+
 		sf::Vector2f GetPosition();
 
 		void Move(sf::Vector2f step);
