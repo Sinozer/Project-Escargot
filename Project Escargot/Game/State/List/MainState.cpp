@@ -59,7 +59,7 @@ namespace Snail
 		m_view.setCenter(sf::Vector2f(m_data->window.getSize().x / 2, m_data->window.getSize().y / 2));
 		//m_view.zoom(0.25f);
 		//m_view.setRotation(45.f);
-		//m_data->window.setView(m_view);
+		m_data->window.setView(m_view);
 	}
 
 	void MainState::AddBullet()
@@ -110,7 +110,7 @@ namespace Snail
 
 		m_enemy.Update(dt);
 
-		//m_UpdateView();
+		m_UpdateView();
 	}
 
 	void MainState::m_UpdateView()
