@@ -129,13 +129,13 @@
     <ClCompile Include="Game\Entity\LivingEntity\Player\Player.cpp">
       <Filter>Fichiers sources\Game\Entity\LivingEntity\Player</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\LivingEntity\Ennemy\Ennemy.cpp">
-      <Filter>Fichiers sources\Game\Entity\LivingEntity\Ennemy</Filter>
-    </ClCompile>
     <ClCompile Include="Game\Entity\Bullet\BulletManager.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Event\Event.cpp">
+    <ClCompile Include="Game\Event\Callback.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\LivingEntity\Enemy\Enemy.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
@@ -185,13 +185,16 @@
     <ClInclude Include="Game\Entity\LivingEntity\Player\Player.h">
       <Filter>Fichiers d%27en-tête\Game\Entity\LivingEntity\Player</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Entity\LivingEntity\Ennemy\Ennemy.h">
-      <Filter>Fichiers d%27en-tête\Game\Entity\LivingEntity\Ennemy</Filter>
-    </ClInclude>
     <ClInclude Include="Game\Entity\Bullet\BulletManager.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Event\Event.h">
+    <ClInclude Include="Game\Event\Callback.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\LivingEntity\Enemy\Enemy.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\LivingEntity\LivingEntity.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
