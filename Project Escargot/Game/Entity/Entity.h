@@ -19,6 +19,7 @@ namespace Snail
 
 		virtual void m_InitPhysicBody() = 0;
 	public:
+
 		virtual void Init() = 0;
 
 		virtual void Update(float dt) = 0;

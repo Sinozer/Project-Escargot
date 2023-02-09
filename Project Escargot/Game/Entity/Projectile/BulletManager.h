@@ -23,7 +23,7 @@ namespace Snail
 
 		// Bullet
 		// Offset the position to avoid collision bugs
-		float m_offset;
+		//float m_offset;
 
 		// Entity
 		// - Player
