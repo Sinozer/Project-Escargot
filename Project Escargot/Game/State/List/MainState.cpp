@@ -65,8 +65,8 @@ namespace Snail
 	void MainState::AddBullet()
 	{
 		sf::Vector2f mousePosition = (sf::Vector2f)sf::Mouse::getPosition(m_data->window);
-
-		this->m_bullet = new BulletManager(m_data, m_player.GetPhysicBodyRef()->GetPosition(), mousePosition);
+		
+		this->m_bullet = new BulletManager(m_data, m_player.GetPhysicBodyRef()->GetPosition(), (sf::Vector2f)m_data->window.mapPixelToCoords((sf::Vector2i)mousePosition));
 		m_physicBodyManager.AddPhysicBody("Bullet" + m_numberBullet, m_bullet->m_physicBodyRef);
 		m_timerBulletFire = 0;
 		m_numberBullet++;
