@@ -20,6 +20,8 @@ namespace Snail
 
 		m_physicBodyManager.AddPhysicBody("PLAYER", m_player.GetPhysicBodyRef());
 
+		m_data->assetManager.LoadTexture("ENTITY_DUMMY", STATE_MAIN_DUMMY_ENTITY_TEST_FILEPATH);
+
 		// ground
 		m_physicBodyManager.AddPhysicBody("GROUND", PhysicBodyRef(PhysicBody::CreateBoxBody(
 			sf::Vector2f(1000.f, 100.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, 650.f), 1.f, true
@@ -27,15 +29,18 @@ namespace Snail
 
 		// dummy box
 		m_physicBodyManager.AddPhysicBody("BOX", PhysicBodyRef(PhysicBody::CreateBoxBody(
-			sf::Vector2f(100.f, 100.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, WINDOW_SCREEN_HEIGHT / 4.f), 0.5f, false
+			sf::Vector2f(16.f, 16.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, WINDOW_SCREEN_HEIGHT / 4.f), 0.5f, false,
+			m_data->assetManager.GetTexture("ENTITY_DUMMY")
 		)));
 
 		m_physicBodyManager.AddPhysicBody("BOX2", PhysicBodyRef(PhysicBody::CreateBoxBody(
-			sf::Vector2f(100.f, 100.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, WINDOW_SCREEN_HEIGHT / 8.f), 0.5f, false
+			sf::Vector2f(16.f, 16.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, WINDOW_SCREEN_HEIGHT / 8.f), 0.5f, false,
+			m_data->assetManager.GetTexture("ENTITY_DUMMY")
 		)));
 
 		m_physicBodyManager.AddPhysicBody("BOX3", PhysicBodyRef(PhysicBody::CreateBoxBody(
-			sf::Vector2f(100.f, 100.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, WINDOW_SCREEN_HEIGHT / 16.f), 0.5f, false
+			sf::Vector2f(16.f, 16.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, WINDOW_SCREEN_HEIGHT / 16.f), 0.5f, false,
+			m_data->assetManager.GetTexture("ENTITY_DUMMY")
 		)));
 
 		// ennemy
@@ -52,8 +57,9 @@ namespace Snail
 	{
 		m_view.setSize(sf::Vector2f(m_data->window.getSize().x, m_data->window.getSize().y));
 		m_view.setCenter(sf::Vector2f(m_data->window.getSize().x / 2, m_data->window.getSize().y / 2));
-		m_view.zoom(2.5f);
-		m_data->window.setView(m_view);
+		//m_view.zoom(0.25f);
+		//m_view.setRotation(45.f);
+		//m_data->window.setView(m_view);
 	}
 
 	void MainState::AddBullet()
@@ -104,7 +110,7 @@ namespace Snail
 
 		m_enemy.Update(dt);
 
-		m_UpdateView();
+		//m_UpdateView();
 	}
 
 	void MainState::m_UpdateView()

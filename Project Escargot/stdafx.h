@@ -72,6 +72,7 @@
 
 /* ########## MAIN ########## */
 #define STATE_MAIN_ENTITY_TEST_FILEPATH "Resources/Textures/Entities/Test.png"
+#define STATE_MAIN_DUMMY_ENTITY_TEST_FILEPATH "Resources/Textures/Entities/Box.png"
 /* ########## MAIN ########## */
 
 /* ################## STATES ################## */
