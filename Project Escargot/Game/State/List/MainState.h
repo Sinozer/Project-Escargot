@@ -1,7 +1,8 @@
 #pragma once
 #include "../../Physic/PhysicBodyManager.h"
-#include "../../Entity/Player/Player.h"
-#include "../../Entity/Ennemy/Ennemy.h"
+#include "../../Entity/LivingEntity/LivingEntity.h"
+#include "../../Entity/LivingEntity/Player/Player.h"
+#include "../../Entity/LivingEntity/Ennemy/Ennemy.h"
 #include "../../Entity/Bullet/BulletManager.h"
 namespace Snail
 {

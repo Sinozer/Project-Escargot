@@ -52,7 +52,7 @@ namespace Snail
 		*/
 		BulletManager() {}
 
-		BulletManager(GameDataRef data, sf::Vector2f shooterCoord, int dir, sf::Vector2f mousePositon);
+		BulletManager(GameDataRef data, sf::Vector2f shooterCoord, sf::Vector2f mousePositon);
 		~BulletManager();
 
 		void Init();

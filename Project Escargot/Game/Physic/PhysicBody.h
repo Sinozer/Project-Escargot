@@ -36,6 +36,8 @@ namespace Snail
 	
 		void Rotate(float angle);
 
+		sf::Vector2f GetScale();
+
 		void Scale(sf::Vector2f scale);
 
 		sf::Vector2f GetPosition();

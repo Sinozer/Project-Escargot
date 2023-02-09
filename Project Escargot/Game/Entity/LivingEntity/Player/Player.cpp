@@ -7,10 +7,9 @@ namespace Snail
 		m_data = data;
 
 		m_speed = 4.f * PHYSIC_SCALE;
-		m_jumpHeight = 1.5f * PHYSIC_SCALE;
+		m_jumpHeight = 2.5f * PHYSIC_SCALE;
 		m_clampVelocity = { m_speed, m_jumpHeight };
 		bulletCount = 0;
-		m_playerDir = RIGHT;
 	}
 
 	void Player::Init()
@@ -33,12 +32,12 @@ namespace Snail
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) 
 		{
 			m_physicBodyRef->AddVelocity({-m_speed, 0}, m_clampVelocity);
-			m_playerDir = LEFT;
+			m_UpdateDirection(LEFT);
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 		{
-			m_physicBodyRef->AddVelocity({ m_speed, 0}, m_clampVelocity);
-			m_playerDir = RIGHT;
+			m_physicBodyRef->AddVelocity({ m_speed, 0 }, m_clampVelocity);
+			m_UpdateDirection(RIGHT);
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && m_physicBodyRef->m_IsOnGround)
 		{
@@ -56,7 +55,17 @@ namespace Snail
 	{
 	}
 
+	void Player::m_UpdateDirection(Direction direction)
+	{
+		m_direction = direction;
+	}
+
 	void Player::Draw()
 	{
+	}
+
+	PhysicBodyRef Player::GetPhysicBodyRef()
+	{
+		return m_physicBodyRef;
 	}
 }

@@ -26,7 +26,7 @@
 
 namespace Snail
 {
-	BulletManager::BulletManager(GameDataRef data, sf::Vector2f shooterCoord, int dir, sf::Vector2f mousePositon)
+	BulletManager::BulletManager(GameDataRef data, sf::Vector2f shooterCoord, sf::Vector2f mousePositon)
 	{
 		this->m_data = data;
 		this->m_speed = 5.f * PHYSIC_SCALE;

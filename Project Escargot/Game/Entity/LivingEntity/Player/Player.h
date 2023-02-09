@@ -1,25 +1,24 @@
 #pragma once
-#include "../Entity.h"
+#include "../../LivingEntity/LivingEntity.h"
 namespace Snail
 {
-	class Ennemy : Entity
+	class Player : LivingEntity
 	{
 	private:
 		GameDataRef m_data;
 
 		void m_InitPhysicBody();
-
-		Player& m_target;
+		void m_UpdateDirection(Direction direction = NONE);
 	public:
-		PhysicBodyRef m_physicBodyRef;
-
+		int bulletCount;
+		
 		/**
 		 * \brief Constructor.
-		 *
+		 * 
 		 * \param data
 		 */
-		Ennemy(GameDataRef data, Player& target);
-
+		Player(GameDataRef data);
+		
 		void Init();
 
 		void HandleInput();
@@ -27,5 +26,7 @@ namespace Snail
 		void Update(float dt);
 
 		void Draw();
+
+		PhysicBodyRef GetPhysicBodyRef();
 	};
 }
