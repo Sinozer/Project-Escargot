@@ -8,37 +8,43 @@ namespace Snail
 		m_body.setPosition(position);
 		m_body.setSize(size);
 		m_body.setOrigin(size / 2.f);
-		m_body.setFillColor(sf::Color::Transparent);
+		m_body.setFillColor(sf::Color::Green);
 		m_velocity = sf::Vector2f(0, 0);
 		m_IsOnGround = false;
 		m_Restitution = restitution;
 		m_IsStatic = isStatic;
 
+		m_canCollide = true;
+		m_canGravitate = true;
+
 		if (DEBUG)
 		{
 			m_body.setOutlineThickness(1.f);
-			m_body.setOutlineColor(sf::Color::Green);
+			m_body.setOutlineColor(sf::Color::Black);
 		}
 	}
 
 	PhysicBody::PhysicBody(sf::Vector2f position, float restitution,
-		bool isStatic, sf::Vector2f size, sf::Texture texture)
+		bool isStatic, sf::Vector2f size, sf::Texture& texture, bool canCollide, bool canGravitate)
 	{
 		m_body.setPosition(position);
 		m_body.setTexture(&texture);
 		m_body.setSize(size);
 		m_body.setTextureRect(sf::IntRect(0, 0, size.x, size.y));
 		m_body.setOrigin(size / 2.f);
-		m_body.setFillColor(sf::Color::Transparent);
+		//m_body.setFillColor(sf::Color::Red);
 		m_velocity = sf::Vector2f(0, 0);
 		m_IsOnGround = false;
 		m_Restitution = restitution;
 		m_IsStatic = isStatic;
 
+		m_canCollide = canCollide;
+		m_canGravitate = canGravitate;
+
 		if (DEBUG)
 		{
 			m_body.setOutlineThickness(1.f);
-			m_body.setOutlineColor(sf::Color::Green);
+			m_body.setOutlineColor(sf::Color::Black);
 		}
 	}
 
@@ -47,7 +53,8 @@ namespace Snail
 		if (m_IsStatic) return;
 		m_body.move(m_velocity * dt);
 
-		m_velocity.y += (GAME_GRAVITY * dt);
+		if (m_canGravitate)
+			m_velocity.y += (GAME_GRAVITY * dt);
 	}
 
 	PhysicBody* PhysicBody::CreateBoxBody(sf::Vector2f size, sf::Vector2f position, float restitution, bool isStatic)
@@ -57,11 +64,26 @@ namespace Snail
 		return new PhysicBody(position, restitution, isStatic, size);
 	}
 
-	PhysicBody* PhysicBody::CreateBoxBody(sf::Vector2f size, sf::Vector2f position, float restitution, bool isStatic, sf::Texture texture)
+	PhysicBody* PhysicBody::CreateBoxBody(sf::Vector2f size, sf::Vector2f position, float restitution, bool isStatic, sf::Texture& texture, bool canCollide, bool canGravitate)
 	{
 		restitution = Math::Clamp(restitution, 0.f, 1.f);
 
-		return new PhysicBody(position, restitution, isStatic, size, texture);
+		return new PhysicBody(position, restitution, isStatic, size, texture, canCollide, canGravitate);
+	}
+
+	void PhysicBody::Rotate(float angle)
+	{
+		m_body.rotate(angle);
+	}
+
+	sf::Vector2f PhysicBody::GetScale()
+	{
+		return m_body.getScale();
+	}
+
+	void PhysicBody::Scale(sf::Vector2f scale)
+	{
+		m_body.scale(scale);
 	}
 
 	sf::Vector2f PhysicBody::GetPosition()
@@ -89,6 +111,8 @@ namespace Snail
 
 	bool PhysicBody::CheckCollision(PhysicBodyRef other, sf::Vector2f& direction)
 	{
+		if (!m_canCollide || !other->m_canCollide) return false;
+
 		sf::Vector2f otherPosition = other->GetPosition();
 		sf::Vector2f otherHalfSize = other->GetHalfSize();
 
@@ -99,7 +123,7 @@ namespace Snail
 		float intersectY = std::abs(dY) - (otherHalfSize.y + GetHalfSize().y);
 
 		if (intersectX >= 0.0f || intersectY >= 0.0f) return false;
-		
+
 		if (intersectX > intersectY)
 		{
 			if (dX > 0.0f)

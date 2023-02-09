@@ -6,11 +6,14 @@ namespace Snail
 	private:
 		sf::RectangleShape m_body;
 
+		bool m_canCollide;
+		bool m_canGravitate;
+
 		PhysicBody(sf::Vector2f position, float restitution,
 			bool isStatic, sf::Vector2f size);
 
 		PhysicBody(sf::Vector2f position, float restitution,
-			bool isStatic, sf::Vector2f size, sf::Texture texture);
+			bool isStatic, sf::Vector2f size, sf::Texture& texture, bool canCollide = true, bool canGravitate = true);
 
 		void m_Move(float dt);
 	public:
@@ -29,8 +32,14 @@ namespace Snail
 
 		static PhysicBody* CreateBoxBody(sf::Vector2f size, sf::Vector2f position, float restitution, bool isStatic);
 
-		static PhysicBody* CreateBoxBody(sf::Vector2f size, sf::Vector2f position, float restitution, bool isStatic, sf::Texture texture);
+		static PhysicBody* CreateBoxBody(sf::Vector2f size, sf::Vector2f position, float restitution, bool isStatic, sf::Texture& texture, bool canCollide = true, bool canGravitate = true);
 	
+		void Rotate(float angle);
+
+		sf::Vector2f GetScale();
+
+		void Scale(sf::Vector2f scale);
+
 		sf::Vector2f GetPosition();
 
 		void Move(sf::Vector2f step);

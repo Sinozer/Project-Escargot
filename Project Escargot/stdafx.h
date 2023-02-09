@@ -34,8 +34,9 @@
 #include "Game/Physic/PhysicBodyManager.h"
 #include "Game/Physic/PhysicBody.h"
 #include "Game/Entity/Entity.h"
-#include "Game/Entity/Player/Player.h"
-#include "Game/Entity/Ennemy/Ennemy.h"
+#include "Game/Entity/LivingEntity/Player/Player.h"
+#include "Game/Entity/LivingEntity/Enemy/Enemy.h"
+#include "Game/Entity/LivingEntity/LivingEntity.h"
 /* #################  SNAIL   ################# */
 
 /* ###############################  INCLUDES   ############################### */
@@ -69,6 +70,10 @@
 /* ########## JOIN ########## */
 #define STATE_JOIN_BACKGROUND_FILEPATH "Resources/Textures/Backgrounds/Join.jpg"
 /* ########## JOIN ########## */
+
+/* ########## MAIN ########## */
+#define STATE_MAIN_ENTITY_TEST_FILEPATH "Resources/Textures/Entities/Test.png"
+/* ########## MAIN ########## */
 
 /* ################## STATES ################## */
 

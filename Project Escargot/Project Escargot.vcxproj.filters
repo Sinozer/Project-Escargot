@@ -64,23 +64,29 @@
     <Filter Include="Fichiers sources\Game\Entity">
       <UniqueIdentifier>{7b1c993f-2330-4950-885c-ecdd064ff63c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête\Game\Entity\Player">
-      <UniqueIdentifier>{f6a0237e-b058-4334-95fc-d9fac724c7fd}</UniqueIdentifier>
+    <Filter Include="Fichiers d%27en-tête\Game\Entity\LivingEntity">
+      <UniqueIdentifier>{b37e0cc9-9a8b-4aa9-893c-650eb3758df3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\Game\Entity\Player">
-      <UniqueIdentifier>{0a926f73-6cac-4334-81ad-4cf819d4782b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers sources\Game\Entity\Ennemy">
-      <UniqueIdentifier>{85197066-7a49-44d5-80b2-e3f37bacedbe}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers d%27en-tête\Game\Entity\Ennemy">
+    <Filter Include="Fichiers d%27en-tête\Game\Entity\LivingEntity\Ennemy">
       <UniqueIdentifier>{7bdd059f-bfd9-42d5-accb-cf39bf83b650}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête\Game\Entity\Ennemy\List">
+    <Filter Include="Fichiers d%27en-tête\Game\Entity\LivingEntity\Ennemy\List">
       <UniqueIdentifier>{7502bab6-bc57-42a9-adf4-dafee816760d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\Game\Entity\Ennemy\List">
+    <Filter Include="Fichiers d%27en-tête\Game\Entity\LivingEntity\Player">
+      <UniqueIdentifier>{f6a0237e-b058-4334-95fc-d9fac724c7fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Entity\LivingEntity">
+      <UniqueIdentifier>{bed644a6-3c06-4057-aa9c-a3313d71d2d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Entity\LivingEntity\Ennemy">
+      <UniqueIdentifier>{85197066-7a49-44d5-80b2-e3f37bacedbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Entity\LivingEntity\Ennemy\List">
       <UniqueIdentifier>{1c6fe4b4-c0cd-4213-b8d8-806242fe20d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Entity\LivingEntity\Player">
+      <UniqueIdentifier>{0a926f73-6cac-4334-81ad-4cf819d4782b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -120,11 +126,11 @@
     <ClCompile Include="Game\Physic\PhysicBodyManager.cpp">
       <Filter>Fichiers sources\Game\Physic</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Player\Player.cpp">
-      <Filter>Fichiers sources\Game\Entity\Player</Filter>
+    <ClCompile Include="Game\Entity\LivingEntity\Player\Player.cpp">
+      <Filter>Fichiers sources\Game\Entity\LivingEntity\Player</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Ennemy\Ennemy.cpp">
-      <Filter>Fichiers sources\Game\Entity\Ennemy</Filter>
+    <ClCompile Include="Game\Entity\LivingEntity\Ennemy\Ennemy.cpp">
+      <Filter>Fichiers sources\Game\Entity\LivingEntity\Ennemy</Filter>
     </ClCompile>
     <ClCompile Include="Game\Entity\Bullet\BulletManager.cpp">
       <Filter>Fichiers sources</Filter>
@@ -176,11 +182,11 @@
     <ClInclude Include="Game\Entity\Entity.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Entity\Player\Player.h">
-      <Filter>Fichiers d%27en-tête\Game\Entity\Player</Filter>
+    <ClInclude Include="Game\Entity\LivingEntity\Player\Player.h">
+      <Filter>Fichiers d%27en-tête\Game\Entity\LivingEntity\Player</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Entity\Ennemy\Ennemy.h">
-      <Filter>Fichiers d%27en-tête\Game\Entity\Ennemy</Filter>
+    <ClInclude Include="Game\Entity\LivingEntity\Ennemy\Ennemy.h">
+      <Filter>Fichiers d%27en-tête\Game\Entity\LivingEntity\Ennemy</Filter>
     </ClInclude>
     <ClInclude Include="Game\Entity\Bullet\BulletManager.h">
       <Filter>Fichiers d%27en-tête</Filter>

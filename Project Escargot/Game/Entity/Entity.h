@@ -8,12 +8,16 @@ namespace Snail
 	class Entity : public PhysicBodyRef
 	{
 	protected:
+		PhysicBodyRef m_physicBodyRef;
+
 		std::string m_name;
-		
-		sf::Vector2f m_clamp;
+
+		float m_speed;
+		sf::Vector2f m_clampVelocity;
 
 		float m_jumpHeight;
 
+		virtual void m_InitPhysicBody() = 0;
 	public:
 		virtual void Init() = 0;
 
