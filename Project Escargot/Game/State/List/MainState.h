@@ -2,7 +2,7 @@
 #include "../../Physic/PhysicBodyManager.h"
 #include "../../Entity/Player/Player.h"
 #include "../../Entity/Ennemy/Ennemy.h"
-#include "../../Entity/Bullet/BulletManager.h"
+#include "../../Entity/Projectile/BulletManager.h"
 namespace Snail
 {
 	/**

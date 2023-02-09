@@ -32,7 +32,6 @@ namespace Snail
 		this->m_speed = 5.f * PHYSIC_SCALE;
 		m_clampVelocity = { m_speed, m_jumpHeight };
 		this->m_shooterCoord = shooterCoord;
-		m_offset = 75; // 50 for recoil
 
 
 		float angle = std::atan2f(mousePositon.y - shooterCoord.y, mousePositon.x - shooterCoord.x);

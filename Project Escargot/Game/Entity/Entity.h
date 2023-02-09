@@ -1,5 +1,6 @@
 #pragma once
 #include "../Physic/PhysicBody.h"
+//#include "../Weapon/Weapon.h"
 namespace Snail
 {
 	/**
@@ -16,6 +17,7 @@ namespace Snail
 		float m_jumpHeight;
 
 	public:
+
 		virtual void Init() = 0;
 
 		virtual void Update(float dt) = 0;

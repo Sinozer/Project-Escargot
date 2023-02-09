@@ -35,6 +35,11 @@
 #include "Game/Entity/Entity.h"
 #include "Game/Entity/Player/Player.h"
 #include "Game/Entity/Ennemy/Ennemy.h"
+#include "Game/Entity/Weapon/Weapon.h"
+#include "Game/Entity/Weapon/Range.h"
+#include "Game/Entity/Weapon/Melee.h"
+#include "Game/Entity/Projectile/Projectile.h"
+#include "Game/Entity/Weapon/RangeWeapon/Bow.h"
 /* #################  SNAIL   ################# */
 
 /* ###############################  INCLUDES   ############################### */
