@@ -71,6 +71,16 @@ namespace Snail
 		return new PhysicBody(position, restitution, isStatic, size, texture, canCollide, canGravitate);
 	}
 
+	void PhysicBody::Rotate(float angle)
+	{
+		m_body.rotate(angle);
+	}
+
+	void PhysicBody::Scale(sf::Vector2f scale)
+	{
+		m_body.scale(scale);
+	}
+
 	sf::Vector2f PhysicBody::GetPosition()
 	{
 		return m_body.getPosition();
