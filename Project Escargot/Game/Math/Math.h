@@ -12,12 +12,12 @@ namespace Snail
             
             return std::min(std::max(value, min), max);
 		}
-		static sf::Vector2f inline Clamp(sf::Vector2f value, float min, float max)
+		static sf::Vector2f inline Clamp(sf::Vector2f value, sf::Vector2f min, sf::Vector2f max)
 		{
-			if (min > max)
+			if (min.x > max.x || min.y > max.y)
 				throw std::invalid_argument("Min is greater than max");
 
-			return sf::Vector2f(std::min(std::max(value.x, min), max), std::min(std::max(value.y, min), max));
+			return sf::Vector2f(std::min(std::max(value.x, min.x), max.x), std::min(std::max(value.y, min.y), max.y));
 		}
 	};
 }
