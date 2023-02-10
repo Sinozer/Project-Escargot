@@ -10,10 +10,13 @@ namespace Snail
 		bool m_canGravitate;
 
 		PhysicBody(sf::Vector2f position, float restitution,
-			bool isStatic, sf::Vector2f size);
+			bool isStatic, bool canCollide, bool canGravitate, sf::Vector2f size);
 
 		PhysicBody(sf::Vector2f position, float restitution,
-			bool isStatic, sf::Vector2f size, sf::Texture& texture, bool canCollide = true, bool canGravitate = true);
+			bool isStatic, sf::Vector2f size, sf::Texture& texture, bool canCollide, bool canGravitate);
+
+		PhysicBody(sf::Vector2f position, float restitution,
+			bool isStatic, sf::Vector2f size, sf::Texture& texture, sf::Vector2i texturePosition, bool canCollide, bool canGravitate);
 
 		void m_Move(float dt);
 	public:
@@ -25,14 +28,13 @@ namespace Snail
 		
 		float m_Restitution;
 		
-		/**
-		 * Is he impacted by other physics body or gravity ? {[(!!!!!!!!)]} IMPORTANT
-		 */
 		bool m_IsStatic;
 
-		static PhysicBody* CreateBoxBody(sf::Vector2f size, sf::Vector2f position, float restitution, bool isStatic);
+		static PhysicBody* CreateBoxBody(sf::Vector2f size, sf::Vector2f position, float restitution, bool isStatic, bool canCollide = true, bool canGravitate = true);
 
 		static PhysicBody* CreateBoxBody(sf::Vector2f size, sf::Vector2f position, float restitution, bool isStatic, sf::Texture& texture, bool canCollide = true, bool canGravitate = true);
+		
+		static PhysicBody* CreateBoxBody(sf::Vector2f size, sf::Vector2f position, float restitution, bool isStatic, sf::Texture& texture, sf::Vector2i texturePosition, bool canCollide = true, bool canGravitate = true);
 	
 		void Rotate(float angle);
 

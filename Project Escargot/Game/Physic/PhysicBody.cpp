@@ -3,7 +3,7 @@
 namespace Snail
 {
 	PhysicBody::PhysicBody(sf::Vector2f position, float restitution,
-		bool isStatic, sf::Vector2f size)
+		bool isStatic, bool canCollide, bool canGravitate, sf::Vector2f size)
 	{
 		m_body.setPosition(position);
 		m_body.setSize(size);
@@ -14,8 +14,8 @@ namespace Snail
 		m_Restitution = restitution;
 		m_IsStatic = isStatic;
 
-		m_canCollide = true;
-		m_canGravitate = true;
+		m_canCollide = canCollide;
+		m_canGravitate = canGravitate;
 
 		if (DEBUG)
 		{
@@ -29,10 +29,32 @@ namespace Snail
 	{
 		m_body.setPosition(position);
 		m_body.setTexture(&texture);
-		m_body.setSize(size);
 		m_body.setTextureRect(sf::IntRect(0, 0, size.x, size.y));
+		m_body.setSize(size);
 		m_body.setOrigin(size / 2.f);
-		//m_body.setFillColor(sf::Color::Red);
+		m_velocity = sf::Vector2f(0, 0);
+		m_IsOnGround = false;
+		m_Restitution = restitution;
+		m_IsStatic = isStatic;
+
+		m_canCollide = canCollide;
+		m_canGravitate = canGravitate;
+
+		if (DEBUG)
+		{
+			m_body.setOutlineThickness(1.f);
+			m_body.setOutlineColor(sf::Color::Black);
+		}
+	}
+
+	PhysicBody::PhysicBody(sf::Vector2f position, float restitution,
+		bool isStatic, sf::Vector2f size, sf::Texture& texture, sf::Vector2i texturePosition, bool canCollide, bool canGravitate)
+	{
+		m_body.setPosition(position);
+		m_body.setTexture(&texture);
+		m_body.setTextureRect(sf::IntRect(texturePosition.x, texturePosition.y, size.x, size.y));
+		m_body.setSize(size);
+		m_body.setOrigin(size / 2.f);
 		m_velocity = sf::Vector2f(0, 0);
 		m_IsOnGround = false;
 		m_Restitution = restitution;
@@ -57,11 +79,11 @@ namespace Snail
 			m_velocity.y += (GAME_GRAVITY * dt);
 	}
 
-	PhysicBody* PhysicBody::CreateBoxBody(sf::Vector2f size, sf::Vector2f position, float restitution, bool isStatic)
+	PhysicBody* PhysicBody::CreateBoxBody(sf::Vector2f size, sf::Vector2f position, float restitution, bool isStatic, bool canCollide, bool canGravitate)
 	{
 		restitution = Math::Clamp(restitution, 0.f, 1.f);
 
-		return new PhysicBody(position, restitution, isStatic, size);
+		return new PhysicBody(position, restitution, isStatic, canCollide, canGravitate, size);
 	}
 
 	PhysicBody* PhysicBody::CreateBoxBody(sf::Vector2f size, sf::Vector2f position, float restitution, bool isStatic, sf::Texture& texture, bool canCollide, bool canGravitate)
@@ -69,6 +91,13 @@ namespace Snail
 		restitution = Math::Clamp(restitution, 0.f, 1.f);
 
 		return new PhysicBody(position, restitution, isStatic, size, texture, canCollide, canGravitate);
+	}
+
+	PhysicBody* PhysicBody::CreateBoxBody(sf::Vector2f size, sf::Vector2f position, float restitution, bool isStatic, sf::Texture& texture, sf::Vector2i texturePosition, bool canCollide, bool canGravitate)
+	{
+		restitution = Math::Clamp(restitution, 0.f, 1.f);
+
+		return new PhysicBody(position, restitution, isStatic, size, texture, texturePosition, canCollide, canGravitate);
 	}
 
 	void PhysicBody::Rotate(float angle)
