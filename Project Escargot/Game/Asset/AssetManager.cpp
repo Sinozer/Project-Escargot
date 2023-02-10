@@ -2,11 +2,14 @@
 
 namespace Snail
 {
-	void AssetManager::LoadTexture(std::string name, std::string fileName)
+	sf::Texture& AssetManager::LoadTexture(std::string name, std::string fileName)
 	{
+		if (m_textures.find(name) == m_textures.end()) return GetTexture(name);
+
 		sf::Texture texture;
+
 		if (texture.loadFromFile(fileName))
-			m_textures[name] = texture;
+			return m_textures[name] = texture;
 	}
 
 	sf::Texture& AssetManager::GetTexture(std::string name)
