@@ -6,8 +6,8 @@ namespace Snail
 	{
 		m_data = data;
 
-		m_speed = 4.f * PHYSIC_SCALE;
-		m_jumpHeight = 2.5f * PHYSIC_SCALE;
+		m_speed = 1.25f * PHYSIC_SCALE;
+		m_jumpHeight = 0.75f * PHYSIC_SCALE;
 		m_clampVelocity = { m_speed, m_jumpHeight };
 		bulletCount = 0;
 	}
@@ -21,17 +21,17 @@ namespace Snail
 	void Player::m_InitPhysicBody()
 	{
 		m_physicBodyRef = PhysicBodyRef(PhysicBody::CreateBoxBody(
-			sf::Vector2f(16.f, 32.f), sf::Vector2f(/*WINDOW_SCREEN_WIDTH / 2.f*/200, /*WINDOW_SCREEN_HEIGHT / 2.f*/ 200), 0.f, false/*, m_data->assetManager.GetTexture("STATE_JOIN_BACKGROUND")*/
+			sf::Vector2f(16.f, 32.f), sf::Vector2f(150, 150), 0.f, false/*, m_data->assetManager.GetTexture("STATE_JOIN_BACKGROUND")*/
 		));
 	}
 
 	void Player::HandleInput()
 	{
 		m_physicBodyRef->m_velocity.x = 0.f;
-		
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) 
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
 		{
-			m_physicBodyRef->AddVelocity({-m_speed, 0}, m_clampVelocity);
+			m_physicBodyRef->AddVelocity({ -m_speed, 0 }, m_clampVelocity);
 			m_UpdateDirection(LEFT);
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
@@ -44,11 +44,17 @@ namespace Snail
 			m_physicBodyRef->m_IsOnGround = false;
 			m_physicBodyRef->m_velocity.y = -sqrtf(2.0f * GAME_GRAVITY * m_jumpHeight);
 		}
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) 
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-			bulletCount ++;
+			bulletCount++;
 		}
-		
+
+		//if (DEBUG)
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
+		{
+			m_physicBodyRef->SetPosition({ 150, 150 });
+		}
+
 	}
 
 	void Player::Update(float dt)

@@ -115,6 +115,11 @@ namespace Snail
 		m_body.scale(scale);
 	}
 
+	void PhysicBody::SetPosition(sf::Vector2f position)
+	{
+		m_body.setPosition(position);
+	}
+
 	sf::Vector2f PhysicBody::GetPosition()
 	{
 		return m_body.getPosition();
@@ -135,7 +140,7 @@ namespace Snail
 
 	sf::Vector2f PhysicBody::GetHalfSize()
 	{
-		return m_body.getSize() / 2.0f;
+		return sf::Vector2f(m_body.getGlobalBounds().width, m_body.getGlobalBounds().height) / 2.0f;
 	}
 
 	bool PhysicBody::CheckCollision(PhysicBodyRef other, sf::Vector2f& direction)

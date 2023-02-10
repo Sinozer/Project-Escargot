@@ -42,6 +42,8 @@ namespace Snail
 
 		void Scale(sf::Vector2f scale);
 
+		void SetPosition(sf::Vector2f position);
+
 		sf::Vector2f GetPosition();
 
 		void Move(sf::Vector2f step);

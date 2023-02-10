@@ -21,10 +21,10 @@ namespace Snail
 		m_data->assetManager.LoadTexture("TEST_ENTITY", STATE_MAIN_ENTITY_TEST_FILEPATH);
 
 		m_physicBodyRef = PhysicBodyRef(PhysicBody::CreateBoxBody(
-			sf::Vector2f(115.f / 2.f, 161.f / 2.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 3.f, WINDOW_SCREEN_HEIGHT / 3.f), 1.f, false, m_data->assetManager.GetTexture("TEST_ENTITY")
+			sf::Vector2f(115.f / 2.f, 161.f / 2.f), sf::Vector2f(0.f, 0.f), 0.f, false, m_data->assetManager.GetTexture("TEST_ENTITY")
 		));
 
-		//m_physicBodyRef->Scale(sf::Vector2f(0.5f, 0.5f));
+		m_physicBodyRef->Scale(sf::Vector2f(0.5f, 0.5f));
 	}
 
 	void Enemy::HandleInput()
@@ -58,11 +58,11 @@ namespace Snail
 		switch (m_direction)
 		{
 		case LEFT:
-			if (m_target.GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x - 200)
+			if (m_target.GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x - 100)
 				m_physicBodyRef->AddVelocity({ -m_speed, 0 }, m_clampVelocity);
 			break;
 		case RIGHT:
-			if (m_target.GetPhysicBodyRef()->GetPosition().x > m_physicBodyRef->GetPosition().x + 200)
+			if (m_target.GetPhysicBodyRef()->GetPosition().x > m_physicBodyRef->GetPosition().x + 100)
 				m_physicBodyRef->AddVelocity({ m_speed, 0 }, m_clampVelocity);
 			break;
 		default:

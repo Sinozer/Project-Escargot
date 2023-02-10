@@ -12,6 +12,15 @@ namespace Snail
 		m_InitBackground();
 		m_InitView();
 
+		Map map(m_data, "Resources/Data/Map/TestDebug.json");
+
+		std::vector<PhysicBodyRef> refs = map.GetPhysicBodyRefs();
+
+		for (int i = 0; i < refs.size(); i++)
+		{
+			m_physicBodyManager.AddPhysicBody(std::to_string(i), refs[i]);
+		}
+
 		m_timerBulletFire = 0;
 		m_numberBullet = 0;
 
@@ -20,28 +29,33 @@ namespace Snail
 
 		m_physicBodyManager.AddPhysicBody("PLAYER", m_player.GetPhysicBodyRef());
 
-		m_data->assetManager.LoadTexture("ENTITY_DUMMY", STATE_MAIN_DUMMY_ENTITY_TEST_FILEPATH);
 
-		// ground
-		m_physicBodyManager.AddPhysicBody("GROUND", PhysicBodyRef(PhysicBody::CreateBoxBody(
-			sf::Vector2f(1000.f, 100.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, 650.f), 1.f, true
-		)));
 
-		// dummy box
-		m_physicBodyManager.AddPhysicBody("BOX", PhysicBodyRef(PhysicBody::CreateBoxBody(
-			sf::Vector2f(16.f, 16.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, WINDOW_SCREEN_HEIGHT / 4.f), 0.5f, false,
-			m_data->assetManager.GetTexture("ENTITY_DUMMY")
-		)));
-
-		m_physicBodyManager.AddPhysicBody("BOX2", PhysicBodyRef(PhysicBody::CreateBoxBody(
-			sf::Vector2f(16.f, 16.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, WINDOW_SCREEN_HEIGHT / 8.f), 0.5f, false,
-			m_data->assetManager.GetTexture("ENTITY_DUMMY")
-		)));
-
-		m_physicBodyManager.AddPhysicBody("BOX3", PhysicBodyRef(PhysicBody::CreateBoxBody(
-			sf::Vector2f(16.f, 16.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, WINDOW_SCREEN_HEIGHT / 16.f), 0.5f, false,
-			m_data->assetManager.GetTexture("ENTITY_DUMMY")
-		)));
+		/**
+		 * \brief Tests with dummy boxes.
+		 * 
+		 */
+		//m_data->assetManager.LoadTexture("ENTITY_DUMMY", STATE_MAIN_DUMMY_ENTITY_TEST_FILEPATH);
+		////ground
+		//m_physicBodyManager.AddPhysicBody("GROUND", PhysicBodyRef(PhysicBody::CreateBoxBody(
+		//	sf::Vector2f(1000.f, 100.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, 650.f), 1.f, true
+		//)));
+		//
+		//// dummy box
+		//m_physicBodyManager.AddPhysicBody("BOX", PhysicBodyRef(PhysicBody::CreateBoxBody(
+		//	sf::Vector2f(16.f, 16.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, WINDOW_SCREEN_HEIGHT / 4.f), 0.5f, false,
+		//	m_data->assetManager.GetTexture("ENTITY_DUMMY")
+		//)));
+		//
+		//m_physicBodyManager.AddPhysicBody("BOX2", PhysicBodyRef(PhysicBody::CreateBoxBody(
+		//	sf::Vector2f(16.f, 16.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, WINDOW_SCREEN_HEIGHT / 8.f), 0.5f, false,
+		//	m_data->assetManager.GetTexture("ENTITY_DUMMY")
+		//)));
+		//
+		//m_physicBodyManager.AddPhysicBody("BOX3", PhysicBodyRef(PhysicBody::CreateBoxBody(
+		//	sf::Vector2f(16.f, 16.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, WINDOW_SCREEN_HEIGHT / 16.f), 0.5f, false,
+		//	m_data->assetManager.GetTexture("ENTITY_DUMMY")
+		//)));
 
 		// ennemy
 		m_physicBodyManager.AddPhysicBody("ENNEMY", m_enemy.GetPhysicBodyRef());
@@ -49,15 +63,16 @@ namespace Snail
 
 	void MainState::m_InitBackground()
 	{
-		m_data->assetManager.LoadTexture("STATE_JOIN_BACKGROUND", STATE_JOIN_BACKGROUND_FILEPATH);
-		m_background.setTexture(m_data->assetManager.GetTexture("STATE_JOIN_BACKGROUND"));
+		m_data->assetManager.LoadTexture("STATE_MAIN_BACKGROUND", STATE_MAIN_BACKGROUND_FILEPATH);
+		m_background.setTexture(m_data->assetManager.GetTexture("STATE_MAIN_BACKGROUND"));
+		m_background.scale(sf::Vector2f(0.25f, 0.25f));
 	}
 
 	void MainState::m_InitView()
 	{
 		m_view.setSize(sf::Vector2f(m_data->window.getSize().x, m_data->window.getSize().y));
 		m_view.setCenter(sf::Vector2f(m_data->window.getSize().x / 2, m_data->window.getSize().y / 2));
-		//m_view.zoom(0.25f);
+		m_view.zoom(0.25f);
 		//m_view.setRotation(45.f);
 		m_data->window.setView(m_view);
 	}

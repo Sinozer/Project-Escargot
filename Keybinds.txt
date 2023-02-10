@@ -17,6 +17,13 @@ __________________________
 ||----------------------||
 || Espace > Sauter      ||
 ||----------------------||
-|| Clic souris gauche > ||
-|| 	> Tirer         ||
+|| Clic souris gauche   ||
+|| + Curseur            ||
+||  > Tirer             ||
+||----------------------||
+|| Clic souris droit    ||
+|| + Curseur            ||
+||  > Vue d'exploration ||
+||----------------------||
+|| R > Réapparaître     ||
 ||----------------------||

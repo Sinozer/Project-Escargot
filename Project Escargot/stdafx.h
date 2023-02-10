@@ -10,6 +10,7 @@
 /* ##################  SFML  ################## */
 
 /* ################# STANDART ################# */
+#include <fstream>
 #include <iostream>
 #include <memory>
 #include <stack>
@@ -38,6 +39,7 @@
 #include "Game/Entity/LivingEntity/Player/Player.h"
 #include "Game/Entity/LivingEntity/Enemy/Enemy.h"
 #include "Game/Entity/LivingEntity/LivingEntity.h"
+#include "Game/Map/Map.h"
 /* #################  SNAIL   ################# */
 
 /* ###############################  INCLUDES   ############################### */
@@ -45,7 +47,7 @@
 /* ############################### DEFINITIONS ############################### */
 
 /* ################## DEBUG  ################## */
-#define DEBUG true
+#define DEBUG false
 /* ################## DEBUG  ################## */
 
 /* ################## PHYSIC ################## */
@@ -73,6 +75,7 @@
 /* ########## JOIN ########## */
 
 /* ########## MAIN ########## */
+#define STATE_MAIN_BACKGROUND_FILEPATH "Resources/Textures/Backgrounds/Canyon.jpg"
 #define STATE_MAIN_ENTITY_TEST_FILEPATH "Resources/Textures/Entities/Test.png"
 #define STATE_MAIN_DUMMY_ENTITY_TEST_FILEPATH "Resources/Textures/Entities/Box.png"
 /* ########## MAIN ########## */
