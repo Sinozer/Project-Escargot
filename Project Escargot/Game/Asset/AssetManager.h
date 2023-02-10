@@ -10,7 +10,7 @@ namespace Snail
 		AssetManager() {}
 		~AssetManager() {}
 		
-		sf::Texture& LoadTexture(std::string name, std::string fileName);
+		sf::Texture& LoadTexture(std::string name, std::string fileName, sf::IntRect area = sf::IntRect());
 		sf::Texture& GetTexture(std::string name);
 
 		void LoadFont(std::string name, std::string fileName);
