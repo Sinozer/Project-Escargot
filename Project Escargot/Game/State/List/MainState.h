@@ -1,9 +1,9 @@
 #pragma once
-#include "../../Physic/PhysicBodyManager.h"
-#include "../../Entity/LivingEntity/LivingEntity.h"
-#include "../../Entity/LivingEntity/Player/Player.h"
-#include "../../Entity/LivingEntity/Enemy/Enemy.h"
-#include "../../Entity/Bullet/BulletManager.h"
+#include "Game/Physic/PhysicBodyManager.h"
+#include "Game/Entity/LivingEntity/LivingEntity.h"
+#include "Game/Entity/LivingEntity/Player/Player.h"
+#include "Game/Entity/LivingEntity/Enemy/Enemy.h"
+#include "Game/Entity/Bullet/BulletManager.h"
 namespace Snail
 {
 	/**

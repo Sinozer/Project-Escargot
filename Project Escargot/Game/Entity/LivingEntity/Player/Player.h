@@ -1,5 +1,5 @@
 #pragma once
-#include "../../LivingEntity/LivingEntity.h"
+#include "Game/Entity/LivingEntity/LivingEntity.h"
 namespace Snail
 {
 	class Player : LivingEntity

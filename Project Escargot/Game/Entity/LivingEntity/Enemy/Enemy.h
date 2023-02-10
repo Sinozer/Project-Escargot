@@ -1,6 +1,6 @@
 #pragma once
-#include "../LivingEntity.h"
-#include "../Player/Player.h"
+#include "Game/Entity/LivingEntity/LivingEntity.h"
+#include "Game/Entity/LivingEntity/Player/Player.h"
 namespace Snail
 {
 	class Enemy : LivingEntity
