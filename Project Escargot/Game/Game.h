@@ -22,6 +22,8 @@ namespace Snail
 	class Game
 	{
 	private:
+		sf::Text m_text;
+		
 		float m_dt;
 		sf::Clock m_clock;
 		void m_UpdateDt();

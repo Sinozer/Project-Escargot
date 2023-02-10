@@ -108,6 +108,8 @@ namespace Snail
 
 	void MainState::Update(float dt)
 	{
+		m_UpdateView();
+		
 		m_physicBodyManager.Update(dt);
 		m_player.Update(dt);
 		m_timerBulletFire++;
@@ -122,10 +124,7 @@ namespace Snail
 			}
 			AddBullet();
 		}
-
 		m_enemy.Update(dt);
-
-		m_UpdateView();
 	}
 
 	void MainState::m_UpdateView()
