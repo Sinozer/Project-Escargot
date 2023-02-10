@@ -4,7 +4,7 @@ namespace Snail
 {
 	sf::Texture& AssetManager::LoadTexture(std::string name, std::string fileName)
 	{
-		if (m_textures.find(name) == m_textures.end()) return GetTexture(name);
+		if (m_textures.find(name) != m_textures.end()) return GetTexture(name);
 
 		sf::Texture texture;
 
