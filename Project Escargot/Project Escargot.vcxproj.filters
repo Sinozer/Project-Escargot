@@ -82,8 +82,14 @@
     <Filter Include="Fichiers sources\Game\Entity\Ennemy\List">
       <UniqueIdentifier>{1c6fe4b4-c0cd-4213-b8d8-806242fe20d9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête\Game\Weapon">
+    <Filter Include="Fichiers d%27en-tête\Game\Entity\Weapon">
       <UniqueIdentifier>{13a66baf-029a-4e84-832a-5f6feb83b959}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Entity\Weapon\WeaponList">
+      <UniqueIdentifier>{be810a05-a7a8-4a70-a991-70dc9b266c51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Entity\WeaponList">
+      <UniqueIdentifier>{33dfad82-18b8-4b60-9300-2c99fa0c646b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -133,7 +139,7 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="Game\Entity\Weapon\RangeWeapon\Bow.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\Game\Entity\WeaponList</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -176,9 +182,6 @@
     <ClInclude Include="Game\Physic\PhysicBodyManager.h">
       <Filter>Fichiers d%27en-tête\Game\Physic</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Entity\Entity.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Game\Entity\Player\Player.h">
       <Filter>Fichiers d%27en-tête\Game\Entity\Player</Filter>
     </ClInclude>
@@ -189,19 +192,22 @@
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="Game\Entity\Weapon\Weapon.h">
-      <Filter>Fichiers d%27en-tête\Game\Weapon</Filter>
+      <Filter>Fichiers d%27en-tête\Game\Entity\Weapon</Filter>
     </ClInclude>
     <ClInclude Include="Game\Entity\Weapon\Range.h">
-      <Filter>Fichiers d%27en-tête\Game\Weapon</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Entity\Weapon\Melee.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Game\Entity\Weapon</Filter>
     </ClInclude>
     <ClInclude Include="Game\Entity\Projectile\Projectile.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="Game\Entity\Entity.h">
+      <Filter>Fichiers d%27en-tête\Game\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Weapon\Melee.h">
+      <Filter>Fichiers d%27en-tête\Game\Entity\Weapon</Filter>
+    </ClInclude>
     <ClInclude Include="Game\Entity\Weapon\RangeWeapon\Bow.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Game\Entity\Weapon\WeaponList</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
