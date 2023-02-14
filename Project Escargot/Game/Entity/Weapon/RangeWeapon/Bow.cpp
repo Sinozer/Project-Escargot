@@ -2,8 +2,11 @@
 #include "Bow.h"
 
 
-namespace snail
+namespace Snail
 {
+	void Bow::m_InitPhysicBody()
+	{
+	}
 	Bow::Bow()
 	{
 		Init();
@@ -13,9 +16,19 @@ namespace snail
 	{
 	}
 
+	void Bow::Use()
+	{
+	}
+
 	void Bow::Init()
 	{
 
 
+	}
+	void Bow::Update(float dt)
+	{
+	}
+	void Bow::Draw()
+	{
 	}
 }

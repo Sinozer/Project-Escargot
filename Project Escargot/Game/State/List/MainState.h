@@ -3,7 +3,7 @@
 #include "Game/Entity/LivingEntity/LivingEntity.h"
 #include "Game/Entity/LivingEntity/Player/Player.h"
 #include "Game/Entity/LivingEntity/Enemy/Enemy.h"
-#include "Game/Entity/Bullet/BulletManager.h"
+#include "Game/Entity/Projectile/BulletManager.h"
 namespace Snail
 {
 	/**
