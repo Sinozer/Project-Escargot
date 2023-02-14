@@ -53,6 +53,11 @@ namespace Snail
 		void m_Init();
 		void m_InitTiledFile();
 		void m_InitLayers();
+		void m_InitLayer(LayerStruct& layer, std::string sheetName, std::string sheetPath, bool isStatic, bool canCollide, bool canGravitate);
+		void m_CheckForTileSetAndLoadTexture(int id, std::string sheetName, std::string sheetPath);
+
+		std::string m_GetTextureSheetName(std::string sheetName);
+		std::string m_GetTextureName(std::string sheetName, int id);
 	public:
 		Map(GameDataRef data, std::string filepath);
 		~Map();

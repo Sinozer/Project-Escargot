@@ -76,75 +76,73 @@ namespace Snail
 		{
 			if (layer.name == "background")
 			{
-				for (int i = 0; i < layer.data.size(); i++)
-				{
-					m_data->assetManager.LoadTexture("MAP_BACKGROUND_SHEET", "Resources/Textures/Map/sky_.png");
-					if (layer.data.at(i) != 0)
-					{
-						std::string name = "MAP_BACKGROUND_";
-						name.append(std::to_string(layer.data.at(i)));
-
-						int posX = ((layer.data.at(i) - 1) * m_tiledFile.tileWidth) % m_data->assetManager.GetTexture("MAP_BACKGROUND_SHEET").getSize().x;
-						int posY = (std::floor((layer.data.at(i) - 1) * m_tiledFile.tileHeight) / m_data->assetManager.GetTexture("MAP_BACKGROUND_SHEET").getSize().x) * m_tiledFile.tileHeight - posX / m_tiledFile.tileWidth - 1;
-
-						m_data->assetManager.LoadTexture(name, "Resources/Textures/Map/sky_.png",
-							sf::IntRect(sf::Vector2i(posX, posY), sf::Vector2i(m_tiledFile.tileWidth, m_tiledFile.tileHeight)));
-
-						// Despite, show parallax
-						/*m_physicBodyRefs.push_back(PhysicBodyRef(PhysicBody::CreateBoxBody(
-							sf::Vector2f(m_tiledFile.tileWidth, m_tiledFile.tileHeight), sf::Vector2f((i % layer.width) * m_tiledFile.tileWidth, (i / layer.width) * m_tiledFile.tileHeight), 0.f, true,
-							m_data->assetManager.GetTexture(name), false, false
-						)));*/
-					}
-				}
+				//m_InitLayer(layer, "MAP_BACKGROUND", "Resources/Textures/Map/sky_.png", true, false, false);
 			}
 			else if (layer.name == "midground")
 			{
-				m_data->assetManager.LoadTexture("MAP_MIDGROUND_SHEET", "Resources/Textures/Map/summer_.png");
-				for (int i = 0; i < layer.data.size(); i++)
-				{
-					if (layer.data.at(i) != 0)
-					{
-						std::string name = "MAP_MIDGROUND_";
-						name.append(std::to_string(layer.data.at(i)));
-
-						int posX = ((layer.data.at(i) - 29) * m_tiledFile.tileWidth) % m_data->assetManager.GetTexture("MAP_MIDGROUND_SHEET").getSize().x;
-						int posY = (std::floor((layer.data.at(i) - 29) * m_tiledFile.tileHeight) / m_data->assetManager.GetTexture("MAP_MIDGROUND_SHEET").getSize().x) * m_tiledFile.tileHeight - posX / m_tiledFile.tileWidth - 1;
-
-						m_data->assetManager.LoadTexture(name, "Resources/Textures/Map/summer_.png",
-							sf::IntRect(sf::Vector2i(posX, posY), sf::Vector2i(m_tiledFile.tileWidth, m_tiledFile.tileHeight)));
-
-						m_physicBodyRefs.push_back(PhysicBodyRef(PhysicBody::CreateBoxBody(
-							sf::Vector2f(m_tiledFile.tileWidth, m_tiledFile.tileHeight), sf::Vector2f((i % layer.width) * m_tiledFile.tileWidth, (i / layer.width) * m_tiledFile.tileHeight), 0.f, true,
-							m_data->assetManager.GetTexture(name), true, false
-						)));
-					}
-				}
+				m_InitLayer(layer, "MAP_MIDGROUND", "Resources/Textures/Map/summer_.png", true, true, false);
 			}
 			else if (layer.name == "object")
 			{
-				m_data->assetManager.LoadTexture("MAP_OBJECT_SHEET", "Resources/Textures/Map/staticObjects_.png");
-				for (int i = 0; i < layer.data.size(); i++)
-				{
-					if (layer.data.at(i) != 0)
-					{
-						std::string name = "MAP_OBJECT_";
-						name.append(std::to_string(layer.data.at(i)));
-
-						int posX = ((layer.data.at(i) - 309) * m_tiledFile.tileWidth) % m_data->assetManager.GetTexture("MAP_OBJECT_SHEET").getSize().x;
-						int posY = (std::floor((layer.data.at(i) - 309) * m_tiledFile.tileHeight) / m_data->assetManager.GetTexture("MAP_OBJECT_SHEET").getSize().x) * m_tiledFile.tileHeight - (posX / m_tiledFile.tileWidth - 1);
-
-						m_data->assetManager.LoadTexture(name, "Resources/Textures/Map/staticObjects_.png",
-							sf::IntRect(sf::Vector2i(posX, posY), sf::Vector2i(m_tiledFile.tileWidth, m_tiledFile.tileHeight)));
-
-						m_physicBodyRefs.push_back(PhysicBodyRef(PhysicBody::CreateBoxBody(
-							sf::Vector2f(m_tiledFile.tileWidth, m_tiledFile.tileHeight), sf::Vector2f((i % layer.width) * m_tiledFile.tileWidth, (i / layer.width) * m_tiledFile.tileHeight), 0.5f, false,
-							m_data->assetManager.GetTexture(name), true, true
-						)));
-					}
-				}
+				m_InitLayer(layer, "MAP_OBJECT", "Resources/Textures/Map/staticObjects_.png", false, true, true);
 			}
 		}
+	}
+
+	void Map::m_InitLayer(LayerStruct& layer, std::string sheetName, std::string sheetPath, bool isStatic, bool canCollide, bool canGravitate)
+	{
+		std::string textureName = m_GetTextureSheetName(sheetName);
+
+		m_data->assetManager.LoadTexture(textureName, sheetPath);
+		for (int i = 0; i < layer.data.size(); i++)
+		{
+			if (layer.data.at(i) <= 0) continue;
+			
+			int id = layer.data.at(i);
+
+			std::string name = m_GetTextureName(sheetName, id);
+
+			if (!m_data->assetManager.TextureExists(name))
+			{
+				m_CheckForTileSetAndLoadTexture(id, sheetName, sheetPath);
+			}
+
+			m_physicBodyRefs.push_back(PhysicBodyRef(PhysicBody::CreateBoxBody(
+				sf::Vector2f(m_tiledFile.tileWidth, m_tiledFile.tileHeight), sf::Vector2f((i % layer.width) * m_tiledFile.tileWidth, (i / layer.width) * m_tiledFile.tileHeight), 0.5f, isStatic,
+				m_data->assetManager.GetTexture(name), canCollide, canGravitate
+			)));
+		}
+	}
+
+	void Map::m_CheckForTileSetAndLoadTexture(int id, std::string sheetName, std::string sheetPath)
+	{
+		std::string textureName = m_GetTextureSheetName(sheetName);
+		
+		std::string name = m_GetTextureName(sheetName, id);
+
+		for (int j = m_tiledFile.tileSets.size() - 1; j >= 0; j--)
+		{
+			if (id < m_tiledFile.tileSets.at(j).firstGid) continue;
+
+			id -= m_tiledFile.tileSets.at(j).firstGid;
+			break;
+		}
+
+		int posX = id * m_tiledFile.tileWidth % m_data->assetManager.GetTexture(textureName).getSize().x;
+		int posY = id / (m_data->assetManager.GetTexture(textureName).getSize().x / m_tiledFile.tileWidth) * m_tiledFile.tileHeight;
+
+		m_data->assetManager.LoadTexture(name, sheetPath,
+			sf::IntRect(sf::Vector2i(posX, posY), sf::Vector2i(m_tiledFile.tileWidth, m_tiledFile.tileHeight)));
+	}
+
+	std::string Map::m_GetTextureSheetName(std::string sheetName)
+	{
+		return sheetName.append("_SHEET");
+	}
+
+	std::string Map::m_GetTextureName(std::string sheetName, int id)
+	{
+		return sheetName.append("_").append(std::to_string(id));
 	}
 
 	void Map::Update()
