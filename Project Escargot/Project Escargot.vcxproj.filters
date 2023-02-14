@@ -88,6 +88,9 @@
     <Filter Include="Fichiers sources\Game\Entity\LivingEntity\Player">
       <UniqueIdentifier>{0a926f73-6cac-4334-81ad-4cf819d4782b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Weapon">
+      <UniqueIdentifier>{13a66baf-029a-4e84-832a-5f6feb83b959}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -132,7 +135,10 @@
     <ClCompile Include="Game\Entity\LivingEntity\Ennemy\Ennemy.cpp">
       <Filter>Fichiers sources\Game\Entity\LivingEntity\Ennemy</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Bullet\BulletManager.cpp">
+    <ClCompile Include="Game\Entity\Projectile\BulletManager.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\Weapon\RangeWeapon\Bow.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
@@ -185,13 +191,26 @@
     <ClInclude Include="Game\Entity\LivingEntity\Ennemy\Ennemy.h">
       <Filter>Fichiers d%27en-tête\Game\Entity\LivingEntity\Ennemy</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Entity\Bullet\BulletManager.h">
+    <ClInclude Include="Game\Entity\Projectile\BulletManager.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Weapon\Weapon.h">
+      <Filter>Fichiers d%27en-tête\Game\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Weapon\Range.h">
+      <Filter>Fichiers d%27en-tête\Game\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Weapon\Melee.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Projectile\Projectile.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="Game\Entity\LivingEntity\LivingEntity.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="Game\Weapon\Weapon.h">
+    <ClInclude Include="Game\Entity\Weapon\RangeWeapon\Bow.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
