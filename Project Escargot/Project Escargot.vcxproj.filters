@@ -91,11 +91,56 @@
     <Filter Include="Fichiers d%27en-tête\Game\Entity\Weapon">
       <UniqueIdentifier>{13a66baf-029a-4e84-832a-5f6feb83b959}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête\Game\Entity\Weapon\WeaponList">
-      <UniqueIdentifier>{be810a05-a7a8-4a70-a991-70dc9b266c51}</UniqueIdentifier>
+    <Filter Include="Fichiers d%27en-tête\Game\Map">
+      <UniqueIdentifier>{eb1f0e05-9860-46f3-a407-b10a7ae2a978}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\Game\Entity\WeaponList">
+    <Filter Include="Fichiers d%27en-tête\Game\Entity\Projectile">
+      <UniqueIdentifier>{3ffcb8fc-01c0-4868-97b2-f01766f65b20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Entity\Weapon\Range">
+      <UniqueIdentifier>{9cc15790-7d2f-4b71-bd59-47c385c20094}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Entity\Weapon\Melee">
+      <UniqueIdentifier>{e86c1fb9-4f1f-4242-ab95-5f5082a7e389}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Entity\Weapon\Melee\List">
+      <UniqueIdentifier>{15aa202a-4c61-4126-9193-c38e06d5ba37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Entity\Weapon\Range\List">
+      <UniqueIdentifier>{4fee4d7f-2fea-4bd4-b40b-168c92a8cc70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Entity\Weapon\Range\List\Bow">
+      <UniqueIdentifier>{8c206b95-821d-403f-877d-28fd136f65ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Entity\Weapon">
+      <UniqueIdentifier>{65394931-5faf-4cfd-bac6-6f465957f70d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Entity\Weapon\Melee">
+      <UniqueIdentifier>{691f6ea7-9e5f-47ed-9278-a96e3287eeb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Entity\Weapon\Melee\List">
+      <UniqueIdentifier>{135b7b19-575e-424d-a818-790b8a7ed2f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Entity\Weapon\Range">
       <UniqueIdentifier>{33dfad82-18b8-4b60-9300-2c99fa0c646b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Entity\Weapon\Range\List">
+      <UniqueIdentifier>{70de9333-e19b-460e-ad22-f4ac38ec0a58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Entity\Weapon\Range\List\Bow">
+      <UniqueIdentifier>{4951d3ff-ffed-4497-a776-9883581e9fc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Entity\Projectile">
+      <UniqueIdentifier>{a72e875c-f9aa-4996-b3fc-da45e745ae1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Entity\Projectile\List">
+      <UniqueIdentifier>{a5c0bf52-1d5f-4d48-a798-4bd761555207}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Entity\Projectile\List">
+      <UniqueIdentifier>{a1d1ac58-9991-4377-84c5-83cbcda08333}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Map">
+      <UniqueIdentifier>{9df9f739-b178-4c05-92c0-dc6a2ce506ec}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -138,20 +183,20 @@
     <ClCompile Include="Game\Entity\LivingEntity\Player\Player.cpp">
       <Filter>Fichiers sources\Game\Entity\LivingEntity\Player</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\Projectile\BulletManager.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Entity\Weapon\RangeWeapon\Bow.cpp">
-      <Filter>Fichiers sources\Game\Entity\WeaponList</Filter>
-    </ClCompile>
     <ClCompile Include="Game\Entity\LivingEntity\Enemy\Enemy.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\Game\Entity\LivingEntity\Ennemy</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Map\Map.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="Game\Entity\Projectile\BulletManager.cpp">
+      <Filter>Fichiers sources\Game\Entity\Projectile</Filter>
     </ClCompile>
     <ClCompile Include="Game\Entity\Weapon\WeaponManager.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\Game\Entity\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\Weapon\Range\List\Bow\Bow.cpp">
+      <Filter>Fichiers sources\Game\Entity\Weapon\Range\List\Bow</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Map\Map.cpp">
+      <Filter>Fichiers sources\Game\Map</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -194,47 +239,44 @@
     <ClInclude Include="Game\Physic\PhysicBodyManager.h">
       <Filter>Fichiers d%27en-tête\Game\Physic</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Entity\Entity.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Game\Entity\LivingEntity\Player\Player.h">
       <Filter>Fichiers d%27en-tête\Game\Entity\LivingEntity\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Entity\Projectile\BulletManager.h">
-      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="Game\Entity\Weapon\Weapon.h">
       <Filter>Fichiers d%27en-tête\Game\Entity\Weapon</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Entity\Weapon\Range.h">
-      <Filter>Fichiers d%27en-tête\Game\Entity\Weapon</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Entity\Projectile\Projectile.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Game\Entity\LivingEntity\LivingEntity.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Entity\Weapon\RangeWeapon\Bow.h">
-      <Filter>Fichiers d%27en-tête\Game\Entity\Weapon\WeaponList</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Entity\LivingEntity\Enemy\Enemy.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Entity\Player\Player.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Entity\Weapon\Melee.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Map\Map.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="Game\Entity\Weapon\WeaponManager.h">
       <Filter>Fichiers d%27en-tête\Game\Entity\Weapon</Filter>
     </ClInclude>
+    <ClInclude Include="Game\Entity\Entity.h">
+      <Filter>Fichiers d%27en-tête\Game\Entity</Filter>
+    </ClInclude>
     <ClInclude Include="Game\Entity\EntityManager.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Game\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\LivingEntity\Enemy\Enemy.h">
+      <Filter>Fichiers d%27en-tête\Game\Entity\LivingEntity\Ennemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Map\Map.h">
+      <Filter>Fichiers d%27en-tête\Game\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Projectile\Projectile.h">
+      <Filter>Fichiers d%27en-tête\Game\Entity\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Weapon\Range\List\Bow\Bow.h">
+      <Filter>Fichiers d%27en-tête\Game\Entity\Weapon\Range\List\Bow</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Weapon\Range\Range.h">
+      <Filter>Fichiers d%27en-tête\Game\Entity\Weapon\Range</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Weapon\Melee\Melee.h">
+      <Filter>Fichiers d%27en-tête\Game\Entity\Weapon\Melee</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Projectile\BulletManager.h">
+      <Filter>Fichiers d%27en-tête\Game\Entity\Projectile</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -7,7 +7,9 @@ namespace Snail
 
 	Bow::Bow(sf::Vector2f targetPosition)
 	{
-		Init(targetPosition);
+		Init();
+		float angle = std::atan2f(targetPosition.y - 150, targetPosition.x - 150);
+		m_targetPosition = { std::cos(angle), std::sin(angle) };
 	}
 
 	Bow::~Bow()
@@ -15,12 +17,9 @@ namespace Snail
 	}
 
 
-	void Bow::Init(sf::Vector2f targetPosition)
+	void Bow::Init()
 	{
 		m_InitPhysicBody();
-		float angle = std::atan2f(targetPosition.y - 150, targetPosition.x - 150);
-		m_targetPosition = { std::cos(angle), std::sin(angle) };
-
 	}
 
 	void Bow::m_InitPhysicBody()
@@ -32,7 +31,7 @@ namespace Snail
 
 	void Bow::Use()
 	{
-
+		std::cout << "Bow::Use()" << "\n";
 	}
 
 	void Bow::Update(float dt)

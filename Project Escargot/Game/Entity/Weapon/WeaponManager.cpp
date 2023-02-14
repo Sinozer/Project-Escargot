@@ -6,6 +6,7 @@ namespace Snail
     void WeaponManager::AddWeapon(std::string weaponName)
     {
         m_weapons[weaponName] = new Bow(sf::Vector2f(0.f,0.f));
+        SetActive(weaponName);
     }
 
     Weapon* WeaponManager::GetActive()

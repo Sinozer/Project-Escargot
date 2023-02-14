@@ -1,6 +1,6 @@
 #pragma once
-#include "Weapon.h"
-#include "../Projectile/Projectile.h"
+#include "Game/Entity/Weapon/Weapon.h"
+#include "Game/Entity/Projectile/Projectile.h"
 
 namespace Snail
 {
