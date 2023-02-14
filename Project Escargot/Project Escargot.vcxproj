@@ -141,7 +141,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Game\Entity\Bullet\BulletManager.cpp" />
+    <ClCompile Include="Game\Entity\Weapon\RangeWeapon\Bow.cpp" />
+    <ClCompile Include="Game\Entity\Projectile\BulletManager.cpp" />
     <ClCompile Include="Game\Entity\Ennemy\Ennemy.cpp" />
     <ClCompile Include="Game\Asset\AssetManager.cpp" />
     <ClCompile Include="Game\Game.cpp" />
@@ -161,7 +162,9 @@
     <ClCompile Include="Game\View\ViewManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game\Entity\Bullet\BulletManager.h" />
+    <ClInclude Include="Game\Entity\Weapon\RangeWeapon\Bow.h" />
+    <ClInclude Include="Game\Entity\Projectile\BulletManager.h" />
+    <ClInclude Include="Game\Entity\Projectile\Projectile.h" />
     <ClInclude Include="Game\Entity\Ennemy\Ennemy.h" />
     <ClInclude Include="Game\Entity\Entity.h" />
     <ClInclude Include="Game\Asset\AssetManager.h" />
@@ -175,10 +178,12 @@
     <ClInclude Include="Game\Physic\PhysicBody.h" />
     <ClInclude Include="Game\Physic\PhysicBodyManager.h" />
     <ClInclude Include="Game\Entity\Player\Player.h" />
+    <ClInclude Include="Game\Entity\Weapon\Melee.h" />
+    <ClInclude Include="Game\Entity\Weapon\Range.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Game\View\View.h" />
     <ClInclude Include="Game\View\ViewManager.h" />
-    <ClInclude Include="Game\Weapon\Weapon.h" />
+    <ClInclude Include="Game\Entity\Weapon\Weapon.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
