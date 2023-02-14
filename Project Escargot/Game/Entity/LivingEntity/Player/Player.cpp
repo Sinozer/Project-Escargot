@@ -7,7 +7,7 @@ namespace Snail
 		m_data = data;
 
 		m_speed = 1.25f * PHYSIC_SCALE;
-		m_jumpHeight = 0.75f * PHYSIC_SCALE;
+		m_jumpHeight = 1.f * PHYSIC_SCALE;
 		m_clampVelocity = { m_speed, m_jumpHeight };
 		bulletCount = 0;
 	}

@@ -76,7 +76,7 @@ namespace Snail
 		m_body.move(m_velocity * dt);
 
 		if (m_canGravitate)
-			m_velocity.y += (GAME_GRAVITY * dt);
+			m_velocity.y += (GAME_GRAVITY * dt * 1.5f);
 	}
 
 	PhysicBody* PhysicBody::CreateBoxBody(sf::Vector2f size, sf::Vector2f position, float restitution, bool isStatic, bool canCollide, bool canGravitate)
