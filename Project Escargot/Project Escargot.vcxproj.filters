@@ -138,14 +138,20 @@
     <ClCompile Include="Game\Entity\LivingEntity\Player\Player.cpp">
       <Filter>Fichiers sources\Game\Entity\LivingEntity\Player</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Entity\LivingEntity\Ennemy\Ennemy.cpp">
-      <Filter>Fichiers sources\Game\Entity\LivingEntity\Ennemy</Filter>
-    </ClCompile>
     <ClCompile Include="Game\Entity\Projectile\BulletManager.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="Game\Entity\Weapon\RangeWeapon\Bow.cpp">
       <Filter>Fichiers sources\Game\Entity\WeaponList</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\LivingEntity\Enemy\Enemy.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Map\Map.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\Weapon\WeaponManager.cpp">
+      <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -194,9 +200,6 @@
     <ClInclude Include="Game\Entity\LivingEntity\Player\Player.h">
       <Filter>Fichiers d%27en-tête\Game\Entity\LivingEntity\Player</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Entity\LivingEntity\Ennemy\Ennemy.h">
-      <Filter>Fichiers d%27en-tête\Game\Entity\LivingEntity\Ennemy</Filter>
-    </ClInclude>
     <ClInclude Include="Game\Entity\Projectile\BulletManager.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -212,9 +215,26 @@
     <ClInclude Include="Game\Entity\LivingEntity\LivingEntity.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Weapon\Weapon.h">
     <ClInclude Include="Game\Entity\Weapon\RangeWeapon\Bow.h">
       <Filter>Fichiers d%27en-tête\Game\Entity\Weapon\WeaponList</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\LivingEntity\Enemy\Enemy.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Player\Player.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Weapon\Melee.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Map\Map.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Weapon\WeaponManager.h">
+      <Filter>Fichiers d%27en-tête\Game\Entity\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\EntityManager.h">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

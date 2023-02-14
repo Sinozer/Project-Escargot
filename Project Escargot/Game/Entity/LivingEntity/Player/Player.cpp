@@ -16,6 +16,7 @@ namespace Snail
 	{
 
 		m_InitPhysicBody();
+		m_InitWeaponManager();
 	}
 
 	void Player::m_InitPhysicBody()
@@ -25,6 +26,12 @@ namespace Snail
 		));
 	}
 
+	void Player::m_InitWeaponManager()
+	{
+		m_weaponManager.AddWeapon("BOW");
+	}
+
+
 	void Player::HandleInput()
 	{
 		m_physicBodyRef->m_velocity.x = 0.f;
@@ -32,12 +39,12 @@ namespace Snail
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
 		{
 			m_physicBodyRef->AddVelocity({ -m_speed, 0 }, m_clampVelocity);
-			m_UpdateDirection(LEFT);
+			m_ChangeDirection(LEFT);
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 		{
 			m_physicBodyRef->AddVelocity({ m_speed, 0 }, m_clampVelocity);
-			m_UpdateDirection(RIGHT);
+			m_ChangeDirection(RIGHT);
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && m_physicBodyRef->m_IsOnGround)
 		{
@@ -46,7 +53,8 @@ namespace Snail
 		}
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-			bulletCount++;
+			//bulletCount++;
+			m_weaponManager.Use();
 		}
 
 		//if (DEBUG)
@@ -57,17 +65,29 @@ namespace Snail
 
 	}
 
-	void Player::Update(float dt)
-	{
-	}
-
-	void Player::m_UpdateDirection(Direction direction)
+	void Player::m_ChangeDirection(Direction direction)
 	{
 		m_direction = direction;
 	}
 
+	void Player::Update(float dt)
+	{
+		m_UpdateWeaponManager(dt);
+	}
+
+	void Player::m_UpdateWeaponManager(float dt)
+	{
+		m_weaponManager.Update(dt);
+	}
+
 	void Player::Draw()
 	{
+		m_DrawWeaponManager();
+	}
+
+	void Player::m_DrawWeaponManager()
+	{
+		m_weaponManager.Draw();
 	}
 
 	PhysicBodyRef Player::GetPhysicBodyRef()

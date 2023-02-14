@@ -143,8 +143,6 @@
   <ItemGroup>
     <ClCompile Include="Game\Entity\Weapon\RangeWeapon\Bow.cpp" />
     <ClCompile Include="Game\Entity\Projectile\BulletManager.cpp" />
-    <ClCompile Include="Game\Entity\Ennemy\Ennemy.cpp" />
-    <ClCompile Include="Game\Entity\Bullet\BulletManager.cpp" />
     <ClCompile Include="Game\Entity\LivingEntity\Enemy\Enemy.cpp" />
     <ClCompile Include="Game\Asset\AssetManager.cpp" />
     <ClCompile Include="Game\Game.cpp" />
@@ -163,13 +161,13 @@
     </ClCompile>
     <ClCompile Include="Game\View\View.cpp" />
     <ClCompile Include="Game\View\ViewManager.cpp" />
+    <ClCompile Include="Game\Entity\Weapon\WeaponManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game\Entity\EntityManager.h" />
     <ClInclude Include="Game\Entity\Weapon\RangeWeapon\Bow.h" />
     <ClInclude Include="Game\Entity\Projectile\BulletManager.h" />
     <ClInclude Include="Game\Entity\Projectile\Projectile.h" />
-    <ClInclude Include="Game\Entity\Ennemy\Ennemy.h" />
-    <ClInclude Include="Game\Entity\Bullet\BulletManager.h" />
     <ClInclude Include="Game\Entity\LivingEntity\Enemy\Enemy.h" />
     <ClInclude Include="Game\Entity\Entity.h" />
     <ClInclude Include="Game\Asset\AssetManager.h" />
@@ -192,6 +190,7 @@
     <ClInclude Include="Game\View\View.h" />
     <ClInclude Include="Game\View\ViewManager.h" />
     <ClInclude Include="Game\Entity\Weapon\Weapon.h" />
+    <ClInclude Include="Game\Entity\Weapon\WeaponManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

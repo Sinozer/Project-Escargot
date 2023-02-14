@@ -36,6 +36,8 @@
 #include "Game/Physic/PhysicBodyManager.h"
 #include "Game/Physic/PhysicBody.h"
 #include "Game/Entity/Entity.h"
+#include "Game/Entity/EntityManager.h"
+#include "Game/Entity/Weapon/WeaponManager.h"
 #include "Game/Entity/Weapon/Weapon.h"
 #include "Game/Entity/Weapon/Range.h"
 #include "Game/Entity/Weapon/Melee.h"

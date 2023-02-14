@@ -18,7 +18,7 @@ namespace Snail
 
 		float m_jumpHeight;
 
-		virtual void m_UpdateDirection(Direction direction = NONE) = 0;
+		virtual void m_ChangeDirection(Direction direction = NONE) = 0;
 		inline void m_UpdateSprite()
 		{
 			switch (m_direction)

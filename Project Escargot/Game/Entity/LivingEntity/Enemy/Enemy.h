@@ -12,7 +12,7 @@ namespace Snail
 
 		void m_InitPhysicBody();
 
-		void m_UpdateDirection(Direction direction = NONE);
+		void m_ChangeDirection(Direction direction = NONE);
 		void m_UpdatePosition();
 
 	public:

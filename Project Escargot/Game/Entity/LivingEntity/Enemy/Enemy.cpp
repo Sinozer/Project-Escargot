@@ -34,12 +34,12 @@ namespace Snail
 	void Enemy::Update(float dt)
 	{
 		m_physicBodyRef->m_velocity.x = 0.f;
-		m_UpdateDirection();
+		m_ChangeDirection();
 		m_UpdateSprite();
 		m_UpdatePosition();
 	}
 
-	void Enemy::m_UpdateDirection(Direction direction)
+	void Enemy::m_ChangeDirection(Direction direction)
 	{
 		if (direction != NONE)
 		{

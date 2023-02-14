@@ -10,6 +10,7 @@ namespace Snail
 		// Bullet
 		// Entity who's shooting
 		sf::Vector2f m_shooterCoord;
+		sf::Vector2f m_targetPosition;
 
 
 		/*enum m_dir
@@ -36,7 +37,6 @@ namespace Snail
 
 		// Bullet
 		// Get the mouse position to know where to shoot
-		sf::Vector2f m_targetPosition;
 		
 
 		void m_InitPhysicBody();

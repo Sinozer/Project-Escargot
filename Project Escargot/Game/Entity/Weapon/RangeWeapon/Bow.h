@@ -11,10 +11,10 @@ namespace Snail
 		void m_InitPhysicBody();
 	public:
 
-		Bow();
+		Bow(sf::Vector2f targetPosition);
 		~Bow();
 		void Use();
-		void Init();
+		void Init(sf::Vector2f targetPosition);
 
 
 		void Update(float dt);
