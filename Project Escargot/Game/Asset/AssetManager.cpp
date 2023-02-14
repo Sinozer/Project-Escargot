@@ -4,7 +4,7 @@ namespace Snail
 {
 	sf::Texture& AssetManager::LoadTexture(std::string name, std::string fileName, sf::IntRect area)
 	{
-		if (m_textures.find(name) == m_textures.end())
+		if (!TextureExists(name))
 		{
 			sf::Texture texture;
 			if (texture.loadFromFile(fileName, area))
@@ -18,6 +18,11 @@ namespace Snail
 		return m_textures.at(name);
 	}
 
+	bool AssetManager::TextureExists(std::string name)
+	{
+		return m_textures.find(name) != m_textures.end();
+	}
+
 	void AssetManager::LoadFont(std::string name, std::string fileName)
 	{
 		sf::Font font;
@@ -28,5 +33,9 @@ namespace Snail
 	sf::Font& AssetManager::GetFont(std::string name)
 	{
 		return m_fonts.at(name);
+	}
+	bool AssetManager::FontExists(std::string name)
+	{
+		return m_fonts.find(name) != m_fonts.end();
 	}
 }
