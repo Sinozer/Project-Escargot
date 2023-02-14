@@ -10,6 +10,7 @@ namespace Snail
 
 		void m_InitPhysicBody();
 	public:
+
 		Bow();
 		~Bow();
 		void Use();
