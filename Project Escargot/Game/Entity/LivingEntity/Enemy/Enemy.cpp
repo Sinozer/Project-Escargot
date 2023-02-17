@@ -34,9 +34,13 @@ namespace Snail
 	void Enemy::Update(float dt)
 	{
 		m_physicBodyRef->m_velocity.x = 0.f;
-		m_ChangeDirection();
-		m_UpdateSprite();
-		m_UpdatePosition();
+
+		if (m_IsPlayerInRange()) 
+		{
+			m_ChangeDirection();
+			m_UpdateSprite();
+			m_UpdatePosition();
+		}
 	}
 
 	void Enemy::m_ChangeDirection(Direction direction)
@@ -58,16 +62,38 @@ namespace Snail
 		switch (m_direction)
 		{
 		case LEFT:
-			if (m_target.GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x - 100)
+			if (m_target.GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x - 40)
 				m_physicBodyRef->AddVelocity({ -m_speed, 0 }, m_clampVelocity);
 			break;
 		case RIGHT:
-			if (m_target.GetPhysicBodyRef()->GetPosition().x > m_physicBodyRef->GetPosition().x + 100)
+			if (m_target.GetPhysicBodyRef()->GetPosition().x > m_physicBodyRef->GetPosition().x + 40)
 				m_physicBodyRef->AddVelocity({ m_speed, 0 }, m_clampVelocity);
 			break;
 		default:
 			break;
 		}
+	}
+
+	bool Enemy::m_IsPlayerInRange()
+	{
+		std::cout << m_target.GetPhysicBodyRef()->GetPosition().y << "\n";
+
+		if (m_physicBodyRef->GetPosition().y - 80 < m_target.GetPhysicBodyRef()->GetPosition().y && m_target.GetPhysicBodyRef()->GetPosition().y < m_physicBodyRef->GetPosition().y + 20)
+		{
+			std::cout << "Player Y axis in range \n";
+
+			if (m_physicBodyRef->GetPosition().x < m_target.GetPhysicBodyRef()->GetPosition().x && m_target.GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x + 120)
+			{
+				std::cout << "Player aggroed right \n\n";
+				return true;
+			}
+			else if (m_physicBodyRef->GetPosition().x - 120 < m_target.GetPhysicBodyRef()->GetPosition().x && m_target.GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x)
+			{
+				std::cout << "Player aggroed left \n\n";
+				return true;
+			}
+		}
+		return false;
 	}
 
 	void Enemy::Draw()
