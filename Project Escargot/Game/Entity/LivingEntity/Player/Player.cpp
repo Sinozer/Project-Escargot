@@ -94,4 +94,39 @@ namespace Snail
 	{
 		return m_physicBodyRef;
 	}
+
+	
+	// Update possible 
+
+	void Player::InitLife(){
+		m_lifeEntity = 100;
+	}
+
+	int Player::ReturnLife() {
+		return m_lifeEntity;
+	}
+
+	void Player::UpdateLifeEntity(float lifeUpdate, bool typelifeUpdate) {
+
+		if (typelifeUpdate == false) {
+
+			m_lifeEntity -= lifeUpdate;
+
+			if (m_lifeEntity < 0) {
+				m_lifeEntity = 0;
+			}
+
+		}
+		else {
+			
+			m_lifeEntity += lifeUpdate;
+
+			if (m_lifeEntity > 100) {
+				m_lifeEntity = 100;
+			}
+
+		}
+
+	}
+
 }

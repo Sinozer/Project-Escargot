@@ -13,6 +13,11 @@ namespace Snail
 		};
 		Direction m_direction;
 
+		//Update possible
+		float m_lifeEntity;
+		//
+
+
 		float m_speed;
 		sf::Vector2f m_clampVelocity;
 
@@ -37,6 +42,13 @@ namespace Snail
 		}
 	public:
 		virtual PhysicBodyRef GetPhysicBodyRef() = 0;
+		
+		/*
+		virtual void InitLife()=0;
+		virtual int ReturnLife() = 0;
+		virtual void UpdateLifeEntity(float lifeUpdate, bool typelifeUpdate) = 0;
+
+		*/
 	};
 }
 
