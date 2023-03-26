@@ -12,6 +12,7 @@ namespace Snail
 
 		std::string m_name;
 
+
 		float m_speed;
 		sf::Vector2f m_clampVelocity;
 

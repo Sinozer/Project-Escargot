@@ -32,5 +32,12 @@ namespace Snail
 		void Draw();
 
 		PhysicBodyRef GetPhysicBodyRef();
+
+
+		
+		void InitLife();
+		int ReturnLife() ;
+		void UpdateLifeEntity(float lifeUpdate, bool typelifeUpdate);
+		
 	};
 }

@@ -99,7 +99,9 @@ namespace Snail
 	// Update possible 
 
 	void Player::InitLife(){
-		m_lifeEntity = 100;
+
+		m_maxLifeEntity = 100; // faire varier celon certaines conditions ou autre 
+		m_lifeEntity = m_maxLifeEntity;
 	}
 
 	int Player::ReturnLife() {
@@ -121,12 +123,16 @@ namespace Snail
 			
 			m_lifeEntity += lifeUpdate;
 
-			if (m_lifeEntity > 100) {
+			if (m_lifeEntity > m_maxLifeEntity) {
 				m_lifeEntity = 100;
 			}
 
 		}
 
+	}
+
+	void Player::ModifyMaxLifeEntity(float newMaxLife) {
+		m_maxLifeEntity = newMaxLife;
 	}
 
 }

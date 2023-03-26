@@ -15,6 +15,7 @@ namespace Snail
 
 		//Update possible
 		float m_lifeEntity;
+		float m_maxLifeEntity;
 		//
 
 

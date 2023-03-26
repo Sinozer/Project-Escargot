@@ -78,4 +78,45 @@ namespace Snail
 	{
 		return m_physicBodyRef;
 	}
+
+
+	//Update 
+
+
+	void Enemy::InitLife() {
+		
+		//Varie celon le type d'Enemy 
+		m_maxLifeEntity = 100;//default value
+		m_lifeEntity = m_maxLifeEntity;
+
+	}
+
+	int Enemy::ReturnLife() {
+		return m_lifeEntity;
+	}
+
+	void Enemy::UpdateLifeEntity(float lifeUpdate, bool typelifeUpdate) {
+
+		if (typelifeUpdate == false) {
+
+			m_lifeEntity -= lifeUpdate;
+
+			if (m_lifeEntity <= 0 ) {
+				m_lifeEntity = 0;
+				//Destroy Enemy
+			}
+
+		}
+		else {
+			
+			m_lifeEntity += lifeUpdate;
+
+			if (m_lifeEntity > m_maxLifeEntity) {
+				m_lifeEntity = 100;
+			}
+		}
+
+	}
+
+
 }
