@@ -39,7 +39,7 @@ namespace Snail
 
 
 		
-		void InitLife();
+		void m_InitLife();
 		int ReturnLife() ;
 		void UpdateLifeEntity(float lifeUpdate, bool typelifeUpdate);
 		void ModifyMaxLifeEntity(float newMaxLife);

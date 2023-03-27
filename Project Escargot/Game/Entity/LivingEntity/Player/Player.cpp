@@ -17,6 +17,11 @@ namespace Snail
 
 		m_InitPhysicBody();
 		m_InitWeaponManager();
+		m_InitLife();
+		/*
+		UpdateLifeEntity(15, false);
+		UpdateLifeEntity(30 , true);
+		*/
 	}
 
 	void Player::m_InitPhysicBody()
@@ -98,10 +103,12 @@ namespace Snail
 	
 	// Update possible 
 
-	void Player::InitLife(){
+	void Player::m_InitLife(){
 
 		m_maxLifeEntity = 100; // faire varier celon certaines conditions ou autre 
 		m_lifeEntity = m_maxLifeEntity;
+		std::cout << "Max Begin :" << m_maxLifeEntity << std::endl;
+		std::cout << "Life Begin :" << m_lifeEntity << std::endl;
 	}
 
 	int Player::ReturnLife() {
@@ -116,8 +123,14 @@ namespace Snail
 
 			if (m_lifeEntity < 0) {
 				m_lifeEntity = 0;
-			}
 
+				// Game Over
+				//Destroy the Player
+
+			}
+			/*
+			std::cout << "Life Down:" << lifeUpdate << std::endl;
+			*/
 		}
 		else {
 			
@@ -126,9 +139,13 @@ namespace Snail
 			if (m_lifeEntity > m_maxLifeEntity) {
 				m_lifeEntity = 100;
 			}
-
+			/*
+			std::cout << "Life Up:" << lifeUpdate;
+			*/
 		}
-
+		/*
+		std::cout << "Actual life :" << m_lifeEntity << std::endl;
+		*/
 	}
 
 	void Player::ModifyMaxLifeEntity(float newMaxLife) {
