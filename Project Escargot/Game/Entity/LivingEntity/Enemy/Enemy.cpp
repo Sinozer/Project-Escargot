@@ -37,9 +37,17 @@ namespace Snail
 
 		if (m_IsPlayerInRange()) 
 		{
-			m_ChangeDirection();
-			m_UpdateSprite();
-			m_UpdatePosition();
+			if (m_IsAttackRange())
+			{
+				std::cout << "Ennemy attacks";
+				
+			} 
+			else
+			{
+				m_ChangeDirection();
+				m_UpdateSprite();
+				m_UpdatePosition();
+			}
 		}
 	}
 
@@ -92,6 +100,19 @@ namespace Snail
 				std::cout << "Player aggroed left \n\n";
 				return true;
 			}
+		}
+		return false;
+	}
+
+	bool Enemy::m_IsAttackRange()
+	{
+		if (m_physicBodyRef->GetPosition().x < m_target.GetPhysicBodyRef()->GetPosition().x && m_target.GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x + 20)
+		{
+			return true;
+		}
+		else if (m_physicBodyRef->GetPosition().x - 20 < m_target.GetPhysicBodyRef()->GetPosition().x && m_target.GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x)
+		{
+			return true;
 		}
 		return false;
 	}
