@@ -16,6 +16,7 @@ namespace Snail
 		void m_UpdatePosition();
 
 		bool m_IsPlayerInRange();
+		bool m_IsAttackRange();
 
 	public:
 		/**
