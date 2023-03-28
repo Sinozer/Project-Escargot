@@ -86,7 +86,9 @@ namespace Snail
 			}
 			AddBullet();
 		}
-		
+
+		FollowPlayer();
+
 		m_ennemy.Update(dt);
 	}
 
@@ -95,5 +97,31 @@ namespace Snail
 		m_data->window.draw(m_background);
 		if (!m_physicBodyManager.IsEmpty())
 			m_physicBodyManager.Draw();
+	}
+
+
+	void MainState::FollowPlayer()
+	{
+
+		sf::Vector2f mousePosition = (sf::Vector2f)sf::Mouse::getPosition(m_data->window);
+		sf::Vector2f playerPosition = this->m_player.m_physicBodyRef->GetPosition();
+
+		//sf::Vector2f ennemyPos = m_ennemy.m_physicBodyRef->GetPosition();
+
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Right)) {
+
+			/*if(mousePosition.x < 0 && mousePosition.y < 0) this->m_background.setOrigin(sf::Vector2f((playerPosition.x - mousePosition.x) / 2, (playerPosition.y - mousePosition.y) / 2));
+			if (mousePosition.x > 0 && mousePosition.y < 0) this->m_background.setOrigin(sf::Vector2f((playerPosition.x + mousePosition.x) / 2, (playerPosition.y - mousePosition.y) / 2));
+			if (mousePosition.x < 0 && mousePosition.y > 0) this->m_background.setOrigin(sf::Vector2f((playerPosition.x - mousePosition.x) / 2, (playerPosition.y + mousePosition.y) / 2));
+			else this->m_background.setOrigin(sf::Vector2f((playerPosition.x + mousePosition.x) / 2, (playerPosition.y + mousePosition.y) / 2));*/
+
+			this->m_background.setOrigin(sf::Vector2f(( mousePosition.x) / 2, ( mousePosition.y) / 2));
+			this->m_view.;
+			
+		}
+		else {
+			this->m_background.setOrigin(sf::Vector2f(playerPosition.x / 2, playerPosition.y / 2));
+			this->m_view.setCenter(playerPosition);
+		}
 	}
 }
