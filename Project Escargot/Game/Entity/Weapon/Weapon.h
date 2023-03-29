@@ -21,6 +21,10 @@ namespace Snail
 
 	public:
 		virtual void Use() = 0;
+
+		virtual void Draw() = 0;
+
+		virtual void Update(float dt) = 0;
 	};
 }
 

@@ -9,11 +9,11 @@ namespace Snail
 	{
 	private:
 		GameDataRef m_data;
-		WeaponManager m_weaponManager;
+		WeaponManager* m_weaponManager;
 
 		
-		void m_InitPhysicBody();
-		void m_InitWeaponManager();
+		void m_InitPhysicBody(PhysicBodyManager& pbm);
+		void m_InitWeaponManager(PhysicBodyManager& pbm);
 		void m_ChangeDirection(Direction direction = NONE);
 		void m_UpdateWeaponManager(float dt);
 		void m_DrawWeaponManager();
@@ -26,8 +26,9 @@ namespace Snail
 		 * \param data
 		 */
 		Player(GameDataRef data);
-		
-		void Init();
+		~Player();
+
+		void Init(PhysicBodyManager &pbm);
 
 		void HandleInput();
 

@@ -17,10 +17,10 @@ namespace Snail
 
 		float m_jumpHeight;
 
-		virtual void m_InitPhysicBody() = 0;
+		virtual void m_InitPhysicBody(PhysicBodyManager &pbm) = 0;
 	public:
 
-		virtual void Init() = 0;
+		virtual void Init(PhysicBodyManager& pbm) = 0;
 
 		virtual void Update(float dt) = 0;
 

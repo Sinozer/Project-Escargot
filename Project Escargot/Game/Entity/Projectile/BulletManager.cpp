@@ -35,12 +35,12 @@ namespace Snail
 	{
 	}
 
-	void BulletManager::Init()
+	void BulletManager::Init(PhysicBodyManager& pbm)
 	{
-		m_InitPhysicBody();
+		m_InitPhysicBody(pbm);
 	}
 
-	void BulletManager::m_InitPhysicBody()
+	void BulletManager::m_InitPhysicBody(PhysicBodyManager& pbm)
 	{
 
 	}

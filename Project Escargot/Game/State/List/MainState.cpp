@@ -24,10 +24,10 @@ namespace Snail
 		m_timerBulletFire = 0;
 		m_numberBullet = 0;
 
-		m_player.Init();
-		m_enemy.Init();
+		m_player.Init(m_physicBodyManager);
+		m_enemy.Init(m_physicBodyManager);
 
-		m_physicBodyManager.AddPhysicBody("PLAYER", m_player.GetPhysicBodyRef());
+		/*m_physicBodyManager.AddPhysicBody("PLAYER", m_player.GetPhysicBodyRef());*/
 
 
 
@@ -58,7 +58,7 @@ namespace Snail
 		//)));
 
 		// ennemy
-		m_physicBodyManager.AddPhysicBody("ENNEMY", m_enemy.GetPhysicBodyRef());
+		/*m_physicBodyManager.AddPhysicBody("ENNEMY", m_enemy.GetPhysicBodyRef());*/
 	}
 
 	void MainState::m_InitBackground()

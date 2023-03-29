@@ -10,7 +10,7 @@ namespace Snail
 
 		Player& m_target;
 
-		void m_InitPhysicBody();
+		void m_InitPhysicBody(PhysicBodyManager& pbm);
 
 		void m_ChangeDirection(Direction direction = NONE);
 		void m_UpdatePosition();
@@ -23,7 +23,7 @@ namespace Snail
 		 */
 		Enemy(GameDataRef data, Player& target);
 
-		void Init();
+		void Init(PhysicBodyManager& pbm);
 
 		void HandleInput();
 

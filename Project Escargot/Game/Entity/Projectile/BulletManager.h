@@ -37,9 +37,9 @@ namespace Snail
 
 		// Bullet
 		// Get the mouse position to know where to shoot
-		
 
-		void m_InitPhysicBody();
+
+		void m_InitPhysicBody(PhysicBodyManager& pbm);
 	public:
 
 		// Bullet
