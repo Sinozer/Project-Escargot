@@ -37,7 +37,7 @@ namespace Snail
 
 	void Bow::Update(float dt)
 	{
-		m_physicBodyRef->SetPosition(m_targetPosition);
+		m_physicBodyRef->SetPosition(InputManager::GetInstance()->GetMousePosition());
 	}
 	void Bow::Draw()
 	{

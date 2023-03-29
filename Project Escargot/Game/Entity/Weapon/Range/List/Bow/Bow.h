@@ -20,4 +20,3 @@ namespace Snail
 		void Draw();
 	};
 }
-

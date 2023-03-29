@@ -3,13 +3,21 @@ namespace Snail
 {
 	class InputManager
 	{
-	public:
-		InputManager() {}
-		~InputManager() {}
-
-		bool IsSpriteLeftClicked(sf::Sprite object, sf::RenderWindow& window);
-		bool IsSpriteRightClicked(sf::Sprite object, sf::RenderWindow& window);
+	private:
+		static InputManager* Instance;
 		
-		sf::Vector2i GetMousePosition(sf::RenderWindow& window);
+		sf::RenderWindow& m_window;
+		InputManager(sf::RenderWindow& window) : m_window(window) {}
+		~InputManager();
+	public:
+
+		static InputManager* GetInstance(sf::RenderWindow& window);
+		static InputManager* GetInstance();
+
+
+		bool IsSpriteLeftClicked(sf::Sprite object);
+		bool IsSpriteRightClicked(sf::Sprite object);
+		
+		sf::Vector2f GetMousePosition();
 	};
 }

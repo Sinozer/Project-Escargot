@@ -17,6 +17,9 @@ namespace Snail
 
 		m_data->stateManager.AddState(StateRef(new JoinState(m_data)));
 
+		// Init InputManager
+		InputManager::GetInstance(m_data->window);
+
 		Run();
 	}
 
