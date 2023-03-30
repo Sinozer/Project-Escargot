@@ -24,8 +24,8 @@ namespace Snail
 		m_timerBulletFire = 0;
 		m_numberBullet = 0;
 
-		m_player.Init();
-		m_enemy.Init();
+		m_player.Init(m_physicBodyManager);
+		m_enemy.Init(m_physicBodyManager);
 
 		m_physicBodyManager.AddPhysicBody("PLAYER", m_player.GetPhysicBodyRef());
 
@@ -152,7 +152,7 @@ namespace Snail
 
 	void GameState::m_UpdateUIManager(float dt)
 	{
-		m_uiManager.Update(m_data->inputManager.GetMousePosition(m_data->window), dt);
+		m_uiManager.Update((sf::Vector2i)InputManager::GetInstance(m_data->window)->GetMousePosition(), dt);
 	}
 
 	void GameState::Draw(float dt)

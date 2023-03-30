@@ -55,7 +55,7 @@ namespace Snail
 		BulletManager(GameDataRef data, sf::Vector2f shooterCoord, sf::Vector2f mousePositon);
 		~BulletManager();
 
-		void Init();
+		void Init(PhysicBodyManager& pbm);
 
 		void Update(float dt);
 

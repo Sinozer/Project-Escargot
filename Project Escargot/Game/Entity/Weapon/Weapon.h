@@ -1,5 +1,6 @@
 #pragma once
 #include "../Entity.h"
+#include "Game/Entity/Projectile/BulletManager.h"
 namespace Snail
 {
 	/**

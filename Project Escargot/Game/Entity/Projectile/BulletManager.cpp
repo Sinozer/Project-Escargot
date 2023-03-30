@@ -1,5 +1,4 @@
 #include "stdafx.h"
-#include "BulletManager.h"
 
 /**
  *
@@ -28,7 +27,7 @@ namespace Snail
 {
 	BulletManager::BulletManager(GameDataRef data, sf::Vector2f shooterCoord, sf::Vector2f mousePositon)
 	{
-		Init();
+		/*Init();*/
 	}
 
 	BulletManager::~BulletManager()
