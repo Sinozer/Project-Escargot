@@ -75,27 +75,25 @@ namespace Snail
 		case LEFT:
 			if (m_target.GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x - 40)
 				m_physicBodyRef->AddVelocity({ -m_speed, 0 }, m_clampVelocity);
-			//Jump if progress isn't made
 			
 			if (previousPositionX == 0.f) break;
+			//Jump if progress isn't made
 			if (m_physicBodyRef->GetPosition().x > previousPositionX - 1.0f && m_physicBodyRef->m_IsOnGround)
 			{
 				m_physicBodyRef->m_IsOnGround = false;
 				m_physicBodyRef->m_velocity.y = -sqrtf(2.0f * GAME_GRAVITY * m_jumpHeight);
-				std::cout << "Jump";
 			}
 			break;
 		case RIGHT:
 			if (m_target.GetPhysicBodyRef()->GetPosition().x > m_physicBodyRef->GetPosition().x + 40)
 				m_physicBodyRef->AddVelocity({ m_speed, 0 }, m_clampVelocity);
-			//Jump if progress isn't made
 
 			if (previousPositionX == 0.f) break;
+			//Jump if progress isn't made
 			if (m_physicBodyRef->GetPosition().x < previousPositionX + 1.0f && m_physicBodyRef->m_IsOnGround)
 			{
 				m_physicBodyRef->m_IsOnGround = false;
 				m_physicBodyRef->m_velocity.y = -sqrtf(2.0f * GAME_GRAVITY * m_jumpHeight);
-				std::cout << "Jump";
 			}
 			break;
 		default:
