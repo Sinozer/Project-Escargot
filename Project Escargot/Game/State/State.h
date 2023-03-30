@@ -10,11 +10,16 @@ namespace Snail
 		sf::Sprite m_background;
 		sf::View m_view;
 
-		virtual void m_InitBackground() = 0;
+		UIManager m_uiManager;
 
+		virtual void m_InitBackground() = 0;
 		virtual void m_InitView() = 0;
+		virtual void m_InitUIManager() = 0;
 
 		virtual void m_UpdateView() = 0;
+		virtual void m_UpdateUIManager(float dt) = 0;
+
+		virtual void m_DrawUIManager() = 0;
 	public:
 		virtual void Init() = 0;
 
