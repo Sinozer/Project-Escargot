@@ -15,7 +15,7 @@ namespace Snail
 
 
 		float m_damage;
-
+		float m_speed;
 		float m_range;
 	public:
 		virtual void AddBullet() = 0;

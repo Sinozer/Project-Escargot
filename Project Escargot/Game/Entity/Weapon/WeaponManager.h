@@ -11,6 +11,7 @@ namespace Snail
 
 		Weapon* m_activeWeapon;
 
+
 	public:
 		void AddWeapon(std::string weaponName);
 

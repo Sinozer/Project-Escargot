@@ -56,7 +56,6 @@ namespace Snail
 		~BulletManager();
 
 		void Init();
-		void fireAmmo();
 
 		void Update(float dt);
 

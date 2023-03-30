@@ -14,6 +14,8 @@ namespace Snail
 
 		sf::Vector2f m_wantedWosition;
 
+		BulletManager m_bulletManager;
+
 		float m_offset;
 
 
