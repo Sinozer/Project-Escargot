@@ -16,6 +16,8 @@ namespace Snail
 		float m_attackRange;
 
 		void m_InitPhysicBody(PhysicBodyManager& pbm);
+		bool m_isMelee;
+		float m_attackRange;
 
 		void m_ChangeDirection(Direction direction = NONE);
 		void m_UpdatePosition();
