@@ -9,6 +9,8 @@ namespace Snail
 		m_speed = 3.5f * PHYSIC_SCALE;
 		m_jumpHeight = 1.2f * PHYSIC_SCALE;
 		m_clampVelocity = { m_speed, m_jumpHeight };
+		m_attackRange = 0;
+		m_isMelee = false;
 	}
 
 	void Enemy::Init()
@@ -37,10 +39,9 @@ namespace Snail
 
 		if (m_IsPlayerInRange()) 
 		{
-			if (m_IsAttackRange())
+			if (m_IsAttackRange(m_isMelee))
 			{
 				std::cout << "Ennemy attacks";
-				
 			} 
 			else
 			{
@@ -92,25 +93,33 @@ namespace Snail
 
 			if (m_physicBodyRef->GetPosition().x < m_target.GetPhysicBodyRef()->GetPosition().x && m_target.GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x + 120)
 			{
-				std::cout << "Player aggroed right \n\n";
 				return true;
 			}
 			else if (m_physicBodyRef->GetPosition().x - 120 < m_target.GetPhysicBodyRef()->GetPosition().x && m_target.GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x)
 			{
-				std::cout << "Player aggroed left \n\n";
 				return true;
 			}
 		}
 		return false;
 	}
 
-	bool Enemy::m_IsAttackRange()
+	bool Enemy::m_IsAttackRange(bool isMelee)
 	{
-		if (m_physicBodyRef->GetPosition().x < m_target.GetPhysicBodyRef()->GetPosition().x && m_target.GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x + 20)
+
+		if (isMelee && m_attackRange != 40.0f)
+		{
+			m_attackRange = 40.0f;
+		}
+		else if (!isMelee && m_attackRange != 80.0f)
+		{
+			m_attackRange = 80.0f;
+		}
+
+		if (m_physicBodyRef->GetPosition().x < m_target.GetPhysicBodyRef()->GetPosition().x && m_target.GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x + m_attackRange)
 		{
 			return true;
 		}
-		else if (m_physicBodyRef->GetPosition().x - 20 < m_target.GetPhysicBodyRef()->GetPosition().x && m_target.GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x)
+		else if (m_physicBodyRef->GetPosition().x - m_attackRange < m_target.GetPhysicBodyRef()->GetPosition().x && m_target.GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x)
 		{
 			return true;
 		}
