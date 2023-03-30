@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "Game/Entity/Projectile/BulletManager.h"
+#include "Game/Entity/Projectile/ProjectileManager.h"
 
 
 namespace Snail

@@ -1,6 +1,6 @@
 #pragma once
 #include "../Entity.h"
-#include "Game/Entity/Projectile/BulletManager.h"
+#include "Game/Entity/Projectile/ProjectileManager.h"
 namespace Snail
 {
 	/**
@@ -15,7 +15,7 @@ namespace Snail
 
 		sf::Vector2f m_wantedWosition;
 
-		BulletManager m_bulletManager;
+		ProjectileManager m_ProjectileManager;
 
 		float m_offset;
 

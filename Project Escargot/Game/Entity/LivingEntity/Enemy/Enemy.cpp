@@ -43,7 +43,7 @@ namespace Snail
 		{
 			if (m_IsAttackRange(m_isMelee))
 			{
-				std::cout << "Ennemy attacks";
+				std::cout << "Ennemy attacks\n";
 			} 
 			else
 			{

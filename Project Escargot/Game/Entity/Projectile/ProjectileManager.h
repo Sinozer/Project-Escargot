@@ -3,7 +3,7 @@
 #include "Game/Entity/Projectile/Projectile.h"
 namespace Snail
 {
-	class BulletManager : Entity
+	class ProjectileManager : Entity
 	{
 	private:
 		GameDataRef m_data;
@@ -53,10 +53,10 @@ namespace Snail
 		* \brief Constructor to not use.
 		*
 		*/
-		BulletManager() {}
+		ProjectileManager() {}
 
-		BulletManager(GameDataRef data, sf::Vector2f shooterCoord, sf::Vector2f mousePositon);
-		~BulletManager();
+		ProjectileManager(GameDataRef data, sf::Vector2f shooterCoord, sf::Vector2f mousePositon);
+		~ProjectileManager();
 
 		void FireBullet(Projectile &type);
 

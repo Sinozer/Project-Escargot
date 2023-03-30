@@ -143,7 +143,7 @@
   <ItemGroup>
     <ClCompile Include="Game\Entity\Projectile\list\Arrow.cpp" />
     <ClCompile Include="Game\Entity\Weapon\Range\List\Bow\Bow.cpp" />
-    <ClCompile Include="Game\Entity\Projectile\BulletManager.cpp" />
+    <ClCompile Include="Game\Entity\Projectile\ProjectileManager.cpp" />
     <ClCompile Include="Game\Entity\LivingEntity\Enemy\Enemy.cpp" />
     <ClCompile Include="Game\Asset\AssetManager.cpp" />
     <ClCompile Include="Game\Game.cpp" />
@@ -174,7 +174,7 @@
     <ClInclude Include="Game\Entity\Projectile\list\Arrow.h" />
     <ClInclude Include="Game\Entity\EntityManager.h" />
     <ClInclude Include="Game\Entity\Weapon\Range\List\Bow\Bow.h" />
-    <ClInclude Include="Game\Entity\Projectile\BulletManager.h" />
+    <ClInclude Include="Game\Entity\Projectile\ProjectileManager.h" />
     <ClInclude Include="Game\Entity\Projectile\Projectile.h" />
     <ClInclude Include="Game\Entity\LivingEntity\Enemy\Enemy.h" />
     <ClInclude Include="Game\Entity\Entity.h" />
