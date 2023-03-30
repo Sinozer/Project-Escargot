@@ -70,15 +70,15 @@ namespace Snail
 
 	void Enemy::m_UpdatePosition()
 	{
-		float stockPosX = m_physicBodyRef->GetPosition().x;
-
 		switch (m_direction)
 		{
 		case LEFT:
 			if (m_target.GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x - 40)
 				m_physicBodyRef->AddVelocity({ -m_speed, 0 }, m_clampVelocity);
 			//Jump if progress isn't made
-			if (m_physicBodyRef->GetPosition().x > stockPosX - 2.0f && m_physicBodyRef->m_IsOnGround)
+			
+			if (previousPositionX == 0.f) break;
+			if (m_physicBodyRef->GetPosition().x > previousPositionX - 1.0f && m_physicBodyRef->m_IsOnGround)
 			{
 				m_physicBodyRef->m_IsOnGround = false;
 				m_physicBodyRef->m_velocity.y = -sqrtf(2.0f * GAME_GRAVITY * m_jumpHeight);
@@ -89,7 +89,9 @@ namespace Snail
 			if (m_target.GetPhysicBodyRef()->GetPosition().x > m_physicBodyRef->GetPosition().x + 40)
 				m_physicBodyRef->AddVelocity({ m_speed, 0 }, m_clampVelocity);
 			//Jump if progress isn't made
-			if (m_physicBodyRef->GetPosition().x < stockPosX + 2.0f && m_physicBodyRef->m_IsOnGround)
+
+			if (previousPositionX == 0.f) break;
+			if (m_physicBodyRef->GetPosition().x < previousPositionX + 1.0f && m_physicBodyRef->m_IsOnGround)
 			{
 				m_physicBodyRef->m_IsOnGround = false;
 				m_physicBodyRef->m_velocity.y = -sqrtf(2.0f * GAME_GRAVITY * m_jumpHeight);
@@ -99,6 +101,8 @@ namespace Snail
 		default:
 			break;
 		}
+		
+		previousPositionX = m_physicBodyRef->GetPosition().x;
 	}
 
 	bool Enemy::m_IsPlayerInRange()
