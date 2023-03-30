@@ -150,11 +150,12 @@
     <ClCompile Include="Game\State\List\JoinState.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Game\State\StateManager.cpp" />
-    <ClCompile Include="Game\State\List\MainState.cpp" />
+    <ClCompile Include="Game\State\List\GameState.cpp" />
     <ClCompile Include="Game\Physic\PhysicBody.cpp" />
     <ClCompile Include="Game\Physic\PhysicBodyManager.cpp" />
     <ClCompile Include="Game\Entity\LivingEntity\Player\Player.cpp" />
     <ClCompile Include="Game\Map\Map.cpp" />
+    <ClCompile Include="Game\State\List\MainState.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
@@ -181,7 +182,7 @@
     <ClInclude Include="Game\State\StateManager.h" />
     <ClInclude Include="Game\Input\InputManager.h" />
     <ClInclude Include="Game\State\List\JoinState.h" />
-    <ClInclude Include="Game\State\List\MainState.h" />
+    <ClInclude Include="Game\State\List\GameState.h" />
     <ClInclude Include="Game\Physic\PhysicBody.h" />
     <ClInclude Include="Game\Physic\PhysicBodyManager.h" />
     <ClInclude Include="Game\Entity\Weapon\Melee\Melee.h" />
@@ -189,6 +190,7 @@
     <ClInclude Include="Game\Entity\LivingEntity\Player\Player.h" />
     <ClInclude Include="Game\Entity\LivingEntity\LivingEntity.h" />
     <ClInclude Include="Game\Map\Map.h" />
+    <ClInclude Include="Game\State\List\MainState.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Game\View\View.h" />
     <ClInclude Include="Game\View\ViewManager.h" />
