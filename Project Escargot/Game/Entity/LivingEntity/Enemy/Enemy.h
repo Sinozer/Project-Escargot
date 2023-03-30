@@ -10,13 +10,16 @@ namespace Snail
 
 		Player& m_target;
 
+		bool m_isMelee;
+		float m_attackRange;
+
 		void m_InitPhysicBody();
 
 		void m_ChangeDirection(Direction direction = NONE);
 		void m_UpdatePosition();
 
 		bool m_IsPlayerInRange();
-		bool m_IsAttackRange();
+		bool m_IsAttackRange(bool isMelee);
 
 	public:
 		/**
