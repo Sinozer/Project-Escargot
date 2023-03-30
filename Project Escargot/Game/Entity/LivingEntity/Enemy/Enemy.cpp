@@ -6,11 +6,11 @@ namespace Snail
 	{
 		m_data = data;
 
-		m_speed = 3.5f * PHYSIC_SCALE;
+		m_speed = 1.2f * PHYSIC_SCALE;
 		m_jumpHeight = 1.2f * PHYSIC_SCALE;
 		m_clampVelocity = { m_speed, m_jumpHeight };
 		m_attackRange = 0;
-		m_isMelee = false;
+		m_isMelee = true;
 	}
 
 	void Enemy::Init(PhysicBodyManager &pbm)
@@ -70,15 +70,31 @@ namespace Snail
 
 	void Enemy::m_UpdatePosition()
 	{
+		float stockPosX = m_physicBodyRef->GetPosition().x;
+
 		switch (m_direction)
 		{
 		case LEFT:
 			if (m_target.GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x - 40)
 				m_physicBodyRef->AddVelocity({ -m_speed, 0 }, m_clampVelocity);
+			//Jump if progress isn't made
+			if (m_physicBodyRef->GetPosition().x > stockPosX - 2.0f && m_physicBodyRef->m_IsOnGround)
+			{
+				m_physicBodyRef->m_IsOnGround = false;
+				m_physicBodyRef->m_velocity.y = -sqrtf(2.0f * GAME_GRAVITY * m_jumpHeight);
+				std::cout << "Jump";
+			}
 			break;
 		case RIGHT:
 			if (m_target.GetPhysicBodyRef()->GetPosition().x > m_physicBodyRef->GetPosition().x + 40)
 				m_physicBodyRef->AddVelocity({ m_speed, 0 }, m_clampVelocity);
+			//Jump if progress isn't made
+			if (m_physicBodyRef->GetPosition().x < stockPosX + 2.0f && m_physicBodyRef->m_IsOnGround)
+			{
+				m_physicBodyRef->m_IsOnGround = false;
+				m_physicBodyRef->m_velocity.y = -sqrtf(2.0f * GAME_GRAVITY * m_jumpHeight);
+				std::cout << "Jump";
+			}
 			break;
 		default:
 			break;
@@ -87,8 +103,6 @@ namespace Snail
 
 	bool Enemy::m_IsPlayerInRange()
 	{
-		std::cout << m_target.GetPhysicBodyRef()->GetPosition().y << "\n";
-
 		if (m_physicBodyRef->GetPosition().y - 80 < m_target.GetPhysicBodyRef()->GetPosition().y && m_target.GetPhysicBodyRef()->GetPosition().y < m_physicBodyRef->GetPosition().y + 20)
 		{
 			std::cout << "Player Y axis in range \n";
