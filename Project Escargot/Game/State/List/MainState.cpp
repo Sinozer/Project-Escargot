@@ -33,9 +33,22 @@ namespace Snail
 
 	void MainState::m_InitUIManager()
 	{
-		m_uiManager.AddText("TITLE", 100.f, 100.f, 100.f, 100.f, m_data->assetManager.LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "ZIZI", 150, sf::Color::Yellow, sf::Color::Green);
+		m_InitUITexts();
+		m_InitUIButtons();
+	}
+
+	void MainState::m_InitUITexts()
+	{
+		m_uiManager.AddText("TITLE", m_data->window.getSize().x / 2.f, m_data->window.getSize().y / 12.f, 0.f, 0.f, m_data->assetManager.LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "Project Escargot", 92, sf::Color::White, sf::Color::Transparent);
+	}
+
+	void MainState::m_InitUIButtons()
+	{
+		m_uiManager.AddButton("PLAY", m_data->window.getSize().x / 2.f - 100.f, m_data->window.getSize().y / 2.2f, 200.f, 75.f, m_data->assetManager.LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "Play", 60, sf::Color(128, 128, 128), sf::Color::White, sf::Color::White, sf::Color(128, 128, 128, 128), sf::Color(128, 128, 128, 192), sf::Color(128, 128, 128));
 		
-		m_uiManager.AddButton("PLAY", 200.f, 100.f, 200.f, 75.f, m_data->assetManager.LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "Play", 60, sf::Color::Black, sf::Color::Black, sf::Color::Black, sf::Color::Red, sf::Color::Green, sf::Color::Blue);
+		m_uiManager.AddButton("SETTINGS", m_data->window.getSize().x / 2.f - 100.f, m_data->window.getSize().y / 1.70f, 200.f, 75.f, m_data->assetManager.LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "Settings", 60, sf::Color(128, 128, 128), sf::Color::White, sf::Color::White, sf::Color(128, 128, 128, 128), sf::Color(128, 128, 128, 192), sf::Color(128, 128, 128));
+		
+		m_uiManager.AddButton("QUIT", m_data->window.getSize().x / 2.f - 75.f, m_data->window.getSize().y / 1.25f, 150.f, 50.f, m_data->assetManager.LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "Quit", 40, sf::Color(128, 128, 128), sf::Color::White, sf::Color::White, sf::Color(128, 128, 128, 128), sf::Color(128, 128, 128, 192), sf::Color(128, 128, 128));
 	}
 
 	void MainState::HandleInput()
@@ -70,7 +83,13 @@ namespace Snail
 		m_uiManager.Update(m_data->inputManager.GetMousePosition(m_data->window), dt);
 
 		if (m_uiManager.Buttons["PLAY"]->IsPressed())
-			m_AddGameState();
+			m_data->stateManager.AddState(StateRef(new GameState(m_data)));
+
+		if (m_uiManager.Buttons["SETTINGS"]->IsPressed())
+			m_data->stateManager.AddState(StateRef(new SettingsState(m_data)));
+
+		if (m_uiManager.Buttons["QUIT"]->IsPressed())
+			m_data->window.close();
 	}
 
 	void MainState::Draw(float dt)
@@ -83,10 +102,5 @@ namespace Snail
 	void MainState::m_DrawUIManager()
 	{
 		m_uiManager.Draw(m_data->window);
-	}
-
-	void MainState::m_AddGameState()
-	{
-		m_data->stateManager.AddState(StateRef(new GameState(m_data)));
 	}
 }

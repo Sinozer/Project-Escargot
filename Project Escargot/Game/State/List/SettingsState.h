@@ -4,7 +4,7 @@ namespace Snail
 	/**
 	 * \brief First state used as a splash screen.
 	 */
-	class MainState : public State
+	class SettingsState : public State
 	{
 	private:
 		GameDataRef m_data;
@@ -26,8 +26,8 @@ namespace Snail
 
 		void m_DrawUIManager();
 	public:
-		MainState(GameDataRef data);
-		~MainState() {}
+		SettingsState(GameDataRef data);
+		~SettingsState() {}
 
 		void Init();
 		void HandleInput();

@@ -37,6 +37,7 @@
 #include "Game/State/State.h"
 #include "Game/State/List/JoinState.h"
 #include "Game/State/List/MainState.h"
+#include "Game/State/List/SettingsState.h"
 #include "Game/State/List/GameState.h"
 #include "Game/View/View.h"
 #include "Game/Physic/PhysicBodyManager.h"
