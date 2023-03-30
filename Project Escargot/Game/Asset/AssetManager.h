@@ -14,7 +14,7 @@ namespace Snail
 		sf::Texture& GetTexture(std::string name);
 		bool TextureExists(std::string name);
 
-		void LoadFont(std::string name, std::string fileName);
+		sf::Font& LoadFont(std::string name, std::string fileName);
 		sf::Font& GetFont(std::string name);
 		bool FontExists(std::string name);
 	};
