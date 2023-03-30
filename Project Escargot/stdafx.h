@@ -24,6 +24,12 @@
 /* #################  SNAIL   ################# */
 #include "Game/Math/Math.h"
 
+#include "Game/UI/UIManager.h"
+#include "Game/UI/Nodes/Text/UIText.h"
+#include "Game/UI/Nodes/Button/UIButton.h"
+#include "Game/UI/Nodes/Checkbox/UICheckbox.h"
+
+
 #include "Game/Game.h"
 #include "Game/State/StateManager.h"
 #include "Game/View/ViewManager.h"
@@ -32,6 +38,8 @@
 #include "Game/State/State.h"
 #include "Game/State/List/JoinState.h"
 #include "Game/State/List/MainState.h"
+#include "Game/State/List/SettingsState.h"
+#include "Game/State/List/GameState.h"
 #include "Game/View/View.h"
 #include "Game/Physic/PhysicBodyManager.h"
 #include "Game/Physic/PhysicBody.h"

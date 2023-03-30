@@ -8,7 +8,6 @@ namespace Snail
 	{
 		sf::RenderWindow window;
 		StateManager stateManager;
-		InputManager inputManager;
 		AssetManager assetManager;
 	};
 
@@ -42,6 +41,5 @@ namespace Snail
 		 * \param title Window title.
 		 */
 		Game(int width, int height, std::string title);
-		~Game() {}
 	};
 }

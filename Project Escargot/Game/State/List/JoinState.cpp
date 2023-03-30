@@ -12,6 +12,7 @@ namespace Snail
 	{
 		m_InitBackground();
 		m_InitView();
+		m_InitUIManager();
 	}
 
 	void JoinState::m_InitBackground()
@@ -30,6 +31,13 @@ namespace Snail
 		m_data->window.setView(m_view);
 	}
 
+	void JoinState::m_InitUIManager()
+	{
+		/*
+			EMPTY
+		*/
+	}
+
 	void JoinState::HandleInput()
 	{
 		sf::Event event;
@@ -44,18 +52,19 @@ namespace Snail
 			default:
 				break;
 			}
-
 		}
 	}
 
 	void JoinState::Update(float dt)
 	{
-		if (m_data->inputManager.IsSpriteLeftClicked(m_background, m_data->window))
+		if (InputManager::GetInstance(m_data->window)->IsSpriteLeftClicked(m_background))
 		{
 			m_AddMainState();
 		}
 
 		m_UpdateBackground();
+
+		m_UpdateUIManager(dt);
 	}
 
 	void JoinState::m_UpdateBackground()
@@ -86,12 +95,32 @@ namespace Snail
 
 	void JoinState::m_UpdateView()
 	{
-		
+		/*
+			EMPTY
+
+			TODO: Remove / Transform view to camera
+		*/
+	}
+
+	void JoinState::m_UpdateUIManager(float dt)
+	{
+		/*
+			EMPTY
+		*/
 	}
 
 	void JoinState::Draw(float dt)
 	{
 		m_data->window.draw(m_background);
+
+		m_DrawUIManager();
+	}
+
+	void JoinState::m_DrawUIManager()
+	{
+		/*
+			EMPTY
+		*/
 	}
 
 	void JoinState::m_AddMainState()

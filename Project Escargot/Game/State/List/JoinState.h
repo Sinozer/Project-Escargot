@@ -17,10 +17,13 @@ namespace Snail
 		
 		void m_InitBackground();
 		void m_InitView();
+		void m_InitUIManager();
 
 		void m_UpdateBackground();
 		void m_UpdateView();
+		void m_UpdateUIManager(float dt);
 
+		void m_DrawUIManager();
 		void m_AddMainState();
 	public:
 		JoinState(GameDataRef data);
