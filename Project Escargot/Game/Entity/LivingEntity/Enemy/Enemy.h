@@ -15,6 +15,9 @@ namespace Snail
 		void m_ChangeDirection(Direction direction = NONE);
 		void m_UpdatePosition();
 
+		bool m_IsPlayerInRange();
+		bool m_IsAttackRange();
+
 	public:
 		/**
 		 * \brief Constructor.
