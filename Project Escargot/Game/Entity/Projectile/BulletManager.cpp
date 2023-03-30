@@ -34,6 +34,11 @@ namespace Snail
 	{
 	}
 
+	void BulletManager::FireBullet(Projectile &type)
+	{	
+
+	}
+
 	void BulletManager::Init(PhysicBodyManager& pbm)
 	{
 		m_InitPhysicBody(pbm);

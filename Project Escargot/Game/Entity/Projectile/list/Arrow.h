@@ -12,16 +12,16 @@ namespace Snail
 		sf::Vector2f m_shooterCoord;
 		sf::Vector2f m_targetPosition;
 
-	public : 
-
-		Arrow(GameDataRef data, sf::Vector2f shooterCoord, sf::Vector2f mousePositon);
-		~Arrow();
-
 		void Init();
 
 		void m_InitPhysicBody();
 
 		void fireAmmo();
+	public : 
+
+		Arrow(GameDataRef data, sf::Vector2f shooterCoord, sf::Vector2f mousePositon);
+		~Arrow();
+
 
 	};
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include "Game/Entity/Entity.h"
+#include "Game/Entity/Projectile/Projectile.h"
 namespace Snail
 {
 	class BulletManager : Entity
@@ -11,6 +12,8 @@ namespace Snail
 		// Entity who's shooting
 		sf::Vector2f m_shooterCoord;
 		sf::Vector2f m_targetPosition;
+
+		std::vector<Projectile*> m_projectiles;
 
 
 		/*enum m_dir
@@ -54,6 +57,8 @@ namespace Snail
 
 		BulletManager(GameDataRef data, sf::Vector2f shooterCoord, sf::Vector2f mousePositon);
 		~BulletManager();
+
+		void FireBullet(Projectile &type);
 
 		void Init(PhysicBodyManager& pbm);
 

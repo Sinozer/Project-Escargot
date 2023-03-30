@@ -23,6 +23,7 @@ namespace Snail
 	void Arrow::Init()
 	{
 		m_InitPhysicBody();
+		fireAmmo();
 	}
 
 	void Arrow::m_InitPhysicBody()
