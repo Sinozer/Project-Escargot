@@ -13,12 +13,12 @@ namespace Snail
 		m_isMelee = false;
 	}
 
-	void Enemy::Init()
+	void Enemy::Init(PhysicBodyManager &pbm)
 	{
-		m_InitPhysicBody();
+		m_InitPhysicBody(pbm);
 	}
 
-	void Enemy::m_InitPhysicBody()
+	void Enemy::m_InitPhysicBody(PhysicBodyManager &pbm)
 	{
 		m_data->assetManager.LoadTexture("TEST_ENTITY", STATE_MAIN_ENTITY_TEST_FILEPATH);
 
@@ -27,6 +27,8 @@ namespace Snail
 		));
 
 		m_physicBodyRef->Scale(sf::Vector2f(0.5f, 0.5f));
+
+		pbm.AddPhysicBody("ENNEMY", m_physicBodyRef);
 	}
 
 	void Enemy::HandleInput()

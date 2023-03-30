@@ -57,7 +57,7 @@ namespace Snail
 
 	void JoinState::Update(float dt)
 	{
-		if (m_data->inputManager.IsSpriteLeftClicked(m_background, m_data->window))
+		if (InputManager::GetInstance(m_data->window)->IsSpriteLeftClicked(m_background))
 		{
 			m_AddMainState();
 		}

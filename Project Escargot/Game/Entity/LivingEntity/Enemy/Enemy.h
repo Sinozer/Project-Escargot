@@ -10,6 +10,7 @@ namespace Snail
 
 		Player& m_target;
 
+		void m_InitPhysicBody(PhysicBodyManager& pbm);
 		bool m_isMelee;
 		float m_attackRange;
 
@@ -29,7 +30,7 @@ namespace Snail
 		 */
 		Enemy(GameDataRef data, Player& target);
 
-		void Init();
+		void Init(PhysicBodyManager& pbm);
 
 		void HandleInput();
 

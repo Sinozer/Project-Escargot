@@ -198,6 +198,9 @@
     <ClCompile Include="Game\Map\Map.cpp">
       <Filter>Fichiers sources\Game\Map</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Entity\Projectile\list\Arrow.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -277,6 +280,9 @@
     </ClInclude>
     <ClInclude Include="Game\Entity\Projectile\BulletManager.h">
       <Filter>Fichiers d%27en-tête\Game\Entity\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Projectile\list\Arrow.h">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -9,13 +9,16 @@ namespace Snail
 
 		// Debug text
 		m_data->assetManager.LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf");
-		m_text = sf::Text("PROJECT SNAIL\nPROTOTYPE", m_data->assetManager.GetFont("ROBOTO_CONDENSED_ITALIC"), 50);
+		m_text = sf::Text("PROJECT SNAIL\nPROTOTYPE", m_data->assetManager.GetFont("ROBOTO_CONDENSED_ITALIC"), 30);
 		m_text.setFillColor(sf::Color::White);
 		m_text.setOutlineColor(sf::Color::Black);
 		m_text.setOutlineThickness(2);
 		m_text.setPosition(20.f, 0.f);
 
 		m_data->stateManager.AddState(StateRef(new JoinState(m_data)));
+
+		// Init InputManager
+		InputManager::GetInstance(m_data->window);
 
 		Run();
 	}

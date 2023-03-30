@@ -12,25 +12,32 @@ namespace Snail
 		bulletCount = 0;
 	}
 
-	void Player::Init()
+	Player::~Player()
 	{
-
-		m_InitPhysicBody();
-		m_InitWeaponManager();
+		if (m_weaponManager)
+			delete(m_weaponManager);
 	}
 
-	void Player::m_InitPhysicBody()
+	void Player::Init(PhysicBodyManager& pbm)
+	{
+		m_InitPhysicBody(pbm);
+		m_InitWeaponManager(pbm);
+	}
+
+	void Player::m_InitPhysicBody(PhysicBodyManager& pbm)
 	{
 		m_physicBodyRef = PhysicBodyRef(PhysicBody::CreateBoxBody(
 			sf::Vector2f(16.f, 32.f), sf::Vector2f(150, 150), 0.f, false/*, m_data->assetManager.GetTexture("STATE_JOIN_BACKGROUND")*/
 		));
+
+		pbm.AddPhysicBody("PLAYER", m_physicBodyRef);
 	}
 
-	void Player::m_InitWeaponManager()
+	void Player::m_InitWeaponManager(PhysicBodyManager& pbm)
 	{
-		m_weaponManager.AddWeapon("BOW");
+		m_weaponManager = new WeaponManager(pbm);
+		m_weaponManager->AddWeapon("BOW");
 	}
-
 
 	void Player::HandleInput()
 	{
@@ -54,7 +61,7 @@ namespace Snail
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
 			//bulletCount++;
-			m_weaponManager.Use();
+			m_weaponManager->Use();
 		}
 
 		//if (DEBUG)
@@ -77,7 +84,7 @@ namespace Snail
 
 	void Player::m_UpdateWeaponManager(float dt)
 	{
-		m_weaponManager.Update(dt);
+		m_weaponManager->Update(dt);
 	}
 
 	void Player::Draw()
@@ -87,7 +94,7 @@ namespace Snail
 
 	void Player::m_DrawWeaponManager()
 	{
-		m_weaponManager.Draw();
+		m_weaponManager->Draw();
 	}
 
 	PhysicBodyRef Player::GetPhysicBodyRef()
