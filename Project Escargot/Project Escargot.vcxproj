@@ -162,6 +162,10 @@
     <ClCompile Include="Game\View\View.cpp" />
     <ClCompile Include="Game\View\ViewManager.cpp" />
     <ClCompile Include="Game\Entity\Weapon\WeaponManager.cpp" />
+    <ClCompile Include="Game\UI\UIManager.cpp" />
+    <ClCompile Include="Game\UI\Nodes\Text\UIText.cpp" />
+    <ClCompile Include="Game\UI\Nodes\Checkbox\UICheckbox.cpp" />
+    <ClCompile Include="Game\UI\Nodes\Button\UIButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\Entity\EntityManager.h" />
@@ -190,6 +194,10 @@
     <ClInclude Include="Game\View\ViewManager.h" />
     <ClInclude Include="Game\Entity\Weapon\Weapon.h" />
     <ClInclude Include="Game\Entity\Weapon\WeaponManager.h" />
+    <ClInclude Include="Game\UI\UIManager.h" />
+    <ClInclude Include="Game\UI\Nodes\Text\UIText.h" />
+    <ClInclude Include="Game\UI\Nodes\Checkbox\UICheckbox.h" />
+    <ClInclude Include="Game\UI\Nodes\Button\UIButton.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -47,6 +47,11 @@
 #include "Game/Entity/LivingEntity/Enemy/Enemy.h"
 #include "Game/Entity/LivingEntity/LivingEntity.h"
 #include "Game/Map/Map.h"
+
+#include "Game/UI/UIManager.h"
+#include "Game/UI/Nodes/Text/UIText.h"
+#include "Game/UI/Nodes/Button/UIButton.h"
+#include "Game/UI/Nodes/Checkbox/UICheckbox.h"
 /* #################  SNAIL   ################# */
 
 /* ###############################  INCLUDES   ############################### */
