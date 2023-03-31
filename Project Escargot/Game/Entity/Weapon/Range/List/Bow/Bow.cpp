@@ -33,7 +33,7 @@ namespace Snail
 
 	void Bow::Use()
 	{
-		//std::cout << "Bow::Use()" << "\n";
+		std::cout << "Bow::Use()" << "\n";
 		m_projectileManager.Shoot(m_physicBodyRef->GetPosition());
 	}
 
