@@ -141,6 +141,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Game\Entity\Collectables\CollectableObject.cpp" />
     <ClCompile Include="Game\Entity\Weapon\Range\List\Bow\Bow.cpp" />
     <ClCompile Include="Game\Entity\Projectile\BulletManager.cpp" />
     <ClCompile Include="Game\Entity\LivingEntity\Enemy\Enemy.cpp" />
@@ -164,6 +165,7 @@
     <ClCompile Include="Game\Entity\Weapon\WeaponManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game\Entity\Collectables\CollectableObject.h" />
     <ClInclude Include="Game\Entity\EntityManager.h" />
     <ClInclude Include="Game\Entity\Weapon\Range\List\Bow\Bow.h" />
     <ClInclude Include="Game\Entity\Projectile\BulletManager.h" />
