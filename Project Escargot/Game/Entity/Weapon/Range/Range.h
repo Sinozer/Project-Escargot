@@ -13,13 +13,12 @@ namespace Snail
 		float m_DamageMultiplier;
 		float m_rangeMultiplier;
 
-		std::vector<Projectile*> m_Projectiles; //libére ta mémoire fils
+		ProjectileManager m_projectileManager;
 
 		sf::Vector2f m_shooterCoord;
 		sf::Vector2f m_targetPosition;
-
-		Projectile* m_baseProjectile; //libére ta mémoire fils
 	public:
+		/*Range();*/
 		//virtual ~Range();
 	};
 }

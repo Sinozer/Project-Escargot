@@ -43,7 +43,7 @@ namespace Snail
 		{
 			if (m_IsAttackRange(m_isMelee))
 			{
-				std::cout << "Ennemy attacks";
+				std::cout << "Ennemy attacks\n";
 			} 
 			else
 			{
@@ -107,8 +107,6 @@ namespace Snail
 	{
 		if (m_physicBodyRef->GetPosition().y - 80 < m_target.GetPhysicBodyRef()->GetPosition().y && m_target.GetPhysicBodyRef()->GetPosition().y < m_physicBodyRef->GetPosition().y + 20)
 		{
-			std::cout << "Player Y axis in range \n";
-
 			if (m_physicBodyRef->GetPosition().x < m_target.GetPhysicBodyRef()->GetPosition().x && m_target.GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x + 120)
 			{
 				return true;

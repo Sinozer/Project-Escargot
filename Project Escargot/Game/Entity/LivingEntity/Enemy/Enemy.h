@@ -3,7 +3,7 @@
 #include "Game/Entity/LivingEntity/Player/Player.h"
 namespace Snail
 {
-	class Enemy : LivingEntity
+	class Enemy : public LivingEntity
 	{
 	private:
 		float previousPositionX;
@@ -12,9 +12,10 @@ namespace Snail
 
 		Player& m_target;
 
-		void m_InitPhysicBody(PhysicBodyManager& pbm);
 		bool m_isMelee;
 		float m_attackRange;
+
+		void m_InitPhysicBody(PhysicBodyManager& pbm);
 
 		void m_ChangeDirection(Direction direction = NONE);
 		void m_UpdatePosition();

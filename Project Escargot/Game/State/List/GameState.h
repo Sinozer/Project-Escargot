@@ -3,8 +3,8 @@
 #include "Game/Entity/LivingEntity/LivingEntity.h"
 #include "Game/Entity/LivingEntity/Player/Player.h"
 #include "Game/Entity/LivingEntity/Enemy/Enemy.h"
-#include "Game/Entity/Projectile/BulletManager.h"
-//
+#include "Game/Entity/Projectile/ProjectileManager.h"
+
 #include <Game/Entity/Collectables/CollectableObject.h>
 namespace Snail
 {
@@ -26,7 +26,7 @@ namespace Snail
 
 		sf::Clock m_clock;
 
-		BulletManager *m_bullet;
+		ProjectileManager *m_bullet;
 
 		int m_tempBulletCount;
 		int m_timerBulletFire;

@@ -1,6 +1,6 @@
 #pragma once
 #include "../Entity.h"
-#include "Game/Entity/Projectile/BulletManager.h"
+#include "Game/Entity/Projectile/ProjectileManager.h"
 namespace Snail
 {
 	/**
@@ -11,11 +11,9 @@ namespace Snail
 	protected:
 		std::string m_name;
 
-		PhysicBodyRef m_physiBodyRef;
+		PhysicBodyRef m_physicBodyRef;
 
 		sf::Vector2f m_wantedWosition;
-
-		BulletManager m_bulletManager;
 
 		float m_offset;
 

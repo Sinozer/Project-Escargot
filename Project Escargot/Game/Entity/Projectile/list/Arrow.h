@@ -1,10 +1,10 @@
 #include "stdafx.h"
-#include "Game/Entity/Projectile/BulletManager.h"
+#include "Game/Entity/Projectile/Projectile.h"
 
 
 namespace Snail
 {
-	class Arrow : Projectile
+	class Arrow : public Projectile
 	{
 	private :
 		GameDataRef m_data;
@@ -12,16 +12,16 @@ namespace Snail
 		sf::Vector2f m_shooterCoord;
 		sf::Vector2f m_targetPosition;
 
-	public : 
+		void m_InitPhysicBody(PhysicBodyManager& pbm);
 
-		Arrow(GameDataRef data, sf::Vector2f shooterCoord, sf::Vector2f mousePositon);
+	public : 
+		Arrow(GameDataRef data, sf::Vector2f shooterCoord, unsigned int id = 0);
 		~Arrow();
 
-		void Init();
+		void Init(PhysicBodyManager& pbm);
+		void Shoot();
 
-		void m_InitPhysicBody();
-
-		void fireAmmo();
-
+		void Update(float dt);
+		void Draw();
 	};
 }
