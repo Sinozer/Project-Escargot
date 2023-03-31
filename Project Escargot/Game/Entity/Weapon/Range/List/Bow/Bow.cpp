@@ -24,7 +24,7 @@ namespace Snail
 	void Bow::m_InitPhysicBody(PhysicBodyManager &pbm)
 	{
 		m_physicBodyRef = PhysicBodyRef(PhysicBody::CreateBoxBody(
-			sf::Vector2f(5.f, 5.f), sf::Vector2f(150, 150), 0.f, false
+			sf::Vector2f(5.f, 5.f), sf::Vector2f(150, 150), 0.f, false,false
 		));
 
 		pbm.AddPhysicBody("BOW", m_physicBodyRef);

@@ -28,7 +28,7 @@ namespace Snail
 	{
 		if (m_physicBodies.empty())
 			return;
-
+		
 		for (auto& physicBody : m_physicBodies)
 		{
 			if (physicBody.second && !physicBody.second->m_IsStatic)
@@ -47,8 +47,12 @@ namespace Snail
 					if (otherPhysicBody == physicBody) continue;
 					sf::Vector2f direction;
 
-					if (physicBody.second && otherPhysicBody.second && physicBody.second->CheckCollision(otherPhysicBody.second, direction))
+					if (physicBody.second && otherPhysicBody.second && physicBody.second->CheckCollision(otherPhysicBody.second, direction)) {
 						physicBody.second->OnCollision(direction);
+						if (m_physicBodies.find("Collectible")->second->CheckCollision(physicBody.second, direction) == true) {
+							std::cout << "colect\n";
+						}
+					}
 				}
 			}
 		}

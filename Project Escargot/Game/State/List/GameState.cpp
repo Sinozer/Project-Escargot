@@ -26,6 +26,7 @@ namespace Snail
 
 		m_player.Init(m_physicBodyManager);
 		m_enemy.Init(m_physicBodyManager);
+		m_collectable.Init(m_physicBodyManager);
 
 		m_physicBodyManager.AddPhysicBody("PLAYER", m_player.GetPhysicBodyRef());
 
