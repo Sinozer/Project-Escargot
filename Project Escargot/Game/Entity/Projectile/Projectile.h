@@ -8,7 +8,10 @@ namespace Snail
 	class Projectile : public Entity
 	{
 	protected:
-		PhysicBodyRef m_physiBodyRef;
+		unsigned int m_id;
+	protected:
+		GameDataRef m_data;
+		PhysicBodyRef m_physicBodyRef;
 
 		sf::Vector2f m_weaponPosition;
 		sf::Vector2f m_targetPosition;
@@ -18,6 +21,6 @@ namespace Snail
 		float m_speed;
 		float m_range;
 	public:
-		virtual void AddBullet() = 0;
+		//virtual void AddBullet() = 0;
 	};
 }

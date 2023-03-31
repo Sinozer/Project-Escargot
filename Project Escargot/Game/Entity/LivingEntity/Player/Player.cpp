@@ -60,7 +60,6 @@ namespace Snail
 		}
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-			//bulletCount++;
 			m_weaponManager->Use();
 		}
 

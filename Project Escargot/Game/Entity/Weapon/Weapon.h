@@ -11,11 +11,9 @@ namespace Snail
 	protected:
 		std::string m_name;
 
-		PhysicBodyRef m_physiBodyRef;
+		PhysicBodyRef m_physicBodyRef;
 
 		sf::Vector2f m_wantedWosition;
-
-		ProjectileManager m_ProjectileManager;
 
 		float m_offset;
 

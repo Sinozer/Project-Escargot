@@ -1,5 +1,7 @@
 #pragma once
 #include "Game/Entity/Weapon/Range/Range.h"
+#include "Game/Entity/Projectile/list/Arrow.h"
+
 
 namespace Snail
 {

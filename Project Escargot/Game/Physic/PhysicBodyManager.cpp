@@ -63,6 +63,10 @@ namespace Snail
 		for (auto& physicBody : m_physicBodies)
 		{
 			if (physicBody.second)
+				if (physicBody.second->GetPosition() == sf::Vector2f(-1.f, -1.f))
+					std::cout << "OUI\n";
+			
+			if (physicBody.second)
 				physicBody.second->Draw(m_data->window);
 		}
 	}

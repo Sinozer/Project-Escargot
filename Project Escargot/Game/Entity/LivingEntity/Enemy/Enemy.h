@@ -3,7 +3,7 @@
 #include "Game/Entity/LivingEntity/Player/Player.h"
 namespace Snail
 {
-	class Enemy : LivingEntity
+	class Enemy : public LivingEntity
 	{
 	private:
 		float previousPositionX;

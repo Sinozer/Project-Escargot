@@ -29,34 +29,6 @@ namespace Snail
 
 		m_physicBodyManager.AddPhysicBody("PLAYER", m_player.GetPhysicBodyRef());
 
-
-
-		/**
-		 * \brief Tests with dummy boxes.
-		 * 
-		 */
-		//m_data->assetManager.LoadTexture("ENTITY_DUMMY", STATE_MAIN_DUMMY_ENTITY_TEST_FILEPATH);
-		////ground
-		//m_physicBodyManager.AddPhysicBody("GROUND", PhysicBodyRef(PhysicBody::CreateBoxBody(
-		//	sf::Vector2f(1000.f, 100.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, 650.f), 1.f, true
-		//)));
-		//
-		//// dummy box
-		//m_physicBodyManager.AddPhysicBody("BOX", PhysicBodyRef(PhysicBody::CreateBoxBody(
-		//	sf::Vector2f(16.f, 16.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, WINDOW_SCREEN_HEIGHT / 4.f), 0.5f, false,
-		//	m_data->assetManager.GetTexture("ENTITY_DUMMY")
-		//)));
-		//
-		//m_physicBodyManager.AddPhysicBody("BOX2", PhysicBodyRef(PhysicBody::CreateBoxBody(
-		//	sf::Vector2f(16.f, 16.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, WINDOW_SCREEN_HEIGHT / 8.f), 0.5f, false,
-		//	m_data->assetManager.GetTexture("ENTITY_DUMMY")
-		//)));
-		//
-		//m_physicBodyManager.AddPhysicBody("BOX3", PhysicBodyRef(PhysicBody::CreateBoxBody(
-		//	sf::Vector2f(16.f, 16.f), sf::Vector2f(WINDOW_SCREEN_WIDTH / 2.f, WINDOW_SCREEN_HEIGHT / 16.f), 0.5f, false,
-		//	m_data->assetManager.GetTexture("ENTITY_DUMMY")
-		//)));
-
 		// ennemy
 		m_physicBodyManager.AddPhysicBody("ENNEMY", m_enemy.GetPhysicBodyRef());
 	}
