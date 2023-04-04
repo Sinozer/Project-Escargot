@@ -172,6 +172,7 @@
     <ClCompile Include="Game\UI\Nodes\Button\UIButton.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game\BitMask.h" />
     <ClInclude Include="Game\Entity\Collectables\CollectableObject.h" />
     <ClInclude Include="Game\Entity\Projectile\list\Arrow.h" />
     <ClInclude Include="Game\Entity\EntityManager.h" />

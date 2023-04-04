@@ -1,5 +1,5 @@
 #include "stdafx.h"
-
+#include "BitMask.h"
 namespace Snail
 {
 	Game::Game(int width, int height, std::string title)
@@ -20,7 +20,15 @@ namespace Snail
 		// Init InputManager
 		InputManager::GetInstance(m_data->window);
 
+
+		// Test BitMask
+		std::cout << Bitmask[TypeCollide][BitMaskPlayer] << std::endl;
+		std::cout << Bitmask[0][1] << std::endl;
+		std::cout << (Bitmask[0][0] | Bitmask[0][1]) << std::endl;
+
+		
 		Run();
+		
 	}
 
 	void Game::m_UpdateDt()
