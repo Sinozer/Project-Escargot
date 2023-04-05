@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "BitMask.h"
+#include "Bitmask/BitMask.h"
 namespace Snail
 {
 	Game::Game(int width, int height, std::string title)
