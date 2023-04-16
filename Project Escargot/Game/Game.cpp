@@ -16,15 +16,13 @@ namespace Snail
 		m_text.setPosition(20.f, 0.f);
 
 		m_data->stateManager.AddState(StateRef(new JoinState(m_data)));
-
+		Bitmask bitmask;
 		// Init InputManager
 		InputManager::GetInstance(m_data->window);
 
 
 		// Test BitMask
-		std::cout << Bitmask[TypeCollide][BitMaskPlayer] << std::endl;
-		std::cout << Bitmask[0][1] << std::endl;
-		std::cout << (Bitmask[0][0] | Bitmask[0][1]) << std::endl;
+		std::cout << bitmask.logicAnd(bitmask.TypeCollide,bitmask.BitMaskBox, bitmask.TypeCollider, bitmask.BitMaskEnemy) << std::endl;
 
 		
 		Run();

@@ -8,17 +8,26 @@ namespace Snail {
 	}
 	Bitmask::~Bitmask()
 	{
+
 	}
-	int Bitmask::logicAnd()
+	int Bitmask::returnBitMask(typeBitMask type, numBitMask bitmask)
 	{
-		return 0;
+		return TabBitmask[type][bitmask];
 	}
-	int Bitmask::logicXor()
+	void Bitmask::changeEtatBitMask(typeBitMask type, numBitMask bitmask, int bits)
 	{
-		return 0;
+		TabBitmask[type][bitmask] = bits;
 	}
-	int Bitmask::logicOr()
+	int Bitmask::logicAnd(typeBitMask type1, numBitMask bitmask1, typeBitMask type2, numBitMask bitmask2)
 	{
-		return 0;
+		return TabBitmask[type1][bitmask1] & TabBitmask[type2][bitmask2];
+	}
+	int Bitmask::logicXor(typeBitMask type1, numBitMask bitmask1, typeBitMask type2, numBitMask bitmask2)
+	{
+		return TabBitmask[type1][bitmask1] ^ TabBitmask[type2][bitmask2];
+	}
+	int Bitmask::logicOr(typeBitMask type1, numBitMask bitmask1, typeBitMask type2, numBitMask bitmask2)
+	{
+		return TabBitmask[type1][bitmask1] | TabBitmask[type2][bitmask2];
 	}
 }

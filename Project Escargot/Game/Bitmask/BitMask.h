@@ -2,6 +2,14 @@
 namespace Snail {
 	class Bitmask {
 		private:
+
+			int* TabBitmask[3] = {
+				 Collide,
+				 Collider,
+				 DirectionCollide,
+			};
+
+
 			int Collide[6] =
 			{
 				0b000001,//Player
@@ -29,6 +37,19 @@ namespace Snail {
 				0b0000,//Bullet
 			};
 
+
+		public:
+
+			Bitmask();
+			~Bitmask();
+
+			
+			enum typeBitMask {
+				TypeCollide = 0,
+				TypeCollider = 1,
+				TypeDirectionCollide = 2,
+			};
+
 			enum numBitMask {
 				BitMaskPlayer = 0,
 				BitMaskEnemy = 1,
@@ -37,26 +58,13 @@ namespace Snail {
 				BitMaskPlatforme = 4,
 				BitMaskBullet = 5
 			};
-
-			int* TabBitmask[3] = {
-				 Collide,
-				 Collider,
-				 DirectionCollide,
-			};
-
-			enum typeBitMask {
-				TypeCollide = 0,
-				TypeCollider = 1,
-				TypeDirectionCollide = 2,
-			};
-		public:
-
-			Bitmask();
-			~Bitmask();
-
-			int logicAnd();
-			int logicXor();
-			int logicOr();
+			
+			
+			int returnBitMask(typeBitMask type, numBitMask bitmask);
+			void changeEtatBitMask(typeBitMask type, numBitMask bitmask, int bits);
+			int logicAnd(typeBitMask type1, numBitMask bitmask1, typeBitMask type2, numBitMask bitmask2);
+			int logicXor(typeBitMask type1, numBitMask bitmask1, typeBitMask type2, numBitMask bitmask2);
+			int logicOr(typeBitMask type1, numBitMask bitmask1, typeBitMask type2, numBitMask bitmask2);
 
 
 
