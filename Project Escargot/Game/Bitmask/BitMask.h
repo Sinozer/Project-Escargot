@@ -9,6 +9,15 @@ namespace Snail {
 				 DirectionCollide,
 			};
 
+			int Layers[6] = {
+				0b000001,//Player
+				0b000010,//Enemy
+				0b000100,//Collectible
+				0b001000,//Box
+				0b010000,//Platforme
+				0b100000,//Bullet
+			};
+
 
 			int Collide[6] =
 			{
@@ -43,6 +52,15 @@ namespace Snail {
 			Bitmask();
 			~Bitmask();
 
+			enum LayersObject {
+				Player = 0,
+				Enemy = 1,
+				Collectible = 2,
+				Box = 3,
+				Platforme = 4,
+				Bullet = 5,
+			};
+
 			enum typeBitMask {
 				TypeCollide = 0,
 				TypeCollider = 1,
@@ -62,7 +80,7 @@ namespace Snail {
 
 			int returnBitMask(typeBitMask type, numBitMask bitmask);
 			void changeEtatBitMask(typeBitMask type, numBitMask bitmask, int bits);
-
+			int GetLayersObject(LayersObject nameLayers);
 
 
 			int logicAnd(typeBitMask type1, numBitMask bitmask1, typeBitMask type2, numBitMask bitmask2);

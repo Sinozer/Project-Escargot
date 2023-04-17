@@ -35,6 +35,11 @@ namespace Snail {
 		}
 	}
 
+	int Bitmask::GetLayersObject(LayersObject nameLayers)
+	{
+		return Layers[nameLayers];
+	}
+
 	//logicAnd return -> int 
 	int Bitmask::logicAnd(typeBitMask type1, numBitMask bitmask1, typeBitMask type2, numBitMask bitmask2)
 	{
