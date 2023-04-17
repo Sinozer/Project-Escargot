@@ -43,7 +43,6 @@ namespace Snail {
 			Bitmask();
 			~Bitmask();
 
-			
 			enum typeBitMask {
 				TypeCollide = 0,
 				TypeCollider = 1,
@@ -60,13 +59,35 @@ namespace Snail {
 			};
 			
 			
+
 			int returnBitMask(typeBitMask type, numBitMask bitmask);
 			void changeEtatBitMask(typeBitMask type, numBitMask bitmask, int bits);
+
 			int logicAnd(typeBitMask type1, numBitMask bitmask1, typeBitMask type2, numBitMask bitmask2);
+			int logicAnd(int bits, typeBitMask type2, numBitMask bitmask2);
+			int logicAnd(int bits, int bits2);
+
 			int logicXor(typeBitMask type1, numBitMask bitmask1, typeBitMask type2, numBitMask bitmask2);
+			int logicXor(int bits, typeBitMask type2, numBitMask bitmask2);
+			int logicXor(int bits, int bits2);
+
 			int logicOr(typeBitMask type1, numBitMask bitmask1, typeBitMask type2, numBitMask bitmask2);
+			int logicOr(int bits, typeBitMask type2, numBitMask bitmask2);
+			int logicOr(int bits, int bits2);
 
 
+
+			bool logicAndBool(typeBitMask type1, numBitMask bitmask1, typeBitMask type2, numBitMask bitmask2);
+			bool logicAndBool(int bits, typeBitMask type2, numBitMask bitmask2);
+			bool logicAndBool(int bits, int bits2);
+
+			bool logicXorBool(typeBitMask type1, numBitMask bitmask1, typeBitMask type2, numBitMask bitmask2);
+			bool logicXorBool(int bits, typeBitMask type2, numBitMask bitmask2);
+			bool logicXorBool(int bits, int bits2);
+
+			bool logicOrBool(typeBitMask type1, numBitMask bitmask1, typeBitMask type2, numBitMask bitmask2);
+			bool logicOrBool(int bits, typeBitMask type2, numBitMask bitmask2);
+			bool logicOrBool(int bits, int bits2);
 
 	};
 }

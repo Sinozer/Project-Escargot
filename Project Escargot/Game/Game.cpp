@@ -22,7 +22,13 @@ namespace Snail
 
 
 		// Test BitMask
-		std::cout << bitmask.logicAnd(bitmask.TypeCollide,bitmask.BitMaskBox, bitmask.TypeCollider, bitmask.BitMaskEnemy) << std::endl;
+		/*
+		std::cout << bitmask.returnBitMask(bitmask.TypeCollide ,bitmask.BitMaskBullet) << std::endl;
+		bitmask.changeEtatBitMask(bitmask.TypeCollide, bitmask.BitMaskBullet, 5);
+		std::cout << bitmask.returnBitMask(bitmask.TypeCollide, bitmask.BitMaskBullet) << std::endl;
+		*/
+
+
 
 		
 		Run();
