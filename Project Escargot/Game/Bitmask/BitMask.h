@@ -63,6 +63,8 @@ namespace Snail {
 			int returnBitMask(typeBitMask type, numBitMask bitmask);
 			void changeEtatBitMask(typeBitMask type, numBitMask bitmask, int bits);
 
+
+
 			int logicAnd(typeBitMask type1, numBitMask bitmask1, typeBitMask type2, numBitMask bitmask2);
 			int logicAnd(int bits, typeBitMask type2, numBitMask bitmask2);
 			int logicAnd(int bits, int bits2);

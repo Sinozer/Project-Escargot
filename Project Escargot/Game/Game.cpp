@@ -27,9 +27,6 @@ namespace Snail
 		bitmask.changeEtatBitMask(bitmask.TypeCollide, bitmask.BitMaskBullet, 5);
 		std::cout << bitmask.returnBitMask(bitmask.TypeCollide, bitmask.BitMaskBullet) << std::endl;
 		*/
-
-
-
 		
 		Run();
 		

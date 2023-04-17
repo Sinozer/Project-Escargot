@@ -18,7 +18,21 @@ namespace Snail {
 	}
 	void Bitmask::changeEtatBitMask(typeBitMask type, numBitMask bitmask, int bits)
 	{
-		TabBitmask[type][bitmask] = bits;
+		if (type == TypeDirectionCollide && bits <= 15) {
+			TabBitmask[TypeDirectionCollide][bitmask] = bits;
+			std::cout << "Changement fait à: TypeDirectionCollide \n bitmask choisie : " << bitmask << "\n ints: "<< bits << "\n";
+		}
+		else if (type == TypeCollide && bits <= 63) {
+			TabBitmask[TypeCollide][bitmask] = bits;
+			std::cout << "Changement fait à: TypeCollide \n bitmask choisie : " << bitmask << "\n ints: " << bits<<"\n";
+		}
+		else if (type == TypeCollider && bits <= 63) {
+			TabBitmask[TypeCollider][bitmask] = bits;
+			std::cout << "Changement fait à: TypeCollider \n bitmask choisie : " << bitmask << "\n ints: " << bits << "\n";
+		}
+		else {
+			std::cout << "impossible de changer veuiller refaire le changement\n ";
+		}
 	}
 
 	//logicAnd return -> int 
