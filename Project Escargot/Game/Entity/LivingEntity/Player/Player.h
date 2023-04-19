@@ -11,6 +11,8 @@ namespace Snail
 		GameDataRef m_data;
 		WeaponManager* m_weaponManager;
 
+
+
 		
 		void m_InitPhysicBody(PhysicBodyManager& pbm);
 		void m_InitWeaponManager(PhysicBodyManager& pbm);
@@ -31,6 +33,8 @@ namespace Snail
 		void Init(PhysicBodyManager &pbm);
 
 		void HandleInput();
+
+		sf::Vector2i GetLocalPosition();
 
 		void Update(float dt);
 

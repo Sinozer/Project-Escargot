@@ -71,6 +71,11 @@ namespace Snail
 
 	}
 
+	sf::Vector2i Player::GetLocalPosition()
+	{
+		m_data->window.mapPixelToCoords((sf::Vector2i)m_physicBodyRef->GetPosition());
+	}
+
 	void Player::m_ChangeDirection(Direction direction)
 	{
 		m_direction = direction;
@@ -84,7 +89,7 @@ namespace Snail
 	void Player::m_UpdateWeaponManager(float dt)
 	{
 		m_weaponManager->Update(dt);
-		m_weaponManager->HandlerPos(m_physicBodyRef->GetPosition());
+		m_weaponManager->HandlerPos((sf::Vector2f)GetLocalPosition());
 	}
 
 	void Player::Draw()
