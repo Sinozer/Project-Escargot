@@ -21,13 +21,13 @@ namespace Snail
 	}
 
 
-	void Arrow::Init(PhysicBodyManager& pbm)
+	void Arrow::Init(PhysicBodyManager& pbm, sf::Vector2f position)
 	{
-		m_InitPhysicBody(pbm);
+		m_InitPhysicBody(pbm, position);
 		//Shoot();
 	}
 
-	void Arrow::m_InitPhysicBody(PhysicBodyManager& pbm)
+	void Arrow::m_InitPhysicBody(PhysicBodyManager& pbm, sf::Vector2f position)
 	{
 		m_physicBodyRef = PhysicBodyRef(PhysicBody::CreateBoxBody(
 			sf::Vector2f(5.f, 2.f), sf::Vector2f(m_shooterCoord.x, m_shooterCoord.y), 0.f, false,

@@ -23,7 +23,7 @@ namespace Snail
 		std::vector<Projectile*> m_projectiles;
 
 
-		void m_InitPhysicBody(PhysicBodyManager& pbm);
+		void m_InitPhysicBody(PhysicBodyManager& pbm, sf::Vector2f position);
 	public:
 
 		PhysicBodyRef m_physicBodyRef;
@@ -37,7 +37,7 @@ namespace Snail
 		ProjectileManager(GameDataRef data, sf::Vector2f shooterCoord, sf::Vector2f mousePositon);
 		~ProjectileManager();
 
-		void Init(PhysicBodyManager& pbm);
+		void Init(PhysicBodyManager& pbm, sf::Vector2f position);
 
 		void SetProjectile(EProjectile ref);
 

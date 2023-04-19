@@ -37,12 +37,12 @@ namespace Snail
 			delete i;
 	}
 
-	void ProjectileManager::Init(PhysicBodyManager& pbm)
+	void ProjectileManager::Init(PhysicBodyManager& pbm, sf::Vector2f position = sf::Vector2f(0,0))
 	{
-		m_InitPhysicBody(pbm);
+		m_InitPhysicBody(pbm, position);
 	}
 
-	void ProjectileManager::m_InitPhysicBody(PhysicBodyManager& pbm)
+	void ProjectileManager::m_InitPhysicBody(PhysicBodyManager& pbm, sf::Vector2f position)
 	{
 		m_physicBodyManager = pbm;
 	}
@@ -60,7 +60,7 @@ namespace Snail
 			break;
 		case Snail::ARROW:
 			Arrow* temp = new Arrow(m_data, startingPoint);
-			temp->Init(m_physicBodyManager);
+			temp->Init(m_physicBodyManager, startingPoint);
 			temp->Shoot();
 			m_projectiles.push_back(temp);
 			

@@ -26,7 +26,7 @@ namespace Snail
         
         
         m_activeWeapon = m_weapons.at(weaponName);
-		m_activeWeapon->Init(m_physicBodyManager);
+		m_activeWeapon->Init(m_physicBodyManager, sf::Vector2f(0,0));
     }
 
     void WeaponManager::Use()

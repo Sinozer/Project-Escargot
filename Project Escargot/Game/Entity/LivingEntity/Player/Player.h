@@ -12,7 +12,7 @@ namespace Snail
 		WeaponManager* m_weaponManager;
 
 		
-		void m_InitPhysicBody(PhysicBodyManager& pbm);
+		void m_InitPhysicBody(PhysicBodyManager& pbm, sf::Vector2f position);
 		void m_InitWeaponManager(PhysicBodyManager& pbm);
 		void m_ChangeDirection(Direction direction = NONE);
 		void m_UpdateWeaponManager(float dt);
@@ -28,7 +28,7 @@ namespace Snail
 		Player(GameDataRef data);
 		~Player();
 
-		void Init(PhysicBodyManager &pbm);
+		void Init(PhysicBodyManager &pbm, sf::Vector2f position = sf::Vector2f(150, 150));
 
 		void HandleInput();
 

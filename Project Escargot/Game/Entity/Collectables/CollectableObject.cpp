@@ -12,9 +12,9 @@ namespace Snail {
 	{
 	}
 
-	void CollectableObject::Init(PhysicBodyManager& pbm)
+	void CollectableObject::Init(PhysicBodyManager& pbm, sf::Vector2f position)
 	{
-		m_InitPhysicBody(pbm);
+		m_InitPhysicBody(pbm, position);
 	}
 
 	void CollectableObject::Update(float dt )
@@ -28,10 +28,10 @@ namespace Snail {
 		//m_collectablePhysicBody->Draw();
 	}
 
-	void CollectableObject::m_InitPhysicBody(PhysicBodyManager& pbm)
+	void CollectableObject::m_InitPhysicBody(PhysicBodyManager& pbm, sf::Vector2f position)
 	{
 		m_collectablePhysicBody = PhysicBodyRef(PhysicBody::CreateBoxBody(
-			sf::Vector2f(16.f, 16.f), sf::Vector2f(170, 170), 0.f, true,true, false
+			sf::Vector2f(16.f, 16.f), position, 0.f, true,true, false
 		));
 		pbm.AddPhysicBody("Collectible", m_collectablePhysicBody);
 	}

@@ -18,16 +18,16 @@ namespace Snail
 			delete(m_weaponManager);
 	}
 
-	void Player::Init(PhysicBodyManager& pbm)
+	void Player::Init(PhysicBodyManager& pbm, sf::Vector2f position)
 	{
-		m_InitPhysicBody(pbm);
+		m_InitPhysicBody(pbm, position);
 		m_InitWeaponManager(pbm);
 	}
 
-	void Player::m_InitPhysicBody(PhysicBodyManager& pbm)
+	void Player::m_InitPhysicBody(PhysicBodyManager& pbm, sf::Vector2f position)
 	{
 		m_physicBodyRef = PhysicBodyRef(PhysicBody::CreateBoxBody(
-			sf::Vector2f(16.f, 32.f), sf::Vector2f(150, 150), 0.f, false/*, m_data->assetManager.GetTexture("STATE_JOIN_BACKGROUND")*/
+			sf::Vector2f(16.f, 32.f), position, 0.f, false/*, m_data->assetManager.GetTexture("STATE_JOIN_BACKGROUND")*/
 		));
 
 		pbm.AddPhysicBody("PLAYER", m_physicBodyRef);

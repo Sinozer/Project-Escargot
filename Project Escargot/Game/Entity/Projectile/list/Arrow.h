@@ -12,13 +12,13 @@ namespace Snail
 		sf::Vector2f m_shooterCoord;
 		sf::Vector2f m_targetPosition;
 
-		void m_InitPhysicBody(PhysicBodyManager& pbm);
+		void m_InitPhysicBody(PhysicBodyManager& pbm, sf::Vector2f position);
 
 	public : 
 		Arrow(GameDataRef data, sf::Vector2f shooterCoord, unsigned int id = 0);
 		~Arrow();
 
-		void Init(PhysicBodyManager& pbm);
+		void Init(PhysicBodyManager& pbm, sf::Vector2f position);
 		void Shoot();
 
 		void Update(float dt);
