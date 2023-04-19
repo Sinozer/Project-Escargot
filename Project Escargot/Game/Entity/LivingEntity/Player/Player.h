@@ -34,7 +34,7 @@ namespace Snail
 
 		void HandleInput();
 
-		sf::Vector2i GetLocalPosition();
+		sf::Vector2f GetLocalPosition();
 
 		void Update(float dt);
 
