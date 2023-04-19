@@ -37,11 +37,23 @@ namespace Snail
 		m_projectileManager.Shoot(m_physicBodyRef->GetPosition());
 	}
 
+	void Bow::HandlerPos(sf::Vector2f handler)
+	{ 
+		calc = sf::Vector2f(InputManager::GetInstance()->GetMousePosition().x - handler.x, InputManager::GetInstance()->GetMousePosition().y - handler.y);
+		float normX = std::sqrt(std::pow(InputManager::GetInstance()->GetMousePosition().x, 2) + std::pow(handler.x, 2));
+		float normY = std::sqrt(std::pow(InputManager::GetInstance()->GetMousePosition().y, 2) + std::pow(handler.y, 2));
+		calc = sf::Vector2f(normX, normY);
+		std::cout << "X : " << calc.x << " <> Y : " << calc.y << "\n";
+
+
+	}
+
 	void Bow::Update(float dt)
 	{
-		m_physicBodyRef->SetPosition(InputManager::GetInstance()->GetMousePosition());
+		m_physicBodyRef->SetPosition(calc);
 		m_projectileManager.Update(dt);
 	}
+
 	void Bow::Draw()
 	{
 		m_projectileManager.Draw();

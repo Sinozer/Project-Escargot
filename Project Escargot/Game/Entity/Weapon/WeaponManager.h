@@ -24,6 +24,8 @@ namespace Snail
 		
 		void Use();
 
+		void HandlerPos(sf::Vector2f handler);
+
 		void Update(float dt);
 
 		void Draw();

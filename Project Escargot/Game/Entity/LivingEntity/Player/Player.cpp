@@ -84,6 +84,7 @@ namespace Snail
 	void Player::m_UpdateWeaponManager(float dt)
 	{
 		m_weaponManager->Update(dt);
+		m_weaponManager->HandlerPos(m_physicBodyRef->GetPosition());
 	}
 
 	void Player::Draw()
