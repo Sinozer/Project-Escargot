@@ -4,8 +4,8 @@ namespace Snail {
 		private:
 
 			int* TabBitmask[3] = {
-				 Collide,
-				 Collider,
+				 Transparent,
+				 //Collider,
 				 DirectionCollide,
 			};
 
@@ -18,15 +18,14 @@ namespace Snail {
 				0b100000,//Bullet
 			};
 
-
-			int Collide[6] =
+			int Transparent[6] =
 			{
-				0b000001,//Player
-				0b100100,//Enemy
-				0b000000,//Collectible
-				0b000000,//Box
-				0b000000,//Platforme
-				0b000000,//Bullet
+				0b111110,//Player
+				0b111011,//Enemy
+				0b011001,//Collectible
+				0b111011,//Box
+				0b111111,//Platforme
+				0b011000,//Bullet ->switch the two last bits
 			};
 			int Collider[6] =
 			{
@@ -75,8 +74,6 @@ namespace Snail {
 				BitMaskPlatforme = 4,
 				BitMaskBullet = 5
 			};
-			
-			
 
 			int returnBitMask(typeBitMask type, numBitMask bitmask);
 			void changeEtatBitMask(typeBitMask type, numBitMask bitmask, int bits);
@@ -94,7 +91,6 @@ namespace Snail {
 			int logicOr(typeBitMask type1, numBitMask bitmask1, typeBitMask type2, numBitMask bitmask2);
 			int logicOr(int bits, typeBitMask type2, numBitMask bitmask2);
 			int logicOr(int bits, int bits2);
-
 
 
 			bool logicAndBool(typeBitMask type1, numBitMask bitmask1, typeBitMask type2, numBitMask bitmask2);
@@ -126,14 +122,7 @@ namespace Snail {
 			"100001": Can be touch-> Player and bullet
 	}
 
-	//A voir avec théo si utile
 
-canColide part:
-	Return if the "object" can collide or not
-	Exemple:
-		"000000": Can't collide;
-		"100000": Can touch-> Player;
-		"100001": Can touch-> Player and bullet
 
 
 collision part:

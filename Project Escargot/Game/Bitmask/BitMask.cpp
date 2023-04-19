@@ -26,10 +26,10 @@ namespace Snail {
 			TabBitmask[TypeCollide][bitmask] = bits;
 			std::cout << "Changement fait à: TypeCollide \n bitmask choisie : " << bitmask << "\n ints: " << bits<<"\n";
 		}
-		else if (type == TypeCollider && bits <= 63) {
+		/*else if (type == TypeCollider && bits <= 63) {
 			TabBitmask[TypeCollider][bitmask] = bits;
 			std::cout << "Changement fait à: TypeCollider \n bitmask choisie : " << bitmask << "\n ints: " << bits << "\n";
-		}
+		}*/
 		else {
 			std::cout << "impossible de changer veuiller refaire le changement\n ";
 		}
