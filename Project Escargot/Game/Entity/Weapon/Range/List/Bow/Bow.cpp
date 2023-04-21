@@ -39,12 +39,13 @@ namespace Snail
 
 	void Bow::HandlerPos(sf::Vector2f handler)
 	{ 
-		float deltaX = InputManager::GetInstance()->GetMousePosition().x - handler.x;
-		float deltaY = InputManager::GetInstance()->GetMousePosition().y - handler.y;
+		float angle = std::atan2f(InputManager::GetInstance()->GetMousePosition().y - handler.y, InputManager::GetInstance()->GetMousePosition().x - handler.x);
+		sf::Vector2f out = sf::Vector2f(std::cos(angle), std::sin(angle));
+		
 		float normX = handler.x/std::sqrt(std::pow(InputManager::GetInstance()->GetMousePosition().x, 2) - std::pow(handler.x, 2));
 		float normY = handler.y/std::sqrt(std::pow(InputManager::GetInstance()->GetMousePosition().y, 2) - std::pow(handler.y, 2));
-		calc = sf::Vector2f(handler.x - handler.x * normX, handler.y - handler.y * normY);
-		std::cout << "X : " << calc.x << " <> Y : " << calc.y << "\n";
+		calc = handler + out * 25.f;
+		//std::cout << "X : " << calc.x << " <> Y : " << calc.y << "\n";
 		
 
 	}
