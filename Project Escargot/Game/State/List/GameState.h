@@ -4,6 +4,7 @@
 #include "Game/Entity/LivingEntity/Player/Player.h"
 #include "Game/Entity/LivingEntity/Enemy/Enemy.h"
 #include "Game/Entity/Projectile/ProjectileManager.h"
+#include "Game/Entity/Spawner.h"
 
 #include <Game/Entity/Collectables/CollectableObject.h>
 namespace Snail
@@ -19,6 +20,8 @@ namespace Snail
 		Player m_player;
 
 		Enemy m_enemy;
+
+		Spawner m_spawner;
 
 		CollectableObject m_collectable;
 

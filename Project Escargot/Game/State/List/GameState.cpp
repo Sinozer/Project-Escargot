@@ -2,7 +2,7 @@
 
 namespace Snail
 {
-	GameState::GameState(GameDataRef data) : m_data(data), m_player(m_data), m_enemy(data, m_player)
+	GameState::GameState(GameDataRef data) : m_data(data), m_player(m_data), m_enemy(data, m_player), m_spawner(m_data)
 	{
 		m_physicBodyManager = PhysicBodyManager(data);
 	}
@@ -26,6 +26,7 @@ namespace Snail
 
 		m_player.Init(m_physicBodyManager);
 		m_enemy.Init(m_physicBodyManager);
+		m_spawner.Init(m_physicBodyManager);
 		m_collectable.Init(m_physicBodyManager);
 
 		m_physicBodyManager.AddPhysicBody("PLAYER", m_player.GetPhysicBodyRef());
@@ -114,6 +115,7 @@ namespace Snail
 			mousePosition = Math::Clamp(mousePosition, sf::Vector2f(0.f, 0.f), (sf::Vector2f)m_data->window.getSize());
 			m_background.setOrigin(mousePosition / /*value*/8.f); // Value = map size / background size
 			m_view.setCenter(mousePosition);
+			m_spawner.Spawn(m_physicBodyManager, m_enemy);
 		}
 		else
 		{

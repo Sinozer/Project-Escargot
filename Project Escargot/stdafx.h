@@ -55,6 +55,7 @@
 #include "Game/Entity/LivingEntity/Enemy/Enemy.h"
 #include "Game/Entity/LivingEntity/LivingEntity.h"
 #include "Game/Map/Map.h"
+#include "Game/Entity/Spawner.h"
 /* #################  SNAIL   ################# */
 
 /* ###############################  INCLUDES   ############################### */
