@@ -28,7 +28,7 @@ namespace Snail
 			sf::Vector2f(5.f, 5.f), sf::Vector2f(150, 150), 0.f, true, false, false
 		));
 
-		pbm.AddPhysicBody("BOW", m_physicBodyRef);
+		pbm.AddPhysicBody("BOW", m_physicBodyRef);	
 	}
 
 	void Bow::Use()
@@ -39,12 +39,14 @@ namespace Snail
 
 	void Bow::HandlerPos(sf::Vector2f handler)
 	{ 
-		calc = sf::Vector2f(InputManager::GetInstance()->GetMousePosition().x - handler.x, InputManager::GetInstance()->GetMousePosition().y - handler.y);
-		float normX = std::sqrt(std::pow(InputManager::GetInstance()->GetMousePosition().x, 2) + std::pow(handler.x, 2));
-		float normY = std::sqrt(std::pow(InputManager::GetInstance()->GetMousePosition().y, 2) + std::pow(handler.y, 2));
-		calc = sf::Vector2f(normX, normY);
+		calc = sf::Vector2f(handler.x, handler.y);
+		float deltaX = InputManager::GetInstance()->GetMousePosition().x - handler.x;
+		float deltaY = InputManager::GetInstance()->GetMousePosition().y - handler.y;
+		float normX = (handler.x/std::sqrt(std::pow(InputManager::GetInstance()->GetMousePosition().x, 2) + std::pow(handler.x, 2)))*100;
+		float normY = (handler.y/std::sqrt(std::pow(InputManager::GetInstance()->GetMousePosition().y, 2) + std::pow(handler.y, 2)))*100;
+		calc = sf::Vector2f(handler.x - normX, handler.y - normY);
 		std::cout << "X : " << calc.x << " <> Y : " << calc.y << "\n";
-
+		
 
 	}
 

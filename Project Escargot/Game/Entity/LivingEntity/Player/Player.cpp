@@ -89,7 +89,8 @@ namespace Snail
 	void Player::m_UpdateWeaponManager(float dt)
 	{
 		m_weaponManager->Update(dt);
-		m_weaponManager->HandlerPos((sf::Vector2f)GetLocalPosition());
+		//m_weaponManager->HandlerPos((sf::Vector2f)GetLocalPosition());
+		m_weaponManager->HandlerPos(m_physicBodyRef->GetPosition());
 	}
 
 	void Player::Draw()
