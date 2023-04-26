@@ -1,5 +1,8 @@
 #pragma once
+#include "Game/Physic/PhysicBodyManager.h"
 #include "Game/Physic/PhysicBody.h"
+#include "Game/Entity/LivingEntity/Enemy/Enemy.h"
+
 namespace Snail
 {
 	class Spawner : public PhysicBodyRef

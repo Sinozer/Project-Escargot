@@ -1,5 +1,5 @@
 #include "stdafx.h"
-
+#include "UIManager.h"
 namespace Snail
 {
 	// #### Constructor | Destructor #### //

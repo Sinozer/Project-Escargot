@@ -1,6 +1,8 @@
 #pragma once
 namespace Snail
 {
+	class PhysicBody;
+	typedef std::shared_ptr<PhysicBody> PhysicBodyRef;
 	class PhysicBody
 	{
 	private:
@@ -20,7 +22,6 @@ namespace Snail
 
 		void m_Move(float dt);
 	public:
-		typedef std::shared_ptr<PhysicBody> PhysicBodyRef;
 
 		sf::Vector2f m_velocity;
 

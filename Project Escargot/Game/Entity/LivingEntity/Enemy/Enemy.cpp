@@ -1,5 +1,5 @@
 #include "stdafx.h"
-
+#include "Enemy.h"
 namespace Snail
 {
 	unsigned int Enemy::Count = 0;

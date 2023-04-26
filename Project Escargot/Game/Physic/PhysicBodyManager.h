@@ -1,8 +1,8 @@
 #pragma once
+#include "Game/GameData.h"
 #include "PhysicBody.h"
 namespace Snail
 {
-	typedef std::shared_ptr<PhysicBody> PhysicBodyRef;
 	class PhysicBodyManager
 	{
 	private:

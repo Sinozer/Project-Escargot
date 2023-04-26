@@ -141,6 +141,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Game\GameData.cpp" />
     <ClCompile Include="Game\Entity\Collectables\CollectableObject.cpp" />
     <ClCompile Include="Game\Entity\Projectile\list\Arrow.cpp" />
     <ClCompile Include="Game\Entity\Spawner.cpp" />
@@ -173,6 +174,7 @@
     <ClCompile Include="Game\UI\Nodes\Button\UIButton.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game\GameData.h" />
     <ClInclude Include="Game\Entity\Collectables\CollectableObject.h" />
     <ClInclude Include="Game\Entity\Projectile\list\Arrow.h" />
     <ClInclude Include="Game\Entity\EntityManager.h" />

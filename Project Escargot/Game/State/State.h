@@ -1,4 +1,7 @@
 #pragma once
+#include "Game/GameData.h"
+#include "Game/Input/InputManager.h"
+#include "Game/UI/UIManager.h"
 namespace Snail
 {
 	/**

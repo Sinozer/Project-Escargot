@@ -1,5 +1,5 @@
 #include "stdafx.h"
-
+#include "PhysicBody.h"
 namespace Snail
 {
 	PhysicBody::PhysicBody(sf::Vector2f position, float restitution,

@@ -1,5 +1,5 @@
 #pragma once
-#include "Game/Physic/PhysicBody.h"
+#include "Game/Physic/PhysicBodyManager.h"
 namespace Snail
 {
 	/**

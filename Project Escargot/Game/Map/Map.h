@@ -1,4 +1,6 @@
 #pragma once
+#include "Game/GameData.h"
+#include "Game/Physic/PhysicBodyManager.h"
 namespace Snail
 {
 	struct LayerStruct

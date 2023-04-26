@@ -1,5 +1,6 @@
 #include "stdafx.h"
-
+#include "GameState.h"
+#include "Game/Map/Map.h"
 namespace Snail
 {
 	GameState::GameState(GameDataRef data) : m_data(data), m_spawner(m_data)

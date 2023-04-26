@@ -1,5 +1,6 @@
 #pragma once
 #include "Game/Entity/Entity.h"
+#include "Game/Entity/LivingEntity/Player/Player.h"
 namespace Snail
 {
 	class CollectableObject : Entity

@@ -1,5 +1,6 @@
 #include "stdafx.h"
-
+#include "ProjectileManager.h"
+#include "list/Arrow.h"
 /**
  *
  * MainState

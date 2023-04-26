@@ -1,5 +1,5 @@
 #include "stdafx.h"
-
+#include "Map.h"
 namespace Snail
 {
 	Map::Map(GameDataRef data, std::string filepath) : m_data(data)

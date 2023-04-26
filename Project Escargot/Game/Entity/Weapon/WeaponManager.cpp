@@ -1,5 +1,6 @@
 #include "stdafx.h"
-
+#include "WeaponManager.h"
+#include "Range/List/Bow/Bow.h"
 
 namespace Snail
 {

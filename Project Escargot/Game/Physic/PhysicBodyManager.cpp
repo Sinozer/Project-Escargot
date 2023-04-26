@@ -1,5 +1,5 @@
 #include "stdafx.h"
-
+#include "PhysicBodyManager.h"
 namespace Snail
 {
 	PhysicBodyManager::PhysicBodyManager(GameDataRef data)

@@ -1,12 +1,13 @@
 #pragma once
+#include "Game/State/State.h"
+
 #include "Game/Physic/PhysicBodyManager.h"
-#include "Game/Entity/LivingEntity/LivingEntity.h"
+//#include "Game/Entity/LivingEntity/LivingEntity.h"
 #include "Game/Entity/LivingEntity/Player/Player.h"
 #include "Game/Entity/LivingEntity/Enemy/Enemy.h"
-#include "Game/Entity/Projectile/ProjectileManager.h"
+//#include "Game/Entity/Projectile/ProjectileManager.h"
 #include "Game/Entity/Spawner.h"
-
-#include <Game/Entity/Collectables/CollectableObject.h>
+#include "Game/Entity/Collectables/CollectableObject.h"
 namespace Snail
 {
 	/**

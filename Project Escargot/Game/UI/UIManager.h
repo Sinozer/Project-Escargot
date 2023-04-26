@@ -6,8 +6,6 @@
 
 namespace Snail
 {
-	enum UIState { IDLE = 0, HOVER, ACTIVE };
-
 	class UIManager
 	{
 	private:

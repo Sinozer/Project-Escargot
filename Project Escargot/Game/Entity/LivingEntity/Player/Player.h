@@ -1,8 +1,6 @@
 #pragma once
 #include "Game/Entity/LivingEntity/LivingEntity.h"
 #include "Game/Entity/Weapon/WeaponManager.h"
-
-
 namespace Snail
 {
 	class Player : LivingEntity

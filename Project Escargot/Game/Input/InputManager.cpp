@@ -1,5 +1,5 @@
 #include "stdafx.h"
-
+#include "InputManager.h"
 namespace Snail
 {
 	InputManager* InputManager::Instance = nullptr;

@@ -1,5 +1,5 @@
 #include "stdafx.h"
-
+#include "Player.h"
 namespace Snail
 {
 	Player* Player::s_Instance = nullptr;

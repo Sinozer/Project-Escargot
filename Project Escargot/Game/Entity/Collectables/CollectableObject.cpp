@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "CollectableObject.h"
-
 namespace Snail {
 
 	CollectableObject::CollectableObject() {

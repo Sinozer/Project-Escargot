@@ -1,7 +1,9 @@
 #pragma once
-
+#include "Game/UI/Nodes/Text/UIText.h"
 namespace Snail
 {
+	enum UIState { IDLE = 0, HOVER, ACTIVE };
+	
 	class UIButton
 		: public UIText
 	{

@@ -1,5 +1,5 @@
 #include "stdafx.h"
-
+#include "SettingsState.h"
 namespace Snail
 {
 	SettingsState::SettingsState(GameDataRef data) : m_data(data)

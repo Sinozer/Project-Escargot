@@ -2,8 +2,8 @@
 #include "State.h"
 namespace Snail
 {
+	class State;
 	typedef std::unique_ptr<State> StateRef;
-	
 	class StateManager
 	{
 	private:

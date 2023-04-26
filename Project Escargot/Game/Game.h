@@ -1,17 +1,10 @@
 #pragma once
-#include "State/StateManager.h"
+#include "GameData.h"
 #include "Input/InputManager.h"
-#include "Asset/AssetManager.h"
+
 namespace Snail
 {
-	struct GameData
-	{
-		sf::RenderWindow window;
-		StateManager stateManager;
-		AssetManager assetManager;
-	};
-
-	typedef std::shared_ptr<GameData> GameDataRef;
+	
 
 	/**
 	 * \brief Main class.

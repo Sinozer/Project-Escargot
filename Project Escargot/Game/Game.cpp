@@ -1,4 +1,6 @@
 #include "stdafx.h"
+#include "Game.h"
+#include "State/List/JoinState.h"
 
 namespace Snail
 {
