@@ -2,8 +2,22 @@
 #include "Player.h"
 namespace Snail
 {
-	Player* Player::s_Instance = nullptr;
+	Player* Player::m_instance = nullptr;
 
+	Player* Player::GetInstance(GameDataRef data)
+	{
+		if (m_instance == nullptr)
+			m_instance = new Player(data);
+
+		return m_instance;
+	}
+
+	void Player::DestroyInstance()
+	{
+		delete m_instance;
+		m_instance = nullptr;
+	}
+	
 	Player::Player(GameDataRef data)
 	{
 		m_data = data;
@@ -29,7 +43,7 @@ namespace Snail
 	void Player::m_InitPhysicBody(PhysicBodyManager& pbm, sf::Vector2f position)
 	{
 		m_physicBodyRef = PhysicBodyRef(PhysicBody::CreateBoxBody(
-			sf::Vector2f(16.f, 32.f), position, 0.f, false/*, m_data->assetManager.GetTexture("STATE_JOIN_BACKGROUND")*/
+			sf::Vector2f(16.f, 32.f), position, 0.f, false/*, AssetManager::GetInstance()->GetTexture("STATE_JOIN_BACKGROUND")*/
 		));
 
 		pbm.AddPhysicBody("PLAYER", m_physicBodyRef);
@@ -101,13 +115,5 @@ namespace Snail
 	PhysicBodyRef Player::GetPhysicBodyRef()
 	{
 		return m_physicBodyRef;
-	}
-	
-	Player* Player::GetInstance(GameDataRef data)
-	{
-		if (s_Instance == nullptr)
-			s_Instance = new Player(data);
-
-		return s_Instance;
 	}
 }

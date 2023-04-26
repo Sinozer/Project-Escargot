@@ -3,6 +3,22 @@
 
 namespace Snail
 {
+	AssetManager* AssetManager::m_instance = nullptr;
+
+	AssetManager* AssetManager::GetInstance()
+	{
+		if (m_instance == nullptr)
+			m_instance = new AssetManager();
+
+		return m_instance;
+	}
+
+	void AssetManager::DestroyInstance()
+	{
+		delete m_instance;
+		m_instance = nullptr;
+	}
+	
 	sf::Texture& AssetManager::LoadTexture(std::string name, std::string fileName, sf::IntRect area)
 	{
 		if (!TextureExists(name))
@@ -21,7 +37,11 @@ namespace Snail
 
 	bool AssetManager::TextureExists(std::string name)
 	{
-		return m_textures.find(name) != m_textures.end();
+		//return m_textures.find(name) != m_textures.end();
+		if (m_textures.count(name) != 0)
+			return true;
+		else
+			return false;
 	}
 
 	sf::Font& AssetManager::LoadFont(std::string name, std::string fileName)

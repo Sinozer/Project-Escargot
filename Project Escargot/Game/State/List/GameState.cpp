@@ -39,8 +39,8 @@ namespace Snail
 
 	void GameState::m_InitBackground()
 	{
-		m_data->assetManager.LoadTexture("STATE_MAIN_BACKGROUND", STATE_MAIN_BACKGROUND_FILEPATH);
-		m_background.setTexture(m_data->assetManager.GetTexture("STATE_MAIN_BACKGROUND"));
+		AssetManager::GetInstance()->LoadTexture("STATE_MAIN_BACKGROUND", STATE_MAIN_BACKGROUND_FILEPATH);
+		m_background.setTexture(AssetManager::GetInstance()->GetTexture("STATE_MAIN_BACKGROUND"));
 		m_background.scale(sf::Vector2f(0.25f, 0.25f));
 	}
 

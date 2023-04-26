@@ -93,7 +93,7 @@ namespace Snail
 	{
 		std::string textureName = m_GetTextureSheetName(sheetName);
 
-		m_data->assetManager.LoadTexture(textureName, sheetPath);
+		AssetManager::GetInstance()->LoadTexture(textureName, sheetPath);
 		for (int i = 0; i < layer.data.size(); i++)
 		{
 			if (layer.data.at(i) <= 0) continue;
@@ -102,14 +102,14 @@ namespace Snail
 
 			std::string name = m_GetTextureName(sheetName, id);
 
-			if (!m_data->assetManager.TextureExists(name))
+			if (!AssetManager::GetInstance()->TextureExists(name))
 			{
 				m_CheckForTileSetAndLoadTexture(id, sheetName, sheetPath);
 			}
 
 			m_physicBodyRefs.push_back(PhysicBodyRef(PhysicBody::CreateBoxBody(
 				sf::Vector2f(m_tiledFile.tileWidth, m_tiledFile.tileHeight), sf::Vector2f((i % layer.width) * m_tiledFile.tileWidth, (i / layer.width) * m_tiledFile.tileHeight), 0.5f, isStatic,
-				m_data->assetManager.GetTexture(name), canCollide, canGravitate
+				AssetManager::GetInstance()->GetTexture(name), canCollide, canGravitate
 			)));
 		}
 	}
@@ -128,10 +128,10 @@ namespace Snail
 			break;
 		}
 
-		int posX = id * m_tiledFile.tileWidth % m_data->assetManager.GetTexture(textureName).getSize().x;
-		int posY = id / (m_data->assetManager.GetTexture(textureName).getSize().x / m_tiledFile.tileWidth) * m_tiledFile.tileHeight;
+		int posX = id * m_tiledFile.tileWidth % AssetManager::GetInstance()->GetTexture(textureName).getSize().x;
+		int posY = id / (AssetManager::GetInstance()->GetTexture(textureName).getSize().x / m_tiledFile.tileWidth) * m_tiledFile.tileHeight;
 
-		m_data->assetManager.LoadTexture(name, sheetPath,
+		AssetManager::GetInstance()->LoadTexture(name, sheetPath,
 			sf::IntRect(sf::Vector2i(posX, posY), sf::Vector2i(m_tiledFile.tileWidth, m_tiledFile.tileHeight)));
 	}
 

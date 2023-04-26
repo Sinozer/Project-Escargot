@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Game.h"
 #include "State/List/JoinState.h"
+#include "Entity/LivingEntity/Player/Player.h"
 
 namespace Snail
 {
@@ -10,8 +11,8 @@ namespace Snail
 		m_data->window.setFramerateLimit(WINDOW_SCREEN_FRAMERATE_MED);
 
 		// Debug text
-		m_data->assetManager.LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf");
-		m_text = sf::Text("PROJECT SNAIL\nPROTOTYPE", m_data->assetManager.GetFont("ROBOTO_CONDENSED_ITALIC"), 30);
+		AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf");
+		m_text = sf::Text("PROJECT SNAIL\nPROTOTYPE", AssetManager::GetInstance()->GetFont("ROBOTO_CONDENSED_ITALIC"), 30);
 		m_text.setFillColor(sf::Color::White);
 		m_text.setOutlineColor(sf::Color::Black);
 		m_text.setOutlineThickness(2);
@@ -57,5 +58,8 @@ namespace Snail
 	void Game::End()
 	{
 		m_data->window.close();
+
+		Player::DestroyInstance();
+		AssetManager::DestroyInstance();
 	}
 }

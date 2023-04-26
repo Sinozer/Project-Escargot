@@ -141,7 +141,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Game\GameData.cpp" />
     <ClCompile Include="Game\Entity\Collectables\CollectableObject.cpp" />
     <ClCompile Include="Game\Entity\Projectile\list\Arrow.cpp" />
     <ClCompile Include="Game\Entity\Spawner.cpp" />
@@ -201,7 +200,6 @@
     <ClInclude Include="Game\Entity\LivingEntity\LivingEntity.h" />
     <ClInclude Include="Game\Map\Map.h" />
     <ClInclude Include="Game\State\List\MainState.h" />
-    <ClInclude Include="Spawner.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Game\View\View.h" />
     <ClInclude Include="Game\View\ViewManager.h" />

@@ -25,7 +25,7 @@ namespace Snail
 
 	void Enemy::m_InitPhysicBody(PhysicBodyManager &pbm, sf::Vector2f position)
 	{
-		//m_data->assetManager.LoadTexture("TEST_ENTITY", STATE_MAIN_ENTITY_TEST_FILEPATH);
+		AssetManager::GetInstance()->LoadTexture("TEST_ENTITY", STATE_MAIN_ENTITY_TEST_FILEPATH);
 
 		m_physicBodyRef = PhysicBodyRef(PhysicBody::CreateBoxBody(
 			sf::Vector2f(115.f / 2.f, 161.f / 2.f), position, 0.f, false

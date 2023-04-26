@@ -7,7 +7,7 @@ namespace Snail
 	{
 	private:
 		// Singleton
-		static Player* s_Instance;
+		static Player* m_instance;
 
 		/**
 		 * \brief Constructor.
@@ -31,6 +31,7 @@ namespace Snail
 		int bulletCount;
 		
 		static Player* GetInstance(GameDataRef data);
+		static void DestroyInstance();
 
 		void Init(PhysicBodyManager &pbm, sf::Vector2f position = sf::Vector2f(150, 150));
 
