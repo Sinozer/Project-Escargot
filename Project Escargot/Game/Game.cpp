@@ -47,11 +47,11 @@ namespace Snail
 			if (m_data->stateManager.IsEmpty()) break;
 
 			m_data->stateManager.GetActiveState()->HandleInput();
-			m_data->stateManager.GetActiveState()->Update(m_dt);
+			m_data->stateManager.GetActiveState()->Update();
 
 			m_data->window.clear(sf::Color::Black);
 
-			m_data->stateManager.GetActiveState()->Draw(m_dt);
+			m_data->stateManager.GetActiveState()->Draw();
 			m_data->window.setView(m_data->window.getDefaultView());
 			m_data->window.draw(m_text);
 

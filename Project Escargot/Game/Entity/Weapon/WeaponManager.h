@@ -20,7 +20,7 @@ namespace Snail
 		
 		void Use();
 
-		void Update(float dt);
+		void Update();
 
 		void Draw();
 	};

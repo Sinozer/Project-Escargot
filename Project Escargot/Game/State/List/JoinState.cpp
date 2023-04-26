@@ -57,7 +57,7 @@ namespace Snail
 		}
 	}
 
-	void JoinState::Update(float dt)
+	void JoinState::Update()
 	{
 		if (InputManager::GetInstance(m_data->window)->IsSpriteLeftClicked(m_background))
 		{
@@ -66,7 +66,7 @@ namespace Snail
 
 		m_UpdateBackground();
 
-		m_UpdateUIManager(dt);
+		m_UpdateUIManager();
 	}
 
 	void JoinState::m_UpdateBackground()
@@ -104,14 +104,14 @@ namespace Snail
 		*/
 	}
 
-	void JoinState::m_UpdateUIManager(float dt)
+	void JoinState::m_UpdateUIManager()
 	{
 		/*
 			EMPTY
 		*/
 	}
 
-	void JoinState::Draw(float dt)
+	void JoinState::Draw()
 	{
 		m_data->window.draw(m_background);
 

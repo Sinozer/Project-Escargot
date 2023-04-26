@@ -9,8 +9,8 @@ namespace Snail
 	class UIManager
 	{
 	private:
-		void m_UpdateButtons(sf::Vector2i mousePosition, float dt);
-		void m_UpdateCheckboxs(sf::Vector2i mousePosition, float dt);
+		void m_UpdateButtons(sf::Vector2i mousePosition);
+		void m_UpdateCheckboxs(sf::Vector2i mousePosition);
 
 		void m_DrawTexts(sf::RenderTarget& target);
 		void m_DrawButtons(sf::RenderTarget& target);
@@ -48,7 +48,7 @@ namespace Snail
 			sf::Color outlineActiveColor = sf::Color::Transparent,
 			short unsigned id = 0);
 
-		void Update(sf::Vector2i mousePosition, float dt);
+		void Update(sf::Vector2i mousePosition);
 		void Draw(sf::RenderTarget& target);
 	};
 }

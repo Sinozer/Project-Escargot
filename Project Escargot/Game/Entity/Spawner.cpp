@@ -27,11 +27,11 @@ namespace Snail
 		m_enemyList.push_back(temp);
 	}
 
-	void Spawner::Update(float dt)
+	void Spawner::Update()
 	{
 		for (Enemy* enemy : m_enemyList)
 		{
-			enemy->Update(dt);
+			enemy->Update();
 		}
 	}
 

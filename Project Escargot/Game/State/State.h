@@ -13,7 +13,7 @@ namespace Snail
 		static unsigned int m_count;
 		void m_SetID();
 		
-		State() { m_SetID(); std::cout << "State " << ID << " created." << std::endl; }
+		State() { m_SetID(); }
 	protected:
 		sf::Sprite m_background;
 		sf::View m_view;
@@ -25,7 +25,7 @@ namespace Snail
 		virtual void m_InitUIManager() = 0;
 
 		virtual void m_UpdateView() = 0;
-		virtual void m_UpdateUIManager(float dt) = 0;
+		virtual void m_UpdateUIManager() = 0;
 
 		virtual void m_DrawUIManager() = 0;
 	public:
@@ -35,8 +35,8 @@ namespace Snail
 
 		virtual void HandleInput() = 0;
 
-		virtual void Update(float dt) = 0;
+		virtual void Update() = 0;
 
-		virtual void Draw(float dt) = 0;
+		virtual void Draw() = 0;
 	};
 }

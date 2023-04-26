@@ -5,8 +5,6 @@ namespace Snail
 {
 	GameState::GameState(GameDataRef data) : m_data(data), m_spawner(m_data)
 	{
-		// = PhysicBodyManager(data);
-
 		m_player = Player::GetInstance();
 	}
 
@@ -39,8 +37,8 @@ namespace Snail
 
 	void GameState::m_InitBackground()
 	{
-		AssetManager::GetInstance()->LoadTexture("STATE_MAIN_BACKGROUND", STATE_MAIN_BACKGROUND_FILEPATH);
-		m_background.setTexture(AssetManager::GetInstance()->GetTexture("STATE_MAIN_BACKGROUND"));
+		AssetManager::GetInstance()->LoadTexture("STATE_GAME_BACKGROUND", STATE_MAIN_BACKGROUND_FILEPATH);
+		m_background.setTexture(AssetManager::GetInstance()->GetTexture("STATE_GAME_BACKGROUND"));
 		m_background.scale(sf::Vector2f(0.25f, 0.25f));
 	}
 
@@ -86,12 +84,12 @@ namespace Snail
 		m_player->HandleInput();
 	}
 
-	void GameState::Update(float dt)
+	void GameState::Update()
 	{
 		m_UpdateView();
 		
-		PhysicBodyManager::GetInstance()->Update(dt);
-		m_player->Update(dt);
+		PhysicBodyManager::GetInstance()->Update();
+		m_player->Update();
 		m_timerBulletFire++;
 		if (m_player->bulletCount > this->m_tempBulletCount && m_timerBulletFire > 10)
 		{
@@ -104,9 +102,9 @@ namespace Snail
 			}
 			AddBullet();
 		}
-		m_spawner.Update(dt);
+		m_spawner.Update();
 
-		m_UpdateUIManager(dt);
+		m_UpdateUIManager();
 	}
 
 	void GameState::m_UpdateView()
@@ -127,12 +125,12 @@ namespace Snail
 		m_data->window.setView(m_view);
 	}
 
-	void GameState::m_UpdateUIManager(float dt)
+	void GameState::m_UpdateUIManager()
 	{
-		m_uiManager.Update((sf::Vector2i)InputManager::GetInstance(m_data->window)->GetMousePosition(), dt);
+		m_uiManager.Update((sf::Vector2i)InputManager::GetInstance(m_data->window)->GetMousePosition());
 	}
 
-	void GameState::Draw(float dt)
+	void GameState::Draw()
 	{
 		m_data->window.draw(m_background);
 		if (!PhysicBodyManager::GetInstance()->IsEmpty())

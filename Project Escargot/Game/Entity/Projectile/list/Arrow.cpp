@@ -47,7 +47,7 @@ namespace Snail
 		m_physicBodyRef->AddVelocity({ m_speed * m_targetPosition.x, m_speed * m_targetPosition.y }, m_clampVelocity);
 	}
 
-	void Arrow::Update(float dt)
+	void Arrow::Update()
 	{
 		
 	}

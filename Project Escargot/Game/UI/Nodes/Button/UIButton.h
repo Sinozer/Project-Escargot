@@ -44,12 +44,12 @@ namespace Snail
 		// #### Accessors #### //
 
 		// #### Modifiers #### //
-		void UpdateKeyTime(const float& dt);
+		void UpdateKeyTime();
 		void SetId(const short unsigned id);
 		// #### Modifiers #### //
 
 		// #### Functions #### //
-		void Update(sf::Vector2i mousePosition, const float& dt);	// Update booleans for hover and pressed
+		void Update(sf::Vector2i mousePosition);	// Update booleans for hover and pressed
 		// #### Functions #### //
 	};
 }

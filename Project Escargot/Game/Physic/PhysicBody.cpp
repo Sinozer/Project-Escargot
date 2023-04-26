@@ -70,13 +70,13 @@ namespace Snail
 		}
 	}
 
-	void PhysicBody::m_Move(float dt)
+	void PhysicBody::m_Move()
 	{
 		if (m_IsStatic) return;
-		m_body.move(m_velocity * dt);
+		m_body.move(m_velocity * Game::m_data->deltaTime);
 
 		if (m_canGravitate)
-			m_velocity.y += (GAME_GRAVITY * dt * 1.5f);
+			m_velocity.y += (GAME_GRAVITY * Game::m_data->deltaTime * 1.5f);
 	}
 
 	PhysicBody* PhysicBody::CreateBoxBody(sf::Vector2f size, sf::Vector2f position, float restitution, bool isStatic, bool canCollide, bool canGravitate)
@@ -216,9 +216,9 @@ namespace Snail
 		}
 	}
 
-	void PhysicBody::Update(float dt)
+	void PhysicBody::Update()
 	{
-		m_Move(dt);
+		m_Move();
 	}
 
 	void PhysicBody::Draw(sf::RenderWindow& window)

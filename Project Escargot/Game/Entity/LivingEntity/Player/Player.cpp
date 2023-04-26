@@ -41,8 +41,10 @@ namespace Snail
 	void Player::m_InitPhysicBody(sf::Vector2f position)
 	{
 		m_physicBodyRef = PhysicBodyRef(PhysicBody::CreateBoxBody(
-			sf::Vector2f(16.f, 32.f), position, 0.f, false/*, AssetManager::GetInstance()->GetTexture("STATE_JOIN_BACKGROUND")*/
+			sf::Vector2f(2522.f, 1685.f), position, 0.f, false, AssetManager::GetInstance()->LoadTexture("PLAYER", STATE_GAME_PLAYER_FILEPATH)
 		));
+
+		m_physicBodyRef->Scale(sf::Vector2f(0.02f, 0.02f));
 
 		PhysicBodyManager::GetInstance()->AddPhysicBody("PLAYER", m_physicBodyRef);
 	}
@@ -86,14 +88,14 @@ namespace Snail
 		m_direction = direction;
 	}
 
-	void Player::Update(float dt)
+	void Player::Update()
 	{
-		m_UpdateWeaponManager(dt);
+		m_UpdateWeaponManager();
 	}
 
-	void Player::m_UpdateWeaponManager(float dt)
+	void Player::m_UpdateWeaponManager()
 	{
-		m_weaponManager.Update(dt);
+		m_weaponManager.Update();
 	}
 
 	void Player::Draw()

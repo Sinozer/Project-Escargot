@@ -50,12 +50,12 @@ namespace Snail
 		m_projectileManager.Shoot(m_physicBodyRef->GetPosition());
 	}
 
-	void Bow::Update(float dt)
+	void Bow::Update()
 	{
 		m_UpdateState();
 
 		m_physicBodyRef->SetPosition(InputManager::GetInstance()->GetMousePosition());
-		m_projectileManager.Update(dt);
+		m_projectileManager.Update();
 	}
 	void Bow::Draw()
 	{

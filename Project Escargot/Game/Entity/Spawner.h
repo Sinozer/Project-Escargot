@@ -16,7 +16,7 @@ namespace Snail
 
 		void Spawn(sf::Vector2f position = sf::Vector2f(0, 0));
 
-		void Update(float dt);
+		void Update();
 
 	private:
 

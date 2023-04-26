@@ -4,7 +4,7 @@ namespace Snail
 {
 	SettingsState::SettingsState(GameDataRef data) : m_data(data)
 	{
-		m_opacity = 0;
+		m_opacity = 128;
 		m_isLoaded = false;
 	}
 
@@ -17,8 +17,8 @@ namespace Snail
 
 	void SettingsState::m_InitBackground()
 	{
-		AssetManager::GetInstance()->LoadTexture("STATE_JOIN_BACKGROUND", STATE_JOIN_BACKGROUND_FILEPATH);
-		m_background.setTexture(AssetManager::GetInstance()->GetTexture("STATE_JOIN_BACKGROUND"));
+		AssetManager::GetInstance()->LoadTexture("STATE_SETTINGS_BACKGROUND", BACKGROUND_DAWNMOUNTAIN_FILEPATH);
+		m_background.setTexture(AssetManager::GetInstance()->GetTexture("STATE_SETTINGS_BACKGROUND"));
 		m_background.setScale((float)m_data->window.getSize().x / (float)m_background.getTexture()->getSize().x, (float)m_data->window.getSize().y / (float)m_background.getTexture()->getSize().y);
 
 		m_background.setColor(sf::Color(m_background.getColor().r, m_background.getColor().g, m_background.getColor().b, m_opacity));
@@ -64,9 +64,9 @@ namespace Snail
 		}
 	}
 
-	void SettingsState::Update(float dt)
+	void SettingsState::Update()
 	{
-		m_UpdateUIManager(dt);
+		m_UpdateUIManager();
 	}
 
 	void SettingsState::m_UpdateView()
@@ -74,15 +74,15 @@ namespace Snail
 		
 	}
 
-	void SettingsState::m_UpdateUIManager(float dt)
+	void SettingsState::m_UpdateUIManager()
 	{
-		m_uiManager.Update((sf::Vector2i)InputManager::GetInstance(m_data->window)->GetMousePosition(), dt);
+		m_uiManager.Update((sf::Vector2i)InputManager::GetInstance(m_data->window)->GetMousePosition());
 
 		if (m_uiManager.Buttons["RETURN"]->IsPressed())
 			m_data->stateManager.RemoveState();
 	}
 
-	void SettingsState::Draw(float dt)
+	void SettingsState::Draw()
 	{
 		m_data->window.draw(m_background);
 

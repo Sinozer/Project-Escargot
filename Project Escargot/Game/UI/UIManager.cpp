@@ -31,22 +31,22 @@ namespace Snail
 		Checkboxs[name] = new UICheckbox(x, y, width, height, &font, characterSize, textIdleColor, textHoverColor, textActiveColor, containerIdleColor, hoverColor, activeColor, outlineIdleColor, outlineHoverColor, outlineActiveColor);
 	}
 
-	void UIManager::Update(sf::Vector2i mousePosition, float dt)
+	void UIManager::Update(sf::Vector2i mousePosition)
 	{
-		m_UpdateButtons(mousePosition, dt);
-		m_UpdateCheckboxs(mousePosition, dt);
+		m_UpdateButtons(mousePosition);
+		m_UpdateCheckboxs(mousePosition);
 	}
 
-	void UIManager::m_UpdateButtons(sf::Vector2i mousePosition, float dt)
+	void UIManager::m_UpdateButtons(sf::Vector2i mousePosition)
 	{
 		for (auto& i : Buttons)
-			i.second->Update(mousePosition, dt);
+			i.second->Update(mousePosition);
 	}
 
-	void UIManager::m_UpdateCheckboxs(sf::Vector2i mousePosition, float dt)
+	void UIManager::m_UpdateCheckboxs(sf::Vector2i mousePosition)
 	{
 		for (auto& i : Checkboxs)
-			i.second->Update(mousePosition, dt);
+			i.second->Update(mousePosition);
 	}
 
 	void UIManager::Draw(sf::RenderTarget& target)

@@ -17,7 +17,7 @@ namespace Snail
 		
 		void Init(sf::Vector2f position);
 
-		void Update(float dt);
+		void Update();
 
 		void Draw();
 	};

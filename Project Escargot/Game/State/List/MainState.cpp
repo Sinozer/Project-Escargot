@@ -7,7 +7,7 @@ namespace Snail
 {
 	MainState::MainState(GameDataRef data) : m_data(data)
 	{
-		m_opacity = 0;
+		m_opacity = 128;
 		m_isLoaded = false;
 	}
 
@@ -20,8 +20,8 @@ namespace Snail
 
 	void MainState::m_InitBackground()
 	{
-		AssetManager::GetInstance()->LoadTexture("STATE_JOIN_BACKGROUND", STATE_JOIN_BACKGROUND_FILEPATH);
-		m_background.setTexture(AssetManager::GetInstance()->GetTexture("STATE_JOIN_BACKGROUND"));
+		AssetManager::GetInstance()->LoadTexture("STATE_MAIN_BACKGROUND", BACKGROUND_PINKDESERT_FILEPATH);
+		m_background.setTexture(AssetManager::GetInstance()->GetTexture("STATE_MAIN_BACKGROUND"));
 		m_background.setScale((float)m_data->window.getSize().x / (float)m_background.getTexture()->getSize().x, (float)m_data->window.getSize().y / (float)m_background.getTexture()->getSize().y);
 
 		m_background.setColor(sf::Color(m_background.getColor().r, m_background.getColor().g, m_background.getColor().b, m_opacity));
@@ -71,9 +71,9 @@ namespace Snail
 		}
 	}
 
-	void MainState::Update(float dt)
+	void MainState::Update()
 	{
-		m_UpdateUIManager(dt);
+		m_UpdateUIManager();
 	}
 
 	void MainState::m_UpdateView()
@@ -81,9 +81,9 @@ namespace Snail
 		
 	}
 
-	void MainState::m_UpdateUIManager(float dt)
+	void MainState::m_UpdateUIManager()
 	{
-		m_uiManager.Update((sf::Vector2i)InputManager::GetInstance(m_data->window)->GetMousePosition(), dt);
+		m_uiManager.Update((sf::Vector2i)InputManager::GetInstance(m_data->window)->GetMousePosition());
 
 		if (m_uiManager.Buttons["PLAY"]->IsPressed())
 			m_data->stateManager.AddState(StateRef(new GameState(m_data)));
@@ -95,7 +95,7 @@ namespace Snail
 			m_data->window.close();
 	}
 
-	void MainState::Draw(float dt)
+	void MainState::Draw()
 	{
 		m_data->window.draw(m_background);
 

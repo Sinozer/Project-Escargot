@@ -22,7 +22,7 @@ namespace Snail
 
 		virtual void Init(sf::Vector2f) = 0;
 
-		virtual void Update(float dt) = 0;
+		virtual void Update() = 0;
 
 		virtual void Draw() = 0;
 	};

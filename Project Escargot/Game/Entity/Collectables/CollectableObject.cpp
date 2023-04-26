@@ -16,7 +16,7 @@ namespace Snail {
 		m_InitPhysicBody(position);
 	}
 
-	void CollectableObject::Update(float dt )
+	void CollectableObject::Update( )
 	{
 
 		

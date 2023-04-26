@@ -36,7 +36,7 @@ namespace Snail
 
 		bool IsEmpty();
 
-		void Update(float dt);
+		void Update();
 		void Draw();
 	};
 }

@@ -25,10 +25,8 @@ namespace Snail
 
 	void Enemy::m_InitPhysicBody(sf::Vector2f position)
 	{
-		AssetManager::GetInstance()->LoadTexture("TEST_ENTITY", STATE_MAIN_ENTITY_TEST_FILEPATH);
-
 		m_physicBodyRef = PhysicBodyRef(PhysicBody::CreateBoxBody(
-			sf::Vector2f(115.f / 2.f, 161.f / 2.f), position, 0.f, false
+			sf::Vector2f(115.f / 2.f, 161.f / 2.f), position, 0.f, false, AssetManager::GetInstance()->LoadTexture("DUMMY_ENTITY", STATE_GAME_DUMMY_ENTITY_FILEPATH)
 		));
 
 		m_physicBodyRef->Scale(sf::Vector2f(0.5f, 0.5f));
@@ -42,7 +40,7 @@ namespace Snail
 	{
 	}
 
-	void Enemy::Update(float dt)
+	void Enemy::Update()
 	{
 		m_physicBodyRef->m_velocity.x = 0.f;
 

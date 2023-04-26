@@ -58,10 +58,10 @@ namespace Snail
 	// #### Accessors #### //
 
 	// #### Modifiers #### //
-	void UIButton::UpdateKeyTime(const float& dt)
+	void UIButton::UpdateKeyTime()
 	{
 		if (m_keyTime < m_keyTimeMax)
-			m_keyTime += 5.f * dt;
+			m_keyTime += 5.f * Game::m_data->deltaTime;
 	}
 
 	void UIButton::SetId(const short unsigned id)
@@ -71,9 +71,9 @@ namespace Snail
 	// #### Modifiers #### //
 
 	// #### Functions #### //
-	void UIButton::Update(sf::Vector2i mousePosition, const float& dt)
+	void UIButton::Update(sf::Vector2i mousePosition)
 	{
-		UpdateKeyTime(dt);
+		UpdateKeyTime();
 
 
 		m_state = IDLE;	// Idle

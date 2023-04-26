@@ -21,7 +21,7 @@ namespace Snail
 		void Init(sf::Vector2f position);
 		void Shoot(sf::Vector2f shooterCoord) override;
 
-		void Update(float dt);
+		void Update();
 		void Draw();
 	};
 }

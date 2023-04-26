@@ -73,7 +73,7 @@ namespace Snail
 
 		virtual void Draw() = 0;
 
-		virtual void Update(float dt) = 0;
+		virtual void Update() = 0;
 	};
 }
 

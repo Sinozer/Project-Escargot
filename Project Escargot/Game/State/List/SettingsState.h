@@ -23,7 +23,7 @@ namespace Snail
 		void m_InitUIButtons();
 
 		void m_UpdateView();
-		void m_UpdateUIManager(float dt);
+		void m_UpdateUIManager();
 
 		void m_DrawUIManager();
 	public:
@@ -32,7 +32,7 @@ namespace Snail
 
 		void Init();
 		void HandleInput();
-		void Update(float dt);
-		void Draw(float dt);
+		void Update();
+		void Draw();
 	};
 }

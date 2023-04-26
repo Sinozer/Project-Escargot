@@ -36,7 +36,7 @@ namespace Snail
 
 		void HandleInput();
 
-		void Update(float dt);
+		void Update();
 
 		void Draw();
 

@@ -31,9 +31,9 @@ namespace Snail
         m_activeWeapon->Use();
     }
 
-    void WeaponManager::Update(float dt)
+    void WeaponManager::Update()
     {
-        m_activeWeapon->Update(dt);
+        m_activeWeapon->Update();
     }
 
     void WeaponManager::Draw()

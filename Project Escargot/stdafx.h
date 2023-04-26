@@ -58,15 +58,27 @@
 
 #define STATE_COUNT_MAX 5
 
+/* ####### BACKGROUNDS ###### */
+#define BACKGROUND_CANYON_FILEPATH "Resources/Textures/Backgrounds/Canyon.jpg"
+#define BACKGROUND_DAYMOUNTAIN_FILEPATH "Resources/Textures/Backgrounds/DayMountain.jpg"
+#define BACKGROUND_DESERT_FILEPATH "Resources/Textures/Backgrounds/Desert.jpg"
+#define BACKGROUND_FOREST_FILEPATH "Resources/Textures/Backgrounds/Forest.jpg"
+#define BACKGROUND_PINKDESERT_FILEPATH "Resources/Textures/Backgrounds/PinkDesert.jpg"
+#define BACKGROUND_DAWNMOUNTAIN_FILEPATH "Resources/Textures/Backgrounds/DawnMountain.jpg"
+/* ####### BACKGROUNDS ###### */
+
 /* ########## JOIN ########## */
 #define STATE_JOIN_BACKGROUND_FILEPATH "Resources/Textures/Backgrounds/Join.jpg"
 /* ########## JOIN ########## */
 
 /* ########## MAIN ########## */
 #define STATE_MAIN_BACKGROUND_FILEPATH "Resources/Textures/Backgrounds/Canyon.jpg"
-#define STATE_MAIN_ENTITY_TEST_FILEPATH "Resources/Textures/Entities/Test.png"
-#define STATE_MAIN_DUMMY_ENTITY_TEST_FILEPATH "Resources/Textures/Entities/Box.png"
 /* ########## MAIN ########## */
+
+/* ########## GAME ########## */
+#define STATE_GAME_PLAYER_FILEPATH "Resources/Textures/Entities/Player.png"
+#define STATE_GAME_DUMMY_ENTITY_FILEPATH "Resources/Textures/Entities/Test.png"
+/* ########## GAME ########## */
 
 /* ################## STATES ################## */
 

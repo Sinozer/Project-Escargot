@@ -49,7 +49,7 @@ namespace Snail
 		return m_physicBodies.empty();
 	}
 
-	void PhysicBodyManager::Update(float dt)
+	void PhysicBodyManager::Update()
 	{
 		if (m_physicBodies.empty())
 			return;
@@ -65,7 +65,7 @@ namespace Snail
 				 * ***** If true, the physic body is affected by gravity.
 				 *
 				 */
-				physicBody.second->Update(dt);
+				physicBody.second->Update();
 
 				for (auto& otherPhysicBody : m_physicBodies)
 				{

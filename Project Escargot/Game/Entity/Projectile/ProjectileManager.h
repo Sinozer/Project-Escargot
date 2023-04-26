@@ -22,7 +22,7 @@ namespace Snail
 
 		void Shoot(sf::Vector2f startingPoint);
 
-		void Update(float dt);
+		void Update();
 
 		void Draw();
 

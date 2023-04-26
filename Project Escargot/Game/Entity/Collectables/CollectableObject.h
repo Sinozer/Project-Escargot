@@ -22,7 +22,7 @@ namespace Snail
 		CollectableObject();
 		~CollectableObject();
 		void Init(sf::Vector2f position = sf::Vector2f(170, 170));
-		void Update(float dt);
+		void Update();
 		void Draw();
 
 

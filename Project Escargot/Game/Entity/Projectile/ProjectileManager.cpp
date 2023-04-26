@@ -65,10 +65,10 @@ namespace Snail
 		}*/
 	}
 
-	void ProjectileManager::Update(float dt)
+	void ProjectileManager::Update()
 	{
 		for (auto& i : m_projectiles)
-			i->Update(dt);
+			i->Update();
 	}
 
 	void ProjectileManager::Draw()

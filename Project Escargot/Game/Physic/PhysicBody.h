@@ -20,7 +20,7 @@ namespace Snail
 		PhysicBody(sf::Vector2f position, float restitution,
 			bool isStatic, sf::Vector2f size, sf::Texture& texture, sf::Vector2i texturePosition, bool canCollide, bool canGravitate);
 
-		void m_Move(float dt);
+		void m_Move();
 	public:
 
 		sf::Vector2f m_velocity;
@@ -57,7 +57,7 @@ namespace Snail
 
 		void OnCollision(sf::Vector2f direction);
 
-		void Update(float dt);
+		void Update();
 
 		void Draw(sf::RenderWindow& window);
 	};

@@ -22,7 +22,7 @@ namespace Snail
 		void m_InitPhysicBody(sf::Vector2f position);
 		void m_InitWeaponManager();
 		void m_ChangeDirection(Direction direction = NONE);
-		void m_UpdateWeaponManager(float dt);
+		void m_UpdateWeaponManager();
 		void m_DrawWeaponManager();
 
 	public:
@@ -37,7 +37,7 @@ namespace Snail
 
 		void HandleInput();
 
-		void Update(float dt);
+		void Update();
 
 		void Draw();
 

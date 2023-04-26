@@ -22,7 +22,7 @@ namespace Snail
 
 		void m_UpdateBackground();
 		void m_UpdateView();
-		void m_UpdateUIManager(float dt);
+		void m_UpdateUIManager();
 
 		void m_DrawUIManager();
 		void m_AddMainState();
@@ -32,7 +32,7 @@ namespace Snail
 
 		void Init();
 		void HandleInput();
-		void Update(float dt);
-		void Draw(float dt);
+		void Update();
+		void Draw();
 	};
 }
