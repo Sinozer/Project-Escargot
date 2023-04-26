@@ -25,7 +25,6 @@ namespace Snail
 		m_speed = 1.25f * PHYSIC_SCALE;
 		m_jumpHeight = 2.f * PHYSIC_SCALE;
 		m_clampVelocity = { m_speed, m_jumpHeight };
-		bulletCount = 0;
 	}
 
 	Player::~Player()
@@ -100,9 +99,9 @@ namespace Snail
 
 	void Player::m_UpdateWeaponManager()
 	{
-		m_weaponManager->Update();
+		m_weaponManager.Update();
 		//m_weaponManager->HandlerPos((sf::Vector2f)GetLocalPosition());
-		m_weaponManager->HandlerPos(m_physicBodyRef->GetPosition());
+		m_weaponManager.HandlerPos(m_physicBodyRef->GetPosition());
 	}
 
 	void Player::Draw()

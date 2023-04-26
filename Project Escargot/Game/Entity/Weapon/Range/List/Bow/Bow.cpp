@@ -47,7 +47,7 @@ namespace Snail
 
 		if (!m_SetState(WeaponState::ATTACKING)) return;
 		
-		m_projectileManager.Shoot(m_physicBodyRef->GetPosition());
+		m_projectileManager.Shoot(calc);
 	}
 
 	void Bow::HandlerPos(sf::Vector2f handler)
@@ -58,9 +58,6 @@ namespace Snail
 		float normX = handler.x/std::sqrt(std::pow(InputManager::GetInstance()->GetMousePosition().x, 2) - std::pow(handler.x, 2));
 		float normY = handler.y/std::sqrt(std::pow(InputManager::GetInstance()->GetMousePosition().y, 2) - std::pow(handler.y, 2));
 		calc = handler + out * 25.f;
-		//std::cout << "X : " << calc.x << " <> Y : " << calc.y << "\n";
-		
-
 	}
 	
 	void Bow::Update()

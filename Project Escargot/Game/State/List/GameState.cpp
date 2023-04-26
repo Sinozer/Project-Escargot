@@ -53,16 +53,6 @@ namespace Snail
 	{
 	}
 
-	void GameState::AddBullet()
-	{
-		/*sf::Vector2f mousePosition = (sf::Vector2f)sf::Mouse::getPosition(m_data->window);
-		
-		this->m_bullet = new ProjectileManager(m_data, m_player->GetPhysicBodyRef()->GetPosition(), (sf::Vector2f)m_data->window.mapPixelToCoords((sf::Vector2i)mousePosition));
-		PhysicBodyManager::GetInstance()->AddPhysicBody("Bullet" + m_numberBullet, m_bullet->m_physicBodyRef);
-		m_timerBulletFire = 0;
-		m_numberBullet++;*/
-	}
-
 	void GameState::HandleInput()
 	{
 		sf::Event event;
@@ -77,8 +67,7 @@ namespace Snail
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 			m_data->stateManager.RemoveState();
-
-		m_tempBulletCount = m_player->bulletCount;
+		
 		m_player->HandleInput();
 	}
 
@@ -88,18 +77,6 @@ namespace Snail
 		
 		PhysicBodyManager::GetInstance()->Update();
 		m_player->Update();
-		m_timerBulletFire++;
-		if (m_player->bulletCount > this->m_tempBulletCount && m_timerBulletFire > 10)
-		{
-
-			if (m_numberBullet > 5)
-			{
-				for (int i = 0; i < m_numberBullet; i++)
-					PhysicBodyManager::GetInstance()->RemovePhysicBody("Bullet" + i);
-				m_numberBullet = 0;
-			}
-			AddBullet();
-		}
 		m_spawner.Update();
 
 		m_UpdateUIManager();

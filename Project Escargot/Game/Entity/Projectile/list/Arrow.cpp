@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Arrow.h"
-
-
+#include "Game/Entity/LivingEntity/Player/Player.h"
 namespace Snail 
 {
 	Arrow::Arrow()
@@ -39,7 +38,7 @@ namespace Snail
 
 	void Arrow::Shoot(sf::Vector2f shooterCoord)
 	{
-		float angle = std::atan2f(InputManager::GetInstance(Game::m_data->window)->GetMousePosition().y - shooterCoord.y, InputManager::GetInstance()->GetMousePosition().x - shooterCoord.x);
+		float angle = std::atan2f(shooterCoord.y - Player::GetInstance()->GetPhysicBodyRef()->GetPosition().y, shooterCoord.x - Player::GetInstance()->GetPhysicBodyRef()->GetPosition().x);
 		m_targetPosition = { std::cos(angle), std::sin(angle) };
 		
 		m_InitPhysicBody(shooterCoord);

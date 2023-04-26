@@ -1,11 +1,8 @@
 #pragma once
 #include "Game/State/State.h"
-
 #include "Game/Physic/PhysicBodyManager.h"
-//#include "Game/Entity/LivingEntity/LivingEntity.h"
 #include "Game/Entity/LivingEntity/Player/Player.h"
 #include "Game/Entity/LivingEntity/Enemy/Enemy.h"
-//#include "Game/Entity/Projectile/ProjectileManager.h"
 #include "Game/Entity/Spawner.h"
 #include "Game/Entity/Collectables/CollectableObject.h"
 namespace Snail
@@ -16,8 +13,6 @@ namespace Snail
 	class GameState : public State
 	{
 	private:
-		//PhysicBodyManager m_physicBodyManager;
-		
 		Player* m_player;
 
 		Spawner m_spawner;
@@ -47,7 +42,6 @@ namespace Snail
 		~GameState() {}
 
 		void Init();
-		void AddBullet();
 		void HandleInput();
 		void Update();
 		void Draw();

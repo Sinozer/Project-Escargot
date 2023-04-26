@@ -49,20 +49,7 @@ namespace Snail
 
 		m_projectiles.push_back(temp);
 
-		temp->Shoot(Player::GetInstance()->GetPhysicBodyRef()->GetPosition());
-		
-		/*switch (m_projectileReference)
-		{
-		case Snail::NONE:
-			break;
-		case Snail::ARROW:
-			Arrow* temp = new Arrow(m_data, startingPoint);
-			temp->Init(m_physicBodyManager, startingPoint);
-			temp->Shoot();
-			m_projectiles.push_back(temp);
-			
-			break;
-		}*/
+		temp->Shoot(startingPoint);
 	}
 
 	void ProjectileManager::Update()
