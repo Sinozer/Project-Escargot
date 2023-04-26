@@ -19,7 +19,7 @@ namespace Snail
 
 	void JoinState::m_InitBackground()
 	{
-		AssetManager::GetInstance()->LoadTexture("STATE_JOIN_BACKGROUND", STATE_JOIN_BACKGROUND_FILEPATH);
+		AssetManager::GetInstance()->LoadTexture("STATE_JOIN_BACKGROUND", BACKGROUND_FOREST_FILEPATH);
 		m_background.setTexture(AssetManager::GetInstance()->GetTexture("STATE_JOIN_BACKGROUND"));
 		m_background.setScale((float)m_data->window.getSize().x / (float)m_background.getTexture()->getSize().x, (float)m_data->window.getSize().y / (float)m_background.getTexture()->getSize().y);
 
