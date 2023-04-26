@@ -8,17 +8,67 @@ namespace Snail
 	 */
 	class Weapon : public Entity
 	{
+#pragma region WeaponState
+	public:
+		enum WeaponState
+		{
+			IDLE,
+			ATTACKING,
+			RELOADING,
+			EMPTY
+		};
+		
+	protected:
+		void m_UpdateState();
+		bool m_SetState(WeaponState state);
+
+	private:
+		void m_UpdateFromState();
+
+	protected:
+		bool m_forceState;
+		WeaponState m_previousWeaponState;
+		WeaponState m_weaponState;
+		
+#pragma endregion
+
 	protected:
 		std::string m_name;
 
-		PhysicBodyRef m_physicBodyRef;
-
-		sf::Vector2f m_wantedWosition;
+		sf::Vector2f m_wantedPosition;
 
 		float m_offset;
 
+	protected:
+		/**
+		 * \brief Amount of projectiles per seconds.
+		 */
+		float m_fireRate;
+		float m_fireRateDelta;
+
+		/**
+		 * \brief Amount of loaders.
+		 */
+		float m_loaderAmount;
+		float m_loaderAmountDelta;
+		
+		/**
+		 * \brief Amount of projectiles per loader.
+		 */
+		float m_loaderSize;
+		float m_loaderSizeDelta;
+
+		/**
+		 * \brief Amount of time to reload.
+		 */
+		float m_reloadTime;
+		float m_reloadTimeDelta;
+
+	protected:
+		Weapon();
 
 	public:
+
 		virtual void Use() = 0;
 
 		virtual void Draw() = 0;

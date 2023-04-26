@@ -6,7 +6,7 @@ namespace Snail
 {
 	Arrow::Arrow()
 	{
-		m_speed = 5.f * PHYSIC_SCALE;
+		m_speed = 2.f * PHYSIC_SCALE;
 		m_clampVelocity = { m_speed, m_jumpHeight };
 	}
 
@@ -18,9 +18,9 @@ namespace Snail
 	void Arrow::Init(sf::Vector2f position)
 	{
 		m_InitPhysicBody(position);
-		//Shoot();
 	}
 
+	unsigned int Arrow::m_count = 0;
 	void Arrow::m_InitPhysicBody(sf::Vector2f position)
 	{
 		m_physicBodyRef = PhysicBodyRef(PhysicBody::CreateBoxBody(
@@ -28,31 +28,28 @@ namespace Snail
 			false, false
 		));
 
-		PhysicBodyManager::GetInstance()->AddPhysicBody("{ENTITY NAME}_ARROW_" + std::to_string(m_id), m_physicBodyRef);
+		PhysicBodyManager::GetInstance()->AddPhysicBody("ARROW_" + std::to_string(m_count), m_physicBodyRef);
+		m_count++;
 	}
 
 	Arrow* Arrow::Clone()
 	{
-		std::cout << "Arrow::Clone()" << "\n";
 		return new Arrow(*this);
 	}
 
-	void Arrow::Shoot(sf::Vector2f shooterCoord, unsigned int id)
+	void Arrow::Shoot(sf::Vector2f shooterCoord)
 	{
-		m_id = id;
-		
 		float angle = std::atan2f(InputManager::GetInstance(Game::m_data->window)->GetMousePosition().y - shooterCoord.y, InputManager::GetInstance()->GetMousePosition().x - shooterCoord.x);
 		m_targetPosition = { std::cos(angle), std::sin(angle) };
 		
-		// init
+		m_InitPhysicBody(shooterCoord);
 
 		m_physicBodyRef->AddVelocity({ m_speed * m_targetPosition.x, m_speed * m_targetPosition.y }, m_clampVelocity);
 	}
 
 	void Arrow::Update(float dt)
 	{
-		if (m_physicBodyRef)
-			m_physicBodyRef->SetPosition(sf::Vector2f(-1.f, -1.f));
+		
 	}
 	
 	void Arrow::Draw()

@@ -19,7 +19,7 @@ namespace Snail
 		~Arrow();
 
 		void Init(sf::Vector2f position);
-		void Shoot(sf::Vector2f shooterCoord, unsigned int id) override;
+		void Shoot(sf::Vector2f shooterCoord) override;
 
 		void Update(float dt);
 		void Draw();

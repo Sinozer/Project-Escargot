@@ -24,7 +24,7 @@ namespace Snail
 	{
 		if (m_instance.size() < STATE_COUNT_MAX)
 			m_instance.assign(STATE_COUNT_MAX, nullptr);
-		
+
 		if (m_instance[Game::m_data->stateManager.GetActiveStateID()] != nullptr)
 		{
 			delete m_instance[Game::m_data->stateManager.GetActiveStateID()];
@@ -90,13 +90,7 @@ namespace Snail
 		sf::RectangleShape shape;
 
 		for (auto& physicBody : m_physicBodies)
-		{
-			if (physicBody.second)
-				if (physicBody.second->GetPosition() == sf::Vector2f(-1.f, -1.f))
-					std::cout << "OUI\n";
-
 			if (physicBody.second)
 				physicBody.second->Draw(m_data->window);
-		}
 	}
 }

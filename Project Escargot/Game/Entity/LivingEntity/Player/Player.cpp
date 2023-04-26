@@ -4,10 +4,10 @@ namespace Snail
 {
 	Player* Player::m_instance = nullptr;
 
-	Player* Player::GetInstance(GameDataRef data)
+	Player* Player::GetInstance()
 	{
 		if (m_instance == nullptr)
-			m_instance = new Player(data);
+			m_instance = new Player(Game::m_data);
 
 		return m_instance;
 	}
@@ -17,7 +17,7 @@ namespace Snail
 		delete m_instance;
 		m_instance = nullptr;
 	}
-	
+
 	Player::Player(GameDataRef data)
 	{
 		m_data = data;
@@ -30,8 +30,6 @@ namespace Snail
 
 	Player::~Player()
 	{
-		if (m_weaponManager)
-			delete(m_weaponManager);
 	}
 
 	void Player::Init(sf::Vector2f position)
@@ -51,8 +49,7 @@ namespace Snail
 
 	void Player::m_InitWeaponManager()
 	{
-		m_weaponManager = new WeaponManager();
-		m_weaponManager->AddWeapon("BOW");
+		m_weaponManager.AddWeapon("BOW");
 	}
 
 	void Player::HandleInput()
@@ -76,15 +73,12 @@ namespace Snail
 		}
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-			m_weaponManager->Use();
+			m_weaponManager.Use();
 		}
 
-		//if (DEBUG)
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
-		{
-			m_physicBodyRef->SetPosition({ 150, 150 });
-		}
-
+		if (DEBUG)
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
+				m_physicBodyRef->SetPosition({ 150, 150 });
 	}
 
 	void Player::m_ChangeDirection(Direction direction)
@@ -99,7 +93,7 @@ namespace Snail
 
 	void Player::m_UpdateWeaponManager(float dt)
 	{
-		m_weaponManager->Update(dt);
+		m_weaponManager.Update(dt);
 	}
 
 	void Player::Draw()
@@ -109,7 +103,7 @@ namespace Snail
 
 	void Player::m_DrawWeaponManager()
 	{
-		m_weaponManager->Draw();
+		m_weaponManager.Draw();
 	}
 
 	PhysicBodyRef Player::GetPhysicBodyRef()

@@ -7,6 +7,7 @@ namespace Snail
 	{
 		sf::RenderWindow window;
 		StateManager stateManager;
+		float deltaTime;
 	};
 
 	typedef std::shared_ptr<GameData> GameDataRef;

@@ -5,7 +5,7 @@
 
 namespace Snail
 {
-	GameDataRef Game::m_data;;
+	GameDataRef Game::m_data;
 
 	Game::Game(int width, int height, std::string title)
 	{
@@ -33,6 +33,7 @@ namespace Snail
 	void Game::m_UpdateDt()
 	{
 		m_dt = m_clock.restart().asSeconds();
+		m_data->deltaTime = m_dt;
 	}
 
 	void Game::Run()

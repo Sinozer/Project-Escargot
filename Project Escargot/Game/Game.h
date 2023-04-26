@@ -4,8 +4,6 @@
 
 namespace Snail
 {
-	
-
 	/**
 	 * \brief Main class.
 	 * 

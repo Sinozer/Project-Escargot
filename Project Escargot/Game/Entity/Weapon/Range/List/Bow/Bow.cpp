@@ -7,8 +7,19 @@ namespace Snail
 
 	Bow::Bow(sf::Vector2f targetPosition)
 	{
-
 		m_projectileManager.SetProjectile(new Arrow());
+
+		m_fireRate = .9f;
+		m_fireRateDelta = 0.f;
+
+		m_loaderAmount = 16.f;
+		m_loaderAmountDelta = m_loaderAmount;
+
+		m_loaderSize = 1.f;
+		m_loaderSizeDelta = m_loaderSize;
+
+		m_reloadTime = 1.f;
+		m_reloadTimeDelta = 0.f;
 	}
 
 	Bow::~Bow()
@@ -32,12 +43,17 @@ namespace Snail
 
 	void Bow::Use()
 	{
-		std::cout << "Bow::Use()" << "\n";
+		if (m_weaponState != WeaponState::IDLE) return;
+
+		if (!m_SetState(WeaponState::ATTACKING)) return;
+		
 		m_projectileManager.Shoot(m_physicBodyRef->GetPosition());
 	}
 
 	void Bow::Update(float dt)
 	{
+		m_UpdateState();
+
 		m_physicBodyRef->SetPosition(InputManager::GetInstance()->GetMousePosition());
 		m_projectileManager.Update(dt);
 	}

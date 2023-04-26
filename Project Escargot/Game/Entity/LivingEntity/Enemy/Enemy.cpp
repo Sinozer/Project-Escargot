@@ -15,7 +15,7 @@ namespace Snail
 		m_isMelee = true;
 		m_forcePlayerPos = false;
 
-		m_target = Player::GetInstance(data);
+		m_target = Player::GetInstance();
 	}
 
 	void Enemy::Init(sf::Vector2f position)

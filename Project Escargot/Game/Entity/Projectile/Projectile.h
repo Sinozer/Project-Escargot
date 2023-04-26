@@ -8,7 +8,7 @@ namespace Snail
 	class Projectile : public Entity
 	{
 	protected:
-		unsigned int m_id;
+		static unsigned int m_count;
 	protected:
 		PhysicBodyRef m_physicBodyRef;
 
@@ -22,6 +22,6 @@ namespace Snail
 	public:
 		virtual Projectile* Clone() = 0;
 		
-		virtual void Shoot(sf::Vector2f shooterCoord, unsigned int id) = 0;
+		virtual void Shoot(sf::Vector2f shooterCoord) = 0;
 	};
 }

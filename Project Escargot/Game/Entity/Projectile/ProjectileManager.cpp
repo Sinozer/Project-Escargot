@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "ProjectileManager.h"
 #include "list/Arrow.h"
+#include "Game/Entity/LivingEntity/Player/Player.h"
 /**
  *
  * MainState
@@ -26,10 +27,9 @@
 
 namespace Snail
 {
-	ProjectileManager::ProjectileManager(GameDataRef data, sf::Vector2f shooterCoord, sf::Vector2f mousePositon)
+	ProjectileManager::ProjectileManager()
 	{
-		m_data = data;
-		/*Init();*/
+		m_projectileRef = nullptr;
 	}
 
 	ProjectileManager::~ProjectileManager()
@@ -43,14 +43,14 @@ namespace Snail
 		m_projectileRef = projectile;
 	}
 
-	void ProjectileManager::m_InitPhysicBody(sf::Vector2f position)
-	{
-		//m_physicBodyManager = pbm;
-	}
-
 	void ProjectileManager::Shoot(sf::Vector2f startingPoint)
 	{
-		m_projectileRef->Clone();
+		Projectile* temp = m_projectileRef->Clone();
+
+		m_projectiles.push_back(temp);
+
+		temp->Shoot(Player::GetInstance()->GetPhysicBodyRef()->GetPosition());
+		
 		/*switch (m_projectileReference)
 		{
 		case Snail::NONE:

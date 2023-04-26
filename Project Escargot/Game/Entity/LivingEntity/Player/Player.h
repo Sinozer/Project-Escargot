@@ -17,7 +17,7 @@ namespace Snail
 		Player(GameDataRef data);
 	private:
 		GameDataRef m_data;
-		WeaponManager* m_weaponManager;
+		WeaponManager m_weaponManager;
 		
 		void m_InitPhysicBody(sf::Vector2f position);
 		void m_InitWeaponManager();
@@ -30,7 +30,7 @@ namespace Snail
 		
 		int bulletCount;
 		
-		static Player* GetInstance(GameDataRef data);
+		static Player* GetInstance();
 		static void DestroyInstance();
 
 		void Init(sf::Vector2f position = sf::Vector2f(150, 150));

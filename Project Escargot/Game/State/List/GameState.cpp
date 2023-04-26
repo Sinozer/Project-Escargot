@@ -7,7 +7,7 @@ namespace Snail
 	{
 		// = PhysicBodyManager(data);
 
-		m_player = Player::GetInstance(data);
+		m_player = Player::GetInstance();
 	}
 
 	void GameState::Init()
@@ -59,12 +59,12 @@ namespace Snail
 
 	void GameState::AddBullet()
 	{
-		sf::Vector2f mousePosition = (sf::Vector2f)sf::Mouse::getPosition(m_data->window);
+		/*sf::Vector2f mousePosition = (sf::Vector2f)sf::Mouse::getPosition(m_data->window);
 		
 		this->m_bullet = new ProjectileManager(m_data, m_player->GetPhysicBodyRef()->GetPosition(), (sf::Vector2f)m_data->window.mapPixelToCoords((sf::Vector2i)mousePosition));
 		PhysicBodyManager::GetInstance()->AddPhysicBody("Bullet" + m_numberBullet, m_bullet->m_physicBodyRef);
 		m_timerBulletFire = 0;
-		m_numberBullet++;
+		m_numberBullet++;*/
 	}
 
 	void GameState::HandleInput()

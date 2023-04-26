@@ -18,7 +18,7 @@ namespace Snail
 		sf::Vector2f m_shooterCoord;
 		sf::Vector2f m_targetPosition;
 	public:
-		/*Range();*/
+		//Range();
 		//virtual ~Range();
 	};
 }
