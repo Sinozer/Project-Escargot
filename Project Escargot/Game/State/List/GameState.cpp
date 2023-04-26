@@ -22,8 +22,6 @@ namespace Snail
 			PhysicBodyManager::GetInstance()->AddPhysicBody(std::to_string(i), refs[i]);
 		}
 
-		m_timerBulletFire = 0;
-		m_numberBullet = 0;
 
 		m_player->Init();
 		m_spawner.Init();

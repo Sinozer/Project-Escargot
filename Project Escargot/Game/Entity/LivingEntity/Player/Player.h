@@ -28,8 +28,6 @@ namespace Snail
 	public:
 		~Player();
 		
-		int bulletCount;
-		
 		static Player* GetInstance();
 		static void DestroyInstance();
 
@@ -37,6 +35,8 @@ namespace Snail
 
 		void HandleInput();
 
+		sf::Vector2f GetLocalPosition();
+		
 		void Update();
 
 		void Draw();

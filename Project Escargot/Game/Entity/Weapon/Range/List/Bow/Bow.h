@@ -9,11 +9,14 @@ namespace Snail
 	{
 	private:
 		void m_InitPhysicBody(sf::Vector2f position);
+		sf::Vector2f calc;
 	public:
 		Bow(sf::Vector2f targetPosition);
 		~Bow();
 		
 		void Use();
+
+		void HandlerPos(sf::Vector2f handler);
 		
 		void Init(sf::Vector2f position);
 

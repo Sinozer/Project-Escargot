@@ -83,6 +83,11 @@ namespace Snail
 				m_physicBodyRef->SetPosition({ 150, 150 });
 	}
 
+	sf::Vector2f Player::GetLocalPosition()
+	{
+		return m_data->window.mapPixelToCoords((sf::Vector2i)m_physicBodyRef->GetPosition());
+	}
+
 	void Player::m_ChangeDirection(Direction direction)
 	{
 		m_direction = direction;
@@ -95,7 +100,9 @@ namespace Snail
 
 	void Player::m_UpdateWeaponManager()
 	{
-		m_weaponManager.Update();
+		m_weaponManager->Update();
+		//m_weaponManager->HandlerPos((sf::Vector2f)GetLocalPosition());
+		m_weaponManager->HandlerPos(m_physicBodyRef->GetPosition());
 	}
 
 	void Player::Draw()

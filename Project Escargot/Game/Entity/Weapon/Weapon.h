@@ -74,6 +74,8 @@ namespace Snail
 		virtual void Draw() = 0;
 
 		virtual void Update() = 0;
+
+		virtual void HandlerPos(sf::Vector2f handler) = 0;
 	};
 }
 

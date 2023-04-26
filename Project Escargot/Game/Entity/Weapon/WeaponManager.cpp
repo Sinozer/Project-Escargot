@@ -31,6 +31,11 @@ namespace Snail
         m_activeWeapon->Use();
     }
 
+    void WeaponManager::HandlerPos(sf::Vector2f handler)
+    {
+        m_activeWeapon->HandlerPos(handler);
+    }
+    
     void WeaponManager::Update()
     {
         m_activeWeapon->Update();
