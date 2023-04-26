@@ -31,7 +31,7 @@ namespace Snail
 
 		Enemy test(GameDataRef data, m_player);
 
-		m_enemyList.insert(m_enemy, 0);
+		m_enemyList.push_back(m_enemy);
 
 		m_physicBodyManager.AddPhysicBody("PLAYER", m_player.GetPhysicBodyRef());
 
