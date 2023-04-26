@@ -5,7 +5,7 @@ namespace Snail
 {
 	GameState::GameState(GameDataRef data) : m_data(data), m_spawner(m_data)
 	{
-		m_physicBodyManager = PhysicBodyManager(data);
+		// = PhysicBodyManager(data);
 
 		m_player = Player::GetInstance(data);
 	}
@@ -21,20 +21,20 @@ namespace Snail
 
 		for (int i = 0; i < refs.size(); i++)
 		{
-			m_physicBodyManager.AddPhysicBody(std::to_string(i), refs[i]);
+			PhysicBodyManager::GetInstance()->AddPhysicBody(std::to_string(i), refs[i]);
 		}
 
 		m_timerBulletFire = 0;
 		m_numberBullet = 0;
 
-		m_player->Init(m_physicBodyManager);
-		m_spawner.Init(m_physicBodyManager);
-		m_collectable.Init(m_physicBodyManager);
+		m_player->Init();
+		m_spawner.Init();
+		m_collectable.Init();
 
 		Enemy test(GameDataRef data);
 
 
-		m_physicBodyManager.AddPhysicBody("PLAYER", m_player->GetPhysicBodyRef());
+		PhysicBodyManager::GetInstance()->AddPhysicBody("PLAYER", m_player->GetPhysicBodyRef());
 	}
 
 	void GameState::m_InitBackground()
@@ -62,7 +62,7 @@ namespace Snail
 		sf::Vector2f mousePosition = (sf::Vector2f)sf::Mouse::getPosition(m_data->window);
 		
 		this->m_bullet = new ProjectileManager(m_data, m_player->GetPhysicBodyRef()->GetPosition(), (sf::Vector2f)m_data->window.mapPixelToCoords((sf::Vector2i)mousePosition));
-		m_physicBodyManager.AddPhysicBody("Bullet" + m_numberBullet, m_bullet->m_physicBodyRef);
+		PhysicBodyManager::GetInstance()->AddPhysicBody("Bullet" + m_numberBullet, m_bullet->m_physicBodyRef);
 		m_timerBulletFire = 0;
 		m_numberBullet++;
 	}
@@ -90,7 +90,7 @@ namespace Snail
 	{
 		m_UpdateView();
 		
-		m_physicBodyManager.Update(dt);
+		PhysicBodyManager::GetInstance()->Update(dt);
 		m_player->Update(dt);
 		m_timerBulletFire++;
 		if (m_player->bulletCount > this->m_tempBulletCount && m_timerBulletFire > 10)
@@ -99,7 +99,7 @@ namespace Snail
 			if (m_numberBullet > 5)
 			{
 				for (int i = 0; i < m_numberBullet; i++)
-					m_physicBodyManager.RemovePhysicBody("Bullet" + i);
+					PhysicBodyManager::GetInstance()->RemovePhysicBody("Bullet" + i);
 				m_numberBullet = 0;
 			}
 			AddBullet();
@@ -117,7 +117,7 @@ namespace Snail
 			mousePosition = Math::Clamp(mousePosition, sf::Vector2f(0.f, 0.f), (sf::Vector2f)m_data->window.getSize());
 			m_background.setOrigin(mousePosition / /*value*/8.f); // Value = map size / background size
 			m_view.setCenter(mousePosition);
-			m_spawner.Spawn(m_physicBodyManager);
+			m_spawner.Spawn();
 		}
 		else
 		{
@@ -135,8 +135,8 @@ namespace Snail
 	void GameState::Draw(float dt)
 	{
 		m_data->window.draw(m_background);
-		if (!m_physicBodyManager.IsEmpty())
-			m_physicBodyManager.Draw();
+		if (!PhysicBodyManager::GetInstance()->IsEmpty())
+			PhysicBodyManager::GetInstance()->Draw();
 
 		m_DrawUIManager();
 	}

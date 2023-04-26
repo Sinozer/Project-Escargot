@@ -10,7 +10,6 @@ namespace Snail
 	protected:
 		unsigned int m_id;
 	protected:
-		GameDataRef m_data;
 		PhysicBodyRef m_physicBodyRef;
 
 		sf::Vector2f m_weaponPosition;
@@ -21,6 +20,8 @@ namespace Snail
 		float m_speed;
 		float m_range;
 	public:
-		//virtual void AddBullet() = 0;
+		virtual Projectile* Clone() = 0;
+		
+		virtual void Shoot(sf::Vector2f shooterCoord, unsigned int id) = 0;
 	};
 }

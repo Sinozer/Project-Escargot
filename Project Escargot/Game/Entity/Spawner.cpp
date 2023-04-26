@@ -8,7 +8,7 @@ namespace Snail
 		m_data = data;
 	}
 
-	void Spawner::Spawn(PhysicBodyManager& pbm, sf::Vector2f position)
+	void Spawner::Spawn(sf::Vector2f position)
 	{
 		////AssetManager::GetInstance()->LoadTexture("TEST_ENTITY", STATE_MAIN_ENTITY_TEST_FILEPATH);
 
@@ -18,11 +18,11 @@ namespace Snail
 
 		//m_physicBodyRef->Scale(sf::Vector2f(0.5f, 0.5f));
 
-		//pbm.AddPhysicBody("ENNEMY_" + std::to_string(Enemy::Count), m_physicBodyRef);
+		//PhysicBodyManager::GetInstance()->AddPhysicBody("ENNEMY_" + std::to_string(Enemy::Count), m_physicBodyRef);
 
 		Enemy* temp = new Enemy(m_data);
 
-		temp->Init(pbm, position);
+		temp->Init(position);
 
 		m_enemyList.push_back(temp);
 	}
@@ -35,13 +35,13 @@ namespace Snail
 		}
 	}
 
-	void Spawner::Init(PhysicBodyManager& pbm, sf::Vector2f position)
+	void Spawner::Init(sf::Vector2f position)
 	{
-		m_InitPhysicBody(pbm, position);
+		m_InitPhysicBody(position);
 	}
 
 	//textures are to be changed later or removed if spawner is meant to be invisible
-	void Spawner::m_InitPhysicBody(PhysicBodyManager& pbm, sf::Vector2f position)
+	void Spawner::m_InitPhysicBody(sf::Vector2f position)
 	{
 		sf::Texture texture;
 
@@ -51,7 +51,7 @@ namespace Snail
 
 		m_physicBodyRef->Scale(sf::Vector2f(0.5f, 0.5f));
 
-		pbm.AddPhysicBody("SPAWNER", m_physicBodyRef);
+		PhysicBodyManager::GetInstance()->AddPhysicBody("SPAWNER", m_physicBodyRef);
 	}
 }
 

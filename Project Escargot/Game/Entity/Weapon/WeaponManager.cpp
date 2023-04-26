@@ -4,11 +4,6 @@
 
 namespace Snail
 {
-	WeaponManager::WeaponManager(PhysicBodyManager& physicBodyManager) : m_physicBodyManager(physicBodyManager)
-    {
-
-    }
-
     void WeaponManager::AddWeapon(std::string weaponName)
     {
         m_weapons[weaponName] = new Bow(sf::Vector2f(0.f,0.f));
@@ -27,7 +22,7 @@ namespace Snail
         
         
         m_activeWeapon = m_weapons.at(weaponName);
-		m_activeWeapon->Init(m_physicBodyManager, sf::Vector2f(0,0));
+		m_activeWeapon->Init(sf::Vector2f(0,0));
     }
 
     void WeaponManager::Use()

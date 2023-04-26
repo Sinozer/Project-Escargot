@@ -2,9 +2,34 @@
 #include "PhysicBodyManager.h"
 namespace Snail
 {
+	std::vector<PhysicBodyManager*> PhysicBodyManager::m_instance;
+
 	PhysicBodyManager::PhysicBodyManager(GameDataRef data)
 	{
 		m_data = data;
+	}
+
+	PhysicBodyManager* PhysicBodyManager::GetInstance()
+	{
+		if (m_instance.size() < STATE_COUNT_MAX)
+			m_instance.assign(STATE_COUNT_MAX, nullptr);
+
+		if (m_instance[Game::m_data->stateManager.GetActiveStateID()] == nullptr)
+			m_instance.insert(m_instance.begin() + Game::m_data->stateManager.GetActiveStateID(), new PhysicBodyManager(Game::m_data));
+
+		return m_instance[Game::m_data->stateManager.GetActiveStateID()];
+	}
+
+	void PhysicBodyManager::DestroyInstance()
+	{
+		if (m_instance.size() < STATE_COUNT_MAX)
+			m_instance.assign(STATE_COUNT_MAX, nullptr);
+		
+		if (m_instance[Game::m_data->stateManager.GetActiveStateID()] != nullptr)
+		{
+			delete m_instance[Game::m_data->stateManager.GetActiveStateID()];
+			m_instance[Game::m_data->stateManager.GetActiveStateID()] = nullptr;
+		}
 	}
 
 	void PhysicBodyManager::AddPhysicBody(std::string name, PhysicBodyRef newPhysicBody)
@@ -28,7 +53,7 @@ namespace Snail
 	{
 		if (m_physicBodies.empty())
 			return;
-		
+
 		for (auto& physicBody : m_physicBodies)
 		{
 			if (physicBody.second && !physicBody.second->m_IsStatic)
@@ -69,7 +94,7 @@ namespace Snail
 			if (physicBody.second)
 				if (physicBody.second->GetPosition() == sf::Vector2f(-1.f, -1.f))
 					std::cout << "OUI\n";
-			
+
 			if (physicBody.second)
 				physicBody.second->Draw(m_data->window);
 		}

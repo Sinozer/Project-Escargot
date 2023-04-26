@@ -12,9 +12,9 @@ namespace Snail
 		//constructor
 		Spawner(GameDataRef data);
 
-		void Init(PhysicBodyManager& pbm, sf::Vector2f position = sf::Vector2f(0, 0));
+		void Init(sf::Vector2f position = sf::Vector2f(0, 0));
 
-		void Spawn(PhysicBodyManager& pbm, sf::Vector2f position = sf::Vector2f(0, 0));
+		void Spawn(sf::Vector2f position = sf::Vector2f(0, 0));
 
 		void Update(float dt);
 
@@ -22,7 +22,7 @@ namespace Snail
 
 		GameDataRef m_data;
 
-		void m_InitPhysicBody(PhysicBodyManager& pbm, sf::Vector2f position);
+		void m_InitPhysicBody(sf::Vector2f position);
 
 		std::vector<Enemy*> m_enemyList;
 

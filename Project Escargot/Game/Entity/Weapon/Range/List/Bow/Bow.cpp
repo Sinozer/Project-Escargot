@@ -8,7 +8,7 @@ namespace Snail
 	Bow::Bow(sf::Vector2f targetPosition)
 	{
 
-		m_projectileManager.SetProjectile(ARROW);
+		m_projectileManager.SetProjectile(new Arrow());
 	}
 
 	Bow::~Bow()
@@ -16,19 +16,18 @@ namespace Snail
 	}
 
 
-	void Bow::Init(PhysicBodyManager &pbm, sf::Vector2f position = sf::Vector2f(150, 150))
+	void Bow::Init(sf::Vector2f position = sf::Vector2f(150, 150))
 	{
-		m_InitPhysicBody(pbm, position);
-		m_projectileManager.Init(pbm, position);
+		m_InitPhysicBody(position);
 	}
 
-	void Bow::m_InitPhysicBody(PhysicBodyManager &pbm, sf::Vector2f position)
+	void Bow::m_InitPhysicBody(sf::Vector2f position)
 	{
 		m_physicBodyRef = PhysicBodyRef(PhysicBody::CreateBoxBody(
 			sf::Vector2f(5.f, 5.f), position, 0.f, true, false, false
 		));
 
-		pbm.AddPhysicBody("BOW", m_physicBodyRef);
+		PhysicBodyManager::GetInstance()->AddPhysicBody("BOW", m_physicBodyRef);
 	}
 
 	void Bow::Use()

@@ -152,6 +152,7 @@
     <ClCompile Include="Game\Input\InputManager.cpp" />
     <ClCompile Include="Game\State\List\SettingsState.cpp" />
     <ClCompile Include="Game\State\List\JoinState.cpp" />
+    <ClCompile Include="Game\State\State.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Game\State\StateManager.cpp" />
     <ClCompile Include="Game\State\List\GameState.cpp" />

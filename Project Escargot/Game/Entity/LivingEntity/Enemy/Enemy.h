@@ -16,7 +16,7 @@ namespace Snail
 		float m_attackRange;
 		bool m_forcePlayerPos;
 
-		void m_InitPhysicBody(PhysicBodyManager& pbm, sf::Vector2f position);
+		void m_InitPhysicBody(sf::Vector2f position);
 
 		void m_ChangeDirection(Direction direction = NONE);
 		void m_UpdatePosition();
@@ -32,7 +32,7 @@ namespace Snail
 		 */
 		Enemy(GameDataRef data);
 
-		void Init(PhysicBodyManager& pbm, sf::Vector2f position = sf::Vector2f(0, 0));
+		void Init(sf::Vector2f position = sf::Vector2f(0, 0));
 
 		void HandleInput();
 

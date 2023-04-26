@@ -18,12 +18,12 @@ namespace Snail
 		m_target = Player::GetInstance(data);
 	}
 
-	void Enemy::Init(PhysicBodyManager &pbm, sf::Vector2f position)
+	void Enemy::Init(sf::Vector2f position)
 	{
-		m_InitPhysicBody(pbm, position);
+		m_InitPhysicBody(position);
 	}
 
-	void Enemy::m_InitPhysicBody(PhysicBodyManager &pbm, sf::Vector2f position)
+	void Enemy::m_InitPhysicBody(sf::Vector2f position)
 	{
 		AssetManager::GetInstance()->LoadTexture("TEST_ENTITY", STATE_MAIN_ENTITY_TEST_FILEPATH);
 
@@ -33,7 +33,7 @@ namespace Snail
 
 		m_physicBodyRef->Scale(sf::Vector2f(0.5f, 0.5f));
 
-		pbm.AddPhysicBody("ENNEMY_" + std::to_string(Count), m_physicBodyRef);
+		PhysicBodyManager::GetInstance()->AddPhysicBody("ENNEMY_" + std::to_string(Count), m_physicBodyRef);
 
 		Count++;
 	}

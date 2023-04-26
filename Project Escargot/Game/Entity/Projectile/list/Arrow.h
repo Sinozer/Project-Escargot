@@ -6,20 +6,20 @@ namespace Snail
 {
 	class Arrow : public Projectile
 	{
-	private :
-		GameDataRef m_data;
-
-		sf::Vector2f m_shooterCoord;
+	private:
 		sf::Vector2f m_targetPosition;
 
-		void m_InitPhysicBody(PhysicBodyManager& pbm, sf::Vector2f position);
+		void m_InitPhysicBody(sf::Vector2f position);
+	
+	public:
+		virtual Arrow* Clone() override;
 
-	public : 
-		Arrow(GameDataRef data, sf::Vector2f shooterCoord, unsigned int id = 0);
+	public: 
+		Arrow();
 		~Arrow();
 
-		void Init(PhysicBodyManager& pbm, sf::Vector2f position);
-		void Shoot();
+		void Init(sf::Vector2f position);
+		void Shoot(sf::Vector2f shooterCoord, unsigned int id) override;
 
 		void Update(float dt);
 		void Draw();

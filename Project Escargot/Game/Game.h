@@ -20,12 +20,12 @@ namespace Snail
 		sf::Clock m_clock;
 		void m_UpdateDt();
 
-		GameDataRef m_data = std::make_shared<GameData>();
 
 		void Run();
 
 		void End();
 	public:
+		static GameDataRef m_data;
 		/**
 		 * Create and init window then push the JoinState onto the StateManager.
 		 *

@@ -10,6 +10,11 @@ namespace Snail
 	class State
 	{
 	protected:
+		static unsigned int m_count;
+		void m_SetID();
+		
+		State() { m_SetID(); std::cout << "State " << ID << " created." << std::endl; }
+	protected:
 		sf::Sprite m_background;
 		sf::View m_view;
 
@@ -24,6 +29,8 @@ namespace Snail
 
 		virtual void m_DrawUIManager() = 0;
 	public:
+		unsigned int ID = 0;
+
 		virtual void Init() = 0;
 
 		virtual void HandleInput() = 0;

@@ -22,6 +22,7 @@ namespace Snail
 
 		void ProcessStateChanges();
 
+		int GetActiveStateID();
 		StateRef& GetActiveState();
 	};
 }

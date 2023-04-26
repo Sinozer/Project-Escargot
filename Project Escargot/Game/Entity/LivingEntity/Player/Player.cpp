@@ -34,24 +34,24 @@ namespace Snail
 			delete(m_weaponManager);
 	}
 
-	void Player::Init(PhysicBodyManager& pbm, sf::Vector2f position)
+	void Player::Init(sf::Vector2f position)
 	{
-		m_InitPhysicBody(pbm, position);
-		m_InitWeaponManager(pbm);
+		m_InitPhysicBody(position);
+		m_InitWeaponManager();
 	}
 
-	void Player::m_InitPhysicBody(PhysicBodyManager& pbm, sf::Vector2f position)
+	void Player::m_InitPhysicBody(sf::Vector2f position)
 	{
 		m_physicBodyRef = PhysicBodyRef(PhysicBody::CreateBoxBody(
 			sf::Vector2f(16.f, 32.f), position, 0.f, false/*, AssetManager::GetInstance()->GetTexture("STATE_JOIN_BACKGROUND")*/
 		));
 
-		pbm.AddPhysicBody("PLAYER", m_physicBodyRef);
+		PhysicBodyManager::GetInstance()->AddPhysicBody("PLAYER", m_physicBodyRef);
 	}
 
-	void Player::m_InitWeaponManager(PhysicBodyManager& pbm)
+	void Player::m_InitWeaponManager()
 	{
-		m_weaponManager = new WeaponManager(pbm);
+		m_weaponManager = new WeaponManager();
 		m_weaponManager->AddWeapon("BOW");
 	}
 

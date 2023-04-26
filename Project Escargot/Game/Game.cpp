@@ -5,8 +5,12 @@
 
 namespace Snail
 {
+	GameDataRef Game::m_data;;
+
 	Game::Game(int width, int height, std::string title)
 	{
+		m_data = std::make_shared<GameData>();
+
 		m_data->window.create(sf::VideoMode(width, height), title, sf::Style::Close | sf::Style::Titlebar);
 		m_data->window.setFramerateLimit(WINDOW_SCREEN_FRAMERATE_MED);
 

@@ -22,6 +22,7 @@
 /* ################# STANDART ################# */
 
 /* #################  SNAIL   ################# */
+#include "Game/Game.h"
 #include "Game/Math/Math.h"
 #include "Game/Asset/AssetManager.h"
 #include "Game/State/State.h"
@@ -54,6 +55,8 @@
 /* ################## WINDOW ################## */
 
 /* ################## STATES ################## */
+
+#define STATE_COUNT_MAX 5
 
 /* ########## JOIN ########## */
 #define STATE_JOIN_BACKGROUND_FILEPATH "Resources/Textures/Backgrounds/Join.jpg"

@@ -7,15 +7,13 @@ namespace Snail
 	class WeaponManager : public EntityManager
 	{
 	private :
-		PhysicBodyManager& m_physicBodyManager;
-
 		std::map < std::string, Weapon* > m_weapons;
 
 		Weapon* m_activeWeapon;
 
 
 	public:
-		WeaponManager(PhysicBodyManager& physicBodyManager);
+		WeaponManager() {}
 
 		void AddWeapon(std::string weaponName);
 

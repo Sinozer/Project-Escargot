@@ -16,7 +16,7 @@ namespace Snail
 	class GameState : public State
 	{
 	private:
-		PhysicBodyManager m_physicBodyManager;
+		//PhysicBodyManager m_physicBodyManager;
 		
 		Player* m_player;
 

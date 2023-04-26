@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "StateManager.h"
+#include "Game/Physic/PhysicBodyManager.h"
 
 namespace Snail
 {
@@ -29,6 +30,7 @@ namespace Snail
 	{
 		if (m_isRemoving && !m_states.empty())
 		{
+			PhysicBodyManager::DestroyInstance();
 			m_states.pop();
 			m_isRemoving = false;
 		}
@@ -39,6 +41,12 @@ namespace Snail
 			m_states.top()->Init();
 			m_isAdding = false;
 		}
+	}
+
+	int StateManager::GetActiveStateID()
+	{
+		if (!m_states.empty())
+			return m_states.top()->ID;
 	}
 
 	StateRef& StateManager::GetActiveState()

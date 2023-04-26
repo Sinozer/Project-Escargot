@@ -38,24 +38,20 @@ namespace Snail
 			delete i;
 	}
 
-	void ProjectileManager::Init(PhysicBodyManager& pbm, sf::Vector2f position = sf::Vector2f(0,0))
+	void ProjectileManager::SetProjectile(Projectile* projectile)
 	{
-		m_InitPhysicBody(pbm, position);
+		m_projectileRef = projectile;
 	}
 
-	void ProjectileManager::m_InitPhysicBody(PhysicBodyManager& pbm, sf::Vector2f position)
+	void ProjectileManager::m_InitPhysicBody(sf::Vector2f position)
 	{
-		m_physicBodyManager = pbm;
-	}
-
-	void ProjectileManager::SetProjectile(EProjectile ref)
-	{
-		m_projectileReference = ref;
+		//m_physicBodyManager = pbm;
 	}
 
 	void ProjectileManager::Shoot(sf::Vector2f startingPoint)
 	{
-		switch (m_projectileReference)
+		m_projectileRef->Clone();
+		/*switch (m_projectileReference)
 		{
 		case Snail::NONE:
 			break;
@@ -66,7 +62,7 @@ namespace Snail
 			m_projectiles.push_back(temp);
 			
 			break;
-		}
+		}*/
 	}
 
 	void ProjectileManager::Update(float dt)

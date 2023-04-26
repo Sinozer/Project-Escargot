@@ -21,13 +21,13 @@ namespace Snail
 
 		CollectableObject();
 		~CollectableObject();
-		void Init(PhysicBodyManager& pbm, sf::Vector2f position = sf::Vector2f(170, 170));
+		void Init(sf::Vector2f position = sf::Vector2f(170, 170));
 		void Update(float dt);
 		void Draw();
 
 
 
-		void m_InitPhysicBody(PhysicBodyManager& pbm, sf::Vector2f position);
+		void m_InitPhysicBody(sf::Vector2f position);
 		void m_CollectObject(Player livingEntity);
 		void m_SetType(Type type);
 		void m_SetValue(float value);
