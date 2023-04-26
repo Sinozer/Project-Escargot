@@ -21,6 +21,8 @@ namespace Snail
 
 		Enemy m_enemy;
 
+		std::vector<Enemy> m_enemyList;
+
 		Spawner m_spawner;
 
 		CollectableObject m_collectable;

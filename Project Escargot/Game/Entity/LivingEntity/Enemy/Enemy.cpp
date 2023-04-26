@@ -11,6 +11,7 @@ namespace Snail
 		m_clampVelocity = { m_speed, m_jumpHeight };
 		m_attackRange = 0;
 		m_isMelee = true;
+		m_forcePlayerPos = false;
 	}
 
 	void Enemy::Init(PhysicBodyManager &pbm, sf::Vector2f position)
@@ -23,7 +24,7 @@ namespace Snail
 		m_data->assetManager.LoadTexture("TEST_ENTITY", STATE_MAIN_ENTITY_TEST_FILEPATH);
 
 		m_physicBodyRef = PhysicBodyRef(PhysicBody::CreateBoxBody(
-			sf::Vector2f(115.f / 2.f, 161.f / 2.f), position, 0.f, false, m_data->assetManager.GetTexture("TEST_ENTITY")
+			sf::Vector2f(115.f / 2.f, 161.f / 2.f), position, 0.f, false
 		));
 
 		m_physicBodyRef->Scale(sf::Vector2f(0.5f, 0.5f));
@@ -39,7 +40,7 @@ namespace Snail
 	{
 		m_physicBodyRef->m_velocity.x = 0.f;
 
-		if (m_IsPlayerInRange()) 
+		if (m_IsPlayerInRange() || m_forcePlayerPos == true) 
 		{
 			if (m_IsAttackRange(m_isMelee))
 			{

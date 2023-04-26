@@ -29,10 +29,15 @@ namespace Snail
 		m_spawner.Init(m_physicBodyManager);
 		m_collectable.Init(m_physicBodyManager);
 
+		Enemy test(GameDataRef data, m_player);
+
+		m_enemyList.insert(m_enemy, 0);
+
 		m_physicBodyManager.AddPhysicBody("PLAYER", m_player.GetPhysicBodyRef());
 
 		// ennemy
 		m_physicBodyManager.AddPhysicBody("ENNEMY", m_enemy.GetPhysicBodyRef());
+
 	}
 
 	void GameState::m_InitBackground()

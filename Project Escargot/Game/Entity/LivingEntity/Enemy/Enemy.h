@@ -14,6 +14,7 @@ namespace Snail
 
 		bool m_isMelee;
 		float m_attackRange;
+		bool m_forcePlayerPos;
 
 		void m_InitPhysicBody(PhysicBodyManager& pbm, sf::Vector2f position);
 
