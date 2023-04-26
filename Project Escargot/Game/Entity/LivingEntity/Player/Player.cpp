@@ -2,6 +2,8 @@
 
 namespace Snail
 {
+	Player* Player::s_Instance = nullptr;
+
 	Player::Player(GameDataRef data)
 	{
 		m_data = data;

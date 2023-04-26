@@ -5,9 +5,6 @@ namespace Snail
 {
 	class Enemy : public LivingEntity
 	{
-	public:
-		static unsigned int Count;
-
 	private:
 		float previousPositionX;
 	private:
@@ -42,6 +39,8 @@ namespace Snail
 		void Update(float dt);
 
 		void Draw();
+
+		static unsigned int Count;
 
 		PhysicBodyRef GetPhysicBodyRef();
 	};

@@ -11,7 +11,9 @@ namespace Snail
 
 		void Init(PhysicBodyManager& pbm, sf::Vector2f position = sf::Vector2f(0, 0));
 
-		void Spawn(PhysicBodyManager& pbm, Enemy enemy, sf::Vector2f position = sf::Vector2f(0, 0));
+		void Spawn(PhysicBodyManager& pbm, sf::Vector2f position = sf::Vector2f(0, 0));
+
+		void Update(float dt);
 
 	private:
 
@@ -19,6 +21,7 @@ namespace Snail
 
 		void m_InitPhysicBody(PhysicBodyManager& pbm, sf::Vector2f position);
 
+		std::vector<Enemy*> m_enemyList;
 
 	protected:
 
