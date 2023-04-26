@@ -2,9 +2,13 @@
 
 namespace Snail
 {
-	GameState::GameState(GameDataRef data) : m_data(data), m_player(m_data), m_enemy(data, m_player), m_spawner(m_data)
+	GameState::GameState(GameDataRef data) : m_data(data), m_enemy(data), m_spawner(m_data)
 	{
 		m_physicBodyManager = PhysicBodyManager(data);
+
+		m_player = Player::GetInstance(data);
+
+		Enemy::Count = 0;
 	}
 
 	void GameState::Init()
@@ -24,16 +28,16 @@ namespace Snail
 		m_timerBulletFire = 0;
 		m_numberBullet = 0;
 
-		m_player.Init(m_physicBodyManager);
+		m_player->Init(m_physicBodyManager);
 		m_enemy.Init(m_physicBodyManager);
 		m_spawner.Init(m_physicBodyManager);
 		m_collectable.Init(m_physicBodyManager);
 
-		Enemy test(GameDataRef data, m_player);
+		Enemy test(GameDataRef data);
 
 		m_enemyList.push_back(m_enemy);
 
-		m_physicBodyManager.AddPhysicBody("PLAYER", m_player.GetPhysicBodyRef());
+		m_physicBodyManager.AddPhysicBody("PLAYER", m_player->GetPhysicBodyRef());
 
 		// ennemy
 		m_physicBodyManager.AddPhysicBody("ENNEMY", m_enemy.GetPhysicBodyRef());
@@ -64,7 +68,7 @@ namespace Snail
 	{
 		sf::Vector2f mousePosition = (sf::Vector2f)sf::Mouse::getPosition(m_data->window);
 		
-		this->m_bullet = new ProjectileManager(m_data, m_player.GetPhysicBodyRef()->GetPosition(), (sf::Vector2f)m_data->window.mapPixelToCoords((sf::Vector2i)mousePosition));
+		this->m_bullet = new ProjectileManager(m_data, m_player->GetPhysicBodyRef()->GetPosition(), (sf::Vector2f)m_data->window.mapPixelToCoords((sf::Vector2i)mousePosition));
 		m_physicBodyManager.AddPhysicBody("Bullet" + m_numberBullet, m_bullet->m_physicBodyRef);
 		m_timerBulletFire = 0;
 		m_numberBullet++;
@@ -85,8 +89,8 @@ namespace Snail
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 			m_data->stateManager.RemoveState();
 
-		m_tempBulletCount = m_player.bulletCount;
-		m_player.HandleInput();
+		m_tempBulletCount = m_player->bulletCount;
+		m_player->HandleInput();
 	}
 
 	void GameState::Update(float dt)
@@ -94,9 +98,9 @@ namespace Snail
 		m_UpdateView();
 		
 		m_physicBodyManager.Update(dt);
-		m_player.Update(dt);
+		m_player->Update(dt);
 		m_timerBulletFire++;
-		if (m_player.bulletCount > this->m_tempBulletCount && m_timerBulletFire > 10)
+		if (m_player->bulletCount > this->m_tempBulletCount && m_timerBulletFire > 10)
 		{
 
 			if (m_numberBullet > 5)
@@ -124,8 +128,8 @@ namespace Snail
 		}
 		else
 		{
-			m_background.setOrigin(m_player.GetPhysicBodyRef()->GetPosition() / /*value*/8.f); // Value = map size / background size
-			m_view.setCenter(m_player.GetPhysicBodyRef()->GetPosition());
+			m_background.setOrigin(m_player->GetPhysicBodyRef()->GetPosition() / /*value*/8.f); // Value = map size / background size
+			m_view.setCenter(m_player->GetPhysicBodyRef()->GetPosition());
 		}
 		m_data->window.setView(m_view);
 	}

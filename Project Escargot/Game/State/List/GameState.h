@@ -17,7 +17,7 @@ namespace Snail
 	private:
 		PhysicBodyManager m_physicBodyManager;
 		
-		Player m_player;
+		Player* m_player;
 
 		Enemy m_enemy;
 

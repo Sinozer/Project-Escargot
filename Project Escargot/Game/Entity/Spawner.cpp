@@ -18,6 +18,9 @@ namespace Snail
 		m_physicBodyRef->Scale(sf::Vector2f(0.5f, 0.5f));
 
 		pbm.AddPhysicBody("ENNEMY2", m_physicBodyRef);
+
+
+		//Enemy* temp = new Enemy(m_data);
 	}
 
 	void Spawner::Init(PhysicBodyManager& pbm, sf::Vector2f position)

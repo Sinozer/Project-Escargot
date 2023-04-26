@@ -2,7 +2,7 @@
 
 namespace Snail
 {
-	Enemy::Enemy(GameDataRef data, Player& target) : m_target(target)
+	Enemy::Enemy(GameDataRef data)
 	{
 		m_data = data;
 
@@ -12,6 +12,8 @@ namespace Snail
 		m_attackRange = 0;
 		m_isMelee = true;
 		m_forcePlayerPos = false;
+
+		m_target = Player::GetInstance(data);
 	}
 
 	void Enemy::Init(PhysicBodyManager &pbm, sf::Vector2f position)
@@ -29,7 +31,9 @@ namespace Snail
 
 		m_physicBodyRef->Scale(sf::Vector2f(0.5f, 0.5f));
 
-		pbm.AddPhysicBody("ENNEMY", m_physicBodyRef);
+		pbm.AddPhysicBody("ENNEMY_" + std::to_string(Count), m_physicBodyRef);
+
+		Count++;
 	}
 
 	void Enemy::HandleInput()
@@ -63,9 +67,9 @@ namespace Snail
 			return;
 		}
 
-		if (m_target.GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x)
+		if (m_target->GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x)
 			m_direction = LEFT;
-		else if (m_target.GetPhysicBodyRef()->GetPosition().x > m_physicBodyRef->GetPosition().x)
+		else if (m_target->GetPhysicBodyRef()->GetPosition().x > m_physicBodyRef->GetPosition().x)
 			m_direction = RIGHT;
 	}
 
@@ -74,7 +78,7 @@ namespace Snail
 		switch (m_direction)
 		{
 		case LEFT:
-			if (m_target.GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x - 40)
+			if (m_target->GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x - 40)
 				m_physicBodyRef->AddVelocity({ -m_speed, 0 }, m_clampVelocity);
 			
 			if (previousPositionX == 0.f) break;
@@ -86,7 +90,7 @@ namespace Snail
 			}
 			break;
 		case RIGHT:
-			if (m_target.GetPhysicBodyRef()->GetPosition().x > m_physicBodyRef->GetPosition().x + 40)
+			if (m_target->GetPhysicBodyRef()->GetPosition().x > m_physicBodyRef->GetPosition().x + 40)
 				m_physicBodyRef->AddVelocity({ m_speed, 0 }, m_clampVelocity);
 
 			if (previousPositionX == 0.f) break;
@@ -106,13 +110,13 @@ namespace Snail
 
 	bool Enemy::m_IsPlayerInRange()
 	{
-		if (m_physicBodyRef->GetPosition().y - 80 < m_target.GetPhysicBodyRef()->GetPosition().y && m_target.GetPhysicBodyRef()->GetPosition().y < m_physicBodyRef->GetPosition().y + 20)
+		if (m_physicBodyRef->GetPosition().y - 80 < m_target->GetPhysicBodyRef()->GetPosition().y && m_target->GetPhysicBodyRef()->GetPosition().y < m_physicBodyRef->GetPosition().y + 20)
 		{
-			if (m_physicBodyRef->GetPosition().x < m_target.GetPhysicBodyRef()->GetPosition().x && m_target.GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x + 120)
+			if (m_physicBodyRef->GetPosition().x < m_target->GetPhysicBodyRef()->GetPosition().x && m_target->GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x + 120)
 			{
 				return true;
 			}
-			else if (m_physicBodyRef->GetPosition().x - 120 < m_target.GetPhysicBodyRef()->GetPosition().x && m_target.GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x)
+			else if (m_physicBodyRef->GetPosition().x - 120 < m_target->GetPhysicBodyRef()->GetPosition().x && m_target->GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x)
 			{
 				return true;
 			}
@@ -132,11 +136,11 @@ namespace Snail
 			m_attackRange = 80.0f;
 		}
 
-		if (m_physicBodyRef->GetPosition().x < m_target.GetPhysicBodyRef()->GetPosition().x && m_target.GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x + m_attackRange)
+		if (m_physicBodyRef->GetPosition().x < m_target->GetPhysicBodyRef()->GetPosition().x && m_target->GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x + m_attackRange)
 		{
 			return true;
 		}
-		else if (m_physicBodyRef->GetPosition().x - m_attackRange < m_target.GetPhysicBodyRef()->GetPosition().x && m_target.GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x)
+		else if (m_physicBodyRef->GetPosition().x - m_attackRange < m_target->GetPhysicBodyRef()->GetPosition().x && m_target->GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x)
 		{
 			return true;
 		}

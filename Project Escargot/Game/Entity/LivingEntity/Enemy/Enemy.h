@@ -5,12 +5,15 @@ namespace Snail
 {
 	class Enemy : public LivingEntity
 	{
+	public:
+		static unsigned int Count;
+
 	private:
 		float previousPositionX;
 	private:
 		GameDataRef m_data;
 
-		Player& m_target;
+		Player* m_target;
 
 		bool m_isMelee;
 		float m_attackRange;
@@ -30,7 +33,7 @@ namespace Snail
 		 *
 		 * \param data
 		 */
-		Enemy(GameDataRef data, Player& target);
+		Enemy(GameDataRef data);
 
 		void Init(PhysicBodyManager& pbm, sf::Vector2f position = sf::Vector2f(0, 0));
 

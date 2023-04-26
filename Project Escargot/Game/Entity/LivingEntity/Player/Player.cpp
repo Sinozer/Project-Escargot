@@ -100,4 +100,12 @@ namespace Snail
 	{
 		return m_physicBodyRef;
 	}
+	
+	Player* Player::GetInstance(GameDataRef data)
+	{
+		if (s_Instance == nullptr)
+			s_Instance = new Player(data);
+
+		return s_Instance;
+	}
 }
