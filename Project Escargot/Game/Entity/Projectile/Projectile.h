@@ -20,6 +20,8 @@ namespace Snail
 		float m_speed;
 		float m_range;
 	public:
+		bool IsDeleted;
+
 		virtual Projectile* Clone() = 0;
 		
 		virtual void Shoot(sf::Vector2f shooterCoord) = 0;

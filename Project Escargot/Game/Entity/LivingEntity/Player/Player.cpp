@@ -43,6 +43,9 @@ namespace Snail
 			sf::Vector2f(2522.f, 1685.f), position, 0.f, false, AssetManager::GetInstance()->LoadTexture("PLAYER", STATE_GAME_PLAYER_FILEPATH)
 		));
 
+		m_physicBodyRef->Masks = MASK_PLAYER;
+		m_physicBodyRef->CollideMasks = MASK_MAP | MASK_BULLET_ENEMY;
+
 		m_physicBodyRef->Scale(sf::Vector2f(0.02f, 0.02f));
 
 		PhysicBodyManager::GetInstance()->AddPhysicBody("PLAYER", m_physicBodyRef);
@@ -55,7 +58,7 @@ namespace Snail
 
 	void Player::HandleInput()
 	{
-		m_physicBodyRef->m_velocity.x = 0.f;
+		m_physicBodyRef->Velocity.x = 0.f;
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
 		{
@@ -67,10 +70,10 @@ namespace Snail
 			m_physicBodyRef->AddVelocity({ m_speed, 0 }, m_clampVelocity);
 			m_ChangeDirection(RIGHT);
 		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && m_physicBodyRef->m_IsOnGround)
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && m_physicBodyRef->IsOnGround)
 		{
-			m_physicBodyRef->m_IsOnGround = false;
-			m_physicBodyRef->m_velocity.y = -sqrtf(2.0f * GAME_GRAVITY * m_jumpHeight);
+			m_physicBodyRef->IsOnGround = false;
+			m_physicBodyRef->Velocity.y = -sqrtf(2.0f * GAME_GRAVITY * m_jumpHeight);
 		}
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{

@@ -54,8 +54,16 @@ namespace Snail
 
 	void ProjectileManager::Update()
 	{
-		for (auto& i : m_projectiles)
-			i->Update();
+		for (int i = m_projectiles.size() - 1; i >= 0; i--)
+		{
+			if (m_projectiles[i]->IsDeleted)
+			{
+				m_projectiles.erase(m_projectiles.end() - i);
+				m_projectiles[i]->Destroy();
+				delete m_projectiles[i];
+				continue;
+			}
+		}
 	}
 
 	void ProjectileManager::Draw()

@@ -56,28 +56,29 @@ namespace Snail
 
 		for (auto& physicBody : m_physicBodies)
 		{
-			if (physicBody.second && !physicBody.second->m_IsStatic)
+			if (physicBody.second && !physicBody.second->IsStatic)
 			{
-				/**
-				 * \brief The physic body check for collision.
-				 *
-				 * \TODO Implement physicBody.second->m_IsAffectedByGravity.
-				 * ***** If true, the physic body is affected by gravity.
-				 *
-				 */
 				physicBody.second->Update();
 
 				for (auto& otherPhysicBody : m_physicBodies)
 				{
 					if (otherPhysicBody == physicBody) continue;
-					sf::Vector2f direction;
 
-					if (physicBody.second && otherPhysicBody.second && physicBody.second->CheckCollision(otherPhysicBody.second, direction)) {
-						physicBody.second->OnCollision(direction);
-						if (m_physicBodies.find("Collectible")->second->CheckCollision(physicBody.second, direction) == true) {
-							std::cout << "colect\n";
+					if ((physicBody.second->CollideMasks & otherPhysicBody.second->Masks) == MASK_EMPTY) continue;
+
+					if ((physicBody.second->CollideMasks & otherPhysicBody.second->Masks) == otherPhysicBody.second->Masks)
+					{
+						sf::Vector2f direction;
+
+						if (physicBody.second && otherPhysicBody.second && physicBody.second->CheckCollision(otherPhysicBody.second, direction)) {
+							physicBody.second->OnCollision(direction);
+							if (m_physicBodies.find("Collectible")->second->CheckCollision(physicBody.second, direction) == true) {
+								std::cout << "colect\n";
+							}
 						}
 					}
+					else if ((physicBody.second->TriggerMasks & otherPhysicBody.second->Masks) == otherPhysicBody.second->Masks)
+						physicBody.second->IsTriggered = true;
 				}
 			}
 		}

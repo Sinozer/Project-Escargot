@@ -107,10 +107,18 @@ namespace Snail
 				m_CheckForTileSetAndLoadTexture(id, sheetName, sheetPath);
 			}
 
-			m_physicBodyRefs.push_back(PhysicBodyRef(PhysicBody::CreateBoxBody(
+			PhysicBody* temp = PhysicBody::CreateBoxBody(
 				sf::Vector2f(m_tiledFile.tileWidth, m_tiledFile.tileHeight), sf::Vector2f((i % layer.width) * m_tiledFile.tileWidth, (i / layer.width) * m_tiledFile.tileHeight), 0.5f, isStatic,
 				AssetManager::GetInstance()->GetTexture(name), canCollide, canGravitate
-			)));
+			);
+
+			if (canCollide)
+			{
+				temp->Masks = MASK_MAP;
+				temp->CollideMasks = MASK_MAP;
+			}
+
+			m_physicBodyRefs.push_back(PhysicBodyRef(temp));
 		}
 	}
 

@@ -2,6 +2,7 @@
 #include "PhysicBody.h"
 namespace Snail
 {
+#pragma region Constructors
 	PhysicBody::PhysicBody(sf::Vector2f position, float restitution,
 		bool isStatic, bool canCollide, bool canGravitate, sf::Vector2f size)
 	{
@@ -9,13 +10,16 @@ namespace Snail
 		m_body.setSize(size);
 		m_body.setOrigin(size / 2.f);
 		m_body.setFillColor(sf::Color::Green);
-		m_velocity = sf::Vector2f(0, 0);
-		m_IsOnGround = false;
-		m_Restitution = restitution;
-		m_IsStatic = isStatic;
+		Velocity = sf::Vector2f(0, 0);
+		IsOnGround = false;
+		Restitution = restitution;
+		IsStatic = isStatic;
 
 		m_canCollide = canCollide;
 		m_canGravitate = canGravitate;
+
+		Masks = MASK_EMPTY;
+		CollideMasks = MASK_EMPTY;
 
 		if (DEBUG)
 		{
@@ -32,13 +36,16 @@ namespace Snail
 		m_body.setTextureRect(sf::IntRect(0, 0, size.x, size.y));
 		m_body.setSize(size);
 		m_body.setOrigin(size / 2.f);
-		m_velocity = sf::Vector2f(0, 0);
-		m_IsOnGround = false;
-		m_Restitution = restitution;
-		m_IsStatic = isStatic;
+		Velocity = sf::Vector2f(0, 0);
+		IsOnGround = false;
+		Restitution = restitution;
+		IsStatic = isStatic;
 
 		m_canCollide = canCollide;
 		m_canGravitate = canGravitate;
+
+		Masks = MASK_EMPTY;
+		CollideMasks = MASK_EMPTY;
 
 		if (DEBUG)
 		{
@@ -55,13 +62,16 @@ namespace Snail
 		m_body.setTextureRect(sf::IntRect(texturePosition.x, texturePosition.y, size.x, size.y));
 		m_body.setSize(size);
 		m_body.setOrigin(size / 2.f);
-		m_velocity = sf::Vector2f(0, 0);
-		m_IsOnGround = false;
-		m_Restitution = restitution;
-		m_IsStatic = isStatic;
+		Velocity = sf::Vector2f(0, 0);
+		IsOnGround = false;
+		Restitution = restitution;
+		IsStatic = isStatic;
 
 		m_canCollide = canCollide;
 		m_canGravitate = canGravitate;
+
+		Masks = MASK_EMPTY;
+		CollideMasks = MASK_EMPTY;
 
 		if (DEBUG)
 		{
@@ -69,16 +79,18 @@ namespace Snail
 			m_body.setOutlineColor(sf::Color::Black);
 		}
 	}
+#pragma endregion
 
 	void PhysicBody::m_Move()
 	{
-		if (m_IsStatic) return;
-		m_body.move(m_velocity * Game::m_data->deltaTime);
+		if (IsStatic) return;
+		m_body.move(Velocity * Game::m_data->deltaTime);
 
 		if (m_canGravitate)
-			m_velocity.y += (GAME_GRAVITY * Game::m_data->deltaTime * 1.5f);
+			Velocity.y += (GAME_GRAVITY * Game::m_data->deltaTime * 1.5f);
 	}
 
+#pragma region Constructors
 	PhysicBody* PhysicBody::CreateBoxBody(sf::Vector2f size, sf::Vector2f position, float restitution, bool isStatic, bool canCollide, bool canGravitate)
 	{
 		restitution = Math::Clamp(restitution, 0.f, 1.f);
@@ -99,6 +111,7 @@ namespace Snail
 
 		return new PhysicBody(position, restitution, isStatic, size, texture, texturePosition, canCollide, canGravitate);
 	}
+#pragma endregion
 
 	void PhysicBody::Rotate(float angle)
 	{
@@ -127,15 +140,15 @@ namespace Snail
 
 	void PhysicBody::Move(sf::Vector2f step)
 	{
-		if (m_IsStatic) return;
+		if (IsStatic) return;
 		m_body.move(step);
 	}
 
 	void PhysicBody::AddVelocity(sf::Vector2f step, sf::Vector2f clamp)
 	{
-		if (m_IsStatic) return;
-		m_velocity += step;
-		m_velocity.x = Math::Clamp(m_velocity.x, -clamp.x, clamp.x);
+		if (IsStatic) return;
+		Velocity += step;
+		Velocity.x = Math::Clamp(Velocity.x, -clamp.x, clamp.x);
 	}
 
 	sf::Vector2f PhysicBody::GetHalfSize()
@@ -162,15 +175,15 @@ namespace Snail
 		{
 			if (dX > 0.0f)
 			{
-				Move({ intersectX * (1.10f - m_Restitution), 0.0f });
-				other->Move({ -intersectX * other->m_Restitution, 0.0f });
+				Move({ intersectX * (1.10f - Restitution), 0.0f });
+				other->Move({ -intersectX * other->Restitution, 0.0f });
 
 				direction = { 1.0f, 0.0f };
 			}
 			else
 			{
-				Move({ -intersectX * (1.10f - m_Restitution), 0.0f });
-				other->Move({ intersectX * other->m_Restitution, 0.0f });
+				Move({ -intersectX * (1.10f - Restitution), 0.0f });
+				other->Move({ intersectX * other->Restitution, 0.0f });
 
 				direction = { -1.0f, 0.0f };
 			}
@@ -179,15 +192,15 @@ namespace Snail
 		{
 			if (dY > 0.0f)
 			{
-				Move({ 0.0f, intersectY * (1.10f - m_Restitution) });
-				other->Move({ 0.0f, -intersectY * other->m_Restitution });
+				Move({ 0.0f, intersectY * (1.10f - Restitution) });
+				other->Move({ 0.0f, -intersectY * other->Restitution });
 
 				direction = { 0.0f, 1.0f };
 			}
 			else
 			{
-				Move({ 0.0f, -intersectY * (1.10f - m_Restitution) });
-				other->Move({ 0.0f, intersectY * other->m_Restitution });
+				Move({ 0.0f, -intersectY * (1.10f - Restitution) });
+				other->Move({ 0.0f, intersectY * other->Restitution });
 
 				direction = { 0.0f, -1.0f };
 			}
@@ -199,20 +212,20 @@ namespace Snail
 	{
 		if (direction.x < 0.0f)
 		{
-			m_velocity.x = 0.0f;
+			Velocity.x = 0.0f;
 		}
 		else if (direction.x > 0.0f)
 		{
-			m_velocity.x = 0.0f;
+			Velocity.x = 0.0f;
 		}
 		if (direction.y < 0.0f)
 		{
-			m_velocity.y = 0.0f;
+			Velocity.y = 0.0f;
 		}
 		else if (direction.y > 0.0f)
 		{
-			m_IsOnGround = true;
-			m_velocity.y = 0.0f;
+			IsOnGround = true;
+			Velocity.y = 0.0f;
 		}
 	}
 

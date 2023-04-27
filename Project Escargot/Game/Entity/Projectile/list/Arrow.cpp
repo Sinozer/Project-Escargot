@@ -24,10 +24,16 @@ namespace Snail
 	{
 		m_physicBodyRef = PhysicBodyRef(PhysicBody::CreateBoxBody(
 			sf::Vector2f(5.f, 2.f), sf::Vector2f(position.x, position.y), 0.f, false,
-			false, false
+			true, false
 		));
 
-		PhysicBodyManager::GetInstance()->AddPhysicBody("ARROW_" + std::to_string(m_count), m_physicBodyRef);
+		m_physicBodyRef->Masks = MASK_BULLET_PLAYER;
+		m_physicBodyRef->CollideMasks = MASK_ENEMY;
+		m_physicBodyRef->TriggerMasks = MASK_MAP;
+
+		m_name = "ARROW_" + std::to_string(m_count);
+
+		PhysicBodyManager::GetInstance()->AddPhysicBody(m_name, m_physicBodyRef);
 		m_count++;
 	}
 
@@ -48,7 +54,8 @@ namespace Snail
 
 	void Arrow::Update()
 	{
-		
+		if (m_physicBodyRef->IsTriggered)
+			IsDeleted = true;
 	}
 	
 	void Arrow::Draw()

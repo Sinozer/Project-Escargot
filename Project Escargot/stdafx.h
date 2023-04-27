@@ -17,6 +17,7 @@
 #include <map>
 #include <string>
 #include <algorithm>
+#include <cstdint>
 
 #include "json.hpp"
 /* ################# STANDART ################# */
@@ -40,6 +41,18 @@
 #define GRAVITY 9.81f
 #define PHYSIC_SCALE 100.0f
 #define GAME_GRAVITY GRAVITY * PHYSIC_SCALE
+
+/* ########## MASKS ######### */
+constexpr std::uint8_t MASK_PLAYER			{ 0b1000'0000 };
+constexpr std::uint8_t MASK_ENEMY			{ 0b0100'0000 };
+constexpr std::uint8_t MASK_BULLET_PLAYER	{ 0b0000'1000 };
+constexpr std::uint8_t MASK_BULLET_ENEMY	{ 0b0000'0100 };
+
+constexpr std::uint8_t MASK_MAP				{ 0b0000'0010 };
+
+constexpr std::uint8_t MASK_EMPTY			{ 0b0000'0001 };
+/* ########## MASKS ######### */
+
 /* ################## PHYSIC ################## */
 
 /* ################## WINDOW ################## */

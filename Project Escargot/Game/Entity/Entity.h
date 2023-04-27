@@ -20,6 +20,11 @@ namespace Snail
 		virtual void m_InitPhysicBody(sf::Vector2f) = 0;
 	public:
 
+		inline void Destroy()
+		{
+			PhysicBodyManager::GetInstance()->RemovePhysicBody(m_name);
+		}
+
 		virtual void Init(sf::Vector2f) = 0;
 
 		virtual void Update() = 0;
