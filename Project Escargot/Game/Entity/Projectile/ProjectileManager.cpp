@@ -58,11 +58,13 @@ namespace Snail
 		{
 			if (m_projectiles[i]->IsDeleted)
 			{
-				m_projectiles.erase(m_projectiles.end() - i);
 				m_projectiles[i]->Destroy();
 				delete m_projectiles[i];
+				m_projectiles.erase(m_projectiles.end() - 1 - i);
 				continue;
 			}
+
+			m_projectiles[i]->Update();
 		}
 	}
 
