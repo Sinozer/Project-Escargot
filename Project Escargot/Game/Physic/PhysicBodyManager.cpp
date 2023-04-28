@@ -66,19 +66,24 @@ namespace Snail
 
 					if ((physicBody.second->CollideMasks & otherPhysicBody.second->Masks) == MASK_EMPTY) continue;
 
+					if ((physicBody.second->TriggerMasks & otherPhysicBody.second->Masks) == otherPhysicBody.second->Masks)
+					{
+						sf::Vector2f direction;
+						if (physicBody.second && otherPhysicBody.second && physicBody.second->CheckCollision(otherPhysicBody.second, direction))
+							physicBody.second->IsTriggered = true;
+					}
+
 					if ((physicBody.second->CollideMasks & otherPhysicBody.second->Masks) == otherPhysicBody.second->Masks)
 					{
 						sf::Vector2f direction;
 
 						if (physicBody.second && otherPhysicBody.second && physicBody.second->CheckCollision(otherPhysicBody.second, direction)) {
 							physicBody.second->OnCollision(direction);
-							if (m_physicBodies.find("Collectible")->second->CheckCollision(physicBody.second, direction) == true) {
+							/*if (m_physicBodies.find("Collectable")->second->CheckCollision(physicBody.second, direction) == true) {
 								std::cout << "colect\n";
-							}
+							}*/
 						}
 					}
-					else if ((physicBody.second->TriggerMasks & otherPhysicBody.second->Masks) == otherPhysicBody.second->Masks)
-						physicBody.second->IsTriggered = true;
 				}
 			}
 		}

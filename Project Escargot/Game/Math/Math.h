@@ -2,7 +2,7 @@
 #include "stdafx.h"
 namespace Snail
 {
-	static class Math
+	class Math
 	{
 	public:
 		static float inline Clamp(float value, float min, float max)

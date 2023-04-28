@@ -4,7 +4,7 @@
 #include "Game/Entity/LivingEntity/Player/Player.h"
 #include "Game/Entity/LivingEntity/Enemy/Enemy.h"
 #include "Game/Entity/Spawner.h"
-#include "Game/Entity/Collectables/CollectableObject.h"
+#include "Game/Entity/Collectables/Collectable.h"
 namespace Snail
 {
 	/**
@@ -17,7 +17,7 @@ namespace Snail
 
 		Spawner m_spawner;
 
-		CollectableObject m_collectable;
+		Collectable m_collectable;
 
 		GameDataRef m_data;
 

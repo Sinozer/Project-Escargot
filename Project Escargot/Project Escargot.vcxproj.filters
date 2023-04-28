@@ -142,6 +142,24 @@
     <Filter Include="Fichiers sources\Game\Map">
       <UniqueIdentifier>{9df9f739-b178-4c05-92c0-dc6a2ce506ec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\UI">
+      <UniqueIdentifier>{27c73846-3f92-4005-bb2e-8f92d5ed3c86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\UI">
+      <UniqueIdentifier>{54f2ab2a-4c06-41a7-af75-fb6f13610fec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\UI\Nodes">
+      <UniqueIdentifier>{27dccf95-8f8a-4b74-9776-bd4fa724be0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\UI\Nodes">
+      <UniqueIdentifier>{a9bcbf24-4905-4d58-bd81-e28d907fa983}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Entity\Collectable">
+      <UniqueIdentifier>{90d1ad6f-4bb6-4a76-9f33-28ee2b90f307}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Entity\Collectable">
+      <UniqueIdentifier>{2442d0c3-f192-4485-9b41-73b3683fcbe7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -196,40 +214,40 @@
       <Filter>Fichiers sources\Game\Map</Filter>
     </ClCompile>
     <ClCompile Include="Game\Entity\Projectile\list\Arrow.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Entity\Collectables\CollectableObject.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Entity\Projectile\ProjectileManager.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\State\List\SettingsState.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\Game\Entity\Projectile\List</Filter>
     </ClCompile>
     <ClCompile Include="Game\State\List\GameState.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\UI\UIManager.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\UI\Nodes\Text\UIText.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\UI\Nodes\Checkbox\UICheckbox.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\UI\Nodes\Button\UIButton.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Entity\Spawner.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\Game\State\List</Filter>
     </ClCompile>
     <ClCompile Include="Game\State\State.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\State\List\SettingsState.cpp">
+      <Filter>Fichiers sources\Game\State\List</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\UI\UIManager.cpp">
+      <Filter>Fichiers sources\Game\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\UI\Nodes\Button\UIButton.cpp">
+      <Filter>Fichiers sources\Game\UI\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\UI\Nodes\Checkbox\UICheckbox.cpp">
+      <Filter>Fichiers sources\Game\UI\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\UI\Nodes\Text\UIText.cpp">
+      <Filter>Fichiers sources\Game\UI\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\Spawner.cpp">
+      <Filter>Fichiers sources\Game\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\Projectile\ProjectileManager.cpp">
+      <Filter>Fichiers sources\Game\Entity\Projectile</Filter>
     </ClCompile>
     <ClCompile Include="Game\Entity\Weapon\Weapon.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\Game\Entity\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\Collectables\Collectable.cpp">
+      <Filter>Fichiers sources\Game\Entity\Collectable</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -278,9 +296,6 @@
     <ClInclude Include="Game\Entity\Weapon\Weapon.h">
       <Filter>Fichiers d%27en-tête\Game\Entity\Weapon</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Entity\LivingEntity\LivingEntity.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Game\Entity\Weapon\WeaponManager.h">
       <Filter>Fichiers d%27en-tête\Game\Entity\Weapon</Filter>
     </ClInclude>
@@ -309,37 +324,40 @@
       <Filter>Fichiers d%27en-tête\Game\Entity\Weapon\Melee</Filter>
     </ClInclude>
     <ClInclude Include="Game\Entity\Projectile\list\Arrow.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Entity\Collectables\CollectableObject.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Entity\Projectile\ProjectileManager.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Game\Entity\Projectile\List</Filter>
     </ClInclude>
     <ClInclude Include="Game\State\List\SettingsState.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Game\State\List</Filter>
     </ClInclude>
     <ClInclude Include="Game\State\List\GameState.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Game\State\List</Filter>
     </ClInclude>
     <ClInclude Include="Game\UI\UIManager.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\UI\Nodes\Text\UIText.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\UI\Nodes\Checkbox\UICheckbox.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Game\UI</Filter>
     </ClInclude>
     <ClInclude Include="Game\UI\Nodes\Button\UIButton.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Game\UI\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\UI\Nodes\Checkbox\UICheckbox.h">
+      <Filter>Fichiers d%27en-tête\Game\UI\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\UI\Nodes\Text\UIText.h">
+      <Filter>Fichiers d%27en-tête\Game\UI\Nodes</Filter>
     </ClInclude>
     <ClInclude Include="Game\Entity\Spawner.h">
-      <Filter>Fichiers sources\Game\Entity</Filter>
+      <Filter>Fichiers d%27en-tête\Game\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Projectile\ProjectileManager.h">
+      <Filter>Fichiers d%27en-tête\Game\Entity\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\LivingEntity\LivingEntity.h">
+      <Filter>Fichiers d%27en-tête\Game\Entity\LivingEntity</Filter>
     </ClInclude>
     <ClInclude Include="Game\GameData.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Collectables\Collectable.h">
+      <Filter>Fichiers d%27en-tête\Game\Entity\Collectable</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
