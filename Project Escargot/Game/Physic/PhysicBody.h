@@ -30,6 +30,7 @@ namespace Snail
 		uint8_t TriggerMasks;
 
 		bool IsTriggered;
+		uint8_t TriggeredMasks;
 
 		sf::Vector2f Velocity;
 
@@ -63,7 +64,7 @@ namespace Snail
 
 		sf::Vector2f GetHalfSize();
 
-		bool CheckCollision(PhysicBodyRef other, sf::Vector2f& direction);
+		bool CheckCollision(PhysicBodyRef other, sf::Vector2f& direction, bool isTrigger = false);
 
 		void OnCollision(sf::Vector2f direction);
 

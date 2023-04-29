@@ -69,8 +69,13 @@ namespace Snail
 					if ((physicBody.second->TriggerMasks & otherPhysicBody.second->Masks) == otherPhysicBody.second->Masks)
 					{
 						sf::Vector2f direction;
-						if (physicBody.second && otherPhysicBody.second && physicBody.second->CheckCollision(otherPhysicBody.second, direction))
+						if (physicBody.second && otherPhysicBody.second && physicBody.second->CheckCollision(otherPhysicBody.second, direction, true))
+						{
 							physicBody.second->IsTriggered = true;
+							otherPhysicBody.second->IsTriggered = true;
+							physicBody.second->TriggeredMasks |= otherPhysicBody.second->Masks;
+							otherPhysicBody.second->TriggeredMasks |= physicBody.second->Masks;
+						}
 					}
 
 					if ((physicBody.second->CollideMasks & otherPhysicBody.second->Masks) == otherPhysicBody.second->Masks)

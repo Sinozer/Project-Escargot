@@ -20,6 +20,8 @@ namespace Snail
 
 		Masks = MASK_EMPTY;
 		CollideMasks = MASK_EMPTY;
+		TriggerMasks = MASK_EMPTY;
+		TriggeredMasks = MASK_EMPTY;
 
 		if (DEBUG)
 		{
@@ -46,6 +48,8 @@ namespace Snail
 
 		Masks = MASK_EMPTY;
 		CollideMasks = MASK_EMPTY;
+		TriggerMasks = MASK_EMPTY;
+		TriggeredMasks = MASK_EMPTY;
 
 		if (DEBUG)
 		{
@@ -72,6 +76,8 @@ namespace Snail
 
 		Masks = MASK_EMPTY;
 		CollideMasks = MASK_EMPTY;
+		TriggerMasks = MASK_EMPTY;
+		TriggeredMasks = MASK_EMPTY;
 
 		if (DEBUG)
 		{
@@ -156,7 +162,11 @@ namespace Snail
 		return sf::Vector2f(m_body.getGlobalBounds().width, m_body.getGlobalBounds().height) / 2.0f;
 	}
 
-	bool PhysicBody::CheckCollision(PhysicBodyRef other, sf::Vector2f& direction)
+
+	/**
+	 * TODO: NEEDS TO ONLY RETURN A BOOL AND ANOTHER METHOD TO MOVE
+	 */
+	bool PhysicBody::CheckCollision(PhysicBodyRef other, sf::Vector2f& direction, bool isTrigger)
 	{
 		if (!m_canCollide || !other->m_canCollide) return false;
 
@@ -170,6 +180,7 @@ namespace Snail
 		float intersectY = std::abs(dY) - (otherHalfSize.y + GetHalfSize().y);
 
 		if (intersectX >= 0.0f || intersectY >= 0.0f) return false;
+		if (isTrigger) return true;
 
 		if (intersectX > intersectY)
 		{

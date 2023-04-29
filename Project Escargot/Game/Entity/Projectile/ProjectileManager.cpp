@@ -54,17 +54,27 @@ namespace Snail
 
 	void ProjectileManager::Update()
 	{
+		std::vector<Projectile*> temp;
+
 		for (int i = m_projectiles.size() - 1; i >= 0; i--)
 		{
 			if (m_projectiles[i]->IsDeleted)
 			{
-				m_projectiles[i]->Destroy();
-				delete m_projectiles[i];
-				m_projectiles.erase(m_projectiles.end() - 1 - i);
+				temp.push_back(m_projectiles[i]);
 				continue;
 			}
 
 			m_projectiles[i]->Update();
+		}
+
+		for (auto& p : temp)
+		{
+			p->Destroy();
+			delete p;
+			std::vector<Projectile*>::iterator toDelete = std::find(m_projectiles.begin(), m_projectiles.end(), p);
+
+			if (toDelete != m_projectiles.end())
+				m_projectiles.erase(toDelete);
 		}
 	}
 

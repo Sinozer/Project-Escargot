@@ -48,12 +48,12 @@ namespace Snail
 	{
 		m_physicBodyRef->Velocity.x = 0.f;
 
-		if (m_IsPlayerInRange() || m_forcePlayerPos == true) 
+		if (m_IsPlayerInRange() || m_forcePlayerPos == true)
 		{
 			if (m_IsAttackRange(m_isMelee))
 			{
-				std::cout << "Ennemy attacks\n";
-			} 
+				//std::cout << "Ennemy attacks\n";
+			}
 			else
 			{
 				m_ChangeDirection();
@@ -62,8 +62,15 @@ namespace Snail
 			}
 		}
 
-		if (m_physicBodyRef->IsTriggered)
+		if (!m_physicBodyRef->IsTriggered) return;
+		
+		if ((m_physicBodyRef->TriggeredMasks & MASK_BULLET_PLAYER) == MASK_BULLET_PLAYER)
+		{
 			std::cout << "AIE J'AI MAL" << std::endl;
+		}
+
+		m_physicBodyRef->IsTriggered = false;
+		m_physicBodyRef->TriggeredMasks = MASK_EMPTY;
 	}
 
 	void Enemy::m_ChangeDirection(Direction direction)
@@ -87,7 +94,7 @@ namespace Snail
 		case LEFT:
 			if (m_target->GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x - 40)
 				m_physicBodyRef->AddVelocity({ -m_speed, 0 }, m_clampVelocity);
-			
+
 			if (previousPositionX == 0.f) break;
 			//Jump if progress isn't made
 			if (m_physicBodyRef->GetPosition().x > previousPositionX - 1.0f && m_physicBodyRef->IsOnGround)
@@ -111,7 +118,7 @@ namespace Snail
 		default:
 			break;
 		}
-		
+
 		previousPositionX = m_physicBodyRef->GetPosition().x;
 	}
 

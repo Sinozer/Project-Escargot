@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Arrow.h"
 #include "Game/Entity/LivingEntity/Player/Player.h"
-namespace Snail 
+namespace Snail
 {
 	Arrow::Arrow()
 	{
@@ -28,7 +28,7 @@ namespace Snail
 		));
 
 		m_physicBodyRef->Masks = MASK_BULLET_PLAYER;
-		m_physicBodyRef->CollideMasks = MASK_ENEMY;
+		//m_physicBodyRef->CollideMasks = MASK_ENEMY;
 		m_physicBodyRef->TriggerMasks = MASK_MAP;
 
 		m_name = "ARROW_" + std::to_string(m_count);
@@ -46,7 +46,7 @@ namespace Snail
 	{
 		float angle = std::atan2f(shooterCoord.y - Player::GetInstance()->GetPhysicBodyRef()->GetPosition().y, shooterCoord.x - Player::GetInstance()->GetPhysicBodyRef()->GetPosition().x);
 		m_targetPosition = { std::cos(angle), std::sin(angle) };
-		
+
 		m_InitPhysicBody(shooterCoord);
 
 		m_physicBodyRef->AddVelocity({ m_speed * m_targetPosition.x, m_speed * m_targetPosition.y }, m_clampVelocity);
@@ -54,10 +54,20 @@ namespace Snail
 
 	void Arrow::Update()
 	{
-		if (m_physicBodyRef->IsTriggered)
+		if (!m_physicBodyRef->IsTriggered) return;
+
+		if ((m_physicBodyRef->TriggeredMasks & MASK_MAP) == MASK_MAP)
+		{
 			IsDeleted = true;
+		}
+		if ((m_physicBodyRef->TriggeredMasks & MASK_ENEMY) == MASK_ENEMY)
+		{
+			IsDeleted = true;
+		}
+		m_physicBodyRef->IsTriggered = false;
+		m_physicBodyRef->TriggeredMasks = MASK_EMPTY;
 	}
-	
+
 	void Arrow::Draw()
 	{
 	}
