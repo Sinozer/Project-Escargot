@@ -13,10 +13,10 @@ namespace Snail
 		};
 		Direction m_direction = RIGHT;
 
-		float m_speed;
+		float m_speed = 0.f;
 		sf::Vector2f m_clampVelocity;
 
-		float m_jumpHeight;
+		float m_jumpHeight = 0.f;
 
 		virtual void m_ChangeDirection(Direction direction = NONE) = 0;
 		inline void m_UpdateSprite()

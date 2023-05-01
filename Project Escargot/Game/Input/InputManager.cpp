@@ -27,7 +27,7 @@ namespace Snail
 	{
 		if (!sf::Mouse::isButtonPressed(sf::Mouse::Left)) return false;
 		
-		sf::IntRect tempRect(object.getPosition().x, object.getPosition().y, object.getGlobalBounds().width, object.getGlobalBounds().height);
+		sf::IntRect tempRect((int)object.getPosition().x, (int)object.getPosition().y, (int)object.getGlobalBounds().width, (int)object.getGlobalBounds().height);
 
 		if (!tempRect.contains(sf::Mouse::getPosition(m_window))) return false;
 		
@@ -38,7 +38,7 @@ namespace Snail
 	{
 		if (!sf::Mouse::isButtonPressed(sf::Mouse::Right)) return false;
 
-		sf::IntRect tempRect(object.getPosition().x, object.getPosition().y, object.getGlobalBounds().width, object.getGlobalBounds().height);
+		sf::IntRect tempRect((int)object.getPosition().x, (int)object.getPosition().y, (int)object.getGlobalBounds().width, (int)object.getGlobalBounds().height);
 
 		if (!tempRect.contains(sf::Mouse::getPosition(m_window))) return false;
 

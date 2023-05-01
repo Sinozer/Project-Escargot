@@ -28,8 +28,8 @@ namespace Snail
 
 	void JoinState::m_InitView()
 	{
-		m_view.setSize(sf::Vector2f(m_data->window.getSize().x, m_data->window.getSize().y));
-		m_view.setCenter(sf::Vector2f(m_data->window.getSize().x / 2, m_data->window.getSize().y / 2));
+		m_view.setSize(sf::Vector2f((float)m_data->window.getSize().x, (float)m_data->window.getSize().y));
+		m_view.setCenter(sf::Vector2f((float)m_data->window.getSize().x / 2.f, (float)m_data->window.getSize().y / 2.f));
 		m_data->window.setView(m_view);
 	}
 

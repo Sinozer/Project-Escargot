@@ -61,7 +61,7 @@ namespace Snail
 	{
 		std::vector<Projectile*> temp;
 
-		for (int i = m_projectiles.size() - 1; i >= 0; i--)
+		for (int i = (int)m_projectiles.size() - 1; i >= 0; i--)
 		{
 			if (m_projectiles[i]->IsDeleted)
 			{

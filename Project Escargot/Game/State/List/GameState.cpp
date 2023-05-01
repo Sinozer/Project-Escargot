@@ -29,8 +29,8 @@ namespace Snail
 
 	void GameState::m_InitView()
 	{
-		m_view.setSize(sf::Vector2f(m_data->window.getSize().x, m_data->window.getSize().y));
-		m_view.setCenter(sf::Vector2f(m_data->window.getSize().x / 2, m_data->window.getSize().y / 2));
+		m_view.setSize(sf::Vector2f((float)m_data->window.getSize().x, (float)m_data->window.getSize().y));
+		m_view.setCenter(sf::Vector2f((float)m_data->window.getSize().x / 2.f, (float)m_data->window.getSize().y / 2.f));
 		m_view.zoom(0.25f);
 		//m_view.setRotation(45.f);
 		m_data->window.setView(m_view);
@@ -44,17 +44,17 @@ namespace Snail
 
 	void GameState::m_InitUITexts()
 	{
-		m_uiManager.AddText("SCORE", m_data->window.getSize().x, 0.f, 0.f, 0.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "SCORE: X", 60, sf::Color::White, sf::Color::Transparent);
+		m_uiManager.AddText("SCORE", (float)m_data->window.getSize().x, 0.f, 0.f, 0.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "SCORE: X", 60, sf::Color::White, sf::Color::Transparent);
 		m_uiManager.Texts["SCORE"]->SetOrigin(TOP_RIGHT);
 		m_uiManager.Texts["SCORE"]->SetOutlineColor(sf::Color::Black);
 		m_uiManager.Texts["SCORE"]->SetOutlineThickness(2.f);
 		
-		m_uiManager.AddText("AMMO", m_data->window.getSize().x, m_data->window.getSize().y, 0.f, 0.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "X | Y", 46, sf::Color::White, sf::Color::Transparent);
+		m_uiManager.AddText("AMMO", (float)m_data->window.getSize().x, (float)m_data->window.getSize().y, 0.f, 0.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "X | Y", 46, sf::Color::White, sf::Color::Transparent);
 		m_uiManager.Texts["AMMO"]->SetOrigin(BOT_RIGHT);
 		m_uiManager.Texts["AMMO"]->SetOutlineColor(sf::Color::Black);
 		m_uiManager.Texts["AMMO"]->SetOutlineThickness(2.f);
 
-		m_uiManager.AddText("LIFE", 0.f, m_data->window.getSize().y, 0.f, 0.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "X / Y", 46, sf::Color::White, sf::Color::Transparent);
+		m_uiManager.AddText("LIFE", 0.f, (float)m_data->window.getSize().y, 0.f, 0.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "X / Y", 46, sf::Color::White, sf::Color::Transparent);
 		m_uiManager.Texts["LIFE"]->SetOrigin(BOT_LEFT);
 		m_uiManager.Texts["LIFE"]->SetOutlineColor(sf::Color::Black);
 		m_uiManager.Texts["LIFE"]->SetOutlineThickness(2.f);

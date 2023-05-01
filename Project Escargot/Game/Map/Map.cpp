@@ -108,7 +108,7 @@ namespace Snail
 			}
 
 			PhysicBody* temp = PhysicBody::CreateBoxBody(
-				sf::Vector2f(m_tiledFile.tileWidth, m_tiledFile.tileHeight), sf::Vector2f((i % layer.width) * m_tiledFile.tileWidth, (i / layer.width) * m_tiledFile.tileHeight), 0.5f, isStatic,
+				sf::Vector2f((float)m_tiledFile.tileWidth, (float)m_tiledFile.tileHeight), sf::Vector2f((float)(i % layer.width) * (float)m_tiledFile.tileWidth, (float)(i / layer.width) * (float)m_tiledFile.tileHeight), 0.5f, isStatic,
 				AssetManager::GetInstance()->GetTexture(name), canCollide, canGravitate
 			);
 

@@ -35,7 +35,7 @@ namespace Snail
 	{
 		m_body.setPosition(position);
 		m_body.setTexture(&texture);
-		m_body.setTextureRect(sf::IntRect(0, 0, size.x, size.y));
+		m_body.setTextureRect(sf::IntRect(0, 0, (int)size.x, (int)size.y));
 		m_body.setSize(size);
 		m_body.setOrigin(size / 2.f);
 		Velocity = sf::Vector2f(0, 0);
@@ -63,7 +63,7 @@ namespace Snail
 	{
 		m_body.setPosition(position);
 		m_body.setTexture(&texture);
-		m_body.setTextureRect(sf::IntRect(texturePosition.x, texturePosition.y, size.x, size.y));
+		m_body.setTextureRect(sf::IntRect(texturePosition.x, texturePosition.y, (int)size.x, (int)size.y));
 		m_body.setSize(size);
 		m_body.setOrigin(size / 2.f);
 		Velocity = sf::Vector2f(0, 0);
