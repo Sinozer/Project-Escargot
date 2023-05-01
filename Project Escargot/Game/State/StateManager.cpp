@@ -48,6 +48,7 @@ namespace Snail
 	{
 		if (!m_states.empty())
 			return m_states.top()->ID;
+		return -1;
 	}
 
 	StateRef& StateManager::GetActiveState()

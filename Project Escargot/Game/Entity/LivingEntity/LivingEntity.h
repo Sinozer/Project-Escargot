@@ -11,7 +11,7 @@ namespace Snail
 		{
 			NONE, LEFT, RIGHT
 		};
-		Direction m_direction;
+		Direction m_direction = RIGHT;
 
 		float m_speed;
 		sf::Vector2f m_clampVelocity;
@@ -40,13 +40,19 @@ namespace Snail
 		float m_maxLife = 100.f;
 		float m_life = m_maxLife;
 
-		float m_damageBuffer = .2f;
+		float m_damageBuffer = 1.5f;
 		float m_damageBufferDelta = 0.f;
+		
+		float m_damageRangeBuffer = .1f;
+		float m_damageRangeBufferDelta = 0.f;
 
 		inline void m_UpdateDamageBuffer()
 		{
 			if (m_damageBufferDelta > 0.f)
-				Math::Clamp(m_damageBufferDelta -= Game::m_data->deltaTime, 0.f, m_damageBuffer);
+				m_damageBufferDelta = Math::Clamp(m_damageBufferDelta -= Game::m_data->deltaTime, 0.f, m_damageBuffer);
+			
+			if (m_damageRangeBufferDelta > 0.f)
+				m_damageRangeBufferDelta = Math::Clamp(m_damageRangeBufferDelta -= Game::m_data->deltaTime, 0.f, m_damageRangeBuffer);
 		}
 
 		inline bool m_TakeDamage(float damages)
@@ -61,9 +67,42 @@ namespace Snail
 				IsDeleted = true;
 				PhysicBodyManager::GetInstance()->RemovePhysicBody(Name);
 			}
-			
+
 			return true;
 		}
+		
+		inline bool m_TakeRangeDamage(float damages)
+		{
+			if (m_damageRangeBufferDelta > 0.f) return false;
+			m_damageRangeBufferDelta = m_damageRangeBuffer;
+
+			m_life = Math::Clamp(m_life - damages, 0.f, m_maxLife);
+
+			if (m_life <= 0.f)
+			{
+				IsDeleted = true;
+				PhysicBodyManager::GetInstance()->RemovePhysicBody(Name);
+			}
+
+			return true;
+		}
+		
+	public:
+		inline float GetLife() { return m_life; }
+		inline std::string GetLifeString()
+		{
+			std::string temp = std::to_string((int)m_life);
+			temp = temp.substr(0, temp.find('.'));
+			return temp;
+		}
+		inline float GetMaxLife() { return m_maxLife; }
+		inline std::string GetMaxLifeString()
+		{
+			std::string temp = std::to_string((int)m_maxLife);
+			temp = temp.substr(0, temp.find('.'));
+			return temp;
+		}
+
 	public:
 		std::string Name;
 

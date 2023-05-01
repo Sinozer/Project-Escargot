@@ -43,14 +43,15 @@
 #define GAME_GRAVITY GRAVITY * PHYSIC_SCALE
 
 /* ########## MASKS ######### */
-constexpr std::uint8_t MASK_PLAYER			{ 0b1000'0000 };
-constexpr std::uint8_t MASK_ENEMY			{ 0b0100'0000 };
-constexpr std::uint8_t MASK_BULLET_PLAYER	{ 0b0000'1000 };
-constexpr std::uint8_t MASK_BULLET_ENEMY	{ 0b0000'0100 };
+constexpr std::uint16_t MASK_PLAYER			{ 0b0000'0000'1000'0000 };
+constexpr std::uint16_t MASK_ENEMY			{ 0b0000'0000'0100'0000 };
+constexpr std::uint16_t MASK_BULLET_PLAYER	{ 0b0000'0000'0000'1000 };
+constexpr std::uint16_t MASK_BULLET_ENEMY	{ 0b0000'0000'0000'0100 };
 
-constexpr std::uint8_t MASK_MAP				{ 0b0000'0010 };
+constexpr std::uint16_t MASK_MAP_OBJECT		{ 0b0000'0000'0000'0010 };
+constexpr std::uint16_t MASK_MAP			{ 0b0000'0000'0000'0001 };
 
-constexpr std::uint8_t MASK_EMPTY			{ 0b0000'0001 };
+constexpr std::uint16_t MASK_EMPTY			{ 0b1000'0000'0000'0000 };
 /* ########## MASKS ######### */
 
 /* ################## PHYSIC ################## */
@@ -86,6 +87,10 @@ constexpr std::uint8_t MASK_EMPTY			{ 0b0000'0001 };
 
 /* ########## MAIN ########## */
 #define STATE_MAIN_BACKGROUND_FILEPATH "Resources/Textures/Backgrounds/Canyon.jpg"
+/* ########## MAIN ########## */
+
+/* ########## MAIN ########## */
+#define STATE_GAME_BACKGROUND_FILEPATH "Resources/Textures/Backgrounds/DawnMountain.jpg"
 /* ########## MAIN ########## */
 
 /* ########## GAME ########## */

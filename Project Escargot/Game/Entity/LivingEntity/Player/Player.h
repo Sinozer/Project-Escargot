@@ -3,7 +3,7 @@
 #include "Game/Entity/Weapon/WeaponManager.h"
 namespace Snail
 {
-	class Player : LivingEntity
+	class Player : public LivingEntity
 	{
 	private:
 		// Singleton

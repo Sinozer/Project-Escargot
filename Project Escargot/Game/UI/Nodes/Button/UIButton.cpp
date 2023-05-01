@@ -73,8 +73,9 @@ namespace Snail
 	// #### Functions #### //
 	void UIButton::Update(sf::Vector2i mousePosition)
 	{
+		if (!IsActive) return;
+		
 		UpdateKeyTime();
-
 
 		m_state = IDLE;	// Idle
 

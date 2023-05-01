@@ -7,14 +7,16 @@ namespace Snail
 {
 	class Spawner : public PhysicBodyRef
 	{
+	private:
+		static unsigned int m_count;
 	public:
-
 		//constructor
 		Spawner(GameDataRef data);
 
 		void Init(sf::Vector2f position = sf::Vector2f(0, 0));
 
-		void Spawn(sf::Vector2f position = sf::Vector2f(0, 0));
+		void Spawn();
+		void Spawn(sf::Vector2f position);
 
 		void Update();
 

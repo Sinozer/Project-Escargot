@@ -44,9 +44,10 @@ namespace Snail
 		));
 
 		m_physicBodyRef->Masks = MASK_PLAYER;
-		m_physicBodyRef->CollideMasks = MASK_MAP | MASK_BULLET_ENEMY;
+		m_physicBodyRef->CollideMasks = MASK_MAP | MASK_MAP_OBJECT | MASK_BULLET_ENEMY;
+		m_physicBodyRef->TriggerMasks = MASK_ENEMY;
 
-		m_physicBodyRef->Scale(sf::Vector2f(0.02f, 0.02f));
+		m_physicBodyRef->Scale(sf::Vector2f(0.015f, 0.015f));
 
 		PhysicBodyManager::GetInstance()->AddPhysicBody("PLAYER", m_physicBodyRef);
 	}
@@ -70,6 +71,13 @@ namespace Snail
 			m_physicBodyRef->AddVelocity({ m_speed, 0 }, m_clampVelocity);
 			m_ChangeDirection(RIGHT);
 		}
+		
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
+			m_speed = 2.f * PHYSIC_SCALE;
+		else
+			m_speed = 1.25f * PHYSIC_SCALE;
+		m_clampVelocity.x = m_speed;
+		
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && m_physicBodyRef->IsOnGround)
 		{
 			m_physicBodyRef->IsOnGround = false;
@@ -100,6 +108,18 @@ namespace Snail
 		m_UpdateSprite();
 		m_UpdateWeaponManager();
 		m_UpdateDamageBuffer();
+
+		m_UpdateDamageBuffer();
+
+		if (!m_physicBodyRef->IsTriggered) return;
+
+		if ((m_physicBodyRef->TriggeredMasks & MASK_ENEMY) == MASK_ENEMY)
+		{
+			m_TakeDamage(10);
+		}
+
+		m_physicBodyRef->IsTriggered = false;
+		m_physicBodyRef->TriggeredMasks = MASK_EMPTY;
 	}
 
 	void Player::m_UpdateWeaponManager()
@@ -186,6 +206,6 @@ namespace Snail
 
 	void Player::AddScore()
 	{
-		m_score += GetDamages()/* ^ waveCount */;
+		m_score += (unsigned long int)GetDamages()/* ^ waveCount */;
 	}
 }

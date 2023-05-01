@@ -25,12 +25,12 @@ namespace Snail
 		void m_Move();
 	public:
 
-		uint8_t Masks;
-		uint8_t CollideMasks;
-		uint8_t TriggerMasks;
+		uint16_t Masks;
+		uint16_t CollideMasks;
+		uint16_t TriggerMasks;
 
 		bool IsTriggered;
-		uint8_t TriggeredMasks;
+		uint16_t TriggeredMasks;
 
 		sf::Vector2f Velocity;
 

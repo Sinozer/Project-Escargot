@@ -168,7 +168,7 @@ namespace Snail
 	 */
 	bool PhysicBody::CheckCollision(PhysicBodyRef other, sf::Vector2f& direction, bool isTrigger)
 	{
-		if (!m_canCollide || !other->m_canCollide) return false;
+		if (!m_canCollide || !other->m_canCollide || IsStatic) return false;
 
 		sf::Vector2f otherPosition = other->GetPosition();
 		sf::Vector2f otherHalfSize = other->GetHalfSize();

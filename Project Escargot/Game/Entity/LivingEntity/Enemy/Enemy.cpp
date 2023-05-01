@@ -30,7 +30,7 @@ namespace Snail
 		));
 
 		m_physicBodyRef->Masks = MASK_ENEMY;
-		m_physicBodyRef->CollideMasks = MASK_MAP | MASK_ENEMY;
+		m_physicBodyRef->CollideMasks = MASK_MAP | MASK_MAP_OBJECT | MASK_ENEMY;
 		m_physicBodyRef->TriggerMasks = MASK_BULLET_PLAYER;
 
 		m_physicBodyRef->Scale(sf::Vector2f(0.5f, 0.5f));
@@ -71,7 +71,7 @@ namespace Snail
 		if ((m_physicBodyRef->TriggeredMasks & MASK_BULLET_PLAYER) == MASK_BULLET_PLAYER)
 		{
 			std::cout << m_life << std::endl;
-			if (m_TakeDamage(Player::GetInstance()->GetDamages()))
+			if (m_TakeRangeDamage(Player::GetInstance()->GetDamages()))
 				Player::GetInstance()->AddScore();
 		}
 
@@ -130,13 +130,13 @@ namespace Snail
 
 	bool Enemy::m_IsPlayerInRange()
 	{
-		if (m_physicBodyRef->GetPosition().y - 80 < m_target->GetPhysicBodyRef()->GetPosition().y && m_target->GetPhysicBodyRef()->GetPosition().y < m_physicBodyRef->GetPosition().y + 20)
+		if (m_physicBodyRef->GetPosition().y - 160.f < m_target->GetPhysicBodyRef()->GetPosition().y && m_target->GetPhysicBodyRef()->GetPosition().y < m_physicBodyRef->GetPosition().y + 60.f)
 		{
-			if (m_physicBodyRef->GetPosition().x < m_target->GetPhysicBodyRef()->GetPosition().x && m_target->GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x + 120)
+			if (m_physicBodyRef->GetPosition().x < m_target->GetPhysicBodyRef()->GetPosition().x && m_target->GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x + 240.f)
 			{
 				return true;
 			}
-			else if (m_physicBodyRef->GetPosition().x - 120 < m_target->GetPhysicBodyRef()->GetPosition().x && m_target->GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x)
+			else if (m_physicBodyRef->GetPosition().x - 240.f < m_target->GetPhysicBodyRef()->GetPosition().x && m_target->GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x)
 			{
 				return true;
 			}

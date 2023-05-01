@@ -37,11 +37,7 @@ namespace Snail
 
 	bool AssetManager::TextureExists(std::string name)
 	{
-		//return m_textures.find(name) != m_textures.end();
-		if (m_textures.count(name) != 0)
-			return true;
-		else
-			return false;
+		return m_textures.find(name) != m_textures.end();
 	}
 
 	sf::Font& AssetManager::LoadFont(std::string name, std::string fileName)

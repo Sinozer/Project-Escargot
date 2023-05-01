@@ -32,6 +32,10 @@ namespace Snail
 
 		sf::Color m_outlineIdleColor;
 		// #### Variables #### //
+
+	public:
+		bool IsActive = true;
+		
 	public:
 		// #### Constructor | Destructor #### //
 		UIText(float x, float y, float width, float height,

@@ -10,10 +10,10 @@ namespace Snail
 	protected:
 		PhysicBodyRef m_physicBodyRef;
 
-		float m_speed;
+		float m_speed = 1.25f * PHYSIC_SCALE;
 		sf::Vector2f m_clampVelocity;
 
-		float m_jumpHeight;
+		float m_jumpHeight = 2.f * PHYSIC_SCALE;
 
 		virtual void m_InitPhysicBody(sf::Vector2f) = 0;
 	public:

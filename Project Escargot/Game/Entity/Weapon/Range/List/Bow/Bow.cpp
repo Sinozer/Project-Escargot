@@ -60,8 +60,8 @@ namespace Snail
 		float angle = std::atan2f(InputManager::GetInstance()->GetMousePosition().y - handler.y, InputManager::GetInstance()->GetMousePosition().x - handler.x);
 		sf::Vector2f out = sf::Vector2f(std::cos(angle), std::sin(angle));
 		
-		float normX = handler.x/std::sqrt(std::pow(InputManager::GetInstance()->GetMousePosition().x, 2) - std::pow(handler.x, 2));
-		float normY = handler.y/std::sqrt(std::pow(InputManager::GetInstance()->GetMousePosition().y, 2) - std::pow(handler.y, 2));
+		double normX = handler.x/std::sqrt(std::pow(InputManager::GetInstance()->GetMousePosition().x, 2) - std::pow(handler.x, 2));
+		double normY = handler.y/std::sqrt(std::pow(InputManager::GetInstance()->GetMousePosition().y, 2) - std::pow(handler.y, 2));
 		calc = handler + out * 25.f;
 	}
 	

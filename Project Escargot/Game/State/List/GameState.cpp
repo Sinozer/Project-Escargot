@@ -15,16 +15,16 @@ namespace Snail
 		m_InitUIManager();
 		m_InitMap();
 
-		m_player->Init();
-		m_spawner.Init();
+		m_player->Init(sf::Vector2f(800.f, 150.f));
+		m_spawner.Init(sf::Vector2f(100.f, 100.f));
 		m_collectable.Init();
 	}
 
 	void GameState::m_InitBackground()
 	{
-		AssetManager::GetInstance()->LoadTexture("STATE_GAME_BACKGROUND", STATE_MAIN_BACKGROUND_FILEPATH);
+		AssetManager::GetInstance()->LoadTexture("STATE_GAME_BACKGROUND", STATE_GAME_BACKGROUND_FILEPATH);
 		m_background.setTexture(AssetManager::GetInstance()->GetTexture("STATE_GAME_BACKGROUND"));
-		m_background.scale(sf::Vector2f(0.25f, 0.25f));
+		m_background.scale(sf::Vector2f(0.273f, 0.273f));
 	}
 
 	void GameState::m_InitView()
@@ -49,10 +49,15 @@ namespace Snail
 		m_uiManager.Texts["SCORE"]->SetOutlineColor(sf::Color::Black);
 		m_uiManager.Texts["SCORE"]->SetOutlineThickness(2.f);
 		
-		m_uiManager.AddText("AMMO", m_data->window.getSize().x, m_data->window.getSize().y, 0.f, 0.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "X / Y", 46, sf::Color::White, sf::Color::Transparent);
+		m_uiManager.AddText("AMMO", m_data->window.getSize().x, m_data->window.getSize().y, 0.f, 0.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "X | Y", 46, sf::Color::White, sf::Color::Transparent);
 		m_uiManager.Texts["AMMO"]->SetOrigin(BOT_RIGHT);
 		m_uiManager.Texts["AMMO"]->SetOutlineColor(sf::Color::Black);
 		m_uiManager.Texts["AMMO"]->SetOutlineThickness(2.f);
+
+		m_uiManager.AddText("LIFE", 0.f, m_data->window.getSize().y, 0.f, 0.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "X / Y", 46, sf::Color::White, sf::Color::Transparent);
+		m_uiManager.Texts["LIFE"]->SetOrigin(BOT_LEFT);
+		m_uiManager.Texts["LIFE"]->SetOutlineColor(sf::Color::Black);
+		m_uiManager.Texts["LIFE"]->SetOutlineThickness(2.f);
 	}
 
 	void GameState::m_InitUIButtons()
@@ -61,7 +66,7 @@ namespace Snail
 
 	void GameState::m_InitMap()
 	{
-		Map map(m_data, "Resources/Data/Map/TestDebug.json");
+		Map map(m_data, "Resources/Data/Map/VerticalSlice/Main.json");
 	}
 
 	void GameState::HandleInput()
@@ -75,6 +80,9 @@ namespace Snail
 				m_data->window.close();
 				break;
 			}
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::N))
+			m_spawner.Spawn();
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 			m_data->stateManager.RemoveState();
@@ -101,7 +109,6 @@ namespace Snail
 			mousePosition = Math::Clamp(mousePosition, sf::Vector2f(0.f, 0.f), (sf::Vector2f)m_data->window.getSize());
 			m_background.setOrigin(mousePosition / /*value*/8.f); // Value = map size / background size
 			m_view.setCenter(mousePosition);
-			m_spawner.Spawn();
 		}
 		else
 		{
@@ -117,7 +124,9 @@ namespace Snail
 	
 		m_uiManager.Texts["SCORE"]->SetText("SCORE: " + std::to_string(Player::GetInstance()->GetScore()));
 
-		m_uiManager.Texts["AMMO"]->SetText(m_player->GetMunitionsString() + " / " + m_player->GetAllMunitionsString());
+		m_uiManager.Texts["AMMO"]->SetText(m_player->GetMunitionsString() + " | " + m_player->GetAllMunitionsString());
+	
+		m_uiManager.Texts["LIFE"]->SetText(m_player->GetLifeString() + " / " + m_player->GetMaxLifeString());
 	}
 
 	void GameState::Draw()

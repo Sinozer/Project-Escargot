@@ -4,8 +4,8 @@ namespace Snail {
 	unsigned int m_count = 0;
 
 	Collectable::Collectable() {
-		this->m_type = Life();
-		this->m_value = 15;
+		m_type = Life;
+		m_value = 15;
 	}
 
 	Collectable::~Collectable()
@@ -38,7 +38,7 @@ namespace Snail {
 
 	void Collectable::m_CollectObject(Player livingEntity)
 	{
-		//livingEntity.UpdateLifeEntity(this->m_value, true);
+		//livingEntity.UpdateLifeEntity(m_value, true);
 		std::cout << "life up \n";
 		
 	}
@@ -54,6 +54,6 @@ namespace Snail {
 
 	PhysicBodyRef Collectable::GetPhysicBodyRefCollectable()
 	{
-		return this->m_collectablePhysicBody;
+		return m_collectablePhysicBody;
 	}
 }

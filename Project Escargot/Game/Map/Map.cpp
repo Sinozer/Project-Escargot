@@ -76,15 +76,15 @@ namespace Snail
 		{
 			if (layer.name == "background")
 			{
-				//m_InitLayer(layer, "MAP_BACKGROUND", "Resources/Textures/Map/sky_.png", true, false, false);
+				m_InitLayer(layer, "MAP_BACKGROUND", "Resources/Textures/Map/Rocky Roads/Deco/background.png", true, false, false);
 			}
 			else if (layer.name == "midground")
 			{
-				m_InitLayer(layer, "MAP_MIDGROUND", "Resources/Textures/Map/summer_.png", true, true, false);
+				m_InitLayer(layer, "MAP_MIDGROUND", "Resources/Textures/Map/Rocky Roads/Tilesets/foreground.png", true, true, false);
 			}
 			else if (layer.name == "object")
 			{
-				m_InitLayer(layer, "MAP_OBJECT", "Resources/Textures/Map/staticObjects_.png", false, true, true);
+				m_InitLayer(layer, "MAP_OBJECT", "Resources/Textures/Map/Rocky Roads/Objects/objects.png", false, true, true);
 			}
 		}
 	}
@@ -94,10 +94,10 @@ namespace Snail
 		std::string textureName = m_GetTextureSheetName(sheetName);
 
 		AssetManager::GetInstance()->LoadTexture(textureName, sheetPath);
-		for (int i = 0; i < layer.data.size(); i++)
+		for (size_t i = 0; i < layer.data.size(); i++)
 		{
 			if (layer.data.at(i) <= 0) continue;
-			
+
 			int id = layer.data.at(i);
 
 			std::string name = m_GetTextureName(sheetName, id);
@@ -113,10 +113,16 @@ namespace Snail
 			);
 
 			if (canCollide)
-			{
-				temp->Masks = MASK_MAP;
-				temp->CollideMasks = MASK_MAP;
-			}
+				if (isStatic)
+				{
+					temp->Masks = MASK_MAP;
+					temp->CollideMasks = MASK_MAP;
+				}
+				else
+				{
+					temp->Masks = MASK_MAP_OBJECT;
+					temp->CollideMasks = MASK_MAP | MASK_MAP_OBJECT;
+				}
 
 			PhysicBodyManager::GetInstance()->AddPhysicBody(std::to_string(i), PhysicBodyRef(temp));
 		}
@@ -125,10 +131,10 @@ namespace Snail
 	void Map::m_CheckForTileSetAndLoadTexture(int id, std::string sheetName, std::string sheetPath)
 	{
 		std::string textureName = m_GetTextureSheetName(sheetName);
-		
+
 		std::string name = m_GetTextureName(sheetName, id);
 
-		for (int j = m_tiledFile.tileSets.size() - 1; j >= 0; j--)
+		for (size_t j = m_tiledFile.tileSets.size() - 1; j >= 0; j--)
 		{
 			if (id < m_tiledFile.tileSets.at(j).firstGid) continue;
 

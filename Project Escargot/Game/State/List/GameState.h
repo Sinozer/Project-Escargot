@@ -23,12 +23,6 @@ namespace Snail
 
 		sf::Clock m_clock;
 
-		ProjectileManager *m_bullet;
-
-		int m_tempBulletCount;
-		int m_timerBulletFire;
-		int m_numberBullet;
-
 		void m_InitBackground();
 		void m_InitView();
 		void m_InitUIManager();

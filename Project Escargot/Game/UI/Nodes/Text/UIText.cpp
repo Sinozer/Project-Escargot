@@ -14,7 +14,6 @@ namespace Snail
 		m_position = sf::Vector2f(x, y);
 
 		m_shape.setPosition(sf::Vector2f(x, y));
-		m_shape.setSize(sf::Vector2f(width, height));
 		m_shape.setFillColor(containerColor);
 		m_shape.setOutlineThickness(1.f);
 		m_shape.setOutlineColor(outlineIdleColor);
@@ -26,10 +25,10 @@ namespace Snail
 		m_text.setCharacterSize(characterSize);
 		m_text.setOrigin(round(m_text.getGlobalBounds().width / 2.f + m_text.getGlobalBounds().left), round(m_text.getGlobalBounds().height / 2.f + m_text.getGlobalBounds().top));
 
-		if (m_shape.getGlobalBounds().width <= 0.f && m_shape.getGlobalBounds().height <= 0.f)
-		{
+		if (width <= 0.f && height <= 0.f)
 			m_shape.setSize(sf::Vector2f(m_text.getGlobalBounds().width * 1.2f, m_text.getGlobalBounds().height * 1.2f));
-		}
+		else
+			m_shape.setSize(sf::Vector2f(width, height));
 
 		m_shape.setOrigin(round(m_shape.getGlobalBounds().width / 2.f), round(m_shape.getGlobalBounds().height / 2.f));
 		m_text.setPosition(x, y);
@@ -59,32 +58,39 @@ namespace Snail
 		{
 		case TOP_LEFT:
 			m_shape.setOrigin(0.f, 0.f);
+			m_text.setOrigin(0.f, 0.f);
 			break;
 		case TOP_MID:
 			m_shape.setOrigin(round(m_shape.getGlobalBounds().width / 2.f), 0.f);
+			m_text.setOrigin(round(m_text.getGlobalBounds().width / 2.f + m_text.getGlobalBounds().left), 0.f);
 			break;
 		case TOP_RIGHT:
-			m_shape.setOrigin(0.f, 0.f);
 			m_shape.setOrigin(m_shape.getGlobalBounds().width, 0.f);
+			m_text.setOrigin(m_text.getGlobalBounds().width, 0.f);
 			break;
 		case MID_LEFT:
 			m_shape.setOrigin(0.f, round(m_shape.getGlobalBounds().height / 2.f));
+			m_text.setOrigin(0.f, round(m_text.getGlobalBounds().height / 2.f + m_text.getGlobalBounds().top));
 			break;
 		case MID_MID:
-			m_shape.setOrigin(0.f, 0.f);
 			m_shape.setOrigin(round(m_shape.getGlobalBounds().width / 2.f), round(m_shape.getGlobalBounds().height / 2.f));
+			m_text.setOrigin(round(m_text.getGlobalBounds().width / 2.f + m_text.getGlobalBounds().left), round(m_text.getGlobalBounds().height / 2.f + m_text.getGlobalBounds().top));
 			break;
 		case MID_RIGHT:
 			m_shape.setOrigin(m_shape.getGlobalBounds().width, round(m_shape.getGlobalBounds().height / 2.f));
+			m_text.setOrigin(m_text.getGlobalBounds().width, round(m_text.getGlobalBounds().height / 2.f + m_text.getGlobalBounds().top));
 			break;
 		case BOT_LEFT:
 			m_shape.setOrigin(0.f, m_shape.getGlobalBounds().height);
+			m_text.setOrigin(0.f, m_text.getGlobalBounds().height);
 			break;
 		case BOT_MID:
 			m_shape.setOrigin(round(m_shape.getGlobalBounds().width / 2.f), m_shape.getGlobalBounds().height);
+			m_text.setOrigin(round(m_text.getGlobalBounds().width / 2.f + m_text.getGlobalBounds().left), m_text.getGlobalBounds().height);
 			break;
 		case BOT_RIGHT:
 			m_shape.setOrigin(m_shape.getGlobalBounds().width, m_shape.getGlobalBounds().height);
+			m_text.setOrigin(m_text.getGlobalBounds().width, m_text.getGlobalBounds().height);
 			break;
 		default:
 			break;
@@ -117,6 +123,7 @@ namespace Snail
 	// #### Functions #### //
 	void UIText::Draw(sf::RenderTarget& target)
 	{
+		if (!IsActive) return;
 		target.draw(m_shape);
 		target.draw(m_text);
 	}
