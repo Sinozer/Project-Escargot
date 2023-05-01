@@ -93,7 +93,7 @@ namespace Snail
 		m_body.move(Velocity * Game::m_data->deltaTime);
 
 		if (m_canGravitate)
-			Velocity.y += (GAME_GRAVITY * Game::m_data->deltaTime * 1.5f);
+			Velocity.y += Math::Clamp((GAME_GRAVITY * Game::m_data->deltaTime * 1.5f), -GAME_GRAVITY / 10.f, GAME_GRAVITY / 10.f);
 	}
 
 #pragma region Constructors

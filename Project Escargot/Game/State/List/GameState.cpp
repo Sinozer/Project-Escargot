@@ -81,7 +81,7 @@ namespace Snail
 				break;
 			}
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::N))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::N) && DEBUG)
 			m_spawner.Spawn();
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
