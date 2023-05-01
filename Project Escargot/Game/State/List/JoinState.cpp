@@ -118,6 +118,14 @@ namespace Snail
 		m_DrawUIManager();
 	}
 
+	void JoinState::DrawUI()
+	{
+	}
+
+	void JoinState::End()
+	{
+	}
+
 	void JoinState::m_DrawUIManager()
 	{
 		/*

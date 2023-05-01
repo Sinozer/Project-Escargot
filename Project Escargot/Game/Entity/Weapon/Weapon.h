@@ -69,6 +69,20 @@ namespace Snail
 
 	public:
 
+		inline float GetMunitions()
+		{
+			return m_loaderSizeDelta;
+		}
+		inline float GetMaxMunitions()
+		{
+			return m_loaderSize;
+		}
+		inline float GetLoaders()
+		{
+			return m_loaderAmountDelta;
+		}
+		virtual float GetDamages() = 0;
+
 		virtual void Use() = 0;
 
 		virtual void Draw() = 0;

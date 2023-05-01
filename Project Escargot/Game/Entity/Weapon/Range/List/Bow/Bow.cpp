@@ -26,6 +26,11 @@ namespace Snail
 	{
 	}
 
+	float Bow::GetDamages()
+	{
+		return m_damageMultiplier * m_projectileManager.GetDamages();
+	}
+
 
 	void Bow::Init(sf::Vector2f position = sf::Vector2f(150, 150))
 	{

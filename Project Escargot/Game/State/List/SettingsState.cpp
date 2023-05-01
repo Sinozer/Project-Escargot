@@ -40,6 +40,8 @@ namespace Snail
 	void SettingsState::m_InitUITexts()
 	{
 		m_uiManager.AddText("TITLE", m_data->window.getSize().x / 2.f, m_data->window.getSize().y / 12.f, 0.f, 0.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "Settings", 92, sf::Color::White, sf::Color::Transparent);
+		m_uiManager.Texts["TITLE"]->SetOutlineColor(sf::Color::Black);
+		m_uiManager.Texts["TITLE"]->SetOutlineThickness(2.f);
 	}
 
 	void SettingsState::m_InitUIButtons()
@@ -85,8 +87,15 @@ namespace Snail
 	void SettingsState::Draw()
 	{
 		m_data->window.draw(m_background);
+	}
 
+	void SettingsState::DrawUI()
+	{
 		m_DrawUIManager();
+	}
+
+	void SettingsState::End()
+	{
 	}
 
 	void SettingsState::m_DrawUIManager()

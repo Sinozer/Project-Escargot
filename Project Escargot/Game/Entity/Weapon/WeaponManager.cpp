@@ -25,6 +25,26 @@ namespace Snail
 		m_activeWeapon->Init(sf::Vector2f(0,0));
     }
 
+    float WeaponManager::GetMunitions()
+    {
+        return m_activeWeapon->GetMunitions();
+    }
+
+    float WeaponManager::GetMaxMunitions()
+    {
+		return m_activeWeapon->GetMaxMunitions();
+    }
+
+    float WeaponManager::GetLoaders()
+    {
+        return m_activeWeapon->GetLoaders();
+    }
+
+    float WeaponManager::GetDamages()
+    {
+        return m_activeWeapon->GetDamages();
+    }
+
     void WeaponManager::Use()
     {
         if (!m_activeWeapon) return;

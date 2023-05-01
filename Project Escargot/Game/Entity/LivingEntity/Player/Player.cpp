@@ -77,7 +77,7 @@ namespace Snail
 		}
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-			m_weaponManager.Use();
+  			m_weaponManager.Use();
 		}
 
 		if (DEBUG)
@@ -97,13 +97,15 @@ namespace Snail
 
 	void Player::Update()
 	{
+		m_UpdateSprite();
 		m_UpdateWeaponManager();
+		m_UpdateDamageBuffer();
 	}
 
 	void Player::m_UpdateWeaponManager()
 	{
 		m_weaponManager.Update();
-		//m_weaponManager->HandlerPos((sf::Vector2f)GetLocalPosition());
+		
 		m_weaponManager.HandlerPos(m_physicBodyRef->GetPosition());
 	}
 
@@ -120,5 +122,70 @@ namespace Snail
 	PhysicBodyRef Player::GetPhysicBodyRef()
 	{
 		return m_physicBodyRef;
+	}
+
+	float Player::GetMunitions()
+	{
+		return m_weaponManager.GetMunitions();
+	}
+
+	std::string Player::GetMunitionsString()
+	{
+		std::string temp = std::to_string(GetMunitions());
+		temp = temp.substr(0, temp.find("."));
+		return temp;
+	}
+
+	float Player::GetMaxMunitions()
+	{
+		return m_weaponManager.GetMaxMunitions();
+	}
+
+	std::string Player::GetMaxMunitionsString()
+	{
+		std::string temp = std::to_string(GetMaxMunitions());
+		temp = temp.substr(0, temp.find("."));
+		return temp;
+	}
+
+	float Player::GetLoaders()
+	{
+		return m_weaponManager.GetLoaders();
+	}
+
+	std::string Player::GetLoadersString()
+	{
+		std::string temp = std::to_string(GetLoaders());
+		temp = temp.substr(0, temp.find("."));
+		return temp;
+	}
+
+	std::string Player::GetAllMunitionsString()
+	{
+		std::string temp = std::to_string(GetLoaders() * GetMaxMunitions());
+		temp = temp.substr(0, temp.find("."));
+		return temp;
+	}
+	
+	float Player::GetDamages()
+	{
+		return m_weaponManager.GetDamages();
+	}
+
+	std::string Player::GetDamagesString()
+	{
+		std::string temp = std::to_string(GetDamages());
+		temp = temp.substr(0, temp.find("."));
+		return temp;
+	}
+
+	unsigned long int Player::GetScore()
+	{
+		return m_score;
+	}
+
+	void Player::AddScore()
+	{
+		m_score += GetDamages()/* ^ waveCount */;
 	}
 }

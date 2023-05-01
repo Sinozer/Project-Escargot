@@ -35,7 +35,38 @@ namespace Snail
 				break;
 			}
 		}
+
+	protected:
+		float m_maxLife = 100.f;
+		float m_life = m_maxLife;
+
+		float m_damageBuffer = .2f;
+		float m_damageBufferDelta = 0.f;
+
+		inline void m_UpdateDamageBuffer()
+		{
+			if (m_damageBufferDelta > 0.f)
+				Math::Clamp(m_damageBufferDelta -= Game::m_data->deltaTime, 0.f, m_damageBuffer);
+		}
+
+		inline bool m_TakeDamage(float damages)
+		{
+			if (m_damageBufferDelta > 0.f) return false;
+			m_damageBufferDelta = m_damageBuffer;
+
+			m_life = Math::Clamp(m_life - damages, 0.f, m_maxLife);
+
+			if (m_life <= 0.f)
+			{
+				IsDeleted = true;
+				PhysicBodyManager::GetInstance()->RemovePhysicBody(Name);
+			}
+			
+			return true;
+		}
 	public:
+		std::string Name;
+
 		virtual PhysicBodyRef GetPhysicBodyRef() = 0;
 	};
 }

@@ -32,6 +32,11 @@ namespace Snail
 		m_projectileRef = nullptr;
 	}
 
+	float ProjectileManager::GetDamages()
+	{
+		return m_projectileRef->GetDamages();
+	}
+
 	ProjectileManager::~ProjectileManager()
 	{
 		for (auto& i : m_projectiles)

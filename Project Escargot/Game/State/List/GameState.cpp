@@ -12,25 +12,12 @@ namespace Snail
 	{
 		m_InitBackground();
 		m_InitView();
-
-		Map map(m_data, "Resources/Data/Map/TestDebug.json");
-
-		std::vector<PhysicBodyRef> refs = map.GetPhysicBodyRefs();
-
-		for (int i = 0; i < refs.size(); i++)
-		{
-			PhysicBodyManager::GetInstance()->AddPhysicBody(std::to_string(i), refs[i]);
-		}
-
+		m_InitUIManager();
+		m_InitMap();
 
 		m_player->Init();
 		m_spawner.Init();
 		m_collectable.Init();
-
-		Enemy test(GameDataRef data);
-
-
-		PhysicBodyManager::GetInstance()->AddPhysicBody("PLAYER", m_player->GetPhysicBodyRef());
 	}
 
 	void GameState::m_InitBackground()
@@ -51,6 +38,30 @@ namespace Snail
 
 	void GameState::m_InitUIManager()
 	{
+		m_InitUITexts();
+		m_InitUIButtons();
+	}
+
+	void GameState::m_InitUITexts()
+	{
+		m_uiManager.AddText("SCORE", m_data->window.getSize().x, 0.f, 0.f, 0.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "SCORE: X", 60, sf::Color::White, sf::Color::Transparent);
+		m_uiManager.Texts["SCORE"]->SetOrigin(TOP_RIGHT);
+		m_uiManager.Texts["SCORE"]->SetOutlineColor(sf::Color::Black);
+		m_uiManager.Texts["SCORE"]->SetOutlineThickness(2.f);
+		
+		m_uiManager.AddText("AMMO", m_data->window.getSize().x, m_data->window.getSize().y, 0.f, 0.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "X / Y", 46, sf::Color::White, sf::Color::Transparent);
+		m_uiManager.Texts["AMMO"]->SetOrigin(BOT_RIGHT);
+		m_uiManager.Texts["AMMO"]->SetOutlineColor(sf::Color::Black);
+		m_uiManager.Texts["AMMO"]->SetOutlineThickness(2.f);
+	}
+
+	void GameState::m_InitUIButtons()
+	{
+	}
+
+	void GameState::m_InitMap()
+	{
+		Map map(m_data, "Resources/Data/Map/TestDebug.json");
 	}
 
 	void GameState::HandleInput()
@@ -103,6 +114,10 @@ namespace Snail
 	void GameState::m_UpdateUIManager()
 	{
 		m_uiManager.Update((sf::Vector2i)InputManager::GetInstance(m_data->window)->GetMousePosition());
+	
+		m_uiManager.Texts["SCORE"]->SetText("SCORE: " + std::to_string(Player::GetInstance()->GetScore()));
+
+		m_uiManager.Texts["AMMO"]->SetText(m_player->GetMunitionsString() + " / " + m_player->GetAllMunitionsString());
 	}
 
 	void GameState::Draw()
@@ -110,12 +125,20 @@ namespace Snail
 		m_data->window.draw(m_background);
 		if (!PhysicBodyManager::GetInstance()->IsEmpty())
 			PhysicBodyManager::GetInstance()->Draw();
+	}
 
+	void GameState::DrawUI()
+	{
 		m_DrawUIManager();
 	}
 
 	void GameState::m_DrawUIManager()
 	{
 		m_uiManager.Draw(m_data->window);
+	}
+
+	void GameState::End()
+	{
+		Player::DestroyInstance();
 	}
 }

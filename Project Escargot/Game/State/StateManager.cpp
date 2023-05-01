@@ -31,6 +31,7 @@ namespace Snail
 		if (m_isRemoving && !m_states.empty())
 		{
 			PhysicBodyManager::DestroyInstance();
+			m_states.top()->End();
 			m_states.pop();
 			m_isRemoving = false;
 		}

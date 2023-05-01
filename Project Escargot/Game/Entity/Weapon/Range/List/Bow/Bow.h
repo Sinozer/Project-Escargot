@@ -14,6 +14,8 @@ namespace Snail
 		Bow(sf::Vector2f targetPosition);
 		~Bow();
 		
+		float GetDamages();
+
 		void Use();
 
 		void HandlerPos(sf::Vector2f handler);

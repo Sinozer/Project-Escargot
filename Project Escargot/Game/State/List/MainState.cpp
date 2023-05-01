@@ -43,15 +43,17 @@ namespace Snail
 	void MainState::m_InitUITexts()
 	{
 		m_uiManager.AddText("TITLE", m_data->window.getSize().x / 2.f, m_data->window.getSize().y / 12.f, 0.f, 0.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "Project Escargot", 92, sf::Color::White, sf::Color::Transparent);
+		m_uiManager.Texts["TITLE"]->SetOutlineColor(sf::Color::Black);
+		m_uiManager.Texts["TITLE"]->SetOutlineThickness(2.f);
 	}
 
 	void MainState::m_InitUIButtons()
 	{
-		m_uiManager.AddButton("PLAY", m_data->window.getSize().x / 2.f - 100.f, m_data->window.getSize().y / 2.2f, 200.f, 75.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "Play", 60, sf::Color(128, 128, 128), sf::Color::White, sf::Color::White, sf::Color(128, 128, 128, 128), sf::Color(128, 128, 128, 192), sf::Color(128, 128, 128));
+		m_uiManager.AddButton("PLAY", m_data->window.getSize().x / 2.f, m_data->window.getSize().y / 2.2f, 200.f, 75.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "Play", 60, sf::Color(128, 128, 128), sf::Color::White, sf::Color::White, sf::Color(128, 128, 128, 128), sf::Color(128, 128, 128, 192), sf::Color(128, 128, 128));
+
+		m_uiManager.AddButton("SETTINGS", m_data->window.getSize().x / 2.f, m_data->window.getSize().y / 1.70f, 200.f, 75.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "Settings", 60, sf::Color(128, 128, 128), sf::Color::White, sf::Color::White, sf::Color(128, 128, 128, 128), sf::Color(128, 128, 128, 192), sf::Color(128, 128, 128));
 		
-		m_uiManager.AddButton("SETTINGS", m_data->window.getSize().x / 2.f - 100.f, m_data->window.getSize().y / 1.70f, 200.f, 75.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "Settings", 60, sf::Color(128, 128, 128), sf::Color::White, sf::Color::White, sf::Color(128, 128, 128, 128), sf::Color(128, 128, 128, 192), sf::Color(128, 128, 128));
-		
-		m_uiManager.AddButton("QUIT", m_data->window.getSize().x / 2.f - 75.f, m_data->window.getSize().y / 1.25f, 150.f, 50.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "Quit", 40, sf::Color(128, 128, 128), sf::Color::White, sf::Color::White, sf::Color(128, 128, 128, 128), sf::Color(128, 128, 128, 192), sf::Color(128, 128, 128));
+		m_uiManager.AddButton("QUIT", m_data->window.getSize().x / 2.f, m_data->window.getSize().y / 1.25f, 150.f, 50.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "Quit", 40, sf::Color(128, 128, 128), sf::Color::White, sf::Color::White, sf::Color(128, 128, 128, 128), sf::Color(128, 128, 128, 192), sf::Color(128, 128, 128));
 	}
 
 	void MainState::HandleInput()
@@ -98,8 +100,15 @@ namespace Snail
 	void MainState::Draw()
 	{
 		m_data->window.draw(m_background);
+	}
 
+	void MainState::DrawUI()
+	{
 		m_DrawUIManager();
+	}
+
+	void MainState::End()
+	{
 	}
 
 	void MainState::m_DrawUIManager()

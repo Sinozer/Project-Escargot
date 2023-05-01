@@ -32,6 +32,9 @@ namespace Snail
 		void m_InitBackground();
 		void m_InitView();
 		void m_InitUIManager();
+		void m_InitUITexts();
+		void m_InitUIButtons();
+		void m_InitMap();
 
 		void m_UpdateView();
 		void m_UpdateUIManager();
@@ -45,5 +48,7 @@ namespace Snail
 		void HandleInput();
 		void Update();
 		void Draw();
+		void DrawUI();
+		void End();
 	};
 }

@@ -7,6 +7,7 @@ namespace Snail
 	{
 		m_speed = 2.f * PHYSIC_SCALE;
 		m_clampVelocity = { m_speed, m_jumpHeight };
+		m_damage = 30.f;
 	}
 
 	Arrow::~Arrow()
@@ -31,9 +32,9 @@ namespace Snail
 		//m_physicBodyRef->CollideMasks = MASK_ENEMY;
 		m_physicBodyRef->TriggerMasks = MASK_MAP;
 
-		m_name = "ARROW_" + std::to_string(m_count);
+		Name = "ARROW_" + std::to_string(m_count);
 
-		PhysicBodyManager::GetInstance()->AddPhysicBody(m_name, m_physicBodyRef);
+		PhysicBodyManager::GetInstance()->AddPhysicBody(Name, m_physicBodyRef);
 		m_count++;
 	}
 

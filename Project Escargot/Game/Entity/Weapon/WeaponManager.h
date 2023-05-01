@@ -18,6 +18,11 @@ namespace Snail
 		Weapon* GetActive();
 		void SetActive(std::string weaponName);
 		
+		float GetMunitions();
+		float GetMaxMunitions();
+		float GetLoaders();
+		float GetDamages();
+		
 		void Use();
 
 		void HandlerPos(sf::Vector2f handler);

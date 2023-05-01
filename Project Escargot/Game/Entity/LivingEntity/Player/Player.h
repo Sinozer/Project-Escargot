@@ -42,5 +42,22 @@ namespace Snail
 		void Draw();
 
 		PhysicBodyRef GetPhysicBodyRef();
+
+		float GetMunitions();
+		std::string GetMunitionsString();
+		float GetMaxMunitions();
+		std::string GetMaxMunitionsString();
+		float GetLoaders();
+		std::string GetLoadersString();
+		std::string GetAllMunitionsString();
+		float GetDamages();
+		std::string GetDamagesString();
+
+	private:
+		unsigned long int m_score = 0;
+
+	public:
+		unsigned long int GetScore();
+		void AddScore();
 	};
 }

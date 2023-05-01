@@ -2,6 +2,19 @@
 
 namespace Snail
 {
+	enum Origin
+	{
+		TOP_LEFT,
+		TOP_MID,
+		TOP_RIGHT,
+		MID_LEFT,
+		MID_MID,
+		MID_RIGHT,
+		BOT_LEFT,
+		BOT_MID,
+		BOT_RIGHT
+	};
+
 	class UIText
 	{
 	protected:
@@ -10,6 +23,9 @@ namespace Snail
 		sf::Font* m_font;
 		sf::Text m_text;
 
+		sf::Vector2f m_position;
+		Origin m_origin;
+		
 		sf::Color m_textIdleColor;
 
 		sf::Color m_containerIdleColor;
@@ -30,7 +46,10 @@ namespace Snail
 		// #### Accessors #### //
 
 		// #### Modifiers #### //
+		void SetOrigin(Origin origin);
 		void SetText(const std::string text);
+		void SetOutlineColor(sf::Color color);
+		void SetOutlineThickness(float thickness);
 		// #### Modifiers #### //
 
 		// #### Functions #### //

@@ -10,8 +10,6 @@ namespace Snail
 	protected:
 		PhysicBodyRef m_physicBodyRef;
 
-		std::string m_name;
-
 		float m_speed;
 		sf::Vector2f m_clampVelocity;
 
@@ -19,10 +17,12 @@ namespace Snail
 
 		virtual void m_InitPhysicBody(sf::Vector2f) = 0;
 	public:
+		std::string Name;
+		bool IsDeleted;
 
 		inline void Destroy()
 		{
-			PhysicBodyManager::GetInstance()->RemovePhysicBody(m_name);
+			PhysicBodyManager::GetInstance()->RemovePhysicBody(Name);
 		}
 
 		virtual void Init(sf::Vector2f) = 0;

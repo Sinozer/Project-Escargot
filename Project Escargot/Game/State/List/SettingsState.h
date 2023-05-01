@@ -34,5 +34,7 @@ namespace Snail
 		void HandleInput();
 		void Update();
 		void Draw();
+		void DrawUI();
+		void End();
 	};
 }

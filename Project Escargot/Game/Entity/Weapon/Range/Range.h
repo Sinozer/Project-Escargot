@@ -10,8 +10,8 @@ namespace Snail
 	class Range : public Weapon
 	{
 	protected:
-		float m_DamageMultiplier;
-		float m_rangeMultiplier;
+		float m_damageMultiplier = 1.f;
+		float m_rangeMultiplier = 1.f;
 
 		ProjectileManager m_projectileManager;
 

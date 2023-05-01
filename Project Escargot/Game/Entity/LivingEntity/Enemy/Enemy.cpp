@@ -30,12 +30,14 @@ namespace Snail
 		));
 
 		m_physicBodyRef->Masks = MASK_ENEMY;
-		m_physicBodyRef->CollideMasks = MASK_MAP;
+		m_physicBodyRef->CollideMasks = MASK_MAP | MASK_ENEMY;
 		m_physicBodyRef->TriggerMasks = MASK_BULLET_PLAYER;
 
 		m_physicBodyRef->Scale(sf::Vector2f(0.5f, 0.5f));
 
-		PhysicBodyManager::GetInstance()->AddPhysicBody("ENNEMY_" + std::to_string(Count), m_physicBodyRef);
+		Name = "ENNEMY_" + std::to_string(Count);
+
+		PhysicBodyManager::GetInstance()->AddPhysicBody(Name, m_physicBodyRef);
 
 		Count++;
 	}
@@ -62,11 +64,15 @@ namespace Snail
 			}
 		}
 
+		m_UpdateDamageBuffer();
+
 		if (!m_physicBodyRef->IsTriggered) return;
 		
 		if ((m_physicBodyRef->TriggeredMasks & MASK_BULLET_PLAYER) == MASK_BULLET_PLAYER)
 		{
-			std::cout << "AIE J'AI MAL" << std::endl;
+			std::cout << m_life << std::endl;
+			if (m_TakeDamage(Player::GetInstance()->GetDamages()))
+				Player::GetInstance()->AddScore();
 		}
 
 		m_physicBodyRef->IsTriggered = false;

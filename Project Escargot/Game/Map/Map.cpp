@@ -118,7 +118,7 @@ namespace Snail
 				temp->CollideMasks = MASK_MAP;
 			}
 
-			m_physicBodyRefs.push_back(PhysicBodyRef(temp));
+			PhysicBodyManager::GetInstance()->AddPhysicBody(std::to_string(i), PhysicBodyRef(temp));
 		}
 	}
 

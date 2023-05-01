@@ -18,6 +18,8 @@ namespace Snail
 		ProjectileManager();
 		~ProjectileManager();
 
+		float GetDamages();
+
 		void SetProjectile(Projectile* projectile);
 
 		void Shoot(sf::Vector2f startingPoint);
@@ -25,7 +27,6 @@ namespace Snail
 		void Update();
 
 		void Draw();
-
 	};
 }
  

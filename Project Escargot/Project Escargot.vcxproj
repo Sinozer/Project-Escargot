@@ -112,6 +112,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>P:\Project Escargot\SFML-2.5.1\include;P:\Project Escargot\Nlohmann;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,6 +131,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>P:\Project Escargot\SFML-2.5.1\include;P:\Project Escargot\Nlohmann;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

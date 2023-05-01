@@ -19,7 +19,7 @@ namespace Snail
 		m_text = sf::Text("PROJECT SNAIL\nPROTOTYPE", AssetManager::GetInstance()->GetFont("ROBOTO_CONDENSED_ITALIC"), 30);
 		m_text.setFillColor(sf::Color::White);
 		m_text.setOutlineColor(sf::Color::Black);
-		m_text.setOutlineThickness(2);
+		m_text.setOutlineThickness(2.f);
 		m_text.setPosition(20.f, 0.f);
 
 		m_data->stateManager.AddState(StateRef(new JoinState(m_data)));
@@ -33,7 +33,10 @@ namespace Snail
 	void Game::m_UpdateDt()
 	{
 		m_dt = m_clock.restart().asSeconds();
-		m_data->deltaTime = m_dt;
+		if (m_dt < 1.f)
+			m_data->deltaTime = m_dt;
+		else
+			m_data->deltaTime = 0.f;
 	}
 
 	void Game::Run()
@@ -54,6 +57,7 @@ namespace Snail
 			m_data->stateManager.GetActiveState()->Draw();
 			m_data->window.setView(m_data->window.getDefaultView());
 			m_data->window.draw(m_text);
+			m_data->stateManager.GetActiveState()->DrawUI();
 
 			m_data->window.display();
 		}
@@ -64,7 +68,6 @@ namespace Snail
 	{
 		m_data->window.close();
 
-		Player::DestroyInstance();
 		AssetManager::DestroyInstance();
 	}
 }
