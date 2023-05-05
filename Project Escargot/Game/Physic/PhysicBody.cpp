@@ -22,6 +22,7 @@ namespace Snail
 		CollideMasks = MASK_EMPTY;
 		TriggerMasks = MASK_EMPTY;
 		TriggeredMasks = MASK_EMPTY;
+		IsTriggered = false;
 
 		if (DEBUG)
 		{
@@ -50,6 +51,7 @@ namespace Snail
 		CollideMasks = MASK_EMPTY;
 		TriggerMasks = MASK_EMPTY;
 		TriggeredMasks = MASK_EMPTY;
+		IsTriggered = false;
 
 		if (DEBUG)
 		{
@@ -78,6 +80,7 @@ namespace Snail
 		CollideMasks = MASK_EMPTY;
 		TriggerMasks = MASK_EMPTY;
 		TriggeredMasks = MASK_EMPTY;
+		IsTriggered = false;
 
 		if (DEBUG)
 		{

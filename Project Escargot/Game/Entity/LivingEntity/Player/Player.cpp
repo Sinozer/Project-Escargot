@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Player.h"
+#include "Game/Spawner/SpawnerManager.h"
 namespace Snail
 {
 	Player* Player::m_instance = nullptr;
@@ -7,23 +8,22 @@ namespace Snail
 	Player* Player::GetInstance()
 	{
 		if (m_instance == nullptr)
-			m_instance = new Player(Game::m_data);
+			m_instance = new Player();
 
 		return m_instance;
 	}
 
 	void Player::DestroyInstance()
 	{
-		delete m_instance;
+		if (m_instance != nullptr)
+			delete m_instance;
 		m_instance = nullptr;
 	}
 
-	Player::Player(GameDataRef data)
+	Player::Player()
 	{
-		m_data = data;
-
 		m_speed = 1.25f * PHYSIC_SCALE;
-		m_jumpHeight = 2.f * PHYSIC_SCALE;
+		m_jumpHeight = 1.4f * PHYSIC_SCALE;
 		m_clampVelocity = { m_speed, m_jumpHeight };
 	}
 
@@ -71,13 +71,13 @@ namespace Snail
 			m_physicBodyRef->AddVelocity({ m_speed, 0 }, m_clampVelocity);
 			m_ChangeDirection(RIGHT);
 		}
-		
+
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
 			m_speed = 2.f * PHYSIC_SCALE;
 		else
 			m_speed = 1.25f * PHYSIC_SCALE;
 		m_clampVelocity.x = m_speed;
-		
+
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && m_physicBodyRef->IsOnGround)
 		{
 			m_physicBodyRef->IsOnGround = false;
@@ -85,7 +85,7 @@ namespace Snail
 		}
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-  			m_weaponManager.Use();
+			m_weaponManager.Use();
 		}
 
 		if (DEBUG)
@@ -95,7 +95,7 @@ namespace Snail
 
 	sf::Vector2f Player::GetLocalPosition()
 	{
-		return m_data->window.mapPixelToCoords((sf::Vector2i)m_physicBodyRef->GetPosition());
+		return Game::m_data->window.mapPixelToCoords((sf::Vector2i)m_physicBodyRef->GetPosition());
 	}
 
 	void Player::m_ChangeDirection(Direction direction)
@@ -115,7 +115,9 @@ namespace Snail
 
 		if ((m_physicBodyRef->TriggeredMasks & MASK_ENEMY) == MASK_ENEMY)
 		{
-			m_TakeDamage(10);
+			int damages = STATE_GAME_BASE_ENEMIES_DAMAGES + STATE_GAME_BASE_ENEMIES_DAMAGES_PER_WAVE * (SpawnerManager::GetInstance()->GetWave() - 1);
+			m_TakeDamage(damages);
+			std::cout << damages << "\n";
 		}
 
 		m_physicBodyRef->IsTriggered = false;
@@ -125,7 +127,7 @@ namespace Snail
 	void Player::m_UpdateWeaponManager()
 	{
 		m_weaponManager.Update();
-		
+
 		m_weaponManager.HandlerPos(m_physicBodyRef->GetPosition());
 	}
 
@@ -186,7 +188,7 @@ namespace Snail
 		temp = temp.substr(0, temp.find("."));
 		return temp;
 	}
-	
+
 	float Player::GetDamages()
 	{
 		return m_weaponManager.GetDamages();

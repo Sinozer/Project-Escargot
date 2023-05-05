@@ -2,7 +2,7 @@
 #include "Game/Entity/Entity.h"
 namespace Snail
 {
-	class LivingEntity : Entity
+	class LivingEntity : public Entity
 	{
 	protected:
 		PhysicBodyRef m_physicBodyRef;
@@ -65,7 +65,6 @@ namespace Snail
 			if (m_life <= 0.f)
 			{
 				IsDeleted = true;
-				PhysicBodyManager::GetInstance()->RemovePhysicBody(Name);
 			}
 
 			return true;
@@ -81,7 +80,6 @@ namespace Snail
 			if (m_life <= 0.f)
 			{
 				IsDeleted = true;
-				PhysicBodyManager::GetInstance()->RemovePhysicBody(Name);
 			}
 
 			return true;
@@ -104,8 +102,6 @@ namespace Snail
 		}
 
 	public:
-		std::string Name;
-
 		virtual PhysicBodyRef GetPhysicBodyRef() = 0;
 	};
 }

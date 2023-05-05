@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Game.h"
-#include "State/List/JoinState.h"
+#include "State/List/Join/JoinState.h"
 #include "Entity/LivingEntity/Player/Player.h"
 
 namespace Snail
@@ -11,7 +11,7 @@ namespace Snail
 	{
 		m_data = std::make_shared<GameData>();
 
-		m_data->window.create(sf::VideoMode(width, height), title, sf::Style::Close | sf::Style::Titlebar);
+		m_data->window.create(sf::VideoMode(width, height), title, sf::Style::Close | sf::Style::Titlebar/* | sf::Style::Fullscreen*/);
 		m_data->window.setFramerateLimit(WINDOW_SCREEN_FRAMERATE_MED);
 
 		// Debug text

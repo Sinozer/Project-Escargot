@@ -8,8 +8,6 @@ namespace Snail
 	private:
 		float previousPositionX;
 	private:
-		GameDataRef m_data;
-
 		Player* m_target;
 
 		bool m_isMelee;
@@ -27,10 +25,8 @@ namespace Snail
 	public:
 		/**
 		 * \brief Constructor.
-		 *
-		 * \param data
 		 */
-		Enemy(GameDataRef data);
+		Enemy();
 
 		void Init(sf::Vector2f position = sf::Vector2f(0, 0));
 

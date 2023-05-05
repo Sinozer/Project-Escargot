@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "MainState.h"
-#include "GameState.h"
-#include "SettingsState.h"
+#include "Game/State/List/Game/GameState.h"
+#include "Game/State/List/Settings/SettingsState.h"
 
 namespace Snail
 {

@@ -9,13 +9,25 @@ namespace Snail
 	{
 		m_projectileManager.SetProjectile(new Arrow());
 
-		m_fireRate = .9f;
+		/*m_fireRate = .9f;
 		m_fireRateDelta = 0.f;
 
 		m_loaderAmount = 16.f;
 		m_loaderAmountDelta = m_loaderAmount;
 
 		m_loaderSize = 1.f;
+		m_loaderSizeDelta = m_loaderSize;
+
+		m_reloadTime = 1.f;
+		m_reloadTimeDelta = 0.f;*/
+
+		m_fireRate = .2f;
+		m_fireRateDelta = 0.f;
+
+		m_loaderAmount = 16.f;
+		m_loaderAmountDelta = m_loaderAmount;
+
+		m_loaderSize = 100.f;
 		m_loaderSizeDelta = m_loaderSize;
 
 		m_reloadTime = 1.f;

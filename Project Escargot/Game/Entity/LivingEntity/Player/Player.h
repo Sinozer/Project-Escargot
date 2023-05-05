@@ -14,9 +14,8 @@ namespace Snail
 		 *
 		 * \param data
 		 */
-		Player(GameDataRef data);
+		Player();
 	private:
-		GameDataRef m_data;
 		WeaponManager m_weaponManager;
 		
 		void m_InitPhysicBody(sf::Vector2f position);

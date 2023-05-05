@@ -4,10 +4,8 @@ namespace Snail
 {
 	unsigned int Enemy::Count = 0;
 
-	Enemy::Enemy(GameDataRef data)
+	Enemy::Enemy()
 	{
-		m_data = data;
-
 		m_speed = 1.2f * PHYSIC_SCALE;
 		m_jumpHeight = 1.2f * PHYSIC_SCALE;
 		m_clampVelocity = { m_speed, m_jumpHeight };
@@ -74,7 +72,7 @@ namespace Snail
 			if (m_TakeRangeDamage(Player::GetInstance()->GetDamages()))
 				Player::GetInstance()->AddScore();
 		}
-
+		
 		m_physicBodyRef->IsTriggered = false;
 		m_physicBodyRef->TriggeredMasks = MASK_EMPTY;
 	}

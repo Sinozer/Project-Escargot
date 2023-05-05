@@ -1,9 +1,10 @@
 #include "stdafx.h"
 #include "GameState.h"
 #include "Game/Map/Map.h"
+#include "Game/Spawner/SpawnerManager.h"
 namespace Snail
 {
-	GameState::GameState(GameDataRef data) : m_data(data), m_spawner(m_data)
+	GameState::GameState(GameDataRef data) : m_data(data)/*, m_spawner()*/
 	{
 		m_player = Player::GetInstance();
 	}
@@ -14,9 +15,9 @@ namespace Snail
 		m_InitView();
 		m_InitUIManager();
 		m_InitMap();
+		m_InitSpawnerManager();
 
 		m_player->Init(sf::Vector2f(800.f, 150.f));
-		m_spawner.Init(sf::Vector2f(100.f, 100.f));
 		m_collectable.Init();
 	}
 
@@ -48,7 +49,7 @@ namespace Snail
 		m_uiManager.Texts["SCORE"]->SetOrigin(TOP_RIGHT);
 		m_uiManager.Texts["SCORE"]->SetOutlineColor(sf::Color::Black);
 		m_uiManager.Texts["SCORE"]->SetOutlineThickness(2.f);
-		
+
 		m_uiManager.AddText("AMMO", (float)m_data->window.getSize().x, (float)m_data->window.getSize().y, 0.f, 0.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "X | Y", 46, sf::Color::White, sf::Color::Transparent);
 		m_uiManager.Texts["AMMO"]->SetOrigin(BOT_RIGHT);
 		m_uiManager.Texts["AMMO"]->SetOutlineColor(sf::Color::Black);
@@ -69,6 +70,12 @@ namespace Snail
 		Map map(m_data, "Resources/Data/Map/VerticalSlice/Main.json");
 	}
 
+	void GameState::m_InitSpawnerManager()
+	{
+		SpawnerManager::GetInstance()->AddSpawner(sf::Vector2f(100.f, 100.f));
+		SpawnerManager::GetInstance()->AddSpawner(sf::Vector2f(400.f, 100.f));
+	}
+
 	void GameState::HandleInput()
 	{
 		sf::Event event;
@@ -81,22 +88,23 @@ namespace Snail
 				break;
 			}
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::N) && DEBUG)
-			m_spawner.Spawn();
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::N) && (DEBUG || DEBUG_CONTROL))
+			SpawnerManager::GetInstance()->Ready(true);
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 			m_data->stateManager.RemoveState();
-		
+
 		m_player->HandleInput();
 	}
 
 	void GameState::Update()
 	{
 		m_UpdateView();
-		
+
 		PhysicBodyManager::GetInstance()->Update();
 		m_player->Update();
-		m_spawner.Update();
+		//m_spawner.Update();
+		SpawnerManager::GetInstance()->Update();
 
 		m_UpdateUIManager();
 	}
@@ -121,11 +129,11 @@ namespace Snail
 	void GameState::m_UpdateUIManager()
 	{
 		m_uiManager.Update((sf::Vector2i)InputManager::GetInstance(m_data->window)->GetMousePosition());
-	
+
 		m_uiManager.Texts["SCORE"]->SetText("SCORE: " + std::to_string(Player::GetInstance()->GetScore()));
 
 		m_uiManager.Texts["AMMO"]->SetText(m_player->GetMunitionsString() + " | " + m_player->GetAllMunitionsString());
-	
+
 		m_uiManager.Texts["LIFE"]->SetText(m_player->GetLifeString() + " / " + m_player->GetMaxLifeString());
 	}
 
@@ -149,5 +157,6 @@ namespace Snail
 	void GameState::End()
 	{
 		Player::DestroyInstance();
+		SpawnerManager::DestroyInstance();
 	}
 }

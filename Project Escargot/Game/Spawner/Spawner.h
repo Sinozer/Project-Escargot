@@ -9,9 +9,13 @@ namespace Snail
 	{
 	private:
 		static unsigned int m_count;
+
+	public:
+		bool Ready = true;
+		
 	public:
 		//constructor
-		Spawner(GameDataRef data);
+		Spawner();
 
 		void Init(sf::Vector2f position = sf::Vector2f(0, 0));
 
@@ -21,9 +25,6 @@ namespace Snail
 		void Update();
 
 	private:
-
-		GameDataRef m_data;
-
 		void m_InitPhysicBody(sf::Vector2f position);
 
 		std::vector<Enemy*> m_enemyList;

@@ -3,7 +3,7 @@
 #include "Game/Physic/PhysicBodyManager.h"
 #include "Game/Entity/LivingEntity/Player/Player.h"
 #include "Game/Entity/LivingEntity/Enemy/Enemy.h"
-#include "Game/Entity/Spawner.h"
+#include "Game/Spawner/Spawner.h"
 #include "Game/Entity/Collectables/Collectable.h"
 namespace Snail
 {
@@ -14,8 +14,6 @@ namespace Snail
 	{
 	private:
 		Player* m_player;
-
-		Spawner m_spawner;
 
 		Collectable m_collectable;
 
@@ -29,6 +27,7 @@ namespace Snail
 		void m_InitUITexts();
 		void m_InitUIButtons();
 		void m_InitMap();
+		void m_InitSpawnerManager();
 
 		void m_UpdateView();
 		void m_UpdateUIManager();
