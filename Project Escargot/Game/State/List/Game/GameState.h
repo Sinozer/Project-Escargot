@@ -15,7 +15,7 @@ namespace Snail
 	private:
 		Player* m_player;
 
-		Collectable m_collectable;
+		//Collectable m_collectable;
 
 		GameDataRef m_data;
 

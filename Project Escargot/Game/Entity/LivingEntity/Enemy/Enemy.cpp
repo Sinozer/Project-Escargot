@@ -68,7 +68,7 @@ namespace Snail
 		
 		if ((m_physicBodyRef->TriggeredMasks & MASK_BULLET_PLAYER) == MASK_BULLET_PLAYER)
 		{
-			std::cout << m_life << std::endl;
+			//std::cout << m_life << std::endl;
 			if (m_TakeRangeDamage(Player::GetInstance()->GetDamages()))
 				Player::GetInstance()->AddScore();
 		}

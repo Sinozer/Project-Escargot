@@ -45,6 +45,46 @@ namespace Snail
 	{
 		return m_text.getString();
 	}
+	const sf::Vector2f& UIText::GetPosition(Origin origin) const
+	{
+		sf::Vector2f position = sf::Vector2f(m_shape.getGlobalBounds().left, m_shape.getGlobalBounds().top);
+
+		switch (origin)
+		{
+		case Snail::TOP_LEFT:
+			break;
+		case Snail::TOP_MID:
+			position.x += m_shape.getGlobalBounds().width / 2.f;
+			break;
+		case Snail::TOP_RIGHT:
+			position.x += m_shape.getGlobalBounds().width;
+			break;
+		case Snail::MID_LEFT:
+			position.y += m_shape.getGlobalBounds().height / 2.f;
+			break;
+		case Snail::MID_MID:
+			position.x += m_shape.getGlobalBounds().width / 2.f;
+			position.y += m_shape.getGlobalBounds().height / 2.f;
+			break;
+		case Snail::MID_RIGHT:
+			position.x += m_shape.getGlobalBounds().width;
+			position.y += m_shape.getGlobalBounds().height / 2.f;
+			break;
+		case Snail::BOT_LEFT:
+			position.y += m_shape.getGlobalBounds().height;
+			break;
+		case Snail::BOT_MID:
+			position.x += m_shape.getGlobalBounds().width / 2.f;
+			position.y += m_shape.getGlobalBounds().height;
+			break;
+		case Snail::BOT_RIGHT:
+			position.x += m_shape.getGlobalBounds().width;
+			position.y += m_shape.getGlobalBounds().height;
+			break;
+		}
+
+		return position;
+	}
 	// #### Accessors #### //
 
 	// #### Modifiers #### //
@@ -58,55 +98,74 @@ namespace Snail
 		{
 		case TOP_LEFT:
 			m_shape.setOrigin(0.f, 0.f);
-			m_text.setOrigin(0.f, 0.f);
+			//m_text.setOrigin(0.f, 0.f);
 			break;
 		case TOP_MID:
 			m_shape.setOrigin(round(m_shape.getGlobalBounds().width / 2.f), 0.f);
-			m_text.setOrigin(round(m_text.getGlobalBounds().width / 2.f + m_text.getGlobalBounds().left), 0.f);
+			//m_text.setOrigin(round(m_text.getGlobalBounds().width / 2.f + m_text.getGlobalBounds().left), 0.f);
 			break;
 		case TOP_RIGHT:
 			m_shape.setOrigin(m_shape.getGlobalBounds().width, 0.f);
-			m_text.setOrigin(m_text.getGlobalBounds().width, 0.f);
+			//m_text.setOrigin(m_text.getGlobalBounds().width, 0.f);
 			break;
 		case MID_LEFT:
 			m_shape.setOrigin(0.f, round(m_shape.getGlobalBounds().height / 2.f));
-			m_text.setOrigin(0.f, round(m_text.getGlobalBounds().height / 2.f + m_text.getGlobalBounds().top));
+			//m_text.setOrigin(0.f, round(m_text.getGlobalBounds().height / 2.f + m_text.getGlobalBounds().top));
 			break;
 		case MID_MID:
 			m_shape.setOrigin(round(m_shape.getGlobalBounds().width / 2.f), round(m_shape.getGlobalBounds().height / 2.f));
-			m_text.setOrigin(round(m_text.getGlobalBounds().width / 2.f + m_text.getGlobalBounds().left), round(m_text.getGlobalBounds().height / 2.f + m_text.getGlobalBounds().top));
+			//m_text.setOrigin(round(m_text.getGlobalBounds().width / 2.f + m_text.getGlobalBounds().left), round(m_text.getGlobalBounds().height / 2.f + m_text.getGlobalBounds().top));
 			break;
 		case MID_RIGHT:
 			m_shape.setOrigin(m_shape.getGlobalBounds().width, round(m_shape.getGlobalBounds().height / 2.f));
-			m_text.setOrigin(m_text.getGlobalBounds().width, round(m_text.getGlobalBounds().height / 2.f + m_text.getGlobalBounds().top));
+			//m_text.setOrigin(m_text.getGlobalBounds().width, round(m_text.getGlobalBounds().height / 2.f + m_text.getGlobalBounds().top));
 			break;
 		case BOT_LEFT:
 			m_shape.setOrigin(0.f, m_shape.getGlobalBounds().height);
-			m_text.setOrigin(0.f, m_text.getGlobalBounds().height);
+			//m_text.setOrigin(0.f, m_text.getGlobalBounds().height);
 			break;
 		case BOT_MID:
 			m_shape.setOrigin(round(m_shape.getGlobalBounds().width / 2.f), m_shape.getGlobalBounds().height);
-			m_text.setOrigin(round(m_text.getGlobalBounds().width / 2.f + m_text.getGlobalBounds().left), m_text.getGlobalBounds().height);
+			//m_text.setOrigin(round(m_text.getGlobalBounds().width / 2.f + m_text.getGlobalBounds().left), m_text.getGlobalBounds().height);
 			break;
 		case BOT_RIGHT:
 			m_shape.setOrigin(m_shape.getGlobalBounds().width, m_shape.getGlobalBounds().height);
-			m_text.setOrigin(m_text.getGlobalBounds().width, m_text.getGlobalBounds().height);
+			//m_text.setOrigin(m_text.getGlobalBounds().width, m_text.getGlobalBounds().height);
 			break;
 		default:
 			break;
 		}
 
-		m_text.setPosition(m_shape.getGlobalBounds().left + m_shape.getGlobalBounds().width / 2.f, m_shape.getGlobalBounds().top + m_shape.getGlobalBounds().height / 2.f);
+		//m_text.setPosition(m_shape.getGlobalBounds().left + m_shape.getGlobalBounds().width / 2.f, m_shape.getGlobalBounds().top + m_shape.getGlobalBounds().height / 2.f);
+		SetPosition(m_position);
 
+	}
+
+	void UIText::SetPosition(sf::Vector2f position)
+	{
+		m_position = position;
+		m_shape.setPosition(position);
+		m_text.setPosition(m_shape.getGlobalBounds().left + m_shape.getGlobalBounds().width / 2.f, m_shape.getGlobalBounds().top + m_shape.getGlobalBounds().height / 2.f);
+		//m_text.setPosition(position);
 	}
 
 	void UIText::SetText(const std::string text)
 	{
-		m_text.setString(text);
+		/*m_text.setString(text);
 
 		m_shape.setSize(sf::Vector2f(m_text.getGlobalBounds().width * 1.2f, m_text.getGlobalBounds().height * 1.2f));
 		SetOrigin(m_origin);
-		m_shape.setPosition(m_position);
+		m_shape.setPosition(m_position);*/
+
+
+
+		m_text.setString(text);
+		sf::Vector2f origin = sf::Vector2f(round(m_text.getGlobalBounds().width / 2.f), round(m_text.getGlobalBounds().height / 2.f));
+		m_text.setOrigin(origin);
+
+		m_shape.setSize(sf::Vector2f(m_text.getGlobalBounds().width * 1.2f, m_text.getGlobalBounds().height * 1.2f));
+		SetOrigin(m_origin);
+		SetPosition(m_position);
 	}
 
 	void UIText::SetOutlineColor(sf::Color color)

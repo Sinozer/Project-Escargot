@@ -16,7 +16,7 @@ namespace Snail
 
 		// Debug text
 		AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf");
-		m_text = sf::Text("PROJECT SNAIL\nPROTOTYPE", AssetManager::GetInstance()->GetFont("ROBOTO_CONDENSED_ITALIC"), 30);
+		m_text = sf::Text("PROJECT SNAIL\nVERTICAL SLICE", AssetManager::GetInstance()->GetFont("ROBOTO_CONDENSED_ITALIC"), 30);
 		m_text.setFillColor(sf::Color::White);
 		m_text.setOutlineColor(sf::Color::Black);
 		m_text.setOutlineThickness(2.f);

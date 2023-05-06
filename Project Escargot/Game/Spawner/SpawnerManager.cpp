@@ -78,7 +78,9 @@ namespace Snail
 		if (!m_isReady || !m_areSpawnersReady) return;
 		if (m_spawnerList.size() <= 0) return;
 		
-		m_isReady = false;
+		m_wave++;
+		
+		Ready(false);
 
 		// Change difficulty formula
 		int amount = STATE_GAME_BASE_ENEMIES_AMOUNT + m_wave;
@@ -95,15 +97,14 @@ namespace Snail
 	void SpawnerManager::m_CheckWave()
 	{
 		if (m_currentState != ACTIVE || !m_areSpawnersReady) return;
-		
+		m_currentState = IDLE;
 		Ready(true);
 	}
 
 	void SpawnerManager::Ready(bool isReady)
 	{
 		m_isReady = isReady;
-		if (!isReady) return;
-		m_wave++;
+		if (m_currentState == ACTIVE) return;
 		m_currentState = ACTIVE;
 	}
 
@@ -115,7 +116,7 @@ namespace Snail
 	void SpawnerManager::Update()
 	{
 		m_UpdateSpawners();
-		m_SpawnWave();
 		m_CheckWave();
+		m_SpawnWave();
 	}
 }

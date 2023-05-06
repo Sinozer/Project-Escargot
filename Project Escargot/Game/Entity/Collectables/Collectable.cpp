@@ -39,7 +39,7 @@ namespace Snail {
 	void Collectable::m_CollectObject(Player livingEntity)
 	{
 		//livingEntity.UpdateLifeEntity(m_value, true);
-		std::cout << "life up \n";
+		//std::cout << "life up \n";
 		
 	}
 

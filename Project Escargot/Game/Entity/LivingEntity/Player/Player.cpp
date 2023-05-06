@@ -116,8 +116,8 @@ namespace Snail
 		if ((m_physicBodyRef->TriggeredMasks & MASK_ENEMY) == MASK_ENEMY)
 		{
 			int damages = STATE_GAME_BASE_ENEMIES_DAMAGES + STATE_GAME_BASE_ENEMIES_DAMAGES_PER_WAVE * (SpawnerManager::GetInstance()->GetWave() - 1);
+			
 			m_TakeDamage(damages);
-			std::cout << damages << "\n";
 		}
 
 		m_physicBodyRef->IsTriggered = false;

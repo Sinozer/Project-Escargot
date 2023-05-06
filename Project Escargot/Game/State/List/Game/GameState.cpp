@@ -18,7 +18,7 @@ namespace Snail
 		m_InitSpawnerManager();
 
 		m_player->Init(sf::Vector2f(800.f, 150.f));
-		m_collectable.Init();
+		//m_collectable.Init();
 	}
 
 	void GameState::m_InitBackground()
@@ -50,12 +50,20 @@ namespace Snail
 		m_uiManager.Texts["SCORE"]->SetOutlineColor(sf::Color::Black);
 		m_uiManager.Texts["SCORE"]->SetOutlineThickness(2.f);
 
+		sf::Vector2f temp = m_uiManager.Texts["SCORE"]->GetPosition(BOT_MID);
+		temp.y *= 1.2f;
+
+		m_uiManager.AddText("WAVE", temp.x, temp.y, 0.f, 0.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "WAVE: X", 30, sf::Color::White, sf::Color::Transparent);
+		m_uiManager.Texts["WAVE"]->SetOrigin(TOP_MID);
+		m_uiManager.Texts["WAVE"]->SetOutlineColor(sf::Color::Black);
+		m_uiManager.Texts["WAVE"]->SetOutlineThickness(2.f);
+
 		m_uiManager.AddText("AMMO", (float)m_data->window.getSize().x, (float)m_data->window.getSize().y, 0.f, 0.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "X | Y", 46, sf::Color::White, sf::Color::Transparent);
 		m_uiManager.Texts["AMMO"]->SetOrigin(BOT_RIGHT);
 		m_uiManager.Texts["AMMO"]->SetOutlineColor(sf::Color::Black);
 		m_uiManager.Texts["AMMO"]->SetOutlineThickness(2.f);
 
-		m_uiManager.AddText("LIFE", 0.f, (float)m_data->window.getSize().y, 0.f, 0.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "X / Y", 46, sf::Color::White, sf::Color::Transparent);
+		m_uiManager.AddText("LIFE", 0.f, (float)m_data->window.getSize().y, 0.f, 0.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "X / Y HP", 46, sf::Color::White, sf::Color::Transparent);
 		m_uiManager.Texts["LIFE"]->SetOrigin(BOT_LEFT);
 		m_uiManager.Texts["LIFE"]->SetOutlineColor(sf::Color::Black);
 		m_uiManager.Texts["LIFE"]->SetOutlineThickness(2.f);
@@ -103,7 +111,6 @@ namespace Snail
 
 		PhysicBodyManager::GetInstance()->Update();
 		m_player->Update();
-		//m_spawner.Update();
 		SpawnerManager::GetInstance()->Update();
 
 		m_UpdateUIManager();
@@ -131,10 +138,11 @@ namespace Snail
 		m_uiManager.Update((sf::Vector2i)InputManager::GetInstance(m_data->window)->GetMousePosition());
 
 		m_uiManager.Texts["SCORE"]->SetText("SCORE: " + std::to_string(Player::GetInstance()->GetScore()));
+		m_uiManager.Texts["WAVE"]->SetText("WAVE: " + std::to_string(Math::Clamp(SpawnerManager::GetInstance()->GetWave(), 1, 9999)));
 
 		m_uiManager.Texts["AMMO"]->SetText(m_player->GetMunitionsString() + " | " + m_player->GetAllMunitionsString());
 
-		m_uiManager.Texts["LIFE"]->SetText(m_player->GetLifeString() + " / " + m_player->GetMaxLifeString());
+		m_uiManager.Texts["LIFE"]->SetText(m_player->GetLifeString() + " / " + m_player->GetMaxLifeString() + " HP");
 	}
 
 	void GameState::Draw()

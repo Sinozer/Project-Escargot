@@ -86,7 +86,7 @@ namespace Snail
 		{
 		case Weapon::IDLE:
 			if (m_previousWeaponState != m_weaponState)
-				std::cout << "IDLE" << std::endl;
+				//std::cout << "IDLE" << std::endl;
 			
 			switch (m_previousWeaponState)
 			{
@@ -105,7 +105,7 @@ namespace Snail
 		case Weapon::ATTACKING:
 			if (m_previousWeaponState != m_weaponState)
 			{
-				std::cout << "ATTACKING" << std::endl;
+				//std::cout << "ATTACKING" << std::endl;
 				m_loaderSizeDelta--;
 				m_fireRateDelta = m_fireRate;
 			}
@@ -116,12 +116,12 @@ namespace Snail
 		case Weapon::RELOADING:
 			if (m_previousWeaponState != m_weaponState)
 			{
-				std::cout << "RELOADING" << std::endl;
+				//std::cout << "RELOADING" << std::endl;
 				m_reloadTimeDelta = m_reloadTime;
 				m_loaderAmountDelta--;
 			}
 			else
-				m_reloadTimeDelta = Math::Clamp(m_reloadTimeDelta - Game::m_data->deltaTime, 0, m_reloadTime);
+				m_reloadTimeDelta = Math::Clamp(m_reloadTimeDelta - Game::m_data->deltaTime, 0.f, m_reloadTime);
 
 			if (m_reloadTimeDelta <= 0.f)
 				m_SetState(IDLE);
@@ -130,7 +130,7 @@ namespace Snail
 
 		case Weapon::EMPTY:
 			if (m_previousWeaponState != m_weaponState)
-				std::cout << "EMPTY" << std::endl;
+				//std::cout << "EMPTY" << std::endl;
 			
 			break;
 		}
