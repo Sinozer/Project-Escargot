@@ -19,8 +19,6 @@ namespace Snail
 
 		GameDataRef m_data;
 
-		sf::Clock m_clock;
-
 		void m_InitBackground();
 		void m_InitView();
 		void m_InitUIManager();

@@ -159,7 +159,7 @@ namespace Snail
 		startText->SetOutlineColor(sf::Color::Black);
 		startText->SetOutlineThickness(2.f);
 
-		m_uiManager.AddText("WAVE", (float)Game::m_data->window.getSize().x / 2.f, 0.f, 0.f, 0.f, font, "WAVE: X", 30);
+		m_uiManager.AddText("WAVE", (float)Game::m_data->window.getSize().x / 2.f, 0.f, 0.f, 0.f, font, "WAVE: 0", 30);
 		m_uiManager.Texts["WAVE"]->SetOrigin(TOP_MID);
 		m_uiManager.Texts["WAVE"]->SetOutlineColor(sf::Color::Black);
 		m_uiManager.Texts["WAVE"]->SetOutlineThickness(2.f);

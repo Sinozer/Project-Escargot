@@ -30,17 +30,17 @@ namespace Snail
 	{
 		if (m_isRemoving && !m_states.empty())
 		{
+			m_isRemoving = false;
 			PhysicBodyManager::DestroyInstance();
 			m_states.top()->End();
 			m_states.pop();
-			m_isRemoving = false;
 		}
 
 		if (m_isAdding)
 		{
+			m_isAdding = false;
 			m_states.push(move(m_newState));
 			m_states.top()->Init();
-			m_isAdding = false;
 		}
 	}
 
@@ -56,4 +56,20 @@ namespace Snail
 		if (!m_states.empty())
 			return m_states.top();
 	}
+
+	StateRef& StateManager::GetPreviousState()
+	{
+		if (m_states.size() > 1)
+		{
+			StateRef temp = move(m_states.top());
+			m_states.pop();
+			
+			StateRef& ret = m_states.top();
+			m_states.push(move(temp));
+			
+			return ret;
+		}
+	}
+
+	
 }

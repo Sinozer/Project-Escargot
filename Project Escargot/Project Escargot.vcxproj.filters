@@ -160,6 +160,42 @@
     <Filter Include="Fichiers sources\Game\Entity\Collectable">
       <UniqueIdentifier>{2442d0c3-f192-4485-9b41-73b3683fcbe7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\Game\State\List\Game">
+      <UniqueIdentifier>{dc587fea-1ccc-45c9-930f-5741cf920efa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\State\List\Game\End">
+      <UniqueIdentifier>{c6b1dee3-e2b6-4b7a-8436-52764411551e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\State\List\Join">
+      <UniqueIdentifier>{c9fad2a3-ac77-475a-afc7-94205af36615}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\State\List\Settings">
+      <UniqueIdentifier>{47e49a9a-6b55-4706-a1c7-943a1eb60f59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\State\List\Main">
+      <UniqueIdentifier>{b8e8926b-aa58-427b-9bac-d375abddfc05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Spawner">
+      <UniqueIdentifier>{21576576-286f-4be6-a7d3-1037dc96f459}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Spawner">
+      <UniqueIdentifier>{6233545e-5810-4710-a075-a3cc1f7a96a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\State\List\Game">
+      <UniqueIdentifier>{6e269877-2d09-4e48-b13f-5b8bca95e16a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\State\List\Game\End">
+      <UniqueIdentifier>{0598bf1c-31e3-449d-90e9-863bb6c347fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\State\List\Main">
+      <UniqueIdentifier>{80d2ee7d-1877-4453-b1fd-8fbe9ae6256a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\State\List\Join">
+      <UniqueIdentifier>{939d0268-5bfd-4f28-a052-f4679e3c65e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\State\List\Settings">
+      <UniqueIdentifier>{159923be-1de4-474a-bf62-e081f5ff4418}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -179,12 +215,6 @@
     </ClCompile>
     <ClCompile Include="Game\Input\InputManager.cpp">
       <Filter>Fichiers sources\Game\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\State\List\JoinState.cpp">
-      <Filter>Fichiers sources\Game\State\List</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\State\List\MainState.cpp">
-      <Filter>Fichiers sources\Game\State\List</Filter>
     </ClCompile>
     <ClCompile Include="Game\View\View.cpp">
       <Filter>Fichiers sources\Game\View</Filter>
@@ -216,14 +246,8 @@
     <ClCompile Include="Game\Entity\Projectile\list\Arrow.cpp">
       <Filter>Fichiers sources\Game\Entity\Projectile\List</Filter>
     </ClCompile>
-    <ClCompile Include="Game\State\List\GameState.cpp">
-      <Filter>Fichiers sources\Game\State\List</Filter>
-    </ClCompile>
     <ClCompile Include="Game\State\State.cpp">
       <Filter>Fichiers sources\Game\State</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\State\List\SettingsState.cpp">
-      <Filter>Fichiers sources\Game\State\List</Filter>
     </ClCompile>
     <ClCompile Include="Game\UI\UIManager.cpp">
       <Filter>Fichiers sources\Game\UI</Filter>
@@ -237,9 +261,6 @@
     <ClCompile Include="Game\UI\Nodes\Text\UIText.cpp">
       <Filter>Fichiers sources\Game\UI\Nodes</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Spawner\Spawner.cpp">
-      <Filter>Fichiers sources\Game\Entity</Filter>
-    </ClCompile>
     <ClCompile Include="Game\Entity\Projectile\ProjectileManager.cpp">
       <Filter>Fichiers sources\Game\Entity\Projectile</Filter>
     </ClCompile>
@@ -249,8 +270,26 @@
     <ClCompile Include="Game\Entity\Collectables\Collectable.cpp">
       <Filter>Fichiers sources\Game\Entity\Collectable</Filter>
     </ClCompile>
+    <ClCompile Include="Game\State\List\Game\End\GameEndState.cpp">
+      <Filter>Fichiers sources\Game\State\List\Game\End</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\State\List\Game\GameState.cpp">
+      <Filter>Fichiers sources\Game\State\List\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\State\List\Join\JoinState.cpp">
+      <Filter>Fichiers sources\Game\State\List\Join</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\State\List\Main\MainState.cpp">
+      <Filter>Fichiers sources\Game\State\List\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\State\List\Settings\SettingsState.cpp">
+      <Filter>Fichiers sources\Game\State\List\Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Spawner\Spawner.cpp">
+      <Filter>Fichiers sources\Game\Spawner</Filter>
+    </ClCompile>
     <ClCompile Include="Game\Spawner\SpawnerManager.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\Game\Spawner</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -271,12 +310,6 @@
     </ClInclude>
     <ClInclude Include="Game\Input\InputManager.h">
       <Filter>Fichiers d%27en-tête\Game\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\State\List\JoinState.h">
-      <Filter>Fichiers d%27en-tête\Game\State\List</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\State\List\MainState.h">
-      <Filter>Fichiers d%27en-tête\Game\State\List</Filter>
     </ClInclude>
     <ClInclude Include="Game\View\View.h">
       <Filter>Fichiers d%27en-tête\Game\View</Filter>
@@ -329,12 +362,6 @@
     <ClInclude Include="Game\Entity\Projectile\list\Arrow.h">
       <Filter>Fichiers d%27en-tête\Game\Entity\Projectile\List</Filter>
     </ClInclude>
-    <ClInclude Include="Game\State\List\SettingsState.h">
-      <Filter>Fichiers d%27en-tête\Game\State\List</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\State\List\GameState.h">
-      <Filter>Fichiers d%27en-tête\Game\State\List</Filter>
-    </ClInclude>
     <ClInclude Include="Game\UI\UIManager.h">
       <Filter>Fichiers d%27en-tête\Game\UI</Filter>
     </ClInclude>
@@ -346,9 +373,6 @@
     </ClInclude>
     <ClInclude Include="Game\UI\Nodes\Text\UIText.h">
       <Filter>Fichiers d%27en-tête\Game\UI\Nodes</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Spawner\Spawner.h">
-      <Filter>Fichiers d%27en-tête\Game\Entity</Filter>
     </ClInclude>
     <ClInclude Include="Game\Entity\Projectile\ProjectileManager.h">
       <Filter>Fichiers d%27en-tête\Game\Entity\Projectile</Filter>
@@ -362,8 +386,26 @@
     <ClInclude Include="Game\Entity\Collectables\Collectable.h">
       <Filter>Fichiers d%27en-tête\Game\Entity\Collectable</Filter>
     </ClInclude>
+    <ClInclude Include="Game\Spawner\Spawner.h">
+      <Filter>Fichiers d%27en-tête\Game\Spawner</Filter>
+    </ClInclude>
     <ClInclude Include="Game\Spawner\SpawnerManager.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Game\Spawner</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\List\Game\End\GameEndState.h">
+      <Filter>Fichiers d%27en-tête\Game\State\List\Game\End</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\List\Game\GameState.h">
+      <Filter>Fichiers d%27en-tête\Game\State\List\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\List\Join\JoinState.h">
+      <Filter>Fichiers d%27en-tête\Game\State\List\Join</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\List\Main\MainState.h">
+      <Filter>Fichiers d%27en-tête\Game\State\List\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\List\Settings\SettingsState.h">
+      <Filter>Fichiers d%27en-tête\Game\State\List\Settings</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

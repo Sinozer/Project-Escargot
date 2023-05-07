@@ -53,10 +53,17 @@ namespace Snail
 		std::string GetDamagesString();
 
 	private:
+		unsigned long int m_kills = 0;
+
 		unsigned long int m_score = 0;
 
 	public:
+		unsigned long int GetKills();
+		std::string GetKillsString();
+		void AddKill();
+
 		unsigned long int GetScore();
+		std::string GetScoreString();
 		void AddScore();
 	};
 }

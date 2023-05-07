@@ -4,7 +4,7 @@ namespace Snail
 {
 	SettingsState::SettingsState(GameDataRef data) : m_data(data)
 	{
-		m_opacity = 128;
+		//m_opacity = 128;
 		m_isLoaded = false;
 	}
 
@@ -21,7 +21,7 @@ namespace Snail
 		m_background.setTexture(AssetManager::GetInstance()->GetTexture("STATE_SETTINGS_BACKGROUND"));
 		m_background.setScale((float)m_data->window.getSize().x / (float)m_background.getTexture()->getSize().x, (float)m_data->window.getSize().y / (float)m_background.getTexture()->getSize().y);
 
-		m_background.setColor(sf::Color(m_background.getColor().r, m_background.getColor().g, m_background.getColor().b, m_opacity));
+		m_background.setColor(sf::Color(m_background.getColor().r, m_background.getColor().g, m_background.getColor().b, 128U));
 	}
 
 	void SettingsState::m_InitView()
@@ -46,7 +46,15 @@ namespace Snail
 
 	void SettingsState::m_InitUIButtons()
 	{
-		m_uiManager.AddButton("RETURN", m_data->window.getSize().x / 4.f - 75.f, m_data->window.getSize().y / 1.25f, 150.f, 50.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "Return", 40, sf::Color(128, 128, 128), sf::Color::White, sf::Color::White, sf::Color(128, 128, 128, 128), sf::Color(128, 128, 128, 192), sf::Color(128, 128, 128));
+		sf::Color textIdleColor(192U, 192U, 192U);
+		sf::Color textHoverColor(255U, 255U, 255U, 255U);
+		sf::Color textActiveColor(255U, 255U, 255U, 255U);
+
+		sf::Color containerIdleColor(42U, 42U, 42U, 128U);
+		sf::Color containerHoverColor(42U, 42U, 42U, 192U);
+		sf::Color containerActiveColor(42U, 42U, 42U, 255U);
+		
+		m_uiManager.AddButton("RETURN", m_data->window.getSize().x / 4.f - 75.f, m_data->window.getSize().y / 1.25f, 150.f, 50.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "Return", 40, textIdleColor, textHoverColor, textActiveColor, containerIdleColor, containerHoverColor, containerActiveColor);
 	}
 
 	void SettingsState::HandleInput()

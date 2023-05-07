@@ -70,7 +70,12 @@ namespace Snail
 		{
 			//std::cout << m_life << std::endl;
 			if (m_TakeRangeDamage(Player::GetInstance()->GetDamages()))
+			{
 				Player::GetInstance()->AddScore();
+				
+				if (m_life <= 0.f)
+					Player::GetInstance()->AddKill();
+			}
 		}
 		
 		m_physicBodyRef->IsTriggered = false;

@@ -22,9 +22,9 @@ namespace Snail
 		return Texts[name];
 	}
 
-	UIButton* UIManager::AddButton(std::string name, float x, float y, float width, float height, sf::Font& font, std::string text, unsigned characterSize, sf::Color textIdleColor, sf::Color textHoverColor, sf::Color textActiveColor, sf::Color containerIdleColor, sf::Color hoverColor, sf::Color activeColor, sf::Color outlineIdleColor, sf::Color outlineHoverColor, sf::Color outlineActiveColor, short unsigned id)
+	UIButton* UIManager::AddButton(std::string name, float x, float y, float width, float height, sf::Font& font, std::string text, unsigned characterSize, sf::Color textIdleColor, sf::Color textHoverColor, sf::Color textActiveColor, sf::Color containerIdleColor, sf::Color containerHoverColor, sf::Color containerActiveColor, sf::Color outlineIdleColor, sf::Color outlineHoverColor, sf::Color outlineActiveColor, short unsigned id)
 	{
-		Buttons[name] = new UIButton(x, y, width, height, &font, text, characterSize, textIdleColor, textHoverColor, textActiveColor, containerIdleColor, hoverColor, activeColor, outlineIdleColor, outlineHoverColor, outlineActiveColor);
+		Buttons[name] = new UIButton(x, y, width, height, &font, text, characterSize, textIdleColor, textHoverColor, textActiveColor, containerIdleColor, containerHoverColor, containerActiveColor, outlineIdleColor, outlineHoverColor, outlineActiveColor);
 		return Buttons[name];
 	}
 

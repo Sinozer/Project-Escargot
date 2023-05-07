@@ -1,17 +1,13 @@
 #pragma once
-#include "Game/State/State.h"
 namespace Snail
 {
-	/**
-	 * \brief First state used as a splash screen.
-	 */
-	class MainState : public State
+	class GameEndState : public State
 	{
 	private:
 		GameDataRef m_data;
 
 		bool m_isLoaded;
-		
+
 		void m_InitBackground();
 		void m_InitView();
 		void m_InitUIManager();
@@ -23,8 +19,8 @@ namespace Snail
 
 		void m_DrawUIManager();
 	public:
-		MainState(GameDataRef data);
-		~MainState() {}
+		GameEndState(GameDataRef data);
+		~GameEndState() {}
 
 		void Init();
 		void HandleInput();

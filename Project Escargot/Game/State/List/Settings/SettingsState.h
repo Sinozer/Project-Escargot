@@ -10,10 +10,6 @@ namespace Snail
 	private:
 		GameDataRef m_data;
 		
-		sf::Clock m_clock;
-
-		sf::Uint8 m_opacity;
-
 		bool m_isLoaded;
 		
 		void m_InitBackground();

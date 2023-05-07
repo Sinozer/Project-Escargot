@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Player.h"
 #include "Game/Spawner/SpawnerManager.h"
+#include "Game/State/List/Game/End/GameEndState.h"
 namespace Snail
 {
 	Player* Player::m_instance = nullptr;
@@ -117,7 +118,8 @@ namespace Snail
 		{
 			float damages = (float) STATE_GAME_BASE_ENEMIES_DAMAGES + STATE_GAME_BASE_ENEMIES_DAMAGES_PER_WAVE * (SpawnerManager::GetInstance()->GetWave() - 1);
 			
-			m_TakeDamage(damages);
+			if (m_TakeDamage(damages) && m_life <= 0)
+				Game::m_data->stateManager.AddState(StateRef(new GameEndState(Game::m_data)));
 		}
 
 		m_physicBodyRef->IsTriggered = false;
@@ -201,13 +203,33 @@ namespace Snail
 		return temp;
 	}
 
+	unsigned long int Player::GetKills()
+	{
+		return m_kills;
+	}
+
+	std::string Player::GetKillsString()
+	{
+		return std::to_string(GetKills());
+	}
+
+	void Player::AddKill()
+	{
+		m_kills++;
+	}
+
 	unsigned long int Player::GetScore()
 	{
 		return m_score;
 	}
 
+	std::string Player::GetScoreString()
+	{
+		return std::to_string(GetScore());
+	}
+
 	void Player::AddScore()
 	{
-		m_score += (unsigned long int)GetDamages()/* ^ waveCount */;
+		m_score += (unsigned long int)GetDamages() * SpawnerManager::GetInstance()->GetWave();
 	}
 }

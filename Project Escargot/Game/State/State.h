@@ -31,6 +31,8 @@ namespace Snail
 	public:
 		unsigned int ID = 0;
 
+		std::string Name = "NONE";
+
 		virtual void Init() = 0;
 
 		virtual void HandleInput() = 0;

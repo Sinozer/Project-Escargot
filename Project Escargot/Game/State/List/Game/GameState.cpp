@@ -1,11 +1,13 @@
 #include "stdafx.h"
 #include "GameState.h"
+#include "End/GameEndState.h"
 #include "Game/Map/Map.h"
 #include "Game/Spawner/SpawnerManager.h"
 namespace Snail
 {
-	GameState::GameState(GameDataRef data) : m_data(data)/*, m_spawner()*/
+	GameState::GameState(GameDataRef data) : m_data(data)
 	{
+		Name = "GameState";
 		m_player = Player::GetInstance();
 	}
 
@@ -92,6 +94,7 @@ namespace Snail
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::N) && (DEBUG || DEBUG_CONTROL))
 			SpawnerManager::GetInstance()->Ready(true);
+			//m_data->stateManager.AddState(StateRef(new GameEndState(m_data)));
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 			m_data->stateManager.RemoveState();

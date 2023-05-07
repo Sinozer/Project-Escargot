@@ -24,5 +24,6 @@ namespace Snail
 
 		int GetActiveStateID();
 		StateRef& GetActiveState();
+		StateRef& GetPreviousState();
 	};
 }
