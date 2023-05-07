@@ -47,13 +47,15 @@ namespace Snail
 
 		// #### Accessors #### //
 		const std::string GetText() const;
-		const sf::Vector2f& GetPosition(Origin origin = TOP_LEFT) const;
+		const sf::Vector2f GetPosition(Origin origin = TOP_LEFT) const;
 		// #### Accessors #### //
 
 		// #### Modifiers #### //
 		void SetOrigin(Origin origin);
 		void SetPosition(sf::Vector2f position);
 		void SetText(const std::string text);
+		void SetTextColor(sf::Color color);
+		void SetFontSize(unsigned int size);
 		void SetOutlineColor(sf::Color color);
 		void SetOutlineThickness(float thickness);
 		// #### Modifiers #### //

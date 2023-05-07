@@ -42,7 +42,7 @@ namespace Snail
 
 	void MainState::m_InitUITexts()
 	{
-		m_uiManager.AddText("TITLE", m_data->window.getSize().x / 2.f, m_data->window.getSize().y / 12.f, 0.f, 0.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "Project Escargot", 92, sf::Color::White, sf::Color::Transparent);
+		m_uiManager.AddText("TITLE", m_data->window.getSize().x / 2.f, m_data->window.getSize().y / 6.f, 0.f, 0.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "Project Escargot", 92, sf::Color::White, sf::Color::Transparent);
 		m_uiManager.Texts["TITLE"]->SetOutlineColor(sf::Color::Black);
 		m_uiManager.Texts["TITLE"]->SetOutlineThickness(2.f);
 	}
@@ -85,7 +85,13 @@ namespace Snail
 
 	void MainState::m_UpdateUIManager()
 	{
-		m_uiManager.Update((sf::Vector2i)InputManager::GetInstance(m_data->window)->GetMousePosition());
+		m_uiManager.Update();
+
+		sf::Vector2f pos(m_data->window.getSize().x / 2.f, m_data->window.getSize().y / 12.f);
+
+		pos.y = (m_data->window.getSize().y / 6.f) + Math::GetSineWaveValue(.15f, 20.f);
+
+		m_uiManager.Texts["TITLE"]->SetPosition(pos);
 
 		if (m_uiManager.Buttons["PLAY"]->IsPressed())
 			m_data->stateManager.AddState(StateRef(new GameState(m_data)));
@@ -113,6 +119,6 @@ namespace Snail
 
 	void MainState::m_DrawUIManager()
 	{
-		m_uiManager.Draw(m_data->window);
+		m_uiManager.Draw();
 	}
 }

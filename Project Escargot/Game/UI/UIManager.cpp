@@ -16,61 +16,64 @@ namespace Snail
 	}
 	// #### Constructor | Destructor #### //
 
-	void UIManager::AddText(std::string name, float x, float y, float width, float height, sf::Font& font, std::string text, unsigned characterSize, sf::Color textColor, sf::Color containerColor, sf::Color outlineColor)
+	UIText* UIManager::AddText(std::string name, float x, float y, float width, float height, sf::Font& font, std::string text, unsigned characterSize, sf::Color textColor, sf::Color containerColor, sf::Color outlineColor)
 	{
 		Texts[name] = new UIText(x, y, width, height, &font, text, characterSize, textColor, containerColor, outlineColor);
+		return Texts[name];
 	}
 
-	void UIManager::AddButton(std::string name, float x, float y, float width, float height, sf::Font& font, std::string text, unsigned characterSize, sf::Color textIdleColor, sf::Color textHoverColor, sf::Color textActiveColor, sf::Color containerIdleColor, sf::Color hoverColor, sf::Color activeColor, sf::Color outlineIdleColor, sf::Color outlineHoverColor, sf::Color outlineActiveColor, short unsigned id)
+	UIButton* UIManager::AddButton(std::string name, float x, float y, float width, float height, sf::Font& font, std::string text, unsigned characterSize, sf::Color textIdleColor, sf::Color textHoverColor, sf::Color textActiveColor, sf::Color containerIdleColor, sf::Color hoverColor, sf::Color activeColor, sf::Color outlineIdleColor, sf::Color outlineHoverColor, sf::Color outlineActiveColor, short unsigned id)
 	{
 		Buttons[name] = new UIButton(x, y, width, height, &font, text, characterSize, textIdleColor, textHoverColor, textActiveColor, containerIdleColor, hoverColor, activeColor, outlineIdleColor, outlineHoverColor, outlineActiveColor);
+		return Buttons[name];
 	}
 
-	void UIManager::AddCheckbox(std::string name, float x, float y, float width, float height, sf::Font& font, unsigned characterSize, sf::Color textIdleColor, sf::Color textHoverColor, sf::Color textActiveColor, sf::Color containerIdleColor, sf::Color hoverColor, sf::Color activeColor, sf::Color outlineIdleColor, sf::Color outlineHoverColor, sf::Color outlineActiveColor, short unsigned id)
+	UICheckbox* UIManager::AddCheckbox(std::string name, float x, float y, float width, float height, sf::Font& font, unsigned characterSize, sf::Color textIdleColor, sf::Color textHoverColor, sf::Color textActiveColor, sf::Color containerIdleColor, sf::Color hoverColor, sf::Color activeColor, sf::Color outlineIdleColor, sf::Color outlineHoverColor, sf::Color outlineActiveColor, short unsigned id)
 	{
 		Checkboxs[name] = new UICheckbox(x, y, width, height, &font, characterSize, textIdleColor, textHoverColor, textActiveColor, containerIdleColor, hoverColor, activeColor, outlineIdleColor, outlineHoverColor, outlineActiveColor);
+		return Checkboxs[name];
 	}
 
-	void UIManager::Update(sf::Vector2i mousePosition)
+	void UIManager::Update()
 	{
-		m_UpdateButtons(mousePosition);
-		m_UpdateCheckboxs(mousePosition);
+		m_UpdateButtons();
+		m_UpdateCheckboxs();
 	}
 
-	void UIManager::m_UpdateButtons(sf::Vector2i mousePosition)
+	void UIManager::m_UpdateButtons()
 	{
 		for (auto& i : Buttons)
-			i.second->Update(mousePosition);
+			i.second->Update();
 	}
 
-	void UIManager::m_UpdateCheckboxs(sf::Vector2i mousePosition)
+	void UIManager::m_UpdateCheckboxs()
 	{
 		for (auto& i : Checkboxs)
-			i.second->Update(mousePosition);
+			i.second->Update();
 	}
 
-	void UIManager::Draw(sf::RenderTarget& target)
+	void UIManager::Draw()
 	{
-		m_DrawTexts(target);
-		m_DrawButtons(target);
-		m_DrawCheckboxs(target);
+		m_DrawTexts();
+		m_DrawButtons();
+		m_DrawCheckboxs();
 	}
 
-	void UIManager::m_DrawTexts(sf::RenderTarget& target)
+	void UIManager::m_DrawTexts()
 	{
 		for (auto& i : Texts)
-			i.second->Draw(target);
+			i.second->Draw(Game::m_data->window);
 	}
 
-	void UIManager::m_DrawButtons(sf::RenderTarget& target)
+	void UIManager::m_DrawButtons()
 	{
 		for (auto& i : Buttons)
-			i.second->Draw(target);
+			i.second->Draw(Game::m_data->window);
 	}
 
-	void UIManager::m_DrawCheckboxs(sf::RenderTarget& target)
+	void UIManager::m_DrawCheckboxs()
 	{
 		for (auto& i : Checkboxs)
-			i.second->Draw(target);
+			i.second->Draw(Game::m_data->window);
 	}
 }

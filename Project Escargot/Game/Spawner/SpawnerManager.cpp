@@ -8,6 +8,7 @@ namespace Snail
 
 	SpawnerManager::SpawnerManager()
 	{
+		m_InitUI();
 	}
 
 	SpawnerManager* SpawnerManager::GetInstance()
@@ -73,13 +74,153 @@ namespace Snail
 	}
 #pragma endregion
 
+#pragma region TimerRelated
+	void SpawnerManager::m_UpdateTimer()
+	{
+		if (m_currentState != STARTING) return;
+
+		if (m_clock.getElapsedTime().asSeconds() >= m_timer)
+			m_currentState = ACTIVE;
+	}
+#pragma endregion
+
+#pragma region StateRelated
+	void SpawnerManager::m_UpdateState()
+	{
+		m_previousState = m_currentState;
+
+		switch (m_currentState)
+		{
+		case Snail::SpawnerManager::IDLE:
+
+			if (!m_isReady) break;
+
+			m_clock.restart();
+			m_uiManager.Texts["MAIN"]->IsActive = true;
+			m_currentState = STARTING;
+
+			break;
+
+		case Snail::SpawnerManager::STARTING:
+
+			m_uiManager.Texts["START"]->IsActive = false;
+			
+			if (m_clock.getElapsedTime().asSeconds() < m_timer) break;
+
+			m_currentState = ACTIVE;
+			m_uiManager.Texts["MAIN"]->IsActive = false;
+
+			break;
+
+		case Snail::SpawnerManager::ACTIVE:
+
+			if (m_areSpawnersReady)
+				m_currentState = IDLE;
+
+			break;
+		}
+
+		m_UpdateFromState();
+	}
+
+	void SpawnerManager::m_UpdateFromState()
+	{
+		switch (m_currentState)
+		{
+		case Snail::SpawnerManager::IDLE:
+			if (m_previousState == ACTIVE)
+				Ready(true);
+			break;
+		case Snail::SpawnerManager::STARTING:
+			break;
+		case Snail::SpawnerManager::ACTIVE:
+			if (m_previousState == STARTING)
+				m_SpawnWave();
+			break;
+		default:
+			break;
+		}
+	}
+#pragma endregion
+
+#pragma region UIRelated
+	void SpawnerManager::m_InitUI()
+	{
+		sf::Font& font = AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf");
+
+		UIText* mainText = m_uiManager.AddText("MAIN", (float)Game::m_data->window.getSize().x / 2.f, (float)Game::m_data->window.getSize().y / 2.f, 0.f, 0.f, font, "", 80);
+		mainText->SetOrigin(MID_MID);
+		mainText->IsActive = false;
+		mainText->SetOutlineColor(sf::Color::Black);
+		mainText->SetOutlineThickness(2.f);
+
+		UIText* startText = m_uiManager.AddText("START", (float)Game::m_data->window.getSize().x / 2.f, (float)Game::m_data->window.getSize().y, 0.f, 0.f, font, "Press 'N' to start", 50);
+		startText->SetOrigin(BOT_MID);
+		startText->SetOutlineColor(sf::Color::Black);
+		startText->SetOutlineThickness(2.f);
+
+		m_uiManager.AddText("WAVE", (float)Game::m_data->window.getSize().x / 2.f, 0.f, 0.f, 0.f, font, "WAVE: X", 30);
+		m_uiManager.Texts["WAVE"]->SetOrigin(TOP_MID);
+		m_uiManager.Texts["WAVE"]->SetOutlineColor(sf::Color::Black);
+		m_uiManager.Texts["WAVE"]->SetOutlineThickness(2.f);
+	}
+
+	void SpawnerManager::m_UpdateUI()
+	{
+		m_UpdateTexts();
+	}
+
+	void SpawnerManager::m_UpdateTexts()
+	{
+		switch (m_currentState)
+		{
+		case Snail::SpawnerManager::IDLE:
+		{
+			int alpha = static_cast<int>(Math::GetSineWaveValue());
+
+			sf::Color color = sf::Color(255U, 255U, 255U, alpha);
+			sf::Color outlineColor = sf::Color(0U, 0U, 0U, alpha);
+
+			m_uiManager.Texts["START"]->SetTextColor(color);
+			m_uiManager.Texts["START"]->SetOutlineColor(outlineColor);
+
+			break;
+		}
+		case Snail::SpawnerManager::STARTING:
+		{
+			std::string temp = std::to_string(Math::Clamp(ceil(m_timer - m_clock.getElapsedTime().asSeconds()), 0.f, m_timer));
+			temp = temp.substr(0, temp.find("."));
+
+			if (m_wave < 1)
+				temp = "Wave coming in " + temp + " seconds";
+			else
+				temp = "Next wave coming in " + temp + " seconds";
+			
+			m_uiManager.Texts["MAIN"]->SetFontSize(80 + round((Math::GetSineWaveValue(.5f, 40.f) - 20.f)));
+			m_uiManager.Texts["MAIN"]->SetText(temp);
+			break;
+		}
+		case Snail::SpawnerManager::ACTIVE:
+			if (m_previousState == STARTING)
+				m_uiManager.Texts["WAVE"]->SetText("WAVE: " + std::to_string(Math::Clamp(m_wave, 1, 9999)));
+			break;
+		default:
+			break;
+		}
+	}
+
+	void SpawnerManager::DrawUI()
+	{
+		m_uiManager.Draw();
+	}
+#pragma endregion
+
 	void SpawnerManager::m_SpawnWave()
 	{
-		if (!m_isReady || !m_areSpawnersReady) return;
 		if (m_spawnerList.size() <= 0) return;
-		
+
 		m_wave++;
-		
+
 		Ready(false);
 
 		// Change difficulty formula
@@ -90,7 +231,7 @@ namespace Snail
 			int s = rand() % m_spawnerList.size();
 			m_spawnerList[s]->Spawn();
 		}
-		
+
 		m_areSpawnersReady = false;
 	}
 
@@ -104,8 +245,10 @@ namespace Snail
 	void SpawnerManager::Ready(bool isReady)
 	{
 		m_isReady = isReady;
-		if (m_currentState == ACTIVE) return;
-		m_currentState = ACTIVE;
+		/*if (m_currentState != IDLE) return;
+		m_clock.restart();
+		m_uiManager.Texts["MAIN"]->IsActive = isReady;
+		m_currentState = STARTING;*/
 	}
 
 	int SpawnerManager::GetWave()
@@ -115,8 +258,13 @@ namespace Snail
 
 	void SpawnerManager::Update()
 	{
+		m_UpdateState();
+
 		m_UpdateSpawners();
-		m_CheckWave();
-		m_SpawnWave();
+		//m_CheckWave();
+		//m_UpdateTimer();
+		//m_SpawnWave();
+
+		m_UpdateUI();
 	}
 }

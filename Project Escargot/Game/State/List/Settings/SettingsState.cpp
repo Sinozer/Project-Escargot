@@ -78,7 +78,7 @@ namespace Snail
 
 	void SettingsState::m_UpdateUIManager()
 	{
-		m_uiManager.Update((sf::Vector2i)InputManager::GetInstance(m_data->window)->GetMousePosition());
+		m_uiManager.Update();
 
 		if (m_uiManager.Buttons["RETURN"]->IsPressed())
 			m_data->stateManager.RemoveState();
@@ -100,6 +100,6 @@ namespace Snail
 
 	void SettingsState::m_DrawUIManager()
 	{
-		m_uiManager.Draw(m_data->window);
+		m_uiManager.Draw();
 	}
 }

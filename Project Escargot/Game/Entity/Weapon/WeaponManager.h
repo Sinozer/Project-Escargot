@@ -9,7 +9,7 @@ namespace Snail
 	private :
 		std::map <std::string, Weapon*> m_weapons;
 
-		Weapon* m_activeWeapon;
+		Weapon* m_activeWeapon = nullptr;
 
 
 	public:

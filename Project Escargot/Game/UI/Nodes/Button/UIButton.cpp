@@ -71,7 +71,7 @@ namespace Snail
 	// #### Modifiers #### //
 
 	// #### Functions #### //
-	void UIButton::Update(sf::Vector2i mousePosition)
+	void UIButton::Update()
 	{
 		if (!IsActive) return;
 		
@@ -79,7 +79,7 @@ namespace Snail
 
 		m_state = IDLE;	// Idle
 
-		if (m_shape.getGlobalBounds().contains((sf::Vector2f)mousePosition))	// Hover
+		if (m_shape.getGlobalBounds().contains(InputManager::GetInstance(Game::m_data->window)->GetMousePosition()))	// Hover
 		{
 			m_state = HOVER;
 

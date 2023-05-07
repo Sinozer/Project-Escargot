@@ -17,8 +17,8 @@ namespace Snail
 
 		virtual void m_InitPhysicBody(sf::Vector2f) = 0;
 	public:
-		std::string Name;
-		bool IsDeleted;
+		std::string Name = "ENTITY_NONE";
+		bool IsDeleted = false;
 
 		inline void Destroy()
 		{

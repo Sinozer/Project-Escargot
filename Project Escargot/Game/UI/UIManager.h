@@ -9,12 +9,12 @@ namespace Snail
 	class UIManager
 	{
 	private:
-		void m_UpdateButtons(sf::Vector2i mousePosition);
-		void m_UpdateCheckboxs(sf::Vector2i mousePosition);
+		void m_UpdateButtons();
+		void m_UpdateCheckboxs();
 
-		void m_DrawTexts(sf::RenderTarget& target);
-		void m_DrawButtons(sf::RenderTarget& target);
-		void m_DrawCheckboxs(sf::RenderTarget& target);
+		void m_DrawTexts();
+		void m_DrawButtons();
+		void m_DrawCheckboxs();
 	public:
 		std::map<std::string, UIText*> Texts;
 		std::map<std::string, UIButton*> Buttons;
@@ -25,12 +25,13 @@ namespace Snail
 		~UIManager();
 		// #### Constructor | Destructor #### //
 
-		void AddText(std::string name, float x, float y, float width, float height,
+		UIText* AddText(std::string name, float x, float y, float width, float height,
 			sf::Font& font, std::string text, unsigned characterSize,
-			sf::Color textColor, sf::Color containerColor,
+			sf::Color textColor = sf::Color::White,
+			sf::Color containerColor = sf::Color::Transparent,
 			sf::Color outlineColor = sf::Color::Transparent);
 
-		void AddButton(std::string name, float x, float y, float width, float height,
+		UIButton* AddButton(std::string name, float x, float y, float width, float height,
 			sf::Font& font, std::string text, unsigned characterSize,
 			sf::Color textIdleColor, sf::Color textHoverColor, sf::Color textActiveColor,
 			sf::Color containerIdleColor, sf::Color hoverColor, sf::Color activeColor,
@@ -39,7 +40,7 @@ namespace Snail
 			sf::Color outlineActiveColor = sf::Color::Transparent,
 			short unsigned id = 0);
 
-		void AddCheckbox(std::string name, float x, float y, float width, float height,
+		UICheckbox* AddCheckbox(std::string name, float x, float y, float width, float height,
 			sf::Font& font, unsigned characterSize,
 			sf::Color textIdleColor, sf::Color textHoverColor, sf::Color textActiveColor,
 			sf::Color containerIdleColor, sf::Color hoverColor, sf::Color activeColor,
@@ -48,7 +49,7 @@ namespace Snail
 			sf::Color outlineActiveColor = sf::Color::Transparent,
 			short unsigned id = 0);
 
-		void Update(sf::Vector2i mousePosition);
-		void Draw(sf::RenderTarget& target);
+		void Update();
+		void Draw();
 	};
 }

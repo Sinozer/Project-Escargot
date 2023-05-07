@@ -49,7 +49,7 @@ namespace Snail
 		// #### Modifiers #### //
 
 		// #### Functions #### //
-		void Update(sf::Vector2i mousePosition);	// Update booleans for hover and pressed
+		void Update();	// Update booleans for hover and pressed
 		// #### Functions #### //
 	};
 }

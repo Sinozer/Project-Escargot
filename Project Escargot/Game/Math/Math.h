@@ -28,5 +28,14 @@ namespace Snail
 
 			return sf::Vector2f(std::min(std::max(value.x, min.x), max.x), std::min(std::max(value.y, min.y), max.y));
 		}
+
+	public:
+		
+		static double inline GetSineWaveValue(float frequency = .5f, float mapValue = 255.f)
+		{
+			auto time = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count() / 1000.0;
+
+			return ((1 + 1.f * std::sin(2 * PI * frequency * time)) / 2.0) * mapValue;
+		}
 	};
 }

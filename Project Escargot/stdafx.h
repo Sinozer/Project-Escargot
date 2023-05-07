@@ -18,16 +18,10 @@
 #include <string>
 #include <algorithm>
 #include <cstdint>
+#include <chrono>
 
 #include "json.hpp"
 /* ################# STANDART ################# */
-
-/* #################  SNAIL   ################# */
-#include "Game/Game.h"
-#include "Game/Math/Math.h"
-#include "Game/Asset/AssetManager.h"
-#include "Game/State/State.h"
-/* #################  SNAIL   ################# */
 
 /* ###############################  INCLUDES   ############################### */
 
@@ -42,6 +36,8 @@
 #define GRAVITY 9.81f
 #define PHYSIC_SCALE 100.0f
 #define GAME_GRAVITY GRAVITY * PHYSIC_SCALE
+
+#define PI 3.14159265358979323846
 
 /* ########## MASKS ######### */
 constexpr std::uint16_t MASK_PLAYER			{ 0b0000'0000'1000'0000 };
@@ -106,3 +102,14 @@ constexpr std::uint16_t MASK_EMPTY			{ 0b1000'0000'0000'0000 };
 /* ################## STATES ################## */
 
 /* ############################### DEFINITIONS ############################### */
+
+/* ###############################  INCLUDES   ############################### */
+
+/* #################  SNAIL   ################# */
+#include "Game/Game.h"
+#include "Game/Math/Math.h"
+#include "Game/Asset/AssetManager.h"
+#include "Game/State/State.h"
+/* #################  SNAIL   ################# */
+
+/* ###############################  INCLUDES   ############################### */
