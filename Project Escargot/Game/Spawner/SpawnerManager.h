@@ -91,7 +91,7 @@ namespace Snail
 		
 		// Get the current wave
 		int GetWave();
-
+		std::string GetWaveString();
 
 	public:
 		void Update();

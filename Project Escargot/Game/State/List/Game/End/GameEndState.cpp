@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "GameEndState.h"
 #include "Game/Entity/LivingEntity/Player/Player.h"
+#include "Game/Spawner/SpawnerManager.h"
 
 namespace Snail
 {
@@ -48,13 +49,21 @@ namespace Snail
 		textTitleJoke->SetOutlineColor(sf::Color::Black);
 		textTitleJoke->SetOutlineThickness(2.f);
 
-		UIText* textScore = m_uiManager.AddText("SCORE", m_data->window.getSize().x / 2.f, m_data->window.getSize().y / 2.f, 0.f, 0.f, AssetManager::GetInstance()->GetFont("ROBOTO_CONDENSED_ITALIC"), Player::GetInstance()->GetScoreString() + " pts", 60, sf::Color::White, sf::Color::Transparent);
+		UIText* textWave = m_uiManager.AddText("WAVE", m_data->window.getSize().x / 2.f, m_data->window.getSize().y / 2.f, 0.f, 0.f, AssetManager::GetInstance()->GetFont("ROBOTO_CONDENSED_ITALIC"), SpawnerManager::GetInstance()->GetWaveString() + " wave", 60, sf::Color::White, sf::Color::Transparent);
+		textWave->SetOutlineColor(sf::Color::Black);
+		textWave->SetOutlineThickness(2.f);
+
+		pos = textWave->GetPosition(BOT_MID);
+
+		UIText* textScore = m_uiManager.AddText("SCORE", pos.x, pos.y * 1.05f, 0.f, 0.f, AssetManager::GetInstance()->GetFont("ROBOTO_CONDENSED_ITALIC"), Player::GetInstance()->GetScoreString() + " pts", 60, sf::Color::White, sf::Color::Transparent);
+		textScore->SetOrigin(TOP_MID);
 		textScore->SetOutlineColor(sf::Color::Black);
 		textScore->SetOutlineThickness(2.f);
 
 		pos = textScore->GetPosition(BOT_MID);
 		
 		UIText* textKills = m_uiManager.AddText("KILL", pos.x, pos.y * 1.05f, 0.f, 0.f, AssetManager::GetInstance()->GetFont("ROBOTO_CONDENSED_ITALIC"), Player::GetInstance()->GetKillsString() + " kills", 60, sf::Color::White, sf::Color::Transparent);
+		textKills->SetOrigin(TOP_MID);
 		textKills->SetOutlineColor(sf::Color::Black);
 		textKills->SetOutlineThickness(2.f);
 	}

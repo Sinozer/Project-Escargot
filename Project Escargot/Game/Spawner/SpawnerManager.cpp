@@ -258,6 +258,11 @@ namespace Snail
 		return m_wave;
 	}
 
+	std::string SpawnerManager::GetWaveString()
+	{
+		return std::to_string(m_wave);
+	}
+
 	void SpawnerManager::Update()
 	{
 		m_UpdateState();
