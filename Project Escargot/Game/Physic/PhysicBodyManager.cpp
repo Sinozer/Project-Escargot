@@ -56,38 +56,34 @@ namespace Snail
 
 		for (auto& physicBody : m_physicBodies)
 		{
-			if (physicBody.second && !physicBody.second->IsStatic)
+			if (!physicBody.second || physicBody.second->IsStatic) continue;
+
+			physicBody.second->Update();
+
+			for (auto& otherPhysicBody : m_physicBodies)
 			{
-				physicBody.second->Update();
+				if (otherPhysicBody == physicBody) continue;
 
-				for (auto& otherPhysicBody : m_physicBodies)
+				if ((physicBody.second->CollideMasks & otherPhysicBody.second->Masks) == MASK_EMPTY) continue;
+
+				if ((physicBody.second->TriggerMasks & otherPhysicBody.second->Masks) == otherPhysicBody.second->Masks)
 				{
-					if (otherPhysicBody == physicBody) continue;
-
-					if ((physicBody.second->CollideMasks & otherPhysicBody.second->Masks) == MASK_EMPTY) continue;
-
-					if ((physicBody.second->TriggerMasks & otherPhysicBody.second->Masks) == otherPhysicBody.second->Masks)
+					sf::Vector2f direction;
+					if (physicBody.second && otherPhysicBody.second && physicBody.second->CheckCollision(otherPhysicBody.second, direction, true))
 					{
-						sf::Vector2f direction;
-						if (physicBody.second && otherPhysicBody.second && physicBody.second->CheckCollision(otherPhysicBody.second, direction, true))
-						{
-							physicBody.second->IsTriggered = true;
-							otherPhysicBody.second->IsTriggered = true;
-							physicBody.second->TriggeredMasks |= otherPhysicBody.second->Masks;
-							otherPhysicBody.second->TriggeredMasks |= physicBody.second->Masks;
-						}
+						physicBody.second->IsTriggered = true;
+						otherPhysicBody.second->IsTriggered = true;
+						physicBody.second->TriggeredMasks |= otherPhysicBody.second->Masks;
+						otherPhysicBody.second->TriggeredMasks |= physicBody.second->Masks;
 					}
+				}
 
-					if ((physicBody.second->CollideMasks & otherPhysicBody.second->Masks) == otherPhysicBody.second->Masks)
-					{
-						sf::Vector2f direction;
+				if ((physicBody.second->CollideMasks & otherPhysicBody.second->Masks) == otherPhysicBody.second->Masks)
+				{
+					sf::Vector2f direction;
 
-						if (physicBody.second && otherPhysicBody.second && physicBody.second->CheckCollision(otherPhysicBody.second, direction)) {
-							physicBody.second->OnCollision(direction);
-							/*if (m_physicBodies.find("Collectable")->second->CheckCollision(physicBody.second, direction) == true) {
-								std::cout << "colect\n";
-							}*/
-						}
+					if (physicBody.second && otherPhysicBody.second && physicBody.second->CheckCollision(otherPhysicBody.second, direction)) {
+						physicBody.second->OnCollision(direction);
 					}
 				}
 			}

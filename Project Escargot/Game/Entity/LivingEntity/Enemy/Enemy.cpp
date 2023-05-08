@@ -65,6 +65,13 @@ namespace Snail
 
 		m_UpdateDamageBuffer();
 
+		// IN CASE OF MAP COLLISION BUG, HANDLING IT HERE
+		if (abs(m_physicBodyRef->GetPosition().y) >= 10000.f)
+		{
+			m_physicBodyRef->SetPosition(sf::Vector2f(100.f, 100.f));
+			m_physicBodyRef->Velocity = sf::Vector2f(0.f, 0.f);
+		}
+
 		if (!m_physicBodyRef->IsTriggered) return;
 		
 		if ((m_physicBodyRef->TriggeredMasks & MASK_BULLET_PLAYER) == MASK_BULLET_PLAYER)

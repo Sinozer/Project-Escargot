@@ -202,7 +202,7 @@ namespace Snail
 			else
 				temp = "Next wave coming in " + temp + " seconds";
 			
-			m_uiManager.Texts["MAIN"]->SetFontSize(80 + round((Math::GetSineWaveValue(.5f, 40.f) - 20.f)));
+			m_uiManager.Texts["MAIN"]->SetFontSize(static_cast<unsigned int>(80 + round((Math::GetSineWaveValue(.5f, 40.f) - 20.f))));
 			m_uiManager.Texts["MAIN"]->SetText(temp);
 			break;
 		}

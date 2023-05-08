@@ -96,7 +96,7 @@ namespace Snail
 
 		sf::Vector2f pos(m_data->window.getSize().x / 2.f, m_data->window.getSize().y / 12.f);
 
-		pos.y = (m_data->window.getSize().y / 6.f) + Math::GetSineWaveValue(.15f, 20.f);
+		pos.y = static_cast<float>((m_data->window.getSize().y / 6.f) + Math::GetSineWaveValue(.15f, 20.f));
 
 		m_uiManager.Texts["TITLE"]->SetPosition(pos);
 

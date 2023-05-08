@@ -164,16 +164,20 @@ namespace Snail
 		return sf::Vector2f(m_body.getGlobalBounds().width, m_body.getGlobalBounds().height) / 2.0f;
 	}
 
-
-	/**
-	 * TODO: NEEDS TO ONLY RETURN A BOOL AND ANOTHER METHOD TO MOVE
-	 */
-	bool PhysicBody::CheckCollision(PhysicBodyRef other, sf::Vector2f& direction, bool isTrigger)
+	bool PhysicBody::CheckCollision(const PhysicBodyRef other, sf::Vector2f& direction, bool isTrigger)
 	{
 		if (!m_canCollide || !other->m_canCollide || IsStatic) return false;
 
-		sf::Vector2f otherPosition = other->GetPosition();
-		sf::Vector2f otherHalfSize = other->GetHalfSize();
+		const sf::FloatRect myBounds = m_body.getGlobalBounds();
+
+		//if (!myBounds.intersects(Game::m_data->window.getView().getViewport())) return false;
+		
+		const sf::FloatRect otherBounds = other->m_body.getGlobalBounds();
+
+		if (!myBounds.intersects(otherBounds)) return false;
+
+		const sf::Vector2f otherPosition = other->GetPosition();
+		const sf::Vector2f otherHalfSize = other->GetHalfSize();
 
 		float dX = otherPosition.x - m_body.getPosition().x;
 		float dY = otherPosition.y - m_body.getPosition().y;
@@ -184,18 +188,20 @@ namespace Snail
 		if (intersectX >= 0.0f || intersectY >= 0.0f) return false;
 		if (isTrigger) return true;
 
+		const float restitution = 1.0f - Restitution;
+
 		if (intersectX > intersectY)
 		{
 			if (dX > 0.0f)
 			{
-				Move({ intersectX * (1.10f - Restitution), 0.0f });
+				Move({ intersectX * restitution, 0.0f });
 				other->Move({ -intersectX * other->Restitution, 0.0f });
 
 				direction = { 1.0f, 0.0f };
 			}
 			else
 			{
-				Move({ -intersectX * (1.10f - Restitution), 0.0f });
+				Move({ -intersectX * restitution, 0.0f });
 				other->Move({ intersectX * other->Restitution, 0.0f });
 
 				direction = { -1.0f, 0.0f };
@@ -205,14 +211,14 @@ namespace Snail
 		{
 			if (dY > 0.0f)
 			{
-				Move({ 0.0f, intersectY * (1.10f - Restitution) });
+				Move({ 0.0f, intersectY * restitution });
 				other->Move({ 0.0f, -intersectY * other->Restitution });
 
 				direction = { 0.0f, 1.0f };
 			}
 			else
 			{
-				Move({ 0.0f, -intersectY * (1.10f - Restitution) });
+				Move({ 0.0f, -intersectY * restitution });
 				other->Move({ 0.0f, intersectY * other->Restitution });
 
 				direction = { 0.0f, -1.0f };

@@ -64,7 +64,7 @@ namespace Snail
 
 		sf::Vector2f GetHalfSize();
 
-		bool CheckCollision(PhysicBodyRef other, sf::Vector2f& direction, bool isTrigger = false);
+		bool CheckCollision(const PhysicBodyRef other, sf::Vector2f& direction, bool isTrigger = false);
 
 		void OnCollision(sf::Vector2f direction);
 

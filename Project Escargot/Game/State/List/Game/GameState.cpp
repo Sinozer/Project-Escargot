@@ -20,7 +20,7 @@ namespace Snail
 		m_InitMap();
 		m_InitSpawnerManager();
 
-		m_player->Init(sf::Vector2f(800.f, 150.f));
+		m_player->Init(sf::Vector2f(800.f, 250.f));
 	}
 
 	void GameState::m_InitBackground()
