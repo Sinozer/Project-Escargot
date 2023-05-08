@@ -9,7 +9,6 @@ namespace Snail
 		m_body.setPosition(position);
 		m_body.setSize(size);
 		m_body.setOrigin(size / 2.f);
-		m_body.setFillColor(sf::Color::Green);
 		Velocity = sf::Vector2f(0, 0);
 		IsOnGround = false;
 		Restitution = restitution;
@@ -24,11 +23,13 @@ namespace Snail
 		TriggeredMasks = MASK_EMPTY;
 		IsTriggered = false;
 
-		if (DEBUG)
-		{
-			m_body.setOutlineThickness(1.f);
-			m_body.setOutlineColor(sf::Color::Black);
-		}
+#if DEBUG
+		m_body.setFillColor(sf::Color::Green);
+		m_body.setOutlineThickness(1.f);
+		m_body.setOutlineColor(sf::Color::Black);
+#else
+		m_body.setFillColor(sf::Color::Transparent);
+#endif // DEBUG
 	}
 
 	PhysicBody::PhysicBody(sf::Vector2f position, float restitution,
@@ -52,11 +53,10 @@ namespace Snail
 		TriggeredMasks = MASK_EMPTY;
 		IsTriggered = false;
 
-		if (DEBUG)
-		{
-			m_body.setOutlineThickness(1.f);
-			m_body.setOutlineColor(sf::Color::Black);
-		}
+#if DEBUG
+		m_body.setOutlineThickness(1.f);
+		m_body.setOutlineColor(sf::Color::Black);
+#endif // DEBUG
 	}
 
 	PhysicBody::PhysicBody(sf::Vector2f position, float restitution,
@@ -81,11 +81,10 @@ namespace Snail
 		TriggeredMasks = MASK_EMPTY;
 		IsTriggered = false;
 
-		if (DEBUG)
-		{
-			m_body.setOutlineThickness(1.f);
-			m_body.setOutlineColor(sf::Color::Black);
-		}
+#if DEBUG
+		m_body.setOutlineThickness(1.f);
+		m_body.setOutlineColor(sf::Color::Black);
+#endif // DEBUG
 	}
 #pragma endregion
 

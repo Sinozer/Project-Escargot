@@ -31,7 +31,7 @@
 /* ################## DEBUG  ################## */
 #define DEBUG false
 #define DEBUG_LEAKS false
-#define DEBUG_CONTROL true
+#define DEBUG_CONTROL false
 /* ################## DEBUG  ################## */
 
 /* ################## PHYSIC ################## */
