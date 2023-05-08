@@ -69,6 +69,11 @@ namespace Snail
 
 	public:
 
+		inline void AddLoader(unsigned int amount = 1)
+		{
+			m_loaderAmountDelta += amount;
+		}
+
 		inline float GetMunitions()
 		{
 			return m_loaderSizeDelta;

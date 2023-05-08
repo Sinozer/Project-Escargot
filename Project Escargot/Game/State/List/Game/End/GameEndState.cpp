@@ -69,10 +69,10 @@ namespace Snail
 		sf::Color containerHoverColor(42U, 42U, 42U, 192U);
 		sf::Color containerActiveColor(42U, 42U, 42U, 255U);
 		
-		UIButton* buttonMenu = m_uiManager.AddButton("MENU", m_data->window.getSize().x / 2.f / 1.5f, m_data->window.getSize().y / 1.5f, 150.f, 50.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "Menu", 40, textIdleColor, textHoverColor, textActiveColor, containerIdleColor, containerHoverColor, containerActiveColor);
+		UIButton* buttonMenu = m_uiManager.AddButton("MENU", m_data->window.getSize().x / 2.f / 1.5f, m_data->window.getSize().y / 1.25f, 150.f, 50.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "Menu", 40, textIdleColor, textHoverColor, textActiveColor, containerIdleColor, containerHoverColor, containerActiveColor);
 		buttonMenu->SetOrigin(MID_MID);
 		
-		UIButton* buttonQuit = m_uiManager.AddButton("QUIT", m_data->window.getSize().x / 2.f * 1.5f, m_data->window.getSize().y / 1.5f, 150.f, 50.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "Quit", 40, textIdleColor, textHoverColor, textActiveColor, containerIdleColor, containerHoverColor, containerActiveColor);
+		UIButton* buttonQuit = m_uiManager.AddButton("QUIT", m_data->window.getSize().x / 2.f * 1.5f, m_data->window.getSize().y / 1.25f, 150.f, 50.f, AssetManager::GetInstance()->LoadFont("ROBOTO_CONDENSED_ITALIC", "Resources/Fonts/Roboto/Roboto-CondensedItalic.ttf"), "Quit", 40, textIdleColor, textHoverColor, textActiveColor, containerIdleColor, containerHoverColor, containerActiveColor);
 		buttonQuit->SetOrigin(MID_RIGHT);
 	}
 

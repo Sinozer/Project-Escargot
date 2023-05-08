@@ -11,7 +11,7 @@ namespace Snail
 	{
 		m_data = std::make_shared<GameData>();
 
-		m_data->window.create(sf::VideoMode(width, height), title, sf::Style::Close | sf::Style::Titlebar/* | sf::Style::Fullscreen*/);
+		m_data->window.create(sf::VideoMode(width, height), title, sf::Style::Close | sf::Style::Titlebar | sf::Style::Fullscreen);
 		m_data->window.setFramerateLimit(WINDOW_SCREEN_FRAMERATE_MED);
 
 		// Debug text
@@ -24,7 +24,6 @@ namespace Snail
 
 		m_data->stateManager.AddState(StateRef(new JoinState(m_data)));
 
-		// Init InputManager
 		InputManager::GetInstance(m_data->window);
 
 		Run();

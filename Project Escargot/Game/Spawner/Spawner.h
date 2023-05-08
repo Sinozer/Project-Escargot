@@ -16,6 +16,7 @@ namespace Snail
 	public:
 		//constructor
 		Spawner();
+		~Spawner();
 
 		void Init(sf::Vector2f position = sf::Vector2f(0, 0));
 

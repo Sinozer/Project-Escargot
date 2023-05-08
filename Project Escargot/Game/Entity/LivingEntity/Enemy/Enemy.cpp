@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Enemy.h"
+#include "Game/Entity/Collectables/CollectableManager.h"
 namespace Snail
 {
 	unsigned int Enemy::Count = 0;
@@ -24,7 +25,7 @@ namespace Snail
 	void Enemy::m_InitPhysicBody(sf::Vector2f position)
 	{
 		m_physicBodyRef = PhysicBodyRef(PhysicBody::CreateBoxBody(
-			sf::Vector2f(115.f / 2.f, 161.f / 2.f), position, 0.f, false, AssetManager::GetInstance()->LoadTexture("DUMMY_ENTITY", STATE_GAME_DUMMY_ENTITY_FILEPATH)
+			position, 0.f, false, AssetManager::GetInstance()->LoadTexture("DUMMY_ENTITY", STATE_GAME_DUMMY_ENTITY_FILEPATH)
 		));
 
 		m_physicBodyRef->Masks = MASK_ENEMY;
@@ -74,7 +75,10 @@ namespace Snail
 				Player::GetInstance()->AddScore();
 				
 				if (m_life <= 0.f)
+				{
 					Player::GetInstance()->AddKill();
+					CollectableManager::GetInstance()->AddCollectable(m_physicBodyRef->GetPosition());
+				}
 			}
 		}
 		

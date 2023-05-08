@@ -16,7 +16,7 @@ namespace Snail
 			bool isStatic, bool canCollide, bool canGravitate, sf::Vector2f size);
 
 		PhysicBody(sf::Vector2f position, float restitution,
-			bool isStatic, sf::Vector2f size, sf::Texture& texture, bool canCollide, bool canGravitate);
+			bool isStatic, sf::Texture& texture, bool canCollide, bool canGravitate);
 
 		PhysicBody(sf::Vector2f position, float restitution,
 			bool isStatic, sf::Vector2f size, sf::Texture& texture, sf::Vector2i texturePosition, bool canCollide, bool canGravitate);
@@ -43,7 +43,7 @@ namespace Snail
 #pragma region Constructors
 		static PhysicBody* CreateBoxBody(sf::Vector2f size, sf::Vector2f position, float restitution, bool isStatic, bool canCollide = true, bool canGravitate = true);
 
-		static PhysicBody* CreateBoxBody(sf::Vector2f size, sf::Vector2f position, float restitution, bool isStatic, sf::Texture& texture, bool canCollide = true, bool canGravitate = true);
+		static PhysicBody* CreateBoxBody(sf::Vector2f position, float restitution, bool isStatic, sf::Texture& texture, bool canCollide = true, bool canGravitate = true);
 		
 		static PhysicBody* CreateBoxBody(sf::Vector2f size, sf::Vector2f position, float restitution, bool isStatic, sf::Texture& texture, sf::Vector2i texturePosition, bool canCollide = true, bool canGravitate = true);
 #pragma endregion

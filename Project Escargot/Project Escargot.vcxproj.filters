@@ -291,6 +291,9 @@
     <ClCompile Include="Game\Spawner\SpawnerManager.cpp">
       <Filter>Fichiers sources\Game\Spawner</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Entity\Collectables\CollectableManager.cpp">
+      <Filter>Fichiers sources\Game\Entity\Collectable</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -406,6 +409,9 @@
     </ClInclude>
     <ClInclude Include="Game\State\List\Settings\SettingsState.h">
       <Filter>Fichiers d%27en-tête\Game\State\List\Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Collectables\CollectableManager.h">
+      <Filter>Fichiers d%27en-tête\Game\Entity\Collectable</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -25,6 +25,11 @@ namespace Snail
 		m_activeWeapon->Init(sf::Vector2f(0,0));
     }
 
+    void WeaponManager::AddLoader(unsigned int amount)
+    {
+		m_activeWeapon->AddLoader(amount);
+    }
+
     float WeaponManager::GetMunitions()
     {
         return m_activeWeapon->GetMunitions();

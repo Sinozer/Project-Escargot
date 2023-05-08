@@ -42,6 +42,8 @@ namespace Snail
 
 		PhysicBodyRef GetPhysicBodyRef();
 
+		void AddWeaponLoader(unsigned int amount = 1);
+
 		float GetMunitions();
 		std::string GetMunitionsString();
 		float GetMaxMunitions();

@@ -19,6 +19,7 @@
 #include <algorithm>
 #include <cstdint>
 #include <chrono>
+#include <random>
 
 #include "json.hpp"
 /* ################# STANDART ################# */
@@ -40,8 +41,11 @@
 #define PI 3.14159265358979323846
 
 /* ########## MASKS ######### */
+constexpr std::uint16_t MASK_COLLECTABLE	{ 0b0000'0001'0000'0000 };
+
 constexpr std::uint16_t MASK_PLAYER			{ 0b0000'0000'1000'0000 };
 constexpr std::uint16_t MASK_ENEMY			{ 0b0000'0000'0100'0000 };
+
 constexpr std::uint16_t MASK_BULLET_PLAYER	{ 0b0000'0000'0000'1000 };
 constexpr std::uint16_t MASK_BULLET_ENEMY	{ 0b0000'0000'0000'0100 };
 
@@ -97,6 +101,9 @@ constexpr std::uint16_t MASK_EMPTY			{ 0b1000'0000'0000'0000 };
 #define STATE_GAME_BASE_ENEMIES_AMOUNT 6
 #define STATE_GAME_BASE_ENEMIES_DAMAGES 10
 #define STATE_GAME_BASE_ENEMIES_DAMAGES_PER_WAVE 3
+
+#define STATE_GAME_COLLECTABLE_LIFE "Resources/Textures/Entities/Objects/heart.png"
+#define STATE_GAME_COLLECTABLE_AMMO "Resources/Textures/Entities/Objects/treasure_chest.png"
 /* ########## GAME ########## */
 
 /* ################## STATES ################## */

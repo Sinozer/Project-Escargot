@@ -3,6 +3,7 @@
 #include "End/GameEndState.h"
 #include "Game/Map/Map.h"
 #include "Game/Spawner/SpawnerManager.h"
+#include "Game/Entity/Collectables/CollectableManager.h"
 namespace Snail
 {
 	GameState::GameState(GameDataRef data) : m_data(data)
@@ -20,7 +21,6 @@ namespace Snail
 		m_InitSpawnerManager();
 
 		m_player->Init(sf::Vector2f(800.f, 150.f));
-		//m_collectable.Init();
 	}
 
 	void GameState::m_InitBackground()
@@ -76,8 +76,8 @@ namespace Snail
 
 	void GameState::m_InitSpawnerManager()
 	{
-		SpawnerManager::GetInstance()->AddSpawner(sf::Vector2f(100.f, 100.f));
-		SpawnerManager::GetInstance()->AddSpawner(sf::Vector2f(400.f, 100.f));
+		SpawnerManager::GetInstance()->AddSpawner(sf::Vector2f(150.f, 100.f));
+		SpawnerManager::GetInstance()->AddSpawner(sf::Vector2f(800.f, 250.f));
 	}
 
 	void GameState::HandleInput()
@@ -94,7 +94,6 @@ namespace Snail
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::N) && (DEBUG || DEBUG_CONTROL))
 			SpawnerManager::GetInstance()->Ready(true);
-			//m_data->stateManager.AddState(StateRef(new GameEndState(m_data)));
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 			m_data->stateManager.RemoveState();
@@ -109,6 +108,7 @@ namespace Snail
 		PhysicBodyManager::GetInstance()->Update();
 		m_player->Update();
 		SpawnerManager::GetInstance()->Update();
+		CollectableManager::GetInstance()->Update();
 
 		m_UpdateUIManager();
 	}
@@ -164,5 +164,6 @@ namespace Snail
 	{
 		Player::DestroyInstance();
 		SpawnerManager::DestroyInstance();
+		CollectableManager::GetInstance()->DestroyInstance();
 	}
 }

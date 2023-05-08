@@ -9,7 +9,8 @@ namespace Snail
 		static SpawnerManager* m_instance;
 
 		SpawnerManager();
-
+		~SpawnerManager();
+		
 	public:
 		static SpawnerManager* GetInstance();
 		static void DestroyInstance();

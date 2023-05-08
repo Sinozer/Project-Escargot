@@ -18,6 +18,8 @@ namespace Snail
 		Weapon* GetActive();
 		void SetActive(std::string weaponName);
 		
+		void AddLoader(unsigned int amount = 1);
+
 		float GetMunitions();
 		float GetMaxMunitions();
 		float GetLoaders();

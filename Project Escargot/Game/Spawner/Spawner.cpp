@@ -10,6 +10,12 @@ namespace Snail
 	{
 	}
 
+	Spawner::~Spawner()
+	{
+		for (Enemy* i : m_enemyList)
+			delete i;
+	}
+
 	void Spawner::Init(sf::Vector2f position)
 	{
 		m_InitPhysicBody(position);

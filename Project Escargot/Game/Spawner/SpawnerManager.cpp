@@ -11,6 +11,12 @@ namespace Snail
 		m_InitUI();
 	}
 
+	SpawnerManager::~SpawnerManager()
+	{
+		for (Spawner* i : m_spawnerList)
+			delete i;
+	}
+
 	SpawnerManager* SpawnerManager::GetInstance()
 	{
 		if (m_instance == nullptr)
@@ -245,10 +251,6 @@ namespace Snail
 	void SpawnerManager::Ready(bool isReady)
 	{
 		m_isReady = isReady;
-		/*if (m_currentState != IDLE) return;
-		m_clock.restart();
-		m_uiManager.Texts["MAIN"]->IsActive = isReady;
-		m_currentState = STARTING;*/
 	}
 
 	int SpawnerManager::GetWave()
@@ -261,9 +263,6 @@ namespace Snail
 		m_UpdateState();
 
 		m_UpdateSpawners();
-		//m_CheckWave();
-		//m_UpdateTimer();
-		//m_SpawnWave();
 
 		m_UpdateUI();
 	}

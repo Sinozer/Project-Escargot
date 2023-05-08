@@ -1,35 +1,47 @@
 #pragma once
 #include "Game/Entity/Entity.h"
-#include "Game/Entity/LivingEntity/Player/Player.h"
 namespace Snail
 {
-	class Collectable : Entity
+	class Collectable : public Entity
 	{
 	private:
 		static unsigned int m_count;
-	protected:
 
-		PhysicBodyRef m_collectablePhysicBody;
+	public:
+		enum Type {
+			LIFE,
+			AMMO,
 
-		enum Type{
-			Life = 0,
-			Poison = 1,
+			null
 		};
-		Type m_type;
-		float m_value;
 
+		struct LootType {
+			Type type;
+			float chance;
+		};
+
+	protected:
+		std::vector<LootType> m_lootTable
+		{
+			{ LIFE, 0.5f },
+			{ AMMO, 0.5f }
+		};
+
+		void m_RollLootTable();
+
+		Type m_type = null;
+
+
+	private:
+		void m_InitPhysicBody(sf::Vector2f position);
+		void m_Collect();
 
 	public:
 		Collectable();
+		Collectable(Type type);
 		~Collectable();
 		void Init(sf::Vector2f position = sf::Vector2f(170, 170));
 		void Update();
 		void Draw();
-
-		void m_InitPhysicBody(sf::Vector2f position);
-		void m_CollectObject(Player livingEntity);
-		void m_SetType(Type type);
-		void m_SetValue(float value);
-		PhysicBodyRef GetPhysicBodyRefCollectable();
 	};
 }

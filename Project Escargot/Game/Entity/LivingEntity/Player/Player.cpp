@@ -41,12 +41,12 @@ namespace Snail
 	void Player::m_InitPhysicBody(sf::Vector2f position)
 	{
 		m_physicBodyRef = PhysicBodyRef(PhysicBody::CreateBoxBody(
-			sf::Vector2f(2522.f, 1685.f), position, 0.f, false, AssetManager::GetInstance()->LoadTexture("PLAYER", STATE_GAME_PLAYER_FILEPATH)
+			position, 0.f, false, AssetManager::GetInstance()->LoadTexture("PLAYER", STATE_GAME_PLAYER_FILEPATH)
 		));
 
 		m_physicBodyRef->Masks = MASK_PLAYER;
 		m_physicBodyRef->CollideMasks = MASK_MAP | MASK_MAP_OBJECT | MASK_BULLET_ENEMY;
-		m_physicBodyRef->TriggerMasks = MASK_ENEMY;
+		m_physicBodyRef->TriggerMasks = MASK_ENEMY | MASK_COLLECTABLE;
 
 		m_physicBodyRef->Scale(sf::Vector2f(0.015f, 0.015f));
 
@@ -146,6 +146,11 @@ namespace Snail
 	PhysicBodyRef Player::GetPhysicBodyRef()
 	{
 		return m_physicBodyRef;
+	}
+
+	void Player::AddWeaponLoader(unsigned int amount)
+	{
+		m_weaponManager.AddLoader(amount);
 	}
 
 	float Player::GetMunitions()

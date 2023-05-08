@@ -86,6 +86,10 @@ namespace Snail
 		}
 		
 	public:
+		inline void RestoreLife()
+		{
+			m_life = m_maxLife;
+		}
 		inline float GetLife() { return m_life; }
 		inline std::string GetLifeString()
 		{

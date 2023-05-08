@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Game\Entity\Collectables\CollectableManager.cpp" />
     <ClCompile Include="Game\State\List\Game\End\GameEndState.cpp" />
     <ClCompile Include="Game\Entity\Collectables\Collectable.cpp" />
     <ClCompile Include="Game\Entity\Projectile\list\Arrow.cpp" />
@@ -179,6 +180,7 @@
     <ClCompile Include="Game\UI\Nodes\Button\UIButton.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game\Entity\Collectables\CollectableManager.h" />
     <ClInclude Include="Game\State\List\Game\End\GameEndState.h" />
     <ClInclude Include="Game\GameData.h" />
     <ClInclude Include="Game\Entity\Collectables\Collectable.h" />
