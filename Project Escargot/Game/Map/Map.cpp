@@ -2,6 +2,10 @@
 #include "Map.h"
 namespace Snail
 {
+	Map::Map()
+	{
+	}
+
 	Map::Map(GameDataRef data, std::string filepath) : m_data(data)
 	{
 		m_filepath = filepath;
@@ -86,6 +90,9 @@ namespace Snail
 			{
 				m_InitLayer(layer, "MAP_OBJECT", "Resources/Textures/Map/Rocky Roads/Objects/objects.png", false, true, true);
 			}
+			
+			MaxSize.x = std::max(MaxSize.x, (float)m_tiledFile.width * m_tiledFile.tileWidth);
+			MaxSize.y = std::max(MaxSize.y, (float)m_tiledFile.height * m_tiledFile.tileHeight);
 		}
 	}
 

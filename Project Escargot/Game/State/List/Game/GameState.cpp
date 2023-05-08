@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "GameState.h"
 #include "End/GameEndState.h"
-#include "Game/Map/Map.h"
 #include "Game/Spawner/SpawnerManager.h"
 #include "Game/Entity/Collectables/CollectableManager.h"
 namespace Snail
@@ -71,7 +70,7 @@ namespace Snail
 
 	void GameState::m_InitMap()
 	{
-		Map map(m_data, "Resources/Data/Map/VerticalSlice/Main.json");
+		m_map = Map(m_data, "Resources/Data/Map/VerticalSlice/Main.json");
 	}
 
 	void GameState::m_InitSpawnerManager()
@@ -115,18 +114,35 @@ namespace Snail
 
 	void GameState::m_UpdateView()
 	{
+		sf::Vector2f position;
+		
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
-		{
-			sf::Vector2f mousePosition = (sf::Vector2f)sf::Mouse::getPosition(m_data->window);
-			mousePosition = Math::Clamp(mousePosition, sf::Vector2f(0.f, 0.f), (sf::Vector2f)m_data->window.getSize());
-			m_background.setOrigin(mousePosition / /*value*/8.f); // Value = map size / background size
-			m_view.setCenter(mousePosition);
-		}
+			position = (sf::Vector2f)sf::Mouse::getPosition(m_data->window);
 		else
-		{
-			m_background.setOrigin(m_player->GetPhysicBodyRef()->GetPosition() / /*value*/8.f); // Value = map size / background size
-			m_view.setCenter(m_player->GetPhysicBodyRef()->GetPosition());
-		}
+			position = (sf::Vector2f)m_player->GetPhysicBodyRef()->GetPosition();
+
+		// Get the size of the background image and the view
+		sf::Vector2f viewSize = m_view.getSize();
+		sf::Vector2f windowSize = (sf::Vector2f)m_data->window.getSize();
+
+		// Calculate the maximum view position based on the background, view, and window sizes
+		sf::Vector2f maxViewPos = m_map.MaxSize - viewSize;
+		maxViewPos.x = std::max(maxViewPos.x, 0.f);
+		maxViewPos.y = std::max(maxViewPos.y, 0.f);
+
+		// Clamp the position to the maximum view position
+		sf::Vector2f clampedPos = Math::Clamp(position, viewSize / 2.f, maxViewPos + viewSize / 2.f);
+		clampedPos.x -= 8.f;
+		clampedPos.y -= 8.f;
+
+		// Calculate the background origin based on the clamped position and the map/background ratio
+		sf::Vector2f backgroundOrigin = (clampedPos - viewSize / 2.f) / 8.f;
+		backgroundOrigin += sf::Vector2f(30.f, 30.f);
+			
+		// Set the background origin and the view center
+		m_background.setOrigin(backgroundOrigin);
+		m_view.setCenter(clampedPos);
+
 		m_data->window.setView(m_view);
 	}
 

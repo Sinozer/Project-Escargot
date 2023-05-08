@@ -61,10 +61,12 @@ namespace Snail
 		std::string m_GetTextureSheetName(std::string sheetName);
 		std::string m_GetTextureName(std::string sheetName, int id);
 	public:
+		Map();
 		Map(GameDataRef data, std::string filepath);
 		~Map();
 
 		std::vector<PhysicBodyRef> GetPhysicBodyRefs();
+		sf::Vector2f MaxSize = sf::Vector2f(0.f, 0.f);
 
 		void Update();
 		void Draw();

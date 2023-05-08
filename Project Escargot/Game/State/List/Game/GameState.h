@@ -1,6 +1,7 @@
 #pragma once
 #include "Game/State/State.h"
 #include "Game/Physic/PhysicBodyManager.h"
+#include "Game/Map/Map.h"
 #include "Game/Entity/LivingEntity/Player/Player.h"
 #include "Game/Entity/LivingEntity/Enemy/Enemy.h"
 #include "Game/Spawner/Spawner.h"
@@ -18,6 +19,8 @@ namespace Snail
 		//Collectable m_collectable;
 
 		GameDataRef m_data;
+
+		Map m_map;
 
 		void m_InitBackground();
 		void m_InitView();
