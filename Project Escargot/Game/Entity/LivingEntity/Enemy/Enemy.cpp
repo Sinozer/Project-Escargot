@@ -7,12 +7,12 @@ namespace Snail
 
 	Enemy::Enemy()
 	{
-		m_speed = 1.2f * PHYSIC_SCALE;
+		m_speed = 0.9f * PHYSIC_SCALE;
 		m_jumpHeight = 1.2f * PHYSIC_SCALE;
 		m_clampVelocity = { m_speed, m_jumpHeight };
 		m_attackRange = 0;
 		m_isMelee = true;
-		m_forcePlayerPos = false;
+		m_forcePlayerPos = true;
 
 		m_target = Player::GetInstance();
 	}
@@ -51,16 +51,16 @@ namespace Snail
 
 		if (m_IsPlayerInRange() || m_forcePlayerPos == true)
 		{
-			if (m_IsAttackRange(m_isMelee))
-			{
-				//std::cout << "Ennemy attacks\n";
-			}
-			else
-			{
+			//if (m_IsAttackRange(m_isMelee))
+			//{
+			//	//std::cout << "Ennemy attacks\n";
+			//}
+			//else
+			//{
 				m_ChangeDirection();
 				m_UpdateSprite();
 				m_UpdatePosition();
-			}
+			//}
 		}
 
 		m_UpdateDamageBuffer();
@@ -112,24 +112,24 @@ namespace Snail
 		switch (m_direction)
 		{
 		case LEFT:
-			if (m_target->GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x - 40)
+			if (m_target->GetPhysicBodyRef()->GetPosition().x < m_physicBodyRef->GetPosition().x)
 				m_physicBodyRef->AddVelocity({ -m_speed, 0 }, m_clampVelocity);
 
 			if (previousPositionX == 0.f) break;
 			//Jump if progress isn't made
-			if (m_physicBodyRef->GetPosition().x > previousPositionX - 1.0f && m_physicBodyRef->IsOnGround)
+			if (m_physicBodyRef->GetPosition().x > previousPositionX - 0.1f && m_physicBodyRef->IsOnGround)
 			{
 				m_physicBodyRef->IsOnGround = false;
 				m_physicBodyRef->Velocity.y = -sqrtf(2.0f * GAME_GRAVITY * m_jumpHeight);
 			}
 			break;
 		case RIGHT:
-			if (m_target->GetPhysicBodyRef()->GetPosition().x > m_physicBodyRef->GetPosition().x + 40)
+			if (m_target->GetPhysicBodyRef()->GetPosition().x > m_physicBodyRef->GetPosition().x)
 				m_physicBodyRef->AddVelocity({ m_speed, 0 }, m_clampVelocity);
 
 			if (previousPositionX == 0.f) break;
 			//Jump if progress isn't made
-			if (m_physicBodyRef->GetPosition().x < previousPositionX + 1.0f && m_physicBodyRef->IsOnGround)
+			if (m_physicBodyRef->GetPosition().x < previousPositionX + 0.1f && m_physicBodyRef->IsOnGround)
 			{
 				m_physicBodyRef->IsOnGround = false;
 				m_physicBodyRef->Velocity.y = -sqrtf(2.0f * GAME_GRAVITY * m_jumpHeight);
