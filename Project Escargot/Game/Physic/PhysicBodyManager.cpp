@@ -2,33 +2,50 @@
 #include "PhysicBodyManager.h"
 namespace Snail
 {
-	std::vector<PhysicBodyManager*> PhysicBodyManager::m_instance;
+	std::vector<PhysicBodyManager*> PhysicBodyManager::m_instances;
 
 	PhysicBodyManager::PhysicBodyManager(GameDataRef data)
 	{
 		m_data = data;
 	}
 
+	bool PhysicBodyManager::IsInstance()
+	{
+		return m_instances.size() > 0;
+	}
+
 	PhysicBodyManager* PhysicBodyManager::GetInstance()
 	{
-		if (m_instance.size() < STATE_COUNT_MAX)
-			m_instance.assign(STATE_COUNT_MAX, nullptr);
+		if (m_instances.size() < STATE_COUNT_MAX)
+			m_instances.assign(STATE_COUNT_MAX, nullptr);
 
-		if (m_instance[Game::m_data->stateManager.GetActiveStateID()] == nullptr)
-			m_instance.insert(m_instance.begin() + Game::m_data->stateManager.GetActiveStateID(), new PhysicBodyManager(Game::m_data));
+		if (m_instances[Game::m_data->stateManager.GetActiveStateID()] == nullptr)
+			m_instances.insert(m_instances.begin() + Game::m_data->stateManager.GetActiveStateID(), new PhysicBodyManager(Game::m_data));
 
-		return m_instance[Game::m_data->stateManager.GetActiveStateID()];
+		return m_instances[Game::m_data->stateManager.GetActiveStateID()];
 	}
 
 	void PhysicBodyManager::DestroyInstance()
 	{
-		if (m_instance.size() < STATE_COUNT_MAX)
-			m_instance.assign(STATE_COUNT_MAX, nullptr);
+		if (m_instances.size() < STATE_COUNT_MAX)
+			m_instances.assign(STATE_COUNT_MAX, nullptr);
 
-		if (m_instance[Game::m_data->stateManager.GetActiveStateID()] != nullptr)
+		if (m_instances[Game::m_data->stateManager.GetActiveStateID()] != nullptr)
 		{
-			delete m_instance[Game::m_data->stateManager.GetActiveStateID()];
-			m_instance[Game::m_data->stateManager.GetActiveStateID()] = nullptr;
+			delete m_instances[Game::m_data->stateManager.GetActiveStateID()];
+			m_instances[Game::m_data->stateManager.GetActiveStateID()] = nullptr;
+		}
+	}
+
+	void PhysicBodyManager::DestroyAllInstances()
+	{
+		for (PhysicBodyManager* physicBodyManager : m_instances)
+		{
+			if (physicBodyManager != nullptr)
+			{
+				delete physicBodyManager;
+				physicBodyManager = nullptr;
+			}
 		}
 	}
 

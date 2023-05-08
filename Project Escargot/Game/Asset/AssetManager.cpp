@@ -5,6 +5,11 @@ namespace Snail
 {
 	AssetManager* AssetManager::m_instance = nullptr;
 
+	const bool AssetManager::IsInstance()
+	{
+		return m_instance != nullptr;
+	}
+
 	AssetManager* AssetManager::GetInstance()
 	{
 		if (m_instance == nullptr)
@@ -13,7 +18,7 @@ namespace Snail
 		return m_instance;
 	}
 
-	void AssetManager::DestroyInstance()
+	const void AssetManager::DestroyInstance()
 	{
 		delete m_instance;
 		m_instance = nullptr;
@@ -35,7 +40,7 @@ namespace Snail
 		return m_textures.at(name);
 	}
 
-	bool AssetManager::TextureExists(std::string name)
+	const bool AssetManager::TextureExists(std::string name) const
 	{
 		return m_textures.find(name) != m_textures.end();
 	}
@@ -55,7 +60,7 @@ namespace Snail
 	{
 		return m_fonts.at(name);
 	}
-	bool AssetManager::FontExists(std::string name)
+	const bool AssetManager::FontExists(std::string name) const
 	{
 		return m_fonts.find(name) != m_fonts.end();
 	}

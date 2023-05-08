@@ -13,6 +13,11 @@ namespace Snail
 		AssetManager::GetInstance()->LoadTexture("Collectable_1", STATE_GAME_COLLECTABLE_AMMO);
 	}
 
+	bool CollectableManager::IsInstance()
+	{
+		return m_instance != nullptr;
+	}
+
 	CollectableManager* CollectableManager::GetInstance()
 	{
 		if (m_instance == nullptr)

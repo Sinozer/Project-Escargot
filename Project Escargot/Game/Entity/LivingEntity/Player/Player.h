@@ -6,7 +6,6 @@ namespace Snail
 	class Player : public LivingEntity
 	{
 	private:
-		// Singleton
 		static Player* m_instance;
 
 		/**
@@ -15,6 +14,12 @@ namespace Snail
 		 * \param data
 		 */
 		Player();
+
+	public:
+		static const bool IsInstance();
+		static Player* GetInstance();
+		static void DestroyInstance();
+		
 	private:
 		WeaponManager m_weaponManager;
 		
@@ -27,9 +32,6 @@ namespace Snail
 	public:
 		~Player();
 		
-		static Player* GetInstance();
-		static void DestroyInstance();
-
 		void Init(sf::Vector2f position = sf::Vector2f(150, 150));
 
 		void HandleInput();

@@ -4,7 +4,13 @@
 #include "Game/State/List/Game/End/GameEndState.h"
 namespace Snail
 {
+#pragma region Singleton
 	Player* Player::m_instance = nullptr;
+
+	const bool Player::IsInstance()
+	{
+		return m_instance != nullptr;
+	}
 
 	Player* Player::GetInstance()
 	{
@@ -20,7 +26,9 @@ namespace Snail
 			delete m_instance;
 		m_instance = nullptr;
 	}
-
+#pragma endregion
+	
+#pragma region Constructor / Destructor
 	Player::Player()
 	{
 		m_speed = 1.25f * PHYSIC_SCALE;
@@ -31,7 +39,9 @@ namespace Snail
 	Player::~Player()
 	{
 	}
+#pragma endregion
 
+#pragma region Init
 	void Player::Init(sf::Vector2f position)
 	{
 		m_InitPhysicBody(position);
@@ -57,7 +67,8 @@ namespace Snail
 	{
 		m_weaponManager.AddWeapon("BOW");
 	}
-
+#pragma endregion
+	
 	void Player::HandleInput()
 	{
 		m_physicBodyRef->Velocity.x = 0.f;
@@ -104,6 +115,7 @@ namespace Snail
 		m_direction = direction;
 	}
 
+#pragma region Update
 	void Player::Update()
 	{
 		m_UpdateSprite();
@@ -132,7 +144,9 @@ namespace Snail
 
 		m_weaponManager.HandlerPos(m_physicBodyRef->GetPosition());
 	}
+#pragma endregion
 
+#pragma region Draw
 	void Player::Draw()
 	{
 		m_DrawWeaponManager();
@@ -142,12 +156,14 @@ namespace Snail
 	{
 		m_weaponManager.Draw();
 	}
+#pragma endregion
 
 	PhysicBodyRef Player::GetPhysicBodyRef()
 	{
 		return m_physicBodyRef;
 	}
 
+#pragma region Weapon
 	void Player::AddWeaponLoader(unsigned int amount)
 	{
 		m_weaponManager.AddLoader(amount);
@@ -207,7 +223,9 @@ namespace Snail
 		temp = temp.substr(0, temp.find("."));
 		return temp;
 	}
+#pragma endregion
 
+#pragma region Stats
 	unsigned long int Player::GetKills()
 	{
 		return m_kills;
@@ -237,4 +255,5 @@ namespace Snail
 	{
 		m_score += (unsigned long int)GetDamages() * SpawnerManager::GetInstance()->GetWave();
 	}
+#pragma endregion
 }

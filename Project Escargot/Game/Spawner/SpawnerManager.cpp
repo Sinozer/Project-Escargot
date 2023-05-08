@@ -17,6 +17,11 @@ namespace Snail
 			delete i;
 	}
 
+	bool SpawnerManager::IsInstance()
+	{
+		return m_instance != nullptr;
+	}
+
 	SpawnerManager* SpawnerManager::GetInstance()
 	{
 		if (m_instance == nullptr)

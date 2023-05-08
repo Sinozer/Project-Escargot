@@ -12,6 +12,7 @@ namespace Snail
 		~SpawnerManager();
 		
 	public:
+		static bool IsInstance();
 		static SpawnerManager* GetInstance();
 		static void DestroyInstance();
 #pragma endregion

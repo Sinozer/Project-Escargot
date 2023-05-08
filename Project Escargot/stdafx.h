@@ -98,7 +98,7 @@ constexpr std::uint16_t MASK_EMPTY			{ 0b1000'0000'0000'0000 };
 #define STATE_GAME_PLAYER_FILEPATH "Resources/Textures/Entities/Player.png"
 #define STATE_GAME_DUMMY_ENTITY_FILEPATH "Resources/Textures/Entities/Test.png"
 
-#define STATE_GAME_BASE_ENEMIES_AMOUNT 26
+#define STATE_GAME_BASE_ENEMIES_AMOUNT 6
 #define STATE_GAME_BASE_ENEMIES_DAMAGES 10
 #define STATE_GAME_BASE_ENEMIES_DAMAGES_PER_WAVE 3
 

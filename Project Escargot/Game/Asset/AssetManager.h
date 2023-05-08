@@ -13,15 +13,16 @@ namespace Snail
 	public:
 		~AssetManager() {}
 		
+		static const bool IsInstance();
 		static AssetManager* GetInstance();
-		static void DestroyInstance();
+		static const void DestroyInstance();
 
 		sf::Texture& LoadTexture(std::string name, std::string fileName, sf::IntRect area = sf::IntRect());
 		sf::Texture& GetTexture(std::string name);
-		bool TextureExists(std::string name);
+		const bool TextureExists(std::string name) const;
 
 		sf::Font& LoadFont(std::string name, std::string fileName);
 		sf::Font& GetFont(std::string name);
-		bool FontExists(std::string name);
+		const bool FontExists(std::string name) const;
 	};
 }

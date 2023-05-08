@@ -2,6 +2,8 @@
 #include "Game.h"
 #include "State/List/Join/JoinState.h"
 #include "Entity/LivingEntity/Player/Player.h"
+#include "Entity/Collectables/CollectableManager.h"
+#include "Spawner/SpawnerManager.h"
 
 namespace Snail
 {
@@ -67,6 +69,10 @@ namespace Snail
 	{
 		m_data->window.close();
 
-		AssetManager::DestroyInstance();
+		if (AssetManager::IsInstance()) AssetManager::DestroyInstance();
+		if (Player::IsInstance()) Player::DestroyInstance();
+		if (CollectableManager::IsInstance()) CollectableManager::DestroyInstance();
+		if (SpawnerManager::IsInstance()) SpawnerManager::DestroyInstance();
+		if (PhysicBodyManager::IsInstance()) PhysicBodyManager::DestroyAllInstances();
 	}
 }

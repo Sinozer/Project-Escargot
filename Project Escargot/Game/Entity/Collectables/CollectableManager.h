@@ -12,6 +12,7 @@ namespace Snail
 		CollectableManager();
 
 	public:
+		static bool IsInstance();
 		static CollectableManager* GetInstance();
 		static void DestroyInstance();
 #pragma endregion
