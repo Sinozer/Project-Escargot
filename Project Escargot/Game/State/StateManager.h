@@ -17,6 +17,7 @@ namespace Snail
 
 		void AddState(StateRef newState);
 		void RemoveState();
+		void RemoveAllStates();
 
 		bool IsEmpty();
 

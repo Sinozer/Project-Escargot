@@ -41,6 +41,8 @@ namespace Snail
 	{
 		for (auto& i : m_projectiles)
 			delete i;
+
+		delete m_projectileRef;
 	}
 
 	void ProjectileManager::SetProjectile(Projectile* projectile)

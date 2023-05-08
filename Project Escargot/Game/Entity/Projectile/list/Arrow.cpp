@@ -23,10 +23,14 @@ namespace Snail
 	unsigned int Arrow::m_count = 0;
 	void Arrow::m_InitPhysicBody(sf::Vector2f position)
 	{
+		sf::Texture& texture = AssetManager::GetInstance()->LoadTexture("ARROW", STATE_GAME_PROJECTILE_ARROW_FILEPATH);
+
 		m_physicBodyRef = PhysicBodyRef(PhysicBody::CreateBoxBody(
-			sf::Vector2f(5.f, 2.f), sf::Vector2f(position.x, position.y), 0.f, false,
+			sf::Vector2f(position.x, position.y), 0.f, false, texture,
 			true, false
 		));
+
+		m_physicBodyRef->Scale(sf::Vector2f(0.4f, 0.4f));
 
 		m_physicBodyRef->Masks = MASK_BULLET_PLAYER;
 		//m_physicBodyRef->CollideMasks = MASK_ENEMY;
@@ -48,7 +52,9 @@ namespace Snail
 		float angle = std::atan2f(shooterCoord.y - Player::GetInstance()->GetPhysicBodyRef()->GetPosition().y, shooterCoord.x - Player::GetInstance()->GetPhysicBodyRef()->GetPosition().x);
 		m_targetPosition = { std::cos(angle), std::sin(angle) };
 
-		m_InitPhysicBody(shooterCoord);
+		m_InitPhysicBody(Player::GetInstance()->GetPhysicBodyRef()->GetPosition());
+
+		m_physicBodyRef->Rotate(angle * 180 / PI + 90.f);
 
 		m_physicBodyRef->AddVelocity({ m_speed * m_targetPosition.x, m_speed * m_targetPosition.y }, m_clampVelocity);
 	}

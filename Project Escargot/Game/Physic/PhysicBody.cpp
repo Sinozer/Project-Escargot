@@ -126,6 +126,11 @@ namespace Snail
 		m_body.rotate(angle);
 	}
 
+	void PhysicBody::SetRotation(float angle)
+	{
+		m_body.setRotation(angle);
+	}
+
 	sf::Vector2f PhysicBody::GetScale()
 	{
 		return m_body.getScale();

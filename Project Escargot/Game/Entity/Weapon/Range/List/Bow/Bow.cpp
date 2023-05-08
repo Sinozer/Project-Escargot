@@ -51,9 +51,14 @@ namespace Snail
 
 	void Bow::m_InitPhysicBody(sf::Vector2f position)
 	{
+		sf::Texture& texture = AssetManager::GetInstance()->LoadTexture("CROSSHAIR", STATE_GAME_WEAPON_CROSSHAIR_FILEPATH);
+		texture.setSmooth(true);
+
 		m_physicBodyRef = PhysicBodyRef(PhysicBody::CreateBoxBody(
-			sf::Vector2f(5.f, 5.f), position, 0.f, true, false, false
+			position, 0.f, true, texture, false, false
 		));
+
+		m_physicBodyRef->Scale(sf::Vector2f(0.14f, 0.14f));
 
 		PhysicBodyManager::GetInstance()->AddPhysicBody("BOW", m_physicBodyRef);
 	}
@@ -74,7 +79,7 @@ namespace Snail
 		
 		double normX = handler.x/std::sqrt(std::pow(InputManager::GetInstance()->GetMousePosition().x, 2) - std::pow(handler.x, 2));
 		double normY = handler.y/std::sqrt(std::pow(InputManager::GetInstance()->GetMousePosition().y, 2) - std::pow(handler.y, 2));
-		calc = handler + out * 25.f;
+		calc = handler + out * 50.f;
 	}
 	
 	void Bow::Update()

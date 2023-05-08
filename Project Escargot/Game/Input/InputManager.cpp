@@ -6,15 +6,18 @@ namespace Snail
 
 	InputManager::~InputManager()
 	{
-		if (Instance)
-			delete(Instance);
+	}
+
+	bool InputManager::IsInstance()
+	{
+		return Instance != nullptr;
 	}
 
 	InputManager* InputManager::GetInstance(sf::RenderWindow& window)
 	{
 		if (!Instance)
 			Instance = new InputManager(window);
-		
+
 		return Instance;
 	}
 
@@ -23,14 +26,22 @@ namespace Snail
 		return Instance;
 	}
 
+	void InputManager::DestroyInstance()
+	{
+		if (!Instance) return;
+		
+		delete(Instance);
+		Instance = nullptr;
+	}
+
 	bool InputManager::IsSpriteLeftClicked(sf::Sprite object)
 	{
 		if (!sf::Mouse::isButtonPressed(sf::Mouse::Left)) return false;
-		
+
 		sf::IntRect tempRect((int)object.getPosition().x, (int)object.getPosition().y, (int)object.getGlobalBounds().width, (int)object.getGlobalBounds().height);
 
 		if (!tempRect.contains(sf::Mouse::getPosition(m_window))) return false;
-		
+
 		return true;
 	}
 

@@ -30,6 +30,7 @@
 
 /* ################## DEBUG  ################## */
 #define DEBUG false
+#define DEBUG_LEAKS false
 #define DEBUG_CONTROL true
 /* ################## DEBUG  ################## */
 
@@ -102,8 +103,12 @@ constexpr std::uint16_t MASK_EMPTY			{ 0b1000'0000'0000'0000 };
 #define STATE_GAME_BASE_ENEMIES_DAMAGES 10
 #define STATE_GAME_BASE_ENEMIES_DAMAGES_PER_WAVE 3
 
-#define STATE_GAME_COLLECTABLE_LIFE "Resources/Textures/Entities/Objects/heart.png"
-#define STATE_GAME_COLLECTABLE_AMMO "Resources/Textures/Entities/Objects/treasure_chest.png"
+#define STATE_GAME_COLLECTABLE_LIFE_FILEPATH "Resources/Textures/Entities/Objects/heart.png"
+#define STATE_GAME_COLLECTABLE_AMMO_FILEPATH "Resources/Textures/Entities/Objects/treasure_chest.png"
+
+#define STATE_GAME_WEAPON_CROSSHAIR_FILEPATH "Resources/Textures/Crosshairs/White Retina/crosshair182.png"
+
+#define STATE_GAME_PROJECTILE_ARROW_FILEPATH "Resources/Textures/Entities/Bullets/bullet11.png"
 /* ########## GAME ########## */
 
 /* ################## STATES ################## */

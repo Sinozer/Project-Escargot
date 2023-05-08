@@ -21,6 +21,12 @@ namespace Snail
 		m_isRemoving = true;
 	}
 
+	void StateManager::RemoveAllStates()
+	{
+		while (!m_states.empty())
+			m_states.pop();
+	}
+
 	bool StateManager::IsEmpty()
 	{
 		return m_states.empty();
@@ -70,6 +76,4 @@ namespace Snail
 			return ret;
 		}
 	}
-
-	
 }

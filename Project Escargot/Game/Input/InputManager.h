@@ -10,9 +10,10 @@ namespace Snail
 		InputManager(sf::RenderWindow& window) : m_window(window) {}
 		~InputManager();
 	public:
-
+		static bool IsInstance();
 		static InputManager* GetInstance(sf::RenderWindow& window);
 		static InputManager* GetInstance();
+		static void DestroyInstance();
 
 
 		bool IsSpriteLeftClicked(sf::Sprite object);

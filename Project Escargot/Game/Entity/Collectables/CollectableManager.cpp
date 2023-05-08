@@ -9,8 +9,8 @@ namespace Snail
 
 	CollectableManager::CollectableManager()
 	{
-		AssetManager::GetInstance()->LoadTexture("Collectable_0", STATE_GAME_COLLECTABLE_LIFE);
-		AssetManager::GetInstance()->LoadTexture("Collectable_1", STATE_GAME_COLLECTABLE_AMMO);
+		AssetManager::GetInstance()->LoadTexture("Collectable_0", STATE_GAME_COLLECTABLE_LIFE_FILEPATH);
+		AssetManager::GetInstance()->LoadTexture("Collectable_1", STATE_GAME_COLLECTABLE_AMMO_FILEPATH);
 	}
 
 	bool CollectableManager::IsInstance()

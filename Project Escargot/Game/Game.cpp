@@ -13,7 +13,7 @@ namespace Snail
 	{
 		m_data = std::make_shared<GameData>();
 
-		m_data->window.create(sf::VideoMode(width, height), title, sf::Style::Close | sf::Style::Titlebar | sf::Style::Fullscreen);
+		m_data->window.create(sf::VideoMode(width, height), title, sf::Style::Close | sf::Style::Titlebar/* | sf::Style::Fullscreen*/);
 		m_data->window.setFramerateLimit(WINDOW_SCREEN_FRAMERATE_MED);
 
 		// Debug text
@@ -69,10 +69,13 @@ namespace Snail
 	{
 		m_data->window.close();
 
+		m_data->stateManager.RemoveAllStates();
+
 		if (AssetManager::IsInstance()) AssetManager::DestroyInstance();
 		if (Player::IsInstance()) Player::DestroyInstance();
 		if (CollectableManager::IsInstance()) CollectableManager::DestroyInstance();
 		if (SpawnerManager::IsInstance()) SpawnerManager::DestroyInstance();
 		if (PhysicBodyManager::IsInstance()) PhysicBodyManager::DestroyAllInstances();
+		if (InputManager::IsInstance()) InputManager::DestroyInstance();
 	}
 }

@@ -4,6 +4,18 @@
 
 namespace Snail
 {
+    WeaponManager::~WeaponManager()
+    {
+        for (auto& i : m_weapons)
+        {
+			Bow* bow = dynamic_cast<Bow*>(i.second);
+			if (bow != nullptr)
+				delete bow;
+
+            // Repeat for all kinds of weapons
+        }
+    }
+
     void WeaponManager::AddWeapon(std::string weaponName)
     {
         m_weapons[weaponName] = new Bow(sf::Vector2f(0.f,0.f));
