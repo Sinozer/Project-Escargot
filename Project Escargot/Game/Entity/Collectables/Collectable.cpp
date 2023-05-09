@@ -87,11 +87,13 @@ namespace Snail
 		{
 		case LIFE:
 			Player::GetInstance()->RestoreLife();
-			std::cout << "LIFE" << std::endl;
+			AssetManager::GetInstance()->LoadSoundBuffer("SFX_LOOT_LIFE", AUDIO_SFX_LOOT_LIFE_FILEPATH);
+			AssetManager::GetInstance()->PlaySound("SFX_LOOT_LIFE");
 			break;
 		case AMMO:
 			Player::GetInstance()->AddWeaponLoader(2);
-			std::cout << "AMMO" << std::endl;
+			AssetManager::GetInstance()->LoadSoundBuffer("SFX_LOOT_AMMO", AUDIO_SFX_LOOT_AMMO_FILEPATH);
+			AssetManager::GetInstance()->PlaySound("SFX_LOOT_AMMO");
 			break;
 		}
 	}

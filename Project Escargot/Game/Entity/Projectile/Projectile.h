@@ -16,9 +16,8 @@ namespace Snail
 		sf::Vector2f m_targetPosition;
 
 
-		float m_damage;
-		float m_speed;
-		float m_range;
+		float m_damage = 30.f;
+		float m_speed = 2.f * PHYSIC_SCALE;
 	public:
 		virtual Projectile* Clone() = 0;
 		

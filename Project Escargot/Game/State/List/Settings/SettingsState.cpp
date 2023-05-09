@@ -89,7 +89,11 @@ namespace Snail
 		m_uiManager.Update();
 
 		if (m_uiManager.Buttons["RETURN"]->IsPressed())
+		{
 			m_data->stateManager.RemoveState();
+			AssetManager::GetInstance()->LoadSoundBuffer("UI_BUTTON_BACK_PRESSED", AUDIO_UI_BACK_FILEPATH);
+			AssetManager::GetInstance()->PlaySound("UI_BUTTON_BACK_PRESSED");
+		}
 	}
 
 	void SettingsState::Draw()

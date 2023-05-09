@@ -94,6 +94,9 @@ namespace Snail
 		{
 			m_physicBodyRef->IsOnGround = false;
 			m_physicBodyRef->Velocity.y = -sqrtf(2.0f * GAME_GRAVITY * m_jumpHeight);
+
+			AssetManager::GetInstance()->LoadSoundBuffer("SFX_PLAYER_JUMP", AUDIO_SFX_PLAYER_JUMP_FILEPATH);
+			AssetManager::GetInstance()->PlaySound("SFX_PLAYER_JUMP");
 		}
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
@@ -130,8 +133,14 @@ namespace Snail
 		{
 			float damages = (float) STATE_GAME_BASE_ENEMIES_DAMAGES + STATE_GAME_BASE_ENEMIES_DAMAGES_PER_WAVE * (SpawnerManager::GetInstance()->GetWave() - 1);
 			
-			if (m_TakeDamage(damages) && m_life <= 0)
-				Game::m_data->stateManager.AddState(StateRef(new GameEndState(Game::m_data)));
+			if (m_TakeDamage(damages))
+			{
+				AssetManager::GetInstance()->LoadSoundBuffer("SFX_PLAYER_DAMAGED", AUDIO_SFX_PLAYER_DAMAGED);
+				AssetManager::GetInstance()->PlaySound("SFX_PLAYER_DAMAGED");
+				
+				if (m_life <= 0)
+					Game::m_data->stateManager.AddState(StateRef(new GameEndState(Game::m_data)));
+			}
 		}
 
 		m_physicBodyRef->IsTriggered = false;

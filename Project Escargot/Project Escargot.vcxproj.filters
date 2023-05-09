@@ -43,12 +43,6 @@
     <Filter Include="Fichiers d%27en-tête\Game\Input">
       <UniqueIdentifier>{dc0c2cbd-bbfb-4ada-bd59-2399fc556c7f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\Game\View">
-      <UniqueIdentifier>{c3c262cf-8db5-4c9e-b17e-5a50f95b46fc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers d%27en-tête\Game\View">
-      <UniqueIdentifier>{a8a6f5f7-2b4d-4b13-9e3d-48fbeaeee9d9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Fichiers d%27en-tête\Game\Physic">
       <UniqueIdentifier>{8569c043-5e6f-4081-a943-37235f321ed4}</UniqueIdentifier>
     </Filter>
@@ -216,12 +210,6 @@
     <ClCompile Include="Game\Input\InputManager.cpp">
       <Filter>Fichiers sources\Game\Input</Filter>
     </ClCompile>
-    <ClCompile Include="Game\View\View.cpp">
-      <Filter>Fichiers sources\Game\View</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\View\ViewManager.cpp">
-      <Filter>Fichiers sources\Game\View</Filter>
-    </ClCompile>
     <ClCompile Include="Game\Physic\PhysicBody.cpp">
       <Filter>Fichiers sources\Game\Physic</Filter>
     </ClCompile>
@@ -313,12 +301,6 @@
     </ClInclude>
     <ClInclude Include="Game\Input\InputManager.h">
       <Filter>Fichiers d%27en-tête\Game\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\View\View.h">
-      <Filter>Fichiers d%27en-tête\Game\View</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\View\ViewManager.h">
-      <Filter>Fichiers d%27en-tête\Game\View</Filter>
     </ClInclude>
     <ClInclude Include="Game\Physic\PhysicBody.h">
       <Filter>Fichiers d%27en-tête\Game\Physic</Filter>

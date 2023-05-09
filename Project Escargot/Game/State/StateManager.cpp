@@ -61,19 +61,21 @@ namespace Snail
 	{
 		if (!m_states.empty())
 			return m_states.top();
+
+		throw std::exception("No active state");
 	}
 
 	StateRef& StateManager::GetPreviousState()
 	{
-		if (m_states.size() > 1)
-		{
-			StateRef temp = move(m_states.top());
-			m_states.pop();
-			
-			StateRef& ret = m_states.top();
-			m_states.push(move(temp));
-			
-			return ret;
-		}
+		if (m_states.size() <= 1)
+			throw std::exception("No previous state");
+
+		StateRef temp = move(m_states.top());
+		m_states.pop();
+
+		StateRef& ret = m_states.top();
+		m_states.push(move(temp));
+
+		return ret;
 	}
 }

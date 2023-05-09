@@ -69,6 +69,9 @@ namespace Snail
 
 		if (!m_SetState(WeaponState::ATTACKING)) return;
 		
+		AssetManager::GetInstance()->LoadSoundBuffer("SFX_BOW_SHOOT", AUDIO_SFX_BOW_SHOOT_FILEPATH);
+		AssetManager::GetInstance()->PlaySound("SFX_BOW_SHOOT");
+
 		m_projectileManager.Shoot(calc);
 	}
 

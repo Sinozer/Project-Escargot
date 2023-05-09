@@ -113,8 +113,15 @@ namespace Snail
 			break;
 
 		case Snail::SpawnerManager::STARTING:
+			if (m_uiManager.Texts["START"]->IsActive)
+			{
+				AssetManager::GetInstance()->LoadSoundBuffer("UI_BUTTON_PRESSED", AUDIO_UI_CONFIRM_FILEPATH);
+				AssetManager::GetInstance()->PlaySound("UI_BUTTON_PRESSED");
 
-			m_uiManager.Texts["START"]->IsActive = false;
+				AssetManager::GetInstance()->LoadMusic("STATE_GAME_PLAY_MUSIC", AUDIO_MUSIC_GAME_PLAY_FILEPATH);
+				AssetManager::GetInstance()->PlayMusic("STATE_GAME_PLAY_MUSIC");
+				m_uiManager.Texts["START"]->IsActive = false;
+			}
 			
 			if (m_clock.getElapsedTime().asSeconds() < m_timer) break;
 

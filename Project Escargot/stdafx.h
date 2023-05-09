@@ -83,6 +83,28 @@ constexpr std::uint16_t MASK_EMPTY			{ 0b1000'0000'0000'0000 };
 #define BACKGROUND_DAWNMOUNTAIN_FILEPATH "Resources/Textures/Backgrounds/DawnMountain.jpg"
 /* ####### BACKGROUNDS ###### */
 
+/* ######### AUDIOS ######### */
+#define AUDIO_MUSIC_MENU_FILEPATH "Resources/Audio/Music/Menu.wav"
+#define AUDIO_MUSIC_GAME_IDLE_FILEPATH "Resources/Audio/Music/GameIdle.wav"
+#define AUDIO_MUSIC_GAME_PLAY_FILEPATH "Resources/Audio/Music/GamePlay.wav"
+
+#define AUDIO_UI_BACK_FILEPATH "Resources/Audio/UI/back.wav"
+#define AUDIO_UI_BACK_ECHO_FILEPATH "Resources/Audio/UI/back_echo.wav"
+#define AUDIO_UI_CONFIRM_FILEPATH "Resources/Audio/UI/confirm.wav"
+#define AUDIO_UI_CONFIRM_ECHO_FILEPATH "Resources/Audio/UI/confirm_echo.wav"
+#define AUDIO_UI_CURSOR_FILEPATH "Resources/Audio/UI/cursor.wav"
+#define AUDIO_UI_ERROR_FILEPATH "Resources/Audio/UI/error.wav"
+#define AUDIO_UI_ERROR_ECHO_FILEPATH "Resources/Audio/UI/error_echo.wav"
+
+#define	AUDIO_SFX_BOW_SHOOT_FILEPATH "Resources/Audio/SFX/BowShoot.wav"
+#define	AUDIO_SFX_ENEMY_DAMAGED_FILEPATH "Resources/Audio/SFX/EnemyDamaged.wav"
+#define	AUDIO_SFX_ENEMY_JUMP_FILEPATH "Resources/Audio/SFX/EnemyJump.wav" //Maybe trop relou, ils sautent plus que des lapins
+#define	AUDIO_SFX_LOOT_AMMO_FILEPATH "Resources/Audio/SFX/LootAmmo.wav"
+#define	AUDIO_SFX_LOOT_LIFE_FILEPATH "Resources/Audio/SFX/LootLife.wav"
+#define	AUDIO_SFX_PLAYER_DAMAGED "Resources/Audio/SFX/PlayerDamaged.wav"
+#define AUDIO_SFX_PLAYER_JUMP_FILEPATH "Resources/Audio/SFX/PlayerJump.wav"
+/* ######### AUDIOS ######### */
+
 /* ########## JOIN ########## */
 #define STATE_JOIN_BACKGROUND_FILEPATH "Resources/Textures/Backgrounds/Join.jpg"
 /* ########## JOIN ########## */

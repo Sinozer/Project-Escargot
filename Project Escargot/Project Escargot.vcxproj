@@ -118,7 +118,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>P:\Project Escargot\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>winmm.lib;sfml-system-s-d.lib;opengl32.lib;gdi32.lib;sfml-window-s-d.lib;freetype.lib;sfml-graphics-s-d.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;sfml-audio-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>openal32.lib;winmm.lib;sfml-system-s-d.lib;opengl32.lib;gdi32.lib;sfml-window-s-d.lib;freetype.lib;sfml-graphics-s-d.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;sfml-audio-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -139,7 +139,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>P:\Project Escargot\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>winmm.lib;sfml-system-s.lib;opengl32.lib;gdi32.lib;sfml-window-s.lib;freetype.lib;sfml-graphics-s.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;sfml-audio-s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>openal32.lib;winmm.lib;sfml-system-s.lib;opengl32.lib;gdi32.lib;sfml-window-s.lib;freetype.lib;sfml-graphics-s.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;sfml-audio-s.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -171,8 +171,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Game\View\View.cpp" />
-    <ClCompile Include="Game\View\ViewManager.cpp" />
     <ClCompile Include="Game\Entity\Weapon\WeaponManager.cpp" />
     <ClCompile Include="Game\UI\UIManager.cpp" />
     <ClCompile Include="Game\UI\Nodes\Text\UIText.cpp" />
@@ -211,8 +209,6 @@
     <ClInclude Include="Game\Map\Map.h" />
     <ClInclude Include="Game\Spawner\SpawnerManager.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="Game\View\View.h" />
-    <ClInclude Include="Game\View\ViewManager.h" />
     <ClInclude Include="Game\Entity\Weapon\Weapon.h" />
     <ClInclude Include="Game\Entity\Weapon\WeaponManager.h" />
     <ClInclude Include="Game\UI\UIManager.h" />

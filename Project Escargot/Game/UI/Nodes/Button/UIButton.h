@@ -12,6 +12,7 @@ namespace Snail
 		float m_keyTime;
 		float m_keyTimeMax;
 
+		short unsigned m_previousState;
 		short unsigned m_state;
 		short unsigned m_id;
 

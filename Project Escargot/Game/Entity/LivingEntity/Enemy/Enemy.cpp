@@ -51,16 +51,9 @@ namespace Snail
 
 		if (m_IsPlayerInRange() || m_forcePlayerPos == true)
 		{
-			//if (m_IsAttackRange(m_isMelee))
-			//{
-			//	//std::cout << "Ennemy attacks\n";
-			//}
-			//else
-			//{
 				m_ChangeDirection();
 				m_UpdateSprite();
 				m_UpdatePosition();
-			//}
 		}
 
 		m_UpdateDamageBuffer();
@@ -80,6 +73,9 @@ namespace Snail
 			{
 				Player::GetInstance()->AddScore();
 				
+				AssetManager::GetInstance()->LoadSoundBuffer("SFX_ENEMY_DAMAGED", AUDIO_SFX_ENEMY_DAMAGED_FILEPATH);
+				AssetManager::GetInstance()->PlaySound("SFX_ENEMY_DAMAGED");
+
 				if (m_life <= 0.f)
 				{
 					Player::GetInstance()->AddKill();

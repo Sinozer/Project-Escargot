@@ -15,6 +15,9 @@ namespace Snail
 		m_InitBackground();
 		m_InitView();
 		m_InitUIManager();
+
+		AssetManager::GetInstance()->LoadMusic("STATE_MAIN_MUSIC", AUDIO_MUSIC_MENU_FILEPATH);
+		AssetManager::GetInstance()->PlayMusic("STATE_MAIN_MUSIC");
 	}
 
 	void MainState::m_InitBackground()
@@ -101,13 +104,25 @@ namespace Snail
 		m_uiManager.Texts["TITLE"]->SetPosition(pos);
 
 		if (m_uiManager.Buttons["PLAY"]->IsPressed())
+		{
 			m_data->stateManager.AddState(StateRef(new GameState(m_data)));
+			AssetManager::GetInstance()->LoadSoundBuffer("UI_BUTTON_PRESSED_ECHO", AUDIO_UI_CONFIRM_ECHO_FILEPATH);
+			AssetManager::GetInstance()->PlaySound("UI_BUTTON_PRESSED_ECHO");
+		}
 
 		if (m_uiManager.Buttons["SETTINGS"]->IsPressed())
+		{
 			m_data->stateManager.AddState(StateRef(new SettingsState(m_data)));
+			AssetManager::GetInstance()->LoadSoundBuffer("UI_BUTTON_PRESSED", AUDIO_UI_CONFIRM_FILEPATH);
+			AssetManager::GetInstance()->PlaySound("UI_BUTTON_PRESSED");
+		}
 
 		if (m_uiManager.Buttons["QUIT"]->IsPressed())
+		{
 			m_data->window.close();
+			AssetManager::GetInstance()->LoadSoundBuffer("UI_BUTTON_QUIT_PRESSED", AUDIO_UI_ERROR_FILEPATH);
+			AssetManager::GetInstance()->PlaySound("UI_BUTTON_QUIT_PRESSED");
+		}
 	}
 
 	void MainState::Draw()

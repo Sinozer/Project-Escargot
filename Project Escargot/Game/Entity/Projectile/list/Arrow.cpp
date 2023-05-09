@@ -33,7 +33,6 @@ namespace Snail
 		m_physicBodyRef->Scale(sf::Vector2f(0.4f, 0.4f));
 
 		m_physicBodyRef->Masks = MASK_BULLET_PLAYER;
-		//m_physicBodyRef->CollideMasks = MASK_ENEMY;
 		m_physicBodyRef->TriggerMasks = MASK_MAP;
 
 		Name = "ARROW_" + std::to_string(m_count);
@@ -54,7 +53,7 @@ namespace Snail
 
 		m_InitPhysicBody(Player::GetInstance()->GetPhysicBodyRef()->GetPosition());
 
-		m_physicBodyRef->Rotate(angle * 180 / PI + 90.f);
+		m_physicBodyRef->Rotate(static_cast<float>(angle * 180 / PI + 90.f));
 
 		m_physicBodyRef->AddVelocity({ m_speed * m_targetPosition.x, m_speed * m_targetPosition.y }, m_clampVelocity);
 	}

@@ -20,6 +20,9 @@ namespace Snail
 		m_InitSpawnerManager();
 
 		m_player->Init(sf::Vector2f(800.f, 250.f));
+
+		AssetManager::GetInstance()->LoadMusic("STATE_GAME_IDLE_MUSIC", AUDIO_MUSIC_GAME_IDLE_FILEPATH);
+		AssetManager::GetInstance()->PlayMusic("STATE_GAME_IDLE_MUSIC");
 	}
 
 	void GameState::m_InitBackground()
@@ -95,7 +98,11 @@ namespace Snail
 			SpawnerManager::GetInstance()->Ready(true);
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+		{
 			m_data->stateManager.RemoveState();
+			AssetManager::GetInstance()->LoadSoundBuffer("UI_BUTTON_RETURN_PRESSED", AUDIO_UI_ERROR_FILEPATH);
+			AssetManager::GetInstance()->PlaySound("UI_BUTTON_RETURN_PRESSED");
+		}
 
 		m_player->HandleInput();
 	}
@@ -181,5 +188,6 @@ namespace Snail
 		Player::DestroyInstance();
 		SpawnerManager::DestroyInstance();
 		CollectableManager::GetInstance()->DestroyInstance();
+		AssetManager::GetInstance()->PlayMusic("STATE_MAIN_MUSIC");
 	}
 }

@@ -6,7 +6,7 @@ namespace Snail
 	class Enemy : public LivingEntity
 	{
 	private:
-		float previousPositionX;
+		float previousPositionX = 0.f;
 	private:
 		Player* m_target;
 

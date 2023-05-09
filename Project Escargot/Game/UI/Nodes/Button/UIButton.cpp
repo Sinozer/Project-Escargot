@@ -14,7 +14,7 @@ namespace Snail
 		m_keyTimeMax = 1.f;
 		m_keyTime = 0.f;
 
-		m_state = IDLE;
+		m_previousState = m_state = UIState::IDLE;
 		m_id = id;
 
 		m_textHoverColor = textHoverColor;
@@ -48,6 +48,7 @@ namespace Snail
 	{
 		if (m_state == ACTIVE)
 			return true;
+
 		return false;
 	}
 
@@ -74,7 +75,7 @@ namespace Snail
 	void UIButton::Update()
 	{
 		if (!IsActive) return;
-		
+
 		UpdateKeyTime();
 
 		m_state = IDLE;	// Idle
@@ -83,11 +84,19 @@ namespace Snail
 		{
 			m_state = HOVER;
 
+			if (m_state != m_previousState)
+			{
+				AssetManager::GetInstance()->LoadSoundBuffer("UI_BUTTON_HOVER", AUDIO_UI_CURSOR_FILEPATH);
+				AssetManager::GetInstance()->PlaySound("UI_BUTTON_HOVER");
+			}
+
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && GetKeyTime())	// Active
 			{
 				m_state = ACTIVE;
 			}
 		}
+
+		m_previousState = m_state;
 
 		switch (m_state)
 		{
