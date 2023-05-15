@@ -4,8 +4,16 @@
 
 namespace Snail
 {
+	int JoinState::m_id = -1;
+
 	JoinState::JoinState(GameDataRef data) : m_data(data)
 	{
+		if (m_id == -1)
+			m_id = ID;
+		else
+			ID = m_id;
+		
+		Name = "JoinState";
 		m_opacity = 0;
 		m_isLoaded = false;
 	}

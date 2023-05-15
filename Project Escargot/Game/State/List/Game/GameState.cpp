@@ -5,8 +5,15 @@
 #include "Game/Entity/Collectables/CollectableManager.h"
 namespace Snail
 {
+	int GameState::m_id = -1;
+
 	GameState::GameState(GameDataRef data) : m_data(data)
 	{
+		if (m_id == -1)
+			m_id = ID;
+		else
+			ID = m_id;
+		
 		Name = "GameState";
 		m_player = Player::GetInstance();
 	}

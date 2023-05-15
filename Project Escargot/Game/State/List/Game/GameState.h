@@ -14,6 +14,9 @@ namespace Snail
 	class GameState : public State
 	{
 	private:
+		static int m_id;
+
+	private:
 		Player* m_player;
 
 		//Collectable m_collectable;

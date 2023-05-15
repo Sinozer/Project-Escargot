@@ -5,8 +5,16 @@
 
 namespace Snail
 {
+	int MainState::m_id = -1;
+
 	MainState::MainState(GameDataRef data) : m_data(data)
 	{
+		if (m_id == -1)
+			m_id = ID;
+		else
+			ID = m_id;
+		
+		Name = "MainState";
 		m_isLoaded = false;
 	}
 

@@ -8,6 +8,9 @@ namespace Snail
 	class MainState : public State
 	{
 	private:
+		static int m_id;
+
+	private:
 		GameDataRef m_data;
 
 		bool m_isLoaded;

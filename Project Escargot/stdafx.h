@@ -72,7 +72,7 @@ constexpr std::uint16_t MASK_EMPTY			{ 0b1000'0000'0000'0000 };
 
 /* ################## STATES ################## */
 
-#define STATE_COUNT_MAX 5
+#define STATE_COUNT_MAX 3
 
 /* ####### BACKGROUNDS ###### */
 #define BACKGROUND_CANYON_FILEPATH "Resources/Textures/Backgrounds/Canyon.jpg"

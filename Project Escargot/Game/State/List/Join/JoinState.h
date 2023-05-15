@@ -8,6 +8,9 @@ namespace Snail
 	class JoinState : public State
 	{
 	private:
+		static int m_id;
+
+	private:
 		GameDataRef m_data;
 		
 		sf::Clock m_clock;

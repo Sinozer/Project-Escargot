@@ -2,9 +2,17 @@
 #include "SettingsState.h"
 namespace Snail
 {
+	int SettingsState::m_id = -1;
+	
 	SettingsState::SettingsState(GameDataRef data) : m_data(data)
 	{
 		//m_opacity = 128;
+		if (m_id == -1)
+			m_id = ID;
+		else
+			ID = m_id;
+		
+		Name = "SettingsState";
 		m_isLoaded = false;
 	}
 
