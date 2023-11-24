@@ -18,6 +18,6 @@ Project Escargot is an evolving 2D platformer and shooter developed in C++ using
 
 **NOTE:** The game is in active development, with ongoing enhancements.
 
-## How to 
+## How to play
 - Aim for high scores by surviving as long as possible.
 - Utilize different strategies and skills to overcome increasing challenges.
